@@ -1,3 +1,6 @@
+import MundoSvg from '@/public/mundo.svg';
+import Image from 'next/image';
+
 import Head from 'next/head'
 
 export default function Home() {
@@ -10,7 +13,32 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <div>KAND! 🌐 KAND!</div>
+        <div className="home__wrapper">
+          <p className="home__paragraph">
+            we are a creative duo working <br/> together since that year people thought <br/>
+            nobody would ever work together again.
+          </p>
+          <div className="home__title">
+            <h1 className="home__name">KAUE</h1>
+            <Image src={MundoSvg} alt="World" />
+            <h1 className="home__name">DALTRO</h1>
+          </div>
+          <p className="home__paragraph">
+            with almost a decade of experience, 
+            we've done <br/> a little bit of everything. So tell us:
+          </p>
+          <p className="home__paragraph">
+            what do you wanna see today?
+          </p>
+          <div className="home__buttons__wrapper">
+            <a href="" className="home__button">
+              All projects
+            </a>
+            <a href="" className="home__button">
+              Categories
+            </a>
+          </div>
+        </div>
       </main>
     </>
   )

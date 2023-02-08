@@ -1,3 +1,14 @@
+@import './utils/breakpoints';
+@import './utils/mixins';
 @import './utils/variables';
+
+@import './base/fonts';
 @import './base/reset';
 @import './base/base';
+
+@import './pages/home';
+@import './pages/about';
+
+@import './pages/projects';
+
+@import './components/navigation';

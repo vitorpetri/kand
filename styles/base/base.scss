@@ -15,4 +15,7 @@ html {
 body {
   font-size: 3rem;
   overscroll-behavior-y: none;
+  background: $black;
+  color: $white;
+  font-family: $text;
 }
