@@ -1,5 +1,5 @@
-export default function Categories() {
+export default function Projects() {
   return (
-    <div>Categories</div>
+    <div>Projects</div>
   )
 }
