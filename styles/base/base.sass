@@ -29,9 +29,60 @@ body
   border: 1px solid $gray
   border-radius: 3.2rem
   position: relative
-  overflow: hidden
+  overflow: auto
   top: 50%
   left: 50%
   transform: translate(-50%, -50%)
+  z-index: 1
 
 .header
+  position: absolute
+  width: 95vw
+  height: 7vh
+  border-radius: 3.2rem 3.2rem 0 0
+  top: 4vh
+  left: 50%
+  transform: translateX(-50%)
+  border-bottom: 1px solid $gray
+  display: flex
+  align-items: center
+  justify-content: space-between
+  background: $black
+  z-index: 2
+
+.logo
+  height: 100%
+  padding: 0 5rem 0 7rem
+  border-right: 1px solid $gray
+  cursor: pointer
+
+  img
+    width: 5.2rem
+    height: 100%
+
+.menu
+  height: 100%
+  padding: 0 6rem
+  border-left: 1px solid $gray
+  display: flex
+  align-items: center
+  justify-content: center
+  cursor: pointer
+
+  .icon
+    border-radius: 50%
+    padding: 1rem
+    background: $primary
+    color: $black
+    display: flex
+    align-items: center
+    justify-content: center
+    font-size: 1.8rem
+    width: 2.4rem
+    height: 2.4rem
+    text-align: center
+    transition: all 0.2s ease-in-out
+
+    &:hover
+      transform: rotate(90deg)
+

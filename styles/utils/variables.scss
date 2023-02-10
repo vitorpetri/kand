@@ -7,8 +7,9 @@ $text: 'Archivo';
 $title: 'Tartuffo';
 
 %texts {
-  overflow: hidden;
-  padding: 20rem 0;
+  font-family: $text;
+  font-weight: 400;
+  color: $black;
 }
 
 $ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
