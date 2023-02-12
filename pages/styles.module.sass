@@ -5,7 +5,6 @@
   flex-direction: column
   align-items: center
   height: 100vh
-  // padding-bottom: 20vh
 
 .paragraph
   text-transform: uppercase
@@ -20,62 +19,80 @@
   text-align: center
 
   &:nth-of-type(1)
-    margin-top: calc(10vh + 5.8vh)
+    margin-top: 9vh
+
+    @include media('<=phone')
+      margin-top: 7vh
   
   &:nth-of-type(2)
-    margin-top: -1vh
+    margin-top: 35.4vh
+
+    @include media('<=phone')
+      margin-top: 3vh
 
   &:nth-of-type(3)
     margin-top: 2.8vh
     color: $white
 
+  @include media('<=phone')
+    font-size: 3rem
+    width: 90%
+
 .title
   font-family: $title
   color: $primary
-  margin-top: 2vh
   font-size: 14.8rem
   display: flex
   align-items: center
-  gap: 6rem
-  transform: translateX(7rem)
+  gap: 50%
+  position: absolute
+  top: 44%
+  left: calc(50% + -9%)
+  transform: translate(-50%, -50%)
 
-  img 
-    width: 32rem
-    transform: translateY(-2rem)
-
-    @media (max-width: 1024px)
-      height: fit-content
-
-  &:before, &:after
-    margin: 5rem 0 0 0
-    content: '11'
-    font-size: 1.8rem
-    color: $white
-    font-family: $text
-    transform: translateY(-1.6rem) translateX(1rem)
-
-  &:after
-    margin: 0 0 5rem 0
-    content: '21'
-    transform: translateY(-1.6rem) translateX(-3rem)
-
-  @media (max-width: 1024px)
+  @include media('<=phone')
+    position: static
     flex-direction: column
-    transform: translateY(0)
-    height: fit-content
     gap: 1rem
+    font-size: 20rem
+    margin-top: calc(4vh)
+    transform: translate(0)
+
+.label
+  color: $white
+
+.accent
+  color: $primary
+
+.line
+  color: $primary
+
+.icon
+  position: absolute
+  top: 37%
+  left: 68%
+  transform: translate(-50%, -50%) scale(0.8)
+  width: 50rem
+  height: fit-content
+
+  @include media('<=phone')
+    position: static
+    top: unset
+    left: unset
+    transform: translate(0)
+    width: 30rem
 
 .buttons__wrapper
-  margin-top: 9.1rem
+  margin-top: 8.5vh
   display: flex
   gap: 3.8rem
 
-  @media (max-width: 1024px)
+  @include media('<=phone')
     position: fixed
-    bottom: 10vh
+    bottom: 4vh
     left: 50%
-    transform: translateX(-50%) scale(1.4)
-    background: $black
+    transform: translateX(-50%) scale(2)
+    gap: 2.6rem
 
 .button
   height: 4.4rem
@@ -90,7 +107,7 @@
   justify-content: center
   cursor: pointer
   position: relative
-  transition: all 350ms
+  transition: all 450ms cubic-bezier(0.77, 0, 0.175, 1)
 
   &:before
     content: ''
@@ -102,7 +119,7 @@
     left: 2.2rem
     top: 50%
     transform: translateY(-50%)
-    transition: all 350ms
+    transition: all 450ms cubic-bezier(0.77, 0, 0.175, 1)
 
   &:hover
     background: $primary
@@ -110,3 +127,6 @@
 
     &:before
       background: $black
+
+  @include media('<=phone')
+    background: $black

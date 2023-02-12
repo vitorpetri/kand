@@ -4,9 +4,9 @@ import styles from './styles.module.sass'
 
 export default function Home() {
   return <>
-    <Head><title>KAND | About</title></Head>
+    <Head><title>KAND | All projects </title></Head>
     <main>
-      <div className={styles.wrapper}>About</div>
+      <div className={styles.wrapper}>Projects</div>
     </main>
   </>
 }

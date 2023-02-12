@@ -1,24 +1,17 @@
-import 'styles/index.scss'
-import MundoSvg from '@/public/mundo.svg';
-import Image from 'next/image';
+import 'styles/index.sass'
 import Lenis from 'utils/scroll'
 
-import type { AppProps } from 'next/app'
+import Navigation from 'components/Navigation'
 
-// import Navigation from '@/components/Navigation'
+import type { AppProps } from 'next/app'
 
 export default function App({ Component, pageProps }: AppProps) {
   Lenis
 
-  return <>
-    <div className="navigation">
-      <div className="header">
-        <div className="logo"><Image src={MundoSvg} alt="World"/></div>
-        <div className="menu"><div className="icon">+</div></div>
-      </div>
-      <div className="frame">
-        <Component {...pageProps} />
-      </div>
+  return <div className="app">
+    <Navigation />
+    <div className="content">
+      <Component {...pageProps} />
     </div>
-  </>
+  </div>
 }
