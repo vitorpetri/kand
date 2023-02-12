@@ -6,7 +6,7 @@ export default function Home() {
   return <>
     <Head><title>KAND | All projects </title></Head>
     <main>
-      <div className={styles.wrapper}>Projects</div>
+      <div className={styles.wrapper}>All Projects</div>
     </main>
   </>
 }

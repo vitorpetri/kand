@@ -17,14 +17,14 @@ export default function Home() {
             nobody would ever work together again.
           </p>
           <div className={styles.title}>
-            <span className={styles.label}></span>
-            <div className={styles.accent}></div>
+            {/* <span className={styles.label}></span> */}
+            {/* <div className={styles.accent}></div> */}
             <h1 className={styles.name}>KAUE</h1>
-            <div className={styles.line}></div>
+            {/* <div className={styles.line}></div> */}
             <Image className={styles.icon} src={MundoSvg} alt="World"/>
-            <div className={styles.line}></div>
+            {/* <div className={styles.line}></div> */}
             <h1 className={styles.name}>DALTRO</h1>
-            <span className={styles.label}></span>
+            {/* <span className={styles.label}></span> */}
           </div>
           <p className={styles.paragraph}>
             with almost a decade of experience, we've done <br/> 
