@@ -1,6 +1,6 @@
+import Head from 'next/head'
 import MundoSvg from '@/public/mundo.svg'
 import Image from 'next/image'
-import Head from 'next/head'
 import Link from 'next/link'
 
 import styles from './styles.module.sass'
