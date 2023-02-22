@@ -13,9 +13,9 @@ export default function Categories() {
         <h1 className={styles.title}>Categories</h1>
         
         <div className={styles.filters}>
-          <div className={styles.categorie}>Categorie 1</div>
-          <div className={styles.categorie}>Categorie 2</div>
-          <div className={styles.categorie}>Categorie 3</div>
+          <div className={styles.category}>Category 1</div>
+          <div className={styles.category}>Category 2</div>
+          <div className={styles.category}>Category 3</div>
         </div>
 
         <SeparatorLine />
