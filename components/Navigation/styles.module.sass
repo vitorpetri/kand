@@ -169,6 +169,7 @@
     position: absolute
     bottom: 5.4%
     right: 10%
+    gap: 5.4rem
 
 .menu__item
   font-size: 14rem
@@ -188,3 +189,6 @@
   &:hover
     &:after
       width: 100%
+  
+  @include media('<=phone')
+    font-size: 18rem

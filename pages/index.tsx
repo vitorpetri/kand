@@ -3,6 +3,8 @@ import MundoSvg from '@/public/mundo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 
+import Line from '@/components/Line'
+
 import styles from './styles.module.sass'
 
 export default function Home() {
@@ -18,13 +20,13 @@ export default function Home() {
           </p>
           <div className={styles.title}>
             {/* <span className={styles.label}></span> */}
-            {/* <div className={styles.accent}></div> */}
+            {/* <div className={styles.accent}>11</div> */}
             <h1 className={styles.name}>KAUE</h1>
-            {/* <div className={styles.line}></div> */}
+            <Line />
             <Image className={styles.icon} src={MundoSvg} alt="World"/>
-            {/* <div className={styles.line}></div> */}
+            <Line />
             <h1 className={styles.name}>DALTRO</h1>
-            {/* <span className={styles.label}></span> */}
+            {/* <span className={styles.label}>21</span> */}
           </div>
           <p className={styles.paragraph}>
             with almost a decade of experience, we've done <br/> 
