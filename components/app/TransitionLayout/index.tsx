@@ -42,7 +42,7 @@ const TransitionLayout: FC<ITransitionLayout> = ({
         key={key}
         onEnter={onEnter}
         onEntered={onEntered}
-        timeout={250}
+        timeout={400}
       >
         <>
           {children}
@@ -57,7 +57,7 @@ const TransitionLayout: FC<ITransitionLayout> = ({
               .page-enter-active {
                 // transform: translateY(0) scale(1);
                 opacity: 1;
-                transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+                transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
               }
 
               .page-exit {
@@ -68,7 +68,7 @@ const TransitionLayout: FC<ITransitionLayout> = ({
               .page-exit-active {
                 // transform: translateY(-50%) scale(0.1);
                 opacity: 0;
-                transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+                transition: all 400ms cubic-bezier(0.4, 0, 0.2, 1);
               }
             `}
           </style>

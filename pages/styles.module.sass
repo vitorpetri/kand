@@ -84,7 +84,27 @@
     transform: translate(0)
 
 .label
+  position: absolute
+  font-family: $text
   color: $white
+  top: 40%
+  transform: translate(-50%, -50%) scale(0.8)
+
+  &:nth-of-type(1)
+    left: -7rem
+    font-size: 2.4rem
+
+  &:nth-of-type(2)
+    top: 40%
+    right: -52rem
+    font-size: 2.4rem
+
+  @include media('<=phone')
+    position: static
+    top: unset
+    left: unset
+    transform: translate(0)
+    font-size: 4rem
 
 .accent
   color: $primary

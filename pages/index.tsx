@@ -19,14 +19,14 @@ export default function Home() {
             nobody would ever work together again.
           </p>
           <div className={styles.title}>
-            {/* <span className={styles.label}></span> */}
-            {/* <div className={styles.accent}>11</div> */}
+            <span className={styles.label}>11</span>
+            {/* <div className={styles.accent}></div> */}
             <h1 className={styles.name}>KAUE</h1>
             <Line />
             <Image className={styles.icon} src={MundoSvg} alt="World"/>
             <Line />
             <h1 className={styles.name}>DALTRO</h1>
-            {/* <span className={styles.label}>21</span> */}
+            <span className={styles.label}>21</span>
           </div>
           <p className={styles.paragraph}>
             with almost a decade of experience, we've done <br/> 

@@ -1,10 +1,54 @@
 @import 'styles/utils/index'
 
 .wrapper
-  position: absolute
-  top: 50%
-  left: 52%
-  transform: translate(-50%, -50%)
-  font-size: 20rem
-  font-family: $title
+  display: flex
+  flex-direction: column
+  padding: 6rem 19rem
+  justify-content: space-between
+  height: 100%
   color: $primary
+
+  @include media('<=phone')
+    padding: 4rem 6rem
+
+.text
+  font-size: 3rem
+  line-height: 3.8rem
+
+.olho
+  width: 30rem
+  position: absolute
+  top: 24%
+  left: 45%
+  transform: translate(-50%, -50%)
+
+  @include media('<=phone')
+    display: none
+
+.duo
+  display: flex
+  justify-content: space-between
+  position: relative
+
+  @include media('<=phone')
+    flex-direction: column
+    gap: 12rem
+
+.name
+  display: flex
+  flex-direction: column
+
+  a, span
+    margin-top: 1.6rem
+    font-size: 2rem
+
+.title
+  font-family: $title
+  font-size: 12.4rem
+
+.email
+  font-size: 13.6rem
+  font-family: $title
+
+  @include media('<=phone')
+    font-size: 7.8rem
