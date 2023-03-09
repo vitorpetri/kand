@@ -3,6 +3,10 @@ import DuoSvg from '@/public/duo.svg'
 import Image from 'next/image'
 
 import SeparatorLine from '@/components/SeparatorLine'
+import Line from '@/components/Line'
+import Profile from '@/components/Profile'
+import Clients from '@/components/Clients'
+import Awards from '@/components/Awards'
 
 import styles from './styles.module.sass'
 
@@ -34,32 +38,26 @@ export default function Home() {
             <p className={styles.description__paragraph}>
               We only have one thing in common: the love for great work. We use all our different backgrounds to think of the best possible ideas for our clients. And it has been working out pretty well for us. So we plan to keep doing that for many years to come. 
             </p>
+    
+            <Line />
           </div>
         </div>
 
         <SeparatorLine />
 
-        <div className={styles.kaue}>
-          Kaue Barbosa
-        </div>
+        <Profile />
 
         <SeparatorLine />
 
-        <div className={styles.daltro}>
-          Thiago Daltro
-        </div>
+        <Profile />
 
         <SeparatorLine />
 
-        <div className={styles.clients}>
-          Clients
-        </div>
+        <Clients />
 
         <SeparatorLine />
 
-        <div className={styles.awards}>
-          Awards
-        </div>
+        <Awards />
 
         <SeparatorLine />
 
