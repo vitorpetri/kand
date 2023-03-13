@@ -97,14 +97,13 @@
 .menu__wrapper
   position: fixed
   top: 2%
-  left: 50%
-  transform: translateX(-50%) scale(0)
+  transform: scale(0)
+  left: 1%
   background: $primary
   z-index: 2
   color: $black
   width: 98vw
   height: calc(92% - 3% + 7%)
-  // border: 1px solid rgba(239, 239, 210, 0.3)
   border: none
   border-top: 0
   border-radius: 1rem
@@ -115,6 +114,7 @@
   @include media('<=phone')
     width: 96vw
     top: 2%
+    left: 2%
     height: calc(92% - 7% + 7% + 3%)
 
 .menu__close
