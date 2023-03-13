@@ -29,7 +29,7 @@
       width: 80%
   
   &:nth-of-type(2)
-    margin-top: 34.2vh 
+    margin-top: 36.2vh 
 
     @include media('<=phone')
       margin-top: 4vh
@@ -41,7 +41,7 @@
 
     @include media('<=phone')
       font-size: 4rem
-      margin-top: 6.8vh
+      margin-top: 3.2vh
       width: 90%
 
   @include media('<=phone')
@@ -136,15 +136,16 @@
 
   @include media('<=phone')
     position: fixed
-    bottom: 4vh
+    flex-direction: column
+    bottom: 8vh
     left: 50%
-    transform: translateX(-50%) scale(2)
-    gap: 2.6rem
+    transform: translateX(-50%) scale(3.4)
+    gap: 1.2rem
 
 .button
   height: 4.4rem
   padding: 0.2rem 2.4rem 0.5rem 4.4rem
-  border: 0.1rem solid $white
+  border: 0.1rem solid #FFF
   border-radius: 3.2rem
   font-size: 2.4rem
   color: $white
@@ -177,3 +178,4 @@
 
   @include media('<=phone')
     background: $black
+    border: 0.1rem solid rgba(255, 255, 255, 0.6)

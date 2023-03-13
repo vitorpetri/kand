@@ -1,5 +1,6 @@
 import 'styles/index.sass'
 import Lenis from 'utils/scroll'
+import Image from 'next/image'
 
 import Navigation from 'components/Navigation'
 import TransitionLayout from '@/components/app/TransitionLayout'
@@ -13,9 +14,10 @@ export default function App({ Component, pageProps }: AppProps) {
     <TransitionLayout>
       <div className="app">
         <Navigation />
-        <div className="content">
+        <div className="grain" />
+        <main className='content'>
           <Component {...pageProps} />
-        </div>
+        </main>
       </div>
     </TransitionLayout>
   </>

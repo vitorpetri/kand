@@ -17,10 +17,12 @@ export default function Component() {
   const onHomeClick = () => setIsActive(false)
 
   const menuRef = useRef<HTMLDivElement>(null)
+  const menuDivRef = useRef<HTMLDivElement>(null)
   const menuContentRef = useRef<HTMLDivElement>(null)
   const navigationRef = useRef<HTMLDivElement>(null)
   const svgRef = useRef<HTMLDivElement>(null)
   const btnRef = useRef<HTMLButtonElement>(null)
+  const logoRef = useRef<HTMLAnchorElement>(null)
   
   //timline
   const tl = GSAP.timeline({ paused: true })
@@ -39,6 +41,12 @@ export default function Component() {
     display: 'block', 
     ease: 'Expo.easeInOut'
   })
+  tl.to(navigationRef.current, { duration: 0, borderBottom: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
+  tl.to(navigationRef.current, { duration: 0, borderTop: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
+  tl.to(navigationRef.current, { duration: 0, borderLeft: 'none', ease: 'Expo.easeInOut' })
+  tl.to(navigationRef.current, { duration: 0, borderRight: 'none', ease: 'Expo.easeInOut' })
+  tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
+  tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
   tl.to(svgRef.current, { duration: 0, color: '#0B0B0B', ease: 'Expo.easeInOut' })
   tl.to(btnRef.current, { duration: 0, innerHTML: '-', ease: 'Expo.easeInOut' })
   tl.to(btnRef.current, { duration: 0, background: '#0B0B0B', color: '#B3FC03', ease: 'Expo.easeInOut' })
@@ -48,6 +56,12 @@ export default function Component() {
   reverseTl.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
   reverseTl.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
   reverseTl.to(btnRef.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, border: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, borderTop: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
   reverseTl.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
   reverseTl.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Expo.easeInOut' })
   reverseTl.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
@@ -61,7 +75,7 @@ export default function Component() {
 
   return <>
     <div className={styles.navigation} ref={navigationRef}>
-      <Link className={styles.logo__wrapper} onClick={onHomeClick} href={'/'}>
+      <Link className={styles.logo__wrapper} ref={logoRef} onClick={onHomeClick} href={'/'}>
       <div className={styles.logo} ref={svgRef}>
         <svg className={styles.line__graphic} viewBox="0 0 600 200" xmlns="http://www.w3.org/2000/svg">
           <path d="M556,182.1c0,75.7-111.9,137.1-250,137.1 M556,182.1C556,106.4,444.1,45,306,45 M556,182.1H56 M306,319.1
@@ -79,7 +93,7 @@ export default function Component() {
         </svg>
       </div>
       </Link>
-      <div className={styles.menu} onClick={onClick}><button className={styles.icon} ref={btnRef}>+</button></div>
+      <div className={styles.menu} ref={menuDivRef} onClick={onClick}><button className={styles.icon} ref={btnRef}>+</button></div>
     </div>
 
     <div className={styles.menu__wrapper} ref={menuRef}>
