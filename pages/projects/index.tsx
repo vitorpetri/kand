@@ -15,10 +15,9 @@ export default function Home() {
     <div className={styles.wrapper}>
       <h1 className={styles.title}>All Projects</h1>
       <Line />
-    
-    </div>
 
-    <SeparatorLine />
-    <Gallery />
+      <SeparatorLine />
+      <Gallery />
+    </div>
   </>
 }

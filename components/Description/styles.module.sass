@@ -1,0 +1,43 @@
+@import 'styles/utils/index'
+
+.description
+  display: flex
+  width: 100%
+  margin-top: 8.3rem
+
+  & > div > div
+    background: $white
+
+  @include media('<=phone')
+    flex-direction: column
+
+.description__title
+  font-size: 15rem
+  font-family: $title
+  letter-spacing: -0.2rem
+  margin-right: 2rem
+  margin-left: 19rem
+  color: $primary
+
+  @include media('<=phone')
+    font-size: 10rem
+    margin-top: 6rem
+    margin-left: 14rem
+
+.description__text
+  font-size: 1.8rem
+  letter-spacing: 0.2rem
+  font-family: $text
+  margin-right: 2rem
+  max-width: 74rem
+  text-transform: uppercase
+  margin-left: 30rem
+  line-height: 3.2rem
+
+  @include media('<=phone')
+    margin-top: 6rem
+    margin-left: 14rem
+
+
+.description__paragraph:not(:first-of-type)
+  margin-top: 3rem
