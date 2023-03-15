@@ -17,13 +17,18 @@ body
   color: $white
   font-family: $text
 
-body::-webkit-scrollbar
-  background-color: grey
-  width: 5px
+::-webkit-scrollbar
+  width: 8px
 
-body::-webkit-scrollbar-thumb
-  background: red
-  border-radius: 0.5rem
+::-webkit-scrollbar-track
+  border-radius: 10px
+ 
+::-webkit-scrollbar-thumb
+  background: $primary
+  border-radius: 10px
+
+::-webkit-scrollbar-thumb:hover
+  background: $primary
 
 .app
   position: fixed

@@ -15,3 +15,30 @@
   color: $primary
   font-family: $title
   font-size: 14.8rem
+
+.footer__label
+  margin-top: 6vh
+  color: #7d7d73
+  font-family: $text
+  font-size: 2rem
+  letter-spacing: 0.1rem
+
+.footer__title
+  margin: 1vh 0 6vh 0
+  color: $primary
+  font-family: $title
+  font-size: 10rem
+
+  &:after
+    content: ''
+    display: block
+    width: 100%
+    height: 0.5rem
+    background: $primary
+    origin: 100% 50%
+    margin-top: -0.6rem
+    transition: 450ms cubic-bezier(0.77, 0, 0.175, 1)
+
+  &:hover
+    &:after
+      width: 0%

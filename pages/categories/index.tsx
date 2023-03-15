@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import Link from 'next/link'
 
 import styles from './styles.module.sass'
 
@@ -24,6 +25,9 @@ export default function Categories() {
 
       <SeparatorLine />
       <Gallery />
+      <SeparatorLine />
+      <span className={styles.footer__label}>or see</span>
+      <Link href={'/projects'} className={styles.footer__title}>All Projects</Link>
     </div>
   </>
 }
