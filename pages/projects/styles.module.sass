@@ -11,10 +11,13 @@
     margin-bottom: -6rem
 
 .title
-  margin-top: calc(5.9rem + $height-nav)
+  margin-top: 8rem
   color: $primary
   font-family: $title
   font-size: 14.8rem
+
+  @include media('<=phone')
+    margin-top: calc(1.9rem + $height-nav-m)
 
 .footer__label
   margin-top: 6vh

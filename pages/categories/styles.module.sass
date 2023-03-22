@@ -10,18 +10,24 @@
     background: $primary
 
 .title
-  margin-top: 14vh
+  margin-top: 8rem
   color: $primary
   font-family: $title
   font-size: 14.8rem
+
+  @include media('<=phone')
+    margin-top: calc(1.9rem + $height-nav-m)
   
 .filters
   display: flex
   flex-wrap: wrap
   justify-content: center
   align-items: center
-  margin-top: 14vh
+  margin-top: 12.7rem
   gap: 3rem
+
+  @include media('<=phone')
+    margin-top: 7.5rem
 
 .category
   height: 4.4rem
