@@ -2,11 +2,11 @@
 
 .navigation
   position: relative
-  width: 98vw
-  height: 7%
-  border-radius: 1rem 1rem 0 0
-  top: 2%
+  width: $width
+  height: $height-nav
+  top: $top
   left: 50%
+  border-radius: 1rem 1rem 0 0
   transform: translateX(-50%)
   border: 1px solid rgba(239, 239, 210, 0.3)
   display: flex
@@ -15,8 +15,9 @@
   z-index: 3
 
   @include media('<=phone')
-    width: 96vw
-    top: 2%
+    width: $width-m
+    top: $top-m
+    height: $height-nav-m
 
 .logo__wrapper
   height: 100%
@@ -26,7 +27,7 @@
   height: 100%
 
   @include media('<=phone')
-    padding: 0 18rem 0 9rem
+    padding: 0 10rem 0 3.2rem
     width: 8.8rem
 
 .logo
@@ -45,10 +46,10 @@
     width: 100%
 
   @include media('<=phone')
-    width: 10.8rem
+    width: 6.8rem
 
     svg
-      transform: translateY(-1.4rem)
+      transform: translateY(-1rem)
 
 .menu
   height: 100%
@@ -79,12 +80,12 @@
     justify-content: center
 
     @include media('<=phone')
-      width: 5rem
-      height: 5rem
-      font-size: 3rem
+      width: 2.4rem
+      height: 2.4rem
+      font-size: 2rem
 
   @include media('<=phone')
-    padding: 0 15rem 0 10rem
+    padding: 0 10rem 0 3.2rem
 
   &:hover .icon
     width: 101%
@@ -96,14 +97,14 @@
 
 .menu__wrapper
   position: fixed
-  top: 2%
+  top: $top
+  width: $width
+  height: calc($height + $height-nav)
   transform: scale(0)
   left: 1%
   background: $primary
   z-index: 2
   color: $black
-  width: 98vw
-  height: calc(92% - 3% + 7%)
   border: none
   border-top: 0
   border-radius: 1rem
@@ -112,10 +113,10 @@
   display: block
 
   @include media('<=phone')
-    width: 96vw
-    top: 2%
+    width: $width-m
+    top: $top-m
     left: 2%
-    height: calc(92% - 7% + 7% + 3%)
+    height: calc($height-m + $height-nav-m)
 
 .menu__close
 

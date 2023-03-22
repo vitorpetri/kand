@@ -8,7 +8,7 @@ html
   overflow-x: hidden
 
   @include media('<=phone')
-    font-size: calc(100vw / 1024 * 10)
+    font-size: calc(100vw / 1080 * 10)
 
 body
   font-size: 3rem
@@ -38,22 +38,23 @@ body
   height: 100%
 
 .content
-  width: 98vw
-  height: calc(92% - 3%)
+  width: $width
+  height: $height
+  top: $top-content
+
   border: 1px solid rgba(239, 239, 210, 0.3)
   border-top: 0
   border-radius: 0 0 1rem 1rem
   position: relative
   overflow: auto
-  top: calc(50% - 3.5%)
   left: 50%
   transform: translate(-50%, -50%)
   z-index: 1
 
   @include media('<=phone')
-    width: 96vw
-    height: calc(92% - 4%)
-    top: calc(50% - 4%)
+    width: $width-m
+    height: $height-m
+    top: $top-content-m
 
 @keyframes grain
   0% 

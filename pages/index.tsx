@@ -32,6 +32,11 @@ export default function Home() {
         with almost a decade of experience, we've done <br/> 
         a little bit of everything. So tell us:
       </p>
+      <p className={styles.paragraph__mobile}>
+        with almost a decade of experience, <br/> 
+        we've done a little bit of everything. <br/> 
+        So tell us:
+      </p>
       <p className={styles.paragraph}>
         what do you wanna see today?
       </p>

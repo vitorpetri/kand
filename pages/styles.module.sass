@@ -12,40 +12,54 @@
 .paragraph
   text-transform: uppercase
   font-family: $text
-  opacity: 0.6
   font-weight: medium
   letter-spacing: 0.1rem
   line-height: 1.6
   font-size: 2rem
   color: $gray
   width: 60rem
+  opacity: 0.6 
   text-align: center
 
   &:nth-of-type(1)
     margin-top: 8.6vh
 
     @include media('<=phone')
-      margin-top: 7vh
+      margin-top: 6.6vh
       width: 80%
   
   &:nth-of-type(2)
-    margin-top: 36.2vh 
+    margin: 36.2vh 0 2.8vh
 
     @include media('<=phone')
-      margin-top: 4vh
-      width: 68%
+      display: none
 
   &:nth-of-type(3)
-    margin-top: 2.8vh
-    color: $white
+    color: $primary
+    opacity: 1
 
     @include media('<=phone')
       font-size: 4rem
-      margin-top: 3.2vh
       width: 90%
 
   @include media('<=phone')
-    font-size: 3rem
+    font-size: 2.6rem
+
+.paragraph__mobile
+  margin: 3.4vh 0 2vh
+  width: 90%
+  text-transform: uppercase
+  font-family: $text
+  font-weight: medium
+  letter-spacing: 0.1rem
+  line-height: 1.6
+  font-size: 2.6rem
+  color: $gray
+  opacity: 0.6 
+  text-align: center
+
+  @include media('>=phone')
+    display: none
 
 .title
   font-family: $title
@@ -56,6 +70,7 @@
   gap: 52%
   position: absolute
   letter-spacing: -0.5rem
+  opacity: 1
   top: 42.4%
   left: calc(50% + -9%)
   transform: translate(-50%, -50%)
@@ -79,10 +94,14 @@
   @include media('<=phone')
     position: static
     flex-direction: column
-    gap: 1rem
-    font-size: 20rem
-    margin-top: 6vh
+    gap: 7rem
+    font-size: 17rem
+    margin-top: 4.4vh
+    letter-spacing: 0.6rem
     transform: translate(0)
+
+    // & > div:nth-of-type(2)
+    //   letter-spacing: 0.2rem
 
 .label
   position: absolute
@@ -126,7 +145,7 @@
     top: unset
     left: unset
     transform: translate(0)
-    width: 40rem
+    width: 50rem
     margin-bottom: 2%
 
 .buttons__wrapper
@@ -135,12 +154,13 @@
   gap: 4.2rem
 
   @include media('<=phone')
-    position: fixed
+    position: sticky
     flex-direction: column
-    bottom: 8vh
+    bottom: 8.2vh
     left: 50%
-    transform: translateX(-50%) scale(3.4)
-    gap: 1.2rem
+    transform: translateX(-50%) scale(1.6)
+    gap: 2.2rem
+    margin-top: 15vh
 
 .button
   height: 4.4rem
