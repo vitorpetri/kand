@@ -1,9 +1,9 @@
 import Head from 'next/head'
-import MundoSvg from '@/public/mundo.svg'
+import MundoSvg from 'public/mundo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Line from '@/components/Line'
+import Line from 'components/Line'
 
 import styles from './styles.module.sass'
 

@@ -1,0 +1,76 @@
+{
+  "title": {
+    "__TYPE__": "FieldContent",
+    "value": "pipe",
+    "type": "Text"
+  },
+  "description": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "description_title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "whom",
+              "type": "Text"
+            }
+          ],
+          [
+            "description_text",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "reason",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "slices": {
+    "__TYPE__": "SliceContentType",
+    "value": [
+      {
+        "key": "profile$3e59df89-89a9-4af9-88be-1d9d5c5acb23",
+        "name": "profile",
+        "widget": {
+          "__TYPE__": "SharedSliceContent",
+          "variation": "default",
+          "primary": {
+            "title": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "heading1",
+                  "content": {
+                    "text": "According"
+                  }
+                }
+              ]
+            },
+            "role": {
+              "__TYPE__": "StructuredTextContent",
+              "value": [
+                {
+                  "type": "paragraph",
+                  "content": {
+                    "text": "Minim pariatur ullamco culpa ad occaecat ea. Labore incididunt do ad tempor proident laborum fugiat cupidatat amet cillum ad quis."
+                  }
+                }
+              ]
+            }
+          },
+          "items": [
+            {
+              "__TYPE__": "GroupItemContent",
+              "value": []
+            }
+          ]
+        }
+      }
+    ]
+  }
+}

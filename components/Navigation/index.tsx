@@ -4,8 +4,8 @@ import { useState, useRef } from 'react'
 
 import GSAP from 'gsap'
 
-import MundoSvg from '@/public/mundo.svg'
-import OlhoSvg from '@/public/olho.svg'
+import MundoSvg from 'public/mundo.svg'
+import OlhoSvg from 'public/olho.svg'
 import Image from 'next/image'
 import Line from '../Line'
 import Link from 'next/link'

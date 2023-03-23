@@ -3,9 +3,9 @@ import Link from 'next/link'
 
 import styles from './styles.module.sass'
 
-import Gallery from '@/components/Gallery'
-import SeparatorLine from '@/components/SeparatorLine'
-import Line from '@/components/Line'
+import Gallery from 'components/Gallery'
+import SeparatorLine from 'components/SeparatorLine'
+import Line from 'components/Line'
 
 export default function Home() {
   return <>

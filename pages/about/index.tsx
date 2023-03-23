@@ -1,15 +1,22 @@
 import Head from 'next/head'
 import Image from 'next/image'
 
-import DuoSvg from '@/public/duo.svg'
+import DuoSvg from 'public/duo.svg'
 
-import SeparatorLine from '@/components/SeparatorLine'
-import Description from '@/components/Description'
-import Profile from '@/components/Profile'
-import Clients from '@/components/Clients'
-import Awards from '@/components/Awards'
+import SeparatorLine from 'components/SeparatorLine'
+import Description from 'components/Description'
+import Profile from 'components/Profile'
+import Clients from 'components/Clients'
+import Awards from 'components/Awards'
+
+type Page = {
+  data: {
+    title: string
+  }
+}
 
 import styles from './styles.module.sass'
+import { createClient } from '@prismicio/client'
 
 export default function Home() {
   return <>

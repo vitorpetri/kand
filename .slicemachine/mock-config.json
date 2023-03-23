@@ -1,0 +1,12 @@
+{
+  "_cts": {
+    "about": {}
+  },
+  "slices": {
+    "Profile": {
+      "default": {
+        "primary": {}
+      }
+    }
+  }
+}

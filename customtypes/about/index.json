@@ -1,0 +1,50 @@
+{
+  "id": "about",
+  "label": "About",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      },
+      "description": {
+        "type": "Group",
+        "config": {
+          "label": "Description",
+          "fields": {
+            "description_title": {
+              "type": "Text",
+              "config": {
+                "label": "Description Title",
+                "placeholder": ""
+              }
+            },
+            "description_text": {
+              "type": "Text",
+              "config": {
+                "label": "Description Text",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
+      "slices": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "profile": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    }
+  }
+}
