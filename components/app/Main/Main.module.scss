@@ -1,0 +1,8 @@
+@import 'styles/utils/index.scss';
+
+.element {
+  @include media('<=phone') {
+    overflow-x: hidden;
+    width: 100vw;
+  }
+}

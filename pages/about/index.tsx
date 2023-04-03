@@ -1,13 +1,14 @@
 import Head from 'next/head'
 import Image from 'next/image'
+import { FC } from 'react'
 
 import DuoSvg from 'public/duo.svg'
 
-import SeparatorLine from 'components/SeparatorLine'
-import Description from 'components/Description'
-import Profile from 'components/Profile'
-import Clients from 'components/Clients'
-import Awards from 'components/Awards'
+import SeparatorLine from '@/components/SeparatorLine'
+import Description from '@/components/Description'
+import Profile from '@/components/Profile'
+import Clients from '@/components/Clients'
+import Awards from '@/components/Awards'
 
 type Page = {
   data: {
@@ -16,9 +17,14 @@ type Page = {
 }
 
 import styles from './styles.module.sass'
-import { createClient } from '@prismicio/client'
+import { createClient } from '../../prismicio'
+import sm from '../../sm.json'
 
-export default function Home() {
+export interface IAbout {
+  title: string
+}
+
+const About: FC<IAbout> = ({ title }) => {
   return <>
     <Head>
       <title>KAND | About</title>
@@ -26,7 +32,7 @@ export default function Home() {
 
     <div className={styles.wrapper}>
       <Image className={styles.icon} src={DuoSvg} alt="World"/>
-      <h1 className={styles.title}>About</h1>
+      <h1 className={styles.title}>{title}</h1>
       <SeparatorLine />
 
       <Description />
@@ -52,4 +58,17 @@ export default function Home() {
       <Image className={styles.icon} src={DuoSvg} alt="World"/>
     </div>          
   </>
+}
+
+export default About
+
+export async function getServerSideProps() {
+  const client = createClient({ accessToken: sm.token })
+
+  const about = await client.getByType('about')
+  const title = about?.results[0]?.data?.title
+
+  return {
+    props: { title },
+  }
 }

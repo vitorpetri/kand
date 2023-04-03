@@ -2,8 +2,8 @@ import { useRouter } from 'next/router'
 import { FC } from 'react'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
 
-import { getBoundingClientRect } from 'utils/dom'
-import Lenis from 'utils/scroll'
+import { getBoundingClientRect } from '@/utils/dom'
+import Lenis from '@/utils/scroll'
 
 interface ITransitionLayout {
   children: Array<JSX.Element> | JSX.Element

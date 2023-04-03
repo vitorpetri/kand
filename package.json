@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "slicemachine": "start-slicemachine"
+    "sm": "start-slicemachine"
   },
   "engines": {
     "yarn": ">=1.22.0",
@@ -26,6 +26,7 @@
     "@types/react": "18.0.27",
     "@types/react-dom": "18.0.10",
     "@types/react-transition-group": "^4.4.5",
+    "classnames": "^2.3.2",
     "dotenv": "^16.0.3",
     "gsap": "^3.11.4",
     "include-media": "^2.0.0",

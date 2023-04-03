@@ -1,11 +1,11 @@
 html, body, #__next, main 
-  height: 100%
-  width: 100%
-  scroll-behavior: none
+  // height: 100%
+  // width: 100%
+  // scroll-behavior: none
 
 html
   font-size: calc(100vw / 1920 * 10)
-  overflow-x: hidden
+  // overflow-x: hidden
 
   @include media('<=phone')
     font-size: calc(100vw / 1080 * 10)
@@ -31,7 +31,7 @@ body
   background: $primary
 
 .app
-  position: fixed
+  // position: fixed
   top: 0
   left: 0
   width: 100%
@@ -45,10 +45,11 @@ body
   border: 1px solid rgba(239, 239, 210, 0.3)
   border-top: 0
   border-radius: 0 0 1rem 1rem
-  position: relative
-  overflow: auto
-  left: 50%
-  transform: translate(-50%, -50%)
+  clip: rect(10px, 100vw, 100vh, 0)
+  // position: relative
+  // overflow: auto
+  // left: 50%
+  // transform: translate(-50%, -50%)
   z-index: 1
 
   @include media('<=phone')
@@ -92,3 +93,4 @@ body
   top: -100%
   width: 300%
   z-index: 999
+

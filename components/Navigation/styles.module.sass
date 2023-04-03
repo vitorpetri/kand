@@ -1,13 +1,13 @@
 @import 'styles/utils/index'
 
 .navigation
-  position: relative
+  position: sticky
   width: $width
   height: $height-nav
   top: $top
   left: 50%
   border-radius: 1rem 1rem 0 0
-  transform: translateX(-50%)
+  // transform: translateX(-50%)
   border: 1px solid rgba(239, 239, 210, 0.3)
   display: flex
   align-items: center
@@ -108,7 +108,7 @@
   border: none
   border-top: 0
   border-radius: 1rem
-  overflow: auto
+  // overflow: auto
   padding-top: 7%
   display: block
 
@@ -116,7 +116,7 @@
     width: $width-m
     top: $top-m
     left: 2%
-    height: calc($height-m + $height-nav-m)
+    height: calc($height-m + $height-nav-m - 2.4%)
 
 .menu__close
 
@@ -143,9 +143,12 @@
 
   @include media('<=phone')
     position: absolute
-    top: 10%
-    left: 10%
+    width: 26rem
+    font-size: 3.8rem
+    top: 13%
+    left: 13%
     margin-right: 0
+    z-index: 3
 
 .olho
   color: $black
@@ -154,10 +157,17 @@
 
   @include media('<=phone')
     position: absolute
+    top: 28%
+    right: 13%
+    width: 38rem
+    margin-right: 0
+    z-index: 3
+
+  //media query 480px
+  @media (min-width: 620px)
     top: 10%
     right: 10%
-    width: 22rem
-    margin-right: 0
+  
 
 .line
   @include media('<=phone')
@@ -169,11 +179,11 @@
   gap: 7.2rem
 
   @include media('<=phone')
-    align-items: end
     position: absolute
-    bottom: 5.4%
-    right: 10%
+    bottom: 12%
+    left: 13%
     gap: 5.4rem
+    z-index: 4
 
 .menu__item
   font-size: 14rem
