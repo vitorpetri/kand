@@ -2,17 +2,36 @@
 
 .navigation
   position: sticky
-  width: $width
   height: $height-nav
   top: $top
   left: 50%
   border-radius: 1rem 1rem 0 0
-  // transform: translateX(-50%)
-  border: 1px solid rgba(239, 239, 210, 0.3)
+  background: #0b0b0b
   display: flex
   align-items: center
   justify-content: space-between
   z-index: 3
+
+  &:before
+    content: ''
+    position: absolute
+    top: -2.1rem
+    bottom: 0
+    width: 101%
+    left: -0.5%
+    background: #0b0b0b
+
+  &:after
+    content: ''
+    position: absolute
+    top: 0
+    bottom: 0
+    width: 100%
+    background: none
+    border: 1px solid rgba(239, 239, 210, 0.3)
+    border-radius: 1rem 1rem 0 0
+    z-index: 0
+    pointer-events: none
 
   @include media('<=phone')
     width: $width-m
@@ -21,7 +40,7 @@
 
 .logo__wrapper
   height: 100%
-  padding: 0 5.2rem 0 6rem
+  padding: 0 5.2rem 0 3rem
   border-right: 1px solid rgba(239, 239, 210, 0.3)
   cursor: pointer
   height: 100%
@@ -31,7 +50,7 @@
     width: 8.8rem
 
 .logo
-  width: 6.6rem
+  width: 5.6rem
   height: 100%
   opacity: 1
   color: #B3FC03
@@ -53,7 +72,7 @@
 
 .menu
   height: 100%
-  padding: 0 9rem 0 5rem
+  padding: 0 9rem 0 4rem
   border-left: 1px solid rgba(239, 239, 210, 0.3)
   display: flex
   align-items: center
@@ -99,7 +118,7 @@
   position: fixed
   top: $top
   width: $width
-  height: calc($height + $height-nav - 1.2%)
+  height: calc($height-nav - 1.2%)
   transform: scale(0)
   background: $primary
   left: 1.32vw
@@ -116,7 +135,7 @@
     width: $width-m
     top: $top-m
     left: 2%
-    height: calc($height-m + $height-nav-m - 2.4%)
+    height: calc($height-nav-m - 2.4%)
 
 .menu__close
 

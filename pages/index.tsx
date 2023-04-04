@@ -22,9 +22,9 @@ export default function Home() {
         {/* <span className={styles.label}>11</span> */}
         {/* <div className={styles.accent}></div> */}
         <h1 className={styles.name}>KAUE</h1>
-        <Line />
+        {/* <Line /> */}
         <Image className={styles.icon} src={MundoSvg} alt="World"/>
-        <Line />
+        {/* <Line /> */}
         <h1 className={styles.name}>DALTRO</h1>
         {/* <span className={styles.label}>21</span> */}
       </div>

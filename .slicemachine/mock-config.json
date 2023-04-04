@@ -1,12 +1,13 @@
 {
   "_cts": {
-    "about": {}
+    "about": {
+      "profile": {}
+    },
+    "home": {},
+    "project": {
+      "crew": {}
+    },
+    "contact": {}
   },
-  "slices": {
-    "Profile": {
-      "default": {
-        "primary": {}
-      }
-    }
-  }
+  "slices": {}
 }

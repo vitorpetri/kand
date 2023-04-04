@@ -1,0 +1,37 @@
+{
+  "first_name": {
+    "__TYPE__": "FieldContent",
+    "value": "carbon",
+    "type": "Text"
+  },
+  "second_name": {
+    "__TYPE__": "FieldContent",
+    "value": "fall",
+    "type": "Text"
+  },
+  "first_paragraph": {
+    "__TYPE__": "FieldContent",
+    "value": "hung",
+    "type": "Text"
+  },
+  "second_paragraph": {
+    "__TYPE__": "FieldContent",
+    "value": "rhyme",
+    "type": "Text"
+  },
+  "third_paragraph": {
+    "__TYPE__": "FieldContent",
+    "value": "world",
+    "type": "Text"
+  },
+  "first_button": {
+    "__TYPE__": "FieldContent",
+    "value": "nice",
+    "type": "Text"
+  },
+  "second_button": {
+    "__TYPE__": "FieldContent",
+    "value": "exclaimed",
+    "type": "Text"
+  }
+}
