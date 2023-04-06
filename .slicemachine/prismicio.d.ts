@@ -368,6 +368,46 @@ interface HomeDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+/** Content for Order documents */
+interface OrderDocumentData {
+    /**
+     * List Order field in *Order*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: order.list_order[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    list_order: prismicT.GroupField<Simplify<OrderDocumentDataListOrderItem>>;
+}
+/**
+ * Item in Order → List Order
+ *
+ */
+export interface OrderDocumentDataListOrderItem {
+    /**
+     * Project field in *Order → List Order*
+     *
+     * - **Field Type**: Content Relationship
+     * - **Placeholder**: *None*
+     * - **API ID Path**: order.list_order[].project
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    project: prismicT.RelationField;
+}
+/**
+ * Order document from Prismic
+ *
+ * - **API ID**: `order`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type OrderDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<OrderDocumentData>, "order", Lang>;
 /** Content for Project documents */
 interface ProjectDocumentData {
     /**
@@ -525,12 +565,12 @@ export interface ProjectDocumentDataContentItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
-export type AllDocumentTypes = AboutDocument | ContactDocument | HomeDocument | ProjectDocument;
+export type AllDocumentTypes = AboutDocument | ContactDocument | HomeDocument | OrderDocument | ProjectDocument;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, ProjectDocumentData, ProjectDocumentDataCategoriesItem, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes };
+        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCategoriesItem, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes };
     }
 }

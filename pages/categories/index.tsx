@@ -24,7 +24,7 @@ export default function Categories() {
       </div>
 
       <SeparatorLine />
-      <Gallery />
+      <Gallery projectsList={undefined} />
       <SeparatorLine />
       <span className={styles.footer__label}>or see</span>
       <Link href={'/projects'} className={styles.footer__title}>All Projects</Link>

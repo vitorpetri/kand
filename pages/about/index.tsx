@@ -24,7 +24,7 @@ export interface IAbout {
   title: string
 }
 
-const About: FC<IAbout> = ({ title }) => {
+const About: FC<IAbout> = (data) => {
   return <>
     <Head>
       <title>KAND | About</title>
@@ -32,7 +32,7 @@ const About: FC<IAbout> = ({ title }) => {
 
     <div className={styles.wrapper}>
       <Image className={styles.icon} src={DuoSvg} alt="World"/>
-      <h1 className={styles.title}>{title}</h1>
+      <h1 className={styles.title}>{data.title}</h1>
       <SeparatorLine />
 
       <Description />
@@ -66,9 +66,9 @@ export async function getServerSideProps() {
   const client = createClient({ accessToken: sm.token })
 
   const about = await client.getByType('about')
-  const title = about?.results[0]?.data?.title
+  const data = about?.results[0]?.data
 
   return {
-    props: { title },
+    props: { ...data },
   }
 }

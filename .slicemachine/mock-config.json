@@ -7,7 +7,8 @@
     "project": {
       "crew": {}
     },
-    "contact": {}
+    "contact": {},
+    "order": {}
   },
   "slices": {}
 }

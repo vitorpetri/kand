@@ -1,0 +1,25 @@
+{
+  "id": "order",
+  "label": "Order",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "list_order": {
+        "type": "Group",
+        "config": {
+          "label": "List Order",
+          "fields": {
+            "project": {
+              "type": "Link",
+              "config": {
+                "label": "Project",
+                "select": "document"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

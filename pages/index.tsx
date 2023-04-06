@@ -4,29 +4,25 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Line from '@/components/Line'
+import { createClient } from '../prismicio'
+import sm from '../sm.json'
 
 import styles from './styles.module.sass'
 
-export default function Home() {
+export default function Home(data: any) {
   return <>
     <Head>
       <title>KAUE & DALTRO</title>
     </Head>
     <div className={styles.wrapper}>
-      <p className={styles.paragraph}>
-        we are a creative duo working <br/> 
-        together since that year people thought <br/>
-        nobody would ever work together again.
-      </p>
+      <p className={styles.paragraph}>{ data.first_paragraph }</p>
       <div className={styles.title}>
-        {/* <span className={styles.label}>11</span> */}
         {/* <div className={styles.accent}></div> */}
-        <h1 className={styles.name}>KAUE</h1>
+        <h1 className={styles.name}>{ data.first_name }</h1>
         {/* <Line /> */}
         <Image className={styles.icon} src={MundoSvg} alt="World"/>
         {/* <Line /> */}
-        <h1 className={styles.name}>DALTRO</h1>
-        {/* <span className={styles.label}>21</span> */}
+        <h1 className={styles.name}>{ data.second_name }</h1>
       </div>
       <p className={styles.paragraph}>
         with almost a decade of experience, we've done <br/> 
@@ -42,12 +38,25 @@ export default function Home() {
       </p>
       <div className={styles.buttons__wrapper}>
         <Link href={"/projects"} className={styles.button}>
-          All projects
+        { data.first_button }
         </Link>
         <Link href={"/categories"} className={styles.button}>
-          Categories
+        { data.second_button }
         </Link>
       </div>
     </div>
   </>
+}
+
+export async function getServerSideProps() {
+  const client = createClient({ accessToken: sm.token })
+
+  const home = await client.getByType('home')
+  const data = home?.results[0]?.data
+
+console.log(data)
+
+  return {
+    props: { ...data },
+  }
 }
