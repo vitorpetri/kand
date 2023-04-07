@@ -19,7 +19,6 @@ export default function Gallery({ projectsList }) {
           <div className={styles.project}>
             <div className={styles.project__image}></div>
             <h3 className={styles.project__title}>{title}</h3>
-            <h3 className={styles.project__description}>Descriptum</h3>
           </div>
         </div>
       ))}
