@@ -54,8 +54,6 @@ export async function getServerSideProps() {
   const home = await client.getByType('home')
   const data = home?.results[0]?.data
 
-console.log(data)
-
   return {
     props: { ...data },
   }
