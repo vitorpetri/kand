@@ -47,6 +47,13 @@ body
   border-top: 1px solid rgba(239, 239, 210, 0.3)
   background: $black
 
+.video
+  width: 90%
+
+.frame, iframe
+  width: 100%
+  height: 100rem
+
 .image-big
   width: 90%
 
@@ -54,8 +61,17 @@ body
   width: 42%
 
 .image-small
-  width: 18%
-  height: 24rem
+  width: 40%
+  height: 50%
+
+  &:nth-child(2n + 1)
+    position: relative
+    top: -56rem
+    left: 44rem 
+
+    @include media('<=phone')
+      top: -33rem
+      left: 24rem 
 
 .description
   width: 90%

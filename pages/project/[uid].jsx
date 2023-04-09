@@ -24,11 +24,12 @@ export default function Projects({project}) {
       {project.content.map((content, index) => {
         if (content.description) { return (
           <p className='description' key={index}>{content.description}</p>
-        )} else if (!content.video == undefined) { return (
-          <div key={index} className={styles.content_video}>
+        )} else if (content.video.embed_url) { return (
+          <div key={index} className='video'>
             <iframe
               src={content.video.embed_url}
-              width="640" height="360"
+              className='frame'
+              // width="640" height="460"
               frameborder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen>

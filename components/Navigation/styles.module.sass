@@ -34,9 +34,6 @@
     pointer-events: none
 
   @include media('<=phone')
-    width: $width-m
-    top: $top-m
-    height: $height-nav-m
 
 .logo__wrapper
   height: 100%
@@ -133,10 +130,10 @@
   z-index: 3
 
   @include media('<=phone')
-    width: $width-m
-    top: $top-m
-    left: 2%
-    height: calc($height-nav-m - 2.4%)
+    // width: $width-m
+    // top: $top-m
+    // left: 2%
+    // height: calc($height-nav-m - 2.4%)
 
 .menu__close
 
@@ -183,7 +180,6 @@
     margin-right: 0
     z-index: 3
 
-  //media query 480px
   @media (min-width: 620px)
     top: 10%
     right: 10%

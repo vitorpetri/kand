@@ -13,7 +13,7 @@ export default function Home(data: any) {
       <title>KAUE & DALTRO</title>
     </Head>
     <div className={styles.wrapper}>
-      <p className={styles.paragraph}>{ data.first_paragraph }</p>
+      <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.first_paragraph }} />
       <div className={styles.title}>
         {/* <div className={styles.accent}></div> */}
         <h1 className={styles.name}>{ data.first_name }</h1>
@@ -22,10 +22,7 @@ export default function Home(data: any) {
         {/* <Line /> */}
         <h1 className={styles.name}>{ data.second_name }</h1>
       </div>
-      <p className={styles.paragraph}>
-        with almost a decade of experience, we've done <br/> 
-        a little bit of everything. So tell us:
-      </p>
+      <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
       <p className={styles.paragraph__mobile}>
         with almost a decade of experience, <br/> 
         we've done a little bit of everything. <br/> 
