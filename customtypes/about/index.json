@@ -17,17 +17,17 @@
         "config": {
           "label": "Description",
           "fields": {
-            "description_title": {
+            "title": {
               "type": "Text",
               "config": {
-                "label": "Description Title",
+                "label": "Title",
                 "placeholder": ""
               }
             },
-            "description_text": {
+            "text": {
               "type": "Text",
               "config": {
-                "label": "Description Text",
+                "label": "Text",
                 "placeholder": ""
               }
             }
@@ -148,7 +148,11 @@
         "type": "Slices",
         "fieldset": "Slice Zone",
         "config": {
-          "choices": {}
+          "choices": {
+            "profile": {
+              "type": "SharedSlice"
+            }
+          }
         }
       }
     }

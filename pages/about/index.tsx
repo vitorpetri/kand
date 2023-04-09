@@ -35,7 +35,7 @@ const About: FC<IAbout> = (data) => {
       <h1 className={styles.title}>{data.title}</h1>
       <SeparatorLine />
 
-      <Description />
+      <Description data={data} />
 
       <SeparatorLine />
 

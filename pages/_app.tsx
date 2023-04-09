@@ -37,6 +37,7 @@ export default function App({ Component, pageProps }: AppProps) {
         </Head>
         <Navigation />
         <div className="grain" />
+        <div className="bottom" />
         <main className='content'>
           <Component {...pageProps} />
         </main>

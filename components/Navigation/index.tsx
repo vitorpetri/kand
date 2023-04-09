@@ -24,54 +24,57 @@ export default function Component() {
   const btnRef = useRef<HTMLButtonElement>(null)
   const logoRef = useRef<HTMLAnchorElement>(null)
 
-  // //timline
-  // const tl = GSAP.timeline({ paused: true })
-  // const reverseTl = GSAP.timeline({ paused: true })
+  // useEffect(() => {
+  // }, [])
 
-  // //set
-  // tl.set(navigationRef.current, { background: '#0B0B0B' })
+  //timeline
+  const tl = GSAP.timeline({ paused: true })
+  const reverseTl = GSAP.timeline({ paused: true })
 
-  // //animation
-  // tl.to(navigationRef.current, { duration: 0, background: 'transparent', ease: 'Expo.easeInOut' })
-  // tl.to(menuRef.current, { 
-  //   duration: 0.6, 
-  //   opacity: 1, 
-  //   scale: 1,
-  //   transformOrigin: '98% 2%',
-  //   display: 'block', 
-  //   ease: 'Expo.easeInOut'
-  // })
-  // tl.to(navigationRef.current, { duration: 0, borderBottom: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
-  // tl.to(navigationRef.current, { duration: 0, borderTop: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
-  // tl.to(navigationRef.current, { duration: 0, borderLeft: 'none', ease: 'Expo.easeInOut' })
-  // tl.to(navigationRef.current, { duration: 0, borderRight: 'none', ease: 'Expo.easeInOut' })
-  // tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
-  // tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
-  // tl.to(svgRef.current, { duration: 0, color: '#0B0B0B', ease: 'Expo.easeInOut' })
-  // tl.to(btnRef.current, { duration: 0, innerHTML: '-', ease: 'Expo.easeInOut' })
-  // tl.to(btnRef.current, { duration: 0, background: '#0B0B0B', color: '#B3FC03', ease: 'Expo.easeInOut' })
-  // tl.to(menuContentRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
+  //play
+  if (isActive) {
+    tl.play()
+  } else {
+    reverseTl.play()
+  }
 
-  // //reverse
-  // reverseTl.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
-  // reverseTl.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
-  // reverseTl.to(btnRef.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
-  // reverseTl.to(navigationRef.current, { duration: 0, border: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-  // reverseTl.to(navigationRef.current, { duration: 0, borderTop: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-  // reverseTl.to(navigationRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-  // reverseTl.to(navigationRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-  // reverseTl.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-  // reverseTl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-  // reverseTl.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
-  // reverseTl.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Expo.easeInOut' })
-  // reverseTl.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
+  //set
+  tl.set(navigationRef.current, { background: '#0B0B0B' })
 
-  // //play
-  // if (isActive) {
-  //   tl.play()
-  // } else {
-  //   reverseTl.play()
-  // }
+  //animation
+  tl.to(navigationRef.current, { duration: 0, background: 'transparent', ease: 'Expo.easeInOut' })
+  tl.to(menuRef.current, { 
+    duration: 0.6, 
+    opacity: 1, 
+    scale: 1,
+    transformOrigin: '98% 2%',
+    display: 'block', 
+    ease: 'Expo.easeInOut'
+  })
+  tl.to(navigationRef.current, { duration: 0, borderBottom: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
+  tl.to(navigationRef.current, { duration: 0, borderTop: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
+  tl.to(navigationRef.current, { duration: 0, borderLeft: 'none', ease: 'Expo.easeInOut' })
+  tl.to(navigationRef.current, { duration: 0, borderRight: 'none', ease: 'Expo.easeInOut' })
+  tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
+  tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
+  tl.to(svgRef.current, { duration: 0, color: '#0B0B0B', ease: 'Expo.easeInOut' })
+  tl.to(btnRef.current, { duration: 0, innerHTML: '-', ease: 'Expo.easeInOut' })
+  tl.to(btnRef.current, { duration: 0, background: '#0B0B0B', color: '#B3FC03', ease: 'Expo.easeInOut' })
+  tl.to(menuContentRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
+
+  //reverse
+  reverseTl.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
+  reverseTl.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
+  reverseTl.to(btnRef.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, border: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, borderTop: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+  reverseTl.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
+  reverseTl.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Expo.easeInOut' })
+  reverseTl.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
 
   return <>
     <div className={styles.navigation} ref={navigationRef}>

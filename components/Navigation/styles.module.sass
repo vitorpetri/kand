@@ -15,7 +15,7 @@
   &:before
     content: ''
     position: absolute
-    top: -2.1rem
+    top: -2.2rem
     bottom: 0
     width: 101%
     left: -0.5%
@@ -40,10 +40,11 @@
 
 .logo__wrapper
   height: 100%
-  padding: 0 5.2rem 0 3rem
+  padding: 0 3.2rem 0 3rem
   border-right: 1px solid rgba(239, 239, 210, 0.3)
   cursor: pointer
   height: 100%
+  z-index: 1
 
   @include media('<=phone')
     padding: 0 10rem 0 3.2rem
@@ -116,20 +117,20 @@
 
 .menu__wrapper
   position: fixed
-  top: $top
-  width: $width
-  height: calc($height-nav - 1.2%)
+  top: 10rem
+  width: calc(100% - 4rem)
+  height: 94vh
   transform: scale(0)
   background: $primary
-  left: 1.32vw
+  left: 2rem
   z-index: 2
   color: $black
   border: none
   border-top: 0
   border-radius: 1rem
-  // overflow: auto
   padding-top: 7%
   display: block
+  z-index: 3
 
   @include media('<=phone')
     width: $width-m

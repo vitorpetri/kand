@@ -1,7 +1,10 @@
 import styles from './styles.module.sass'
 
 import { useRouter } from 'next/router'
+import Link from 'next/link'
 import { useEffect } from 'react'
+
+import * as prismicH from "@prismicio/helpers"
 
 export default function Gallery({ projectsList }) {
   const { prefetch } = useRouter()
@@ -13,14 +16,31 @@ export default function Gallery({ projectsList }) {
   }, [])
 
   return (
-    <aside className={styles.element}>
-      {projectsList.map(({ title }, index) => (
-        <div className={styles.gallery}>
-          <div className={styles.project}>
-            <div className={styles.project__image}></div>
-            <h3 className={styles.project__title}>{title}</h3>
-          </div>
-        </div>
+    <aside className={styles.gallery}>
+      {projectsList.map(({ id, title, cover }, index) => (
+        <Link href={`/project/${id}`} className={styles.project} key={`project-${index}`}>
+        {/* <div className={styles.project__image}></div> */}
+        <img
+          className={styles.project__image}
+          src={prismicH.asImageSrc(cover, {
+            lossless: true,
+            q: 100
+          }) || ''}
+          alt={title}
+        />
+
+          {/* {content.map((image, index) => (
+            <img
+              key={`image-${index}`}
+              className={styles.project__image}
+              src={prismicH.asImageSrc(image, {
+                lossless: true,
+                q: 100
+              }) || ''}
+            />
+          ))} */}
+          <h3 className={styles.project__title}>{title}</h3>
+        </Link>
       ))}
     </aside>
   )

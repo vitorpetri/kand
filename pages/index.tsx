@@ -4,8 +4,6 @@ import Image from 'next/image'
 import Link from 'next/link'
 
 import Line from '@/components/Line'
-import { createClient } from '../prismicio'
-import sm from '../sm.json'
 
 import styles from './styles.module.sass'
 
@@ -47,6 +45,9 @@ export default function Home(data: any) {
     </div>
   </>
 }
+
+import { createClient } from '../prismicio'
+import sm from '../sm.json'
 
 export async function getServerSideProps() {
   const client = createClient({ accessToken: sm.token })

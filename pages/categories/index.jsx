@@ -44,6 +44,8 @@ export async function getServerSideProps() {
     return {
       id: project.uid,
       title: project.data.title,
+      content: project.data.content,
+      cover: project.data.cover,
     }
   })
 

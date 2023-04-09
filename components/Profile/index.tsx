@@ -6,7 +6,6 @@ export default function Profile() {
       <h1 className={styles.name}>Kaue</h1>
       <h1 className={styles.surname}>Barbosa</h1>
       <h2 className={styles.role}>Creative Art Director</h2>
-      {/* Image */}
     </div>
     <div className={styles.content}>
       <div className={styles.paragraph}>

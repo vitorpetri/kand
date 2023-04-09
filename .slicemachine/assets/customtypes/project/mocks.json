@@ -1,22 +1,43 @@
 {
   "uid": {
     "__TYPE__": "UIDContent",
-    "value": "product"
+    "value": "lamp"
   },
   "client": {
     "__TYPE__": "FieldContent",
-    "value": "similar",
+    "value": "shut",
     "type": "Text"
   },
   "title": {
     "__TYPE__": "FieldContent",
-    "value": "essential",
+    "value": "dollar",
     "type": "Text"
   },
   "agency": {
     "__TYPE__": "FieldContent",
-    "value": "amount",
+    "value": "road",
     "type": "Text"
+  },
+  "cover": {
+    "__TYPE__": "ImageContent",
+    "origin": {
+      "id": "main",
+      "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+      "width": 3935,
+      "height": 5894
+    },
+    "url": "https://images.unsplash.com/photo-1587905069134-008460d7a636",
+    "width": 3935,
+    "height": 5894,
+    "edit": {
+      "zoom": 1,
+      "crop": {
+        "x": 0,
+        "y": 0
+      },
+      "background": "transparent"
+    },
+    "thumbnails": {}
   },
   "categories": {
     "__TYPE__": "GroupContentType",
@@ -28,7 +49,7 @@
             "category",
             {
               "__TYPE__": "FieldContent",
-              "value": "stone",
+              "value": "swam",
               "type": "Text"
             }
           ]
@@ -46,7 +67,7 @@
             "title",
             {
               "__TYPE__": "FieldContent",
-              "value": "leg",
+              "value": "anywhere",
               "type": "Text"
             }
           ],
@@ -54,7 +75,7 @@
             "name",
             {
               "__TYPE__": "FieldContent",
-              "value": "busy",
+              "value": "chemical",
               "type": "Text"
             }
           ]
@@ -72,7 +93,7 @@
             "description",
             {
               "__TYPE__": "FieldContent",
-              "value": "book",
+              "value": "music",
               "type": "Text"
             }
           ],
@@ -110,13 +131,13 @@
               "__TYPE__": "ImageContent",
               "origin": {
                 "id": "main",
-                "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
-                "width": 4000,
-                "height": 4000
+                "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+                "width": 2747,
+                "height": 4120
               },
-              "url": "https://images.unsplash.com/photo-1606248897732-2c5ffe759c04",
-              "width": 4000,
-              "height": 4000,
+              "url": "https://images.unsplash.com/photo-1504198070170-4ca53bb1c1fa",
+              "width": 2747,
+              "height": 4120,
               "edit": {
                 "zoom": 1,
                 "crop": {
@@ -126,6 +147,14 @@
                 "background": "transparent"
               },
               "thumbnails": {}
+            }
+          ],
+          [
+            "size",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "big",
+              "type": "Select"
             }
           ]
         ]

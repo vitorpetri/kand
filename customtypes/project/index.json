@@ -33,6 +33,14 @@
           "placeholder": ""
         }
       },
+      "cover": {
+        "type": "Image",
+        "config": {
+          "label": "Cover",
+          "constraint": {},
+          "thumbnails": []
+        }
+      },
       "categories": {
         "type": "Group",
         "config": {
@@ -95,6 +103,18 @@
                 "label": "Image",
                 "constraint": {},
                 "thumbnails": []
+              }
+            },
+            "size": {
+              "type": "Select",
+              "config": {
+                "label": "Size",
+                "placeholder": "Size",
+                "options": [
+                  "big",
+                  "medium",
+                  "small"
+                ]
               }
             }
           }

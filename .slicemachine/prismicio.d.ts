@@ -81,25 +81,25 @@ interface AboutDocumentData {
  */
 export interface AboutDocumentDataDescriptionItem {
     /**
-     * Description Title field in *About → Description*
+     * Title field in *About → Description*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: about.description[].description_title
+     * - **API ID Path**: about.description[].title
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    description_title: prismicT.KeyTextField;
+    title: prismicT.KeyTextField;
     /**
-     * Description Text field in *About → Description*
+     * Text field in *About → Description*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: about.description[].description_text
+     * - **API ID Path**: about.description[].text
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    description_text: prismicT.KeyTextField;
+    text: prismicT.KeyTextField;
 }
 /**
  * Item in About → Profile
@@ -243,7 +243,7 @@ export interface AboutDocumentDataAwardsItem {
  * Slice for *About → Slice Zone*
  *
  */
-type AboutDocumentDataSlicesSlice = never;
+type AboutDocumentDataSlicesSlice = ProfileSlice;
 /**
  * About document from Prismic
  *
@@ -444,6 +444,17 @@ interface ProjectDocumentData {
      */
     agency: prismicT.KeyTextField;
     /**
+     * Cover field in *Project*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.cover
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    cover: prismicT.ImageField<never>;
+    /**
      * Categories field in *Project*
      *
      * - **Field Type**: Group
@@ -554,6 +565,16 @@ export interface ProjectDocumentDataContentItem {
      *
      */
     image: prismicT.ImageField<never>;
+    /**
+     * Size field in *Project → Content*
+     *
+     * - **Field Type**: Select
+     * - **Placeholder**: Size
+     * - **API ID Path**: project.content[].size
+     * - **Documentation**: https://prismic.io/docs/core-concepts/select
+     *
+     */
+    size: prismicT.SelectField<"big" | "medium" | "small">;
 }
 /**
  * Project document from Prismic
@@ -566,11 +587,116 @@ export interface ProjectDocumentDataContentItem {
  */
 export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
 export type AllDocumentTypes = AboutDocument | ContactDocument | HomeDocument | OrderDocument | ProjectDocument;
+/**
+ * Primary content in Profile → Primary
+ *
+ */
+interface ProfileSliceDefaultPrimary {
+    /**
+     * Name field in *Profile → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.primary.name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    name: prismicT.KeyTextField;
+    /**
+     * Last Name field in *Profile → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.primary.last_name
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    last_name: prismicT.KeyTextField;
+    /**
+     * Role field in *Profile → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.primary.role
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    role: prismicT.KeyTextField;
+    /**
+     * Image field in *Profile → Primary*
+     *
+     * - **Field Type**: Image
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.primary.image
+     * - **Documentation**: https://prismic.io/docs/core-concepts/image
+     *
+     */
+    image: prismicT.ImageField<never>;
+}
+/**
+ * Item in Profile → Items
+ *
+ */
+export interface ProfileSliceDefaultItem {
+    /**
+     * Topic field in *Profile → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.items[].topic
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    topic: prismicT.KeyTextField;
+    /**
+     * Item field in *Profile → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.items[].item
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    item: prismicT.KeyTextField;
+    /**
+     * Sub Item field in *Profile → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.items[].sub_item
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    sub_item: prismicT.KeyTextField;
+}
+/**
+ * Default variation for Profile Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Profile`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProfileSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ProfileSliceDefaultPrimary>, Simplify<ProfileSliceDefaultItem>>;
+/**
+ * Slice variation for *Profile*
+ *
+ */
+type ProfileSliceVariation = ProfileSliceDefault;
+/**
+ * Profile Shared Slice
+ *
+ * - **API ID**: `profile`
+ * - **Description**: `Profile`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProfileSlice = prismicT.SharedSlice<"profile", ProfileSliceVariation>;
 declare module "@prismicio/client" {
     interface CreateClient {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCategoriesItem, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes };
+        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCategoriesItem, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefaultItem, ProfileSliceDefault, ProfileSliceVariation, ProfileSlice };
     }
 }
