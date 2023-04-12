@@ -35,9 +35,11 @@ export default function App({ Component, pageProps }: AppProps) {
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <link rel="icon" href="/mundo.svg" />
         </Head>
+        <div className="top" />
+        <div className="border" />
+        <div className="bottom" />
         <Navigation />
         <div className="grain" />
-        <div className="bottom" />
         <main className='content'>
           <Component {...pageProps} />
         </main>

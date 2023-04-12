@@ -12,18 +12,6 @@
   justify-content: space-between
   z-index: 3
 
-  &:before
-    content: ''
-    position: absolute
-    top: -2.2rem
-    bottom: 0
-    width: 101%
-    left: -0.5%
-    background: #0b0b0b
-
-    @include media('<=phone')
-      top: -4rem
-
   &:after
     content: ''
     position: absolute
@@ -31,7 +19,7 @@
     bottom: 0
     width: 100%
     background: none
-    border: 1px solid rgba(239, 239, 210, 0.3)
+    border-bottom: 1px solid rgba(239, 239, 210, 0.3)
     border-radius: 1rem 1rem 0 0
     z-index: 0
     pointer-events: none
@@ -119,9 +107,9 @@
 
 .menu__wrapper
   position: fixed
-  top: 10rem
+  top: 9.3rem
   width: calc(100% - 4rem)
-  height: 94vh
+  height: 93%
   transform: scale(0)
   background: $primary
   left: 2rem
@@ -129,12 +117,14 @@
   color: $black
   border: none
   border-top: 0
-  border-radius: 1rem
+  border-radius: 0 0 1rem 1rem
   padding-top: 7%
   display: block
   z-index: 3
 
   @include media('<=phone')
+    top: 12.8rem
+    height: 91.6%
 
 .menu__close
 
