@@ -34,21 +34,24 @@
     pointer-events: none
 
   @include media('<=phone')
+    height: $height-nav-m
+    top: $top-m
+
 
 .logo__wrapper
   height: 100%
-  padding: 0 3.2rem 0 3rem
+  padding: 0 2.8rem 0 3rem
   border-right: 1px solid rgba(239, 239, 210, 0.3)
   cursor: pointer
   height: 100%
   z-index: 1
 
   @include media('<=phone')
-    padding: 0 10rem 0 3.2rem
+    padding: 0 11.2rem 0 3.2rem
     width: 8.8rem
 
 .logo
-  width: 5.6rem
+  width: 4.8rem
   height: 100%
   opacity: 1
   color: #B3FC03
@@ -66,11 +69,11 @@
     width: 6.8rem
 
     svg
-      transform: translateY(-1rem)
+      transform: translate(0.8rem, -1rem)
 
 .menu
   height: 100%
-  padding: 0 9rem 0 4rem
+  padding: 0 6.2rem 0 4rem
   border-left: 1px solid rgba(239, 239, 210, 0.3)
   display: flex
   align-items: center
@@ -84,8 +87,8 @@
     background: $primary
     color: $black
     font-size: 1.8rem
-    width: 2.4rem
-    height: 2.4rem
+    width: 2rem
+    height: 2rem
     text-align: center
     transition: all 450ms cubic-bezier(0.77, 0, 0.175, 1)
     position: absolute
@@ -102,7 +105,7 @@
       font-size: 2rem
 
   @include media('<=phone')
-    padding: 0 10rem 0 3.2rem
+    padding: 0 11.2rem 0 3.2rem
 
   &:hover .icon
     width: 101%
@@ -130,10 +133,6 @@
   z-index: 3
 
   @include media('<=phone')
-    // width: $width-m
-    // top: $top-m
-    // left: 2%
-    // height: calc($height-nav-m - 2.4%)
 
 .menu__close
 

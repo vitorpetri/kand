@@ -29,7 +29,7 @@ body
   background: $primary
 
 .content
-  border: 1px solid rgba(239, 239, 210, 0.3)
+  border-inline: 1px solid rgba(239, 239, 210, 0.3)
   // height: 90vh
   border-top: 0
   border-radius: 0 0 1rem 1rem
@@ -55,15 +55,30 @@ body
   width: 100%
   height: 100rem
 
+  @include media('<=phone')
+    height: 56rem
+    margin-top: 4rem
+
 .image-big, .image-medium, .image-small
   border-radius: 1rem
   margin-top: 2rem
+  position: relative
+
+  img
+    position: absolute
+    top: 0
+    left: 0
+    width: 100%
+    height: 100%
+    object-fit: cover
 
 .image-big
   width: 93%
+  height: 50rem
 
 .image-medium
   width: 45.8%
+  height: 50rem
 
 .image-small
   width: 45.8%
@@ -83,13 +98,22 @@ body
   width: 50%
   text-align: center
   font-family: $text
-  text-transform: uppercase
+  text-transform: initial
   letter-spacing: 0.2rem
   font-size: 2rem
   font-weight: 600
   line-height: 1.4
   color: $gray
   margin-top: 2rem
+
+  @include media('<=phone')
+    width: 80%
+    font-size: 2.3rem
+    margin-top: 2rem
+
+    &:nth-of-type(1)
+      margin-top: 10rem
+
 
 @keyframes grain
   0% 

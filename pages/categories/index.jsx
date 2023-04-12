@@ -18,7 +18,7 @@ export default function Categories({projectsList}) {
 
     <div className={styles.wrapper}>
       <h1 className={styles.title}>Categories</h1>
-      <Line />
+      <div className={styles.line}><Line /></div>
 
       <div className={styles.filters}>
         <div className={styles.category}>Category 1</div>

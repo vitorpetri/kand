@@ -36,11 +36,11 @@ export default function Projects({project}) {
             </iframe>
           </div>
         )} else if (content.image) { return (
-          <img
-            key={index}
-            className={`image-${content.size}`}
-            src={prismicH.asImageSrc(content.image, {lossless: true, q: 100}) || ''}
-            alt={project.content.title}/>
+          <div key={index} className={`image-${content.size}`}>
+            <img
+              src={prismicH.asImageSrc(content.image, {lossless: true, q: 100}) || ''}
+              alt={project.content.title}/>
+          </div>
         )}})}
     </div>
   )
@@ -55,8 +55,6 @@ export async function getServerSideProps(context) {
   if (!res) return { notFound: true }
 
   const project = res.data
-
-  console.log(project.content[2])
 
   return {
     props: {

@@ -7,17 +7,29 @@
   flex-direction: column
 
   & > div:first-of-type
-    background: $primary
-    margin-bottom: -6rem
+    margin-bottom: -9rem
+
+    div
+      background: $primary
+      transform: translateY(-1.8rem)
+
+      @include media('<=phone')
+        transform: translateY(-0.8rem)
+
+    @include media('<=phone')
+      margin-bottom: -6rem
 
 .title
-  margin-top: 8rem
+  margin-top: 6.2rem
   color: $primary
   font-family: $title
-  font-size: 14.8rem
+  font-size: 11rem
+  letter-spacing: -0.2rem
 
   @include media('<=phone')
-    margin-top: 9vh
+    margin-top: 3.4vh
+    font-size: 14.8rem
+    letter-spacing: -0.32rem
 
 .footer__label
   margin-top: 6vh
@@ -27,7 +39,7 @@
   letter-spacing: 0.1rem
 
 .footer__title
-  margin: 1vh 0 6vh 0
+  margin: 1vh 0 12rem 0
   color: $primary
   font-family: $title
   font-size: 10rem

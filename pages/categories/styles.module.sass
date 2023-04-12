@@ -7,27 +7,40 @@
   flex-direction: column
 
   & > div:first-of-type
-    background: $primary
+    margin-bottom: -9rem
+
+    div
+      background: $primary
+      transform: translateY(1rem)
+
+      @include media('<=phone')
+        transform: translateY(1rem)
+
+    @include media('<=phone')
+      margin-bottom: -6rem
 
 .title
-  margin-top: 8rem
+  margin-top: 6.2rem
   color: $primary
   font-family: $title
-  font-size: 14.8rem
+  font-size: 12.6rem
+  letter-spacing: -0.2rem
 
   @include media('<=phone')
-    margin-top: 9vh
+    margin-top: 3.4vh
+    font-size: 14.8rem
+    letter-spacing: -0.32rem
   
 .filters
   display: flex
   flex-wrap: wrap
   justify-content: center
   align-items: center
-  margin-top: 12.7rem
+  margin-top: 16rem
   gap: 3rem
 
   @include media('<=phone')
-    margin-top: 7.5rem
+    margin-top: 14rem
 
 .category
   height: 4.4rem

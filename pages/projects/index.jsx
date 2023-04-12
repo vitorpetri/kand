@@ -19,7 +19,7 @@ export default function Home({projectsList}) {
       
       <div className={styles.wrapper}>
         <h1 className={styles.title}>All Projects</h1>
-        <Line />
+        <div className={styles.line}><Line /></div>
         <SeparatorLine />
         <Gallery projectsList={projectsList} />
         <SeparatorLine />
