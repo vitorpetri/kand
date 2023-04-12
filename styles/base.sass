@@ -102,17 +102,20 @@ body
 
 .image-medium
   width: 45.8%
-  height: 50rem
+  height: 114rem
+
+  @include media('<=phone')
+    height: 50rem
 
 .image-small
   width: 45.8%
-  height: 50%
+  height: 56rem
 
-  &:nth-child(2n + 1)
-    position: relative
-    top: -58.4rem
-    left: 43.4rem
-    margin-bottom: -90rem !important
+  &:nth-of-type(2n + 1)
+    // position: relative
+    // top: -58.4rem
+    // left: 43.4rem
+    // margin-bottom: -90rem !important
 
     @include media('<=phone')
       top: -33rem
