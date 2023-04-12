@@ -3,7 +3,7 @@
 .description
   display: flex
   width: 100%
-  margin-top: 8.3rem
+  margin-top: 9rem
 
   & > div > div
     background: $white
@@ -15,9 +15,10 @@
   font-size: 15rem
   font-family: $title
   letter-spacing: -0.2rem
-  margin-right: 2rem
-  margin-left: 19rem
+  // margin-right: 2rem
+  margin-left: 10rem
   color: $primary
+  text-transform: capitalize
 
   @include media('<=phone')
     font-size: 10rem
@@ -28,16 +29,15 @@
   font-size: 1.8rem
   letter-spacing: 0.2rem
   font-family: $text
-  margin-right: 2rem
-  max-width: 74rem
+  color: $gray
+  max-width: 68rem
   text-transform: uppercase
-  margin-left: 30rem
+  margin-left: 1rem
   line-height: 3.2rem
 
   @include media('<=phone')
     margin-top: 6rem
     margin-left: 14rem
-
 
 .description__paragraph:not(:first-of-type)
   margin-top: 3rem

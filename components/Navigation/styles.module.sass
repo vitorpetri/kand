@@ -21,6 +21,9 @@
     left: -0.5%
     background: #0b0b0b
 
+    @include media('<=phone')
+      top: -4rem
+
   &:after
     content: ''
     position: absolute
@@ -35,8 +38,7 @@
 
   @include media('<=phone')
     height: $height-nav-m
-    top: $top-m
-
+    top: calc($top-m + 1rem)
 
 .logo__wrapper
   height: 100%
