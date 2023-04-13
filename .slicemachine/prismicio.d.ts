@@ -455,17 +455,6 @@ interface ProjectDocumentData {
      */
     cover: prismicT.ImageField<never>;
     /**
-     * Categories field in *Project*
-     *
-     * - **Field Type**: Group
-     * - **Placeholder**: *None*
-     * - **API ID Path**: project.categories[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/group
-     *
-     */
-    categories: prismicT.GroupField<Simplify<ProjectDocumentDataCategoriesItem>>;
-    /**
      * Crew field in *Project*
      *
      * - **Field Type**: Group
@@ -487,22 +476,6 @@ interface ProjectDocumentData {
      *
      */
     content: prismicT.GroupField<Simplify<ProjectDocumentDataContentItem>>;
-}
-/**
- * Item in Project → Categories
- *
- */
-export interface ProjectDocumentDataCategoriesItem {
-    /**
-     * Category field in *Project → Categories*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: project.categories[].category
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    category: prismicT.KeyTextField;
 }
 /**
  * Item in Project → Crew
@@ -697,6 +670,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCategoriesItem, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefaultItem, ProfileSliceDefault, ProfileSliceVariation, ProfileSlice };
+        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefaultItem, ProfileSliceDefault, ProfileSliceVariation, ProfileSlice };
     }
 }

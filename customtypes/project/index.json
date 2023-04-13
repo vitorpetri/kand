@@ -41,21 +41,6 @@
           "thumbnails": []
         }
       },
-      "categories": {
-        "type": "Group",
-        "config": {
-          "label": "Categories",
-          "fields": {
-            "category": {
-              "type": "Text",
-              "config": {
-                "label": "Category",
-                "placeholder": ""
-              }
-            }
-          }
-        }
-      },
       "crew": {
         "type": "Group",
         "config": {

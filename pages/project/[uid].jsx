@@ -30,7 +30,7 @@ export default function Projects({project}) {
               src={content.video.embed_url}
               className='frame'
               // width="640" height="460"
-              frameborder="0"
+              frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture"
               allowfullscreen>
             </iframe>
@@ -39,7 +39,7 @@ export default function Projects({project}) {
           <div key={index} className={`image-${content.size}`}>
             <img
               src={prismicH.asImageSrc(content.image, {lossless: true, q: 100}) || ''}
-              alt={project.content.title}/>
+              alt={content.image.alt}/>
           </div>
         )}})}
     </div>
@@ -55,6 +55,8 @@ export async function getServerSideProps(context) {
   if (!res) return { notFound: true }
 
   const project = res.data
+
+  // console.log(project.content[5].image.alt)
 
   return {
     props: {

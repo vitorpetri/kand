@@ -81,11 +81,11 @@ body
     margin-top: 4rem
 
 .image-big, .image-medium, .image-small
-  border-radius: 1rem
   margin-top: 2rem
   position: relative
 
   img
+    border-radius: 1rem
     position: absolute
     top: 0
     left: 0
@@ -95,21 +95,21 @@ body
 
 .image-big
   width: 93%
-  height: 110rem
+  height: 97.2rem
 
   @include media('<=phone')
-    height: 64rem
+    height: 53.2rem
 
 .image-medium
   width: 45.8%
-  height: 114rem
+  height: 96rem
 
   @include media('<=phone')
-    height: 64rem
+    height: 53rem
 
 .image-small
   width: 45.8%
-  height: 56rem
+  height: 48rem
 
   &:nth-of-type(2n + 1)
     // position: relative
@@ -122,10 +122,11 @@ body
     //   left: 24rem 
 
   @include media('<=phone')
-    height: 30rem
+    height: 26rem
 
 .description
   width: 50%
+  margin: 0 12rem
   text-align: center
   font-family: $text
   text-transform: initial
@@ -138,6 +139,7 @@ body
 
   @include media('<=phone')
     width: 80%
+    margin: 0 6rem
     font-size: 2.3rem
     margin-top: 2rem
 
