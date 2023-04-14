@@ -2,11 +2,45 @@
 
 .wrapper
   display: flex
+  flex-direction: column
+  width: 100%
+  padding-top: 9rem
+  padding-left: 22rem
 
 .title
+  font-size: 15rem
+  font-family: $title
+  letter-spacing: -0.2rem
+  color: $primary
+  text-transform: capitalize
 
-.area
+.type
+  // display: flex
+  // flex-direction: column
+  // flex-wrap: wrap
+  // width: 100%
+  padding-top: 6rem
   
-.title
+.type__title
+  font-size: 4rem
+  font-family: $title
+  color: $primary
+  text-transform: capitalize
+  margin-bottom: 2.4rem
 
 .clients
+  display: flex
+  flex-wrap: wrap
+  flex-direction: column
+  justify-content: space-between
+  gap: 2rem 4rem
+  width: 32.8rem
+  max-height: 42rem
+  border: 1px solid red
+
+.client
+  width: 12rem
+  height: 6rem
+  background: $gray
+
+.client__image

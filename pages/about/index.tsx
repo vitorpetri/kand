@@ -55,7 +55,7 @@ const About: FC<IAbout> = (data) => {
 
       <SeparatorLine />
 
-      <Image className={styles.icon} src={DuoSvg} alt="World"/>
+      <Image className={styles.bottom__icon} src={DuoSvg} alt="World"/>
     </div>          
   </>
 }

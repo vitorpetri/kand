@@ -11,6 +11,9 @@
   height: 12rem
   margin-top: 6rem
 
+  @include media('<=phone')
+    display: none
+
 .title
   font-size: 36.4rem
   letter-spacing: -0.5rem
@@ -21,3 +24,9 @@
 
   @include media('<=phone')
     font-size: 20rem
+    margin-top: 12rem
+
+.bottom__icon
+  width: 8rem
+  height: 12rem
+  margin: 6rem 0 9rem 0

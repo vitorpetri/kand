@@ -11,6 +11,16 @@ import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
 export default function Categories({projectsList}) {
+  // projectsList.forEach(project => {
+  //   console.log(project)
+  // })
+
+  // take tags out of prismic and do a cateory filter
+
+  // const categories = projectsList.map((project) => project.tags)
+  // console.log(categories)
+
+
   return <>
     <Head>
       <title>KAND | Categories</title>
