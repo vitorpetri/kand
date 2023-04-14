@@ -5,11 +5,14 @@
   flex-direction: column
   padding: 6rem 19rem
   justify-content: space-between
-  height: 100%
-  color: $primary
+  justify-items: center
+  height: calc(100vh - 2rem - 7.2rem - 2rem)
+  border-radius: 0 0 1rem 1rem
+  color: $black
+  background: $primary
 
   @include media('<=phone')
-    padding: 4rem 6rem
+    padding: 10rem 6rem
 
 .text
   font-size: 3rem
@@ -27,6 +30,7 @@
     display: none
 
 .duo
+  margin-top: 10rem
   display: flex
   justify-content: space-between
   position: relative
@@ -47,7 +51,7 @@
   font-family: $title
   font-size: 12.4rem
 
-.link
+.link, .phone
   width: fit-content
   position: relative
 
@@ -55,10 +59,25 @@
     content: ''
     display: block
     position: absolute
+    width: 100%
+    height: 0.3rem
+    margin-top: 0.3rem
+    background: $black
+    transition: 450ms cubic-bezier(0.77, 0, 0.175, 1)
+
+  &:hover
+    &:after
+      width: 0%
+
+.phone
+  &:after
+    content: ''
+    display: block
+    position: absolute
     width: 0%
     height: 0.3rem
     margin-top: 0.3rem
-    background: $primary
+    background: $black
     transition: 450ms cubic-bezier(0.77, 0, 0.175, 1)
 
   &:hover
@@ -68,13 +87,14 @@
 .email
   font-size: 13.6rem
   font-family: $title
+  width: fit-content
 
   &:after
     content: ''
     display: block
     width: 100%
     height: 0.5rem
-    background: $primary
+    background: $black
     origin: 100% 50%
     margin-top: -0.6rem
     transition: 450ms cubic-bezier(0.77, 0, 0.175, 1)

@@ -34,14 +34,14 @@ export default function Categories() {
           <div className={styles.title}>KAUE</div>
           <a className={styles.link}href="#">Linkedin</a>
           <a className={styles.link}href="#">Instagram</a>
-          <span className={styles.link}>+55 11 9 9990-9819</span>
+          <span className={styles.phone}>+55 11 9 9990-9819</span>
         </div>
 
         <div className={styles.name}>
           <div className={styles.title}>DALTRO</div>
           <a className={styles.link}href="#">Linkedin</a>
           <a className={styles.link}href="#">Instagram</a>
-          <span className={styles.link}>+55 21 9 8821 1993</span>
+          <span className={styles.phone}>+55 21 9 8821 1993</span>
         </div>
       </div>
 

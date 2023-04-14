@@ -107,24 +107,35 @@
 
 .menu__wrapper
   position: fixed
-  top: 9.3rem
+  top: calc(2rem + 7.2rem)
+  border-top: 1px solid black
   width: calc(100% - 4rem)
-  height: 93%
+  height: calc(100% - 2rem - 7.2rem - 2rem)
   transform: scale(0)
   background: $primary
   left: 2rem
   z-index: 2
   color: $black
-  border: none
-  border-top: 0
   border-radius: 0 0 1rem 1rem
   padding-top: 7%
   display: block
   z-index: 3
 
+  &:after
+    content: ''
+    position: absolute
+    bottom: 7.2rem
+    left: 0
+    width: 100%
+    height: 1px
+    background: black
+
+    @include media('<=phone')
+      display: none
+
   @include media('<=phone')
-    top: 12.8rem
-    height: 91.6%
+    top: calc(3rem + 9.6rem)
+    height: calc(100% - 3rem - 9.6rem - 2rem)
 
 .menu__close
 
