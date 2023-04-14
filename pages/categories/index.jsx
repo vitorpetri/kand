@@ -31,9 +31,9 @@ export default function Categories({projectsList}) {
       <div className={styles.line}><Line /></div>
 
       <div className={styles.filters}>
-        <div className={styles.category}>Category 1</div>
-        <div className={styles.category}>Category 2</div>
-        <div className={styles.category}>Category 3</div>
+        <div className={styles.category}>Branding</div>
+        <div className={styles.category}>Best Use Of Media</div>
+        <div className={styles.category}>Design</div>
       </div>
 
       <SeparatorLine />

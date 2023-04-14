@@ -7,7 +7,7 @@ export default function Categories() {
     <Head>
       <title>KAND | Categories</title>
     </Head>
-    
+
     <div className={styles.wrapper}>
       <div className={styles.text}>
         We're always up for a chat, <br />

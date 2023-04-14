@@ -1,4 +1,5 @@
 import Line from '@/components/Line'
+import Link from 'next/link'
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
@@ -29,10 +30,8 @@ export default function Projects({project}) {
             <iframe
               src={content.video.embed_url}
               className='frame'
-              // width="640" height="460"
-              frameBorder="0"
               allow="autoplay; fullscreen; picture-in-picture"
-              allowfullscreen>
+              >
             </iframe>
           </div>
         )} else if (content.image) { return (
@@ -42,6 +41,47 @@ export default function Projects({project}) {
               alt={content.image.alt}/>
           </div>
         )}})}
+
+      <ul className={styles.numbers}>
+        <li className={styles.numbers__item}>
+          <p className={styles.numbers__title}>300 MM</p>
+          <p className={styles.numbers__description}>people reached</p>
+        </li>
+        <li className={styles.numbers__item}>
+          <p className={styles.numbers__title}>157 K</p>
+          <p className={styles.numbers__description}>bananas</p>
+        </li>
+        <li className={styles.numbers__item}>
+          <p className={styles.numbers__title}>19 MM</p>
+          <p className={styles.numbers__description}>polichinelos</p>
+        </li>
+      </ul>
+
+      <div className={styles.banner}>
+        <div className={styles.banner__title}>This was the most awarded campaign</div>
+        <div className={styles.banner__description}>in the history of the Hungarian ad industry.</div>
+      </div>
+
+      <div className={styles.info}>
+        <div className={styles.crew}>
+          <div className={styles.crew__title}>Crew</div>
+          <button className={styles.crew__button}>+</button>
+        </div>
+
+        <div className={styles.categories}>
+          <div className={styles.categories__title}>Categories</div>
+          <ul className={styles.categories__list}>
+            <li className={styles.categories__item}>Branding</li>
+            <li className={styles.categories__item}>Best Use Of Media</li>
+            <li className={styles.categories__item}>Design</li>
+          </ul>
+        </div>
+      </div>
+
+      {/* <div className={styles.footer}>
+        <Link href={'/'} className={styles.footer__button}>NEXT</Link>
+        <button onClick={()=> console.log(projectsList)} className={styles.footer__button}>PREVIOUS</button>
+      </div> */}
     </div>
   )
 }

@@ -1,7 +1,6 @@
 import 'styles/index.sass'
 import Lenis from 'utils/scroll'
 
-import Navigation from 'components/Navigation'
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
@@ -13,6 +12,8 @@ import type { AppProps } from 'next/app'
 import { PrismicProvider } from '@prismicio/react'
 import { PrismicPreview } from '@prismicio/next'
 import { repositoryName } from '../prismicio'
+
+import Navigation from '@/components/Navigation'
 
 export default function App({ Component, pageProps }: AppProps) {
   const { events } = useRouter()
@@ -38,8 +39,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className="top" />
         <div className="border" />
         <div className="bottom" />
-        <Navigation />
         <div className="grain" />
+        <Navigation />
         <main className='content'>
           <Component {...pageProps} />
         </main>

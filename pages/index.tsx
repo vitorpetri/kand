@@ -3,7 +3,9 @@ import MundoSvg from 'public/mundo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 
-import Line from '@/components/Line'
+// import Line from '@/components/Line'
+import { createClient } from '../prismicio'
+import sm from '../sm.json'
 
 import styles from './styles.module.sass'
 
@@ -12,13 +14,14 @@ export default function Home(data: any) {
     <Head>
       <title>KAUE & DALTRO</title>
     </Head>
+
     <div className={styles.wrapper}>
       <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.first_paragraph }} />
       <div className={styles.title}>
         {/* <div className={styles.accent}></div> */}
         <h1 className={styles.name}>{ data.first_name }</h1>
         {/* <Line /> */}
-        <Image className={styles.icon} src={MundoSvg} alt="World"/>
+        <Image priority className={styles.icon} src={MundoSvg} alt="World"/>
         {/* <Line /> */}
         <h1 className={styles.name}>{ data.second_name }</h1>
       </div>
@@ -42,9 +45,6 @@ export default function Home(data: any) {
     </div>
   </>
 }
-
-import { createClient } from '../prismicio'
-import sm from '../sm.json'
 
 export async function getServerSideProps() {
   const client = createClient({ accessToken: sm.token })
