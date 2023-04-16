@@ -54,7 +54,7 @@ export default function Navigation() {
 
     tl.set(navigationRef.current, { background: '#0B0B0B' })
 
-    tl.to(navigationRef.current, { duration: 0, background: 'transparent', ease: 'Expo.easeInOut' })
+    tl.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
     tl.to(menuRef.current, { 
       duration: 0.6, 
       opacity: 1, 
