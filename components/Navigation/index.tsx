@@ -54,7 +54,19 @@ export default function Navigation() {
 
     tl.set(navigationRef.current, { background: '#0B0B0B' })
 
-    tl.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
+    if (router.pathname === '/contact') {
+      tl.to(navigationRef.current, { duration: 0, background: '#B3FC03'})
+      GSAP.to('html', { duration: 0, height: '100%' })
+      GSAP.to('body', { duration: 0, height: '100%' })
+      GSAP.to('#__next', { duration: 0, height: '100%' })
+      GSAP.to('.content', { duration: 0, height: 'calc(100% - 8rem)' })
+    } else {
+      tl.to(navigationRef.current, { duration: 0, background: '#0B0B0B'})
+      GSAP.to('html', { duration: 0, height: 'unset' })
+      GSAP.to('body', { duration: 0, height: 'unset' })
+      GSAP.to('#__next', { duration: 0, height: 'unset' })
+      GSAP.to('.content', { duration: 0, height: 'unset' })
+    }
     tl.to(menuRef.current, { 
       duration: 0.6, 
       opacity: 1, 
@@ -71,13 +83,18 @@ export default function Navigation() {
     tl.to(btnRef.current, { duration: 0, background: '#0B0B0B', color: '#B3FC03', ease: 'Expo.easeInOut' })
     tl.to(menuContentRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
 
-    reverseTl.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
-    reverseTl.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
     reverseTl.to(btnRef.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
-    reverseTl.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
-    reverseTl.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-    reverseTl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-    reverseTl.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
+
+    if (router.pathname === '/contact') {
+      reverseTl.to(navigationRef.current, { duration: 0, background: '#B3FC03', ease: 'Expo.easeInOut' })
+    } else {
+      reverseTl.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
+      reverseTl.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
+      reverseTl.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
+      reverseTl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+      reverseTl.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+      reverseTl.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
+    }
     reverseTl.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Expo.easeInOut' })
 
     if (isActive) {
