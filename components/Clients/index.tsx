@@ -10,51 +10,6 @@ export default function Clients() {
         <li className={styles.client}>
           <div className={styles.client__image}></div>
         </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-      </ul>
-    </div>
-    
-    <div className={styles.type}>
-      <div className={styles.type__title}>NGO</div>
-      <ul className={styles.clients}>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
       </ul>
     </div>
   </div>

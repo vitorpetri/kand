@@ -1,7 +1,9 @@
 import Line from '@/components/Line'
 import Link from 'next/link'
+import Image from 'next/image'
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
+import AtomoSvg from 'public/atomo.svg'
 
 import styles from './styles.module.sass'
 
@@ -35,7 +37,7 @@ export default function Projects({project}) {
             </iframe>
           </div>
         )} else if (content.image) { return (
-          <div key={index} className={`image-${content.size}`}>
+          <div key={index} className={`image-${content.size} images`}>
             <img
               src={prismicH.asImageSrc(content.image, {lossless: true, q: 100}) || ''}
               alt={content.image.alt}/>
@@ -78,10 +80,11 @@ export default function Projects({project}) {
         </div>
       </div>
 
-      {/* <div className={styles.footer}>
-        <Link href={'/'} className={styles.footer__button}>NEXT</Link>
-        <button onClick={()=> console.log(projectsList)} className={styles.footer__button}>PREVIOUS</button>
-      </div> */}
+      <div className={styles.footer}>
+        <Link href={'/'} className={styles.footer__button}>Previous</Link>
+        <Image className={styles.footer__icon} src={AtomoSvg} alt="Atom"/>
+        <Link href={'/'} onClick={()=> console.log(projectsList)} className={styles.footer__button}>Next</Link>
+      </div>
     </div>
   )
 }
@@ -95,8 +98,6 @@ export async function getServerSideProps(context) {
   if (!res) return { notFound: true }
 
   const project = res.data
-
-  // console.log(project.content[5].image.alt)
 
   return {
     props: {

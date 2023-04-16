@@ -542,12 +542,12 @@ export interface ProjectDocumentDataContentItem {
      * Size field in *Project → Content*
      *
      * - **Field Type**: Select
-     * - **Placeholder**: Size
+     * - **Placeholder**: Image size
      * - **API ID Path**: project.content[].size
      * - **Documentation**: https://prismic.io/docs/core-concepts/select
      *
      */
-    size: prismicT.SelectField<"big" | "medium" | "small">;
+    size: prismicT.SelectField<"1-big" | "2-medium-medium" | "3-medium_ss" | "3-m_small_s" | "3-ms_small" | "4-small_sm" | "4-s_small_m" | "4-ss_medium">;
 }
 /**
  * Project document from Prismic
