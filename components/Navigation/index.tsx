@@ -40,11 +40,13 @@ export default function Navigation() {
         paint.to(btnRef.current, { duration: 0, background: '#0B0B0B', color: '#B3FC03', ease: 'Expo.easeInOut' })
       }, 500)
     } else {
-      paint.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-      paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-      paint.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
-      paint.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
-      paint.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
+      setTimeout(() => {
+        paint.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+        paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+        paint.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
+        paint.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
+        paint.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
+      }, 500)
     }
   })
 
@@ -55,17 +57,21 @@ export default function Navigation() {
     tl.set(navigationRef.current, { background: '#0B0B0B' })
 
     if (router.pathname === '/contact') {
-      tl.to(navigationRef.current, { duration: 0, background: '#B3FC03'})
-      GSAP.to('html', { duration: 0, height: '100%' })
-      GSAP.to('body', { duration: 0, height: '100%' })
-      GSAP.to('#__next', { duration: 0, height: '100%' })
-      GSAP.to('.content', { duration: 0, height: 'calc(100% - 8rem)' })
+      setTimeout(() => {
+        tl.to(navigationRef.current, { duration: 0, background: '#B3FC03'})
+        GSAP.to('html', { duration: 0, height: '100%' })
+        GSAP.to('body', { duration: 0, height: '100%' })
+        GSAP.to('#__next', { duration: 0, height: '100%' })
+        GSAP.to('.content', { duration: 0, height: 'calc(100% - 8rem)' })
+      }, 500)
     } else {
-      tl.to(navigationRef.current, { duration: 0, background: '#0B0B0B'})
-      GSAP.to('html', { duration: 0, height: 'unset' })
-      GSAP.to('body', { duration: 0, height: 'unset' })
-      GSAP.to('#__next', { duration: 0, height: 'unset' })
-      GSAP.to('.content', { duration: 0, height: 'unset' })
+      setTimeout(() => {
+        tl.to(navigationRef.current, { duration: 0, background: '#0B0B0B'})
+        GSAP.to('html', { duration: 0, height: 'unset' })
+        GSAP.to('body', { duration: 0, height: 'unset' })
+        GSAP.to('#__next', { duration: 0, height: 'unset' })
+        GSAP.to('.content', { duration: 0, height: 'unset' })
+      }, 500)
     }
     tl.to(menuRef.current, { 
       duration: 0.6, 
