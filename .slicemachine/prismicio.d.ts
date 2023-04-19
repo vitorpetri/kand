@@ -31,17 +31,6 @@ interface AboutDocumentData {
      */
     description: prismicT.GroupField<Simplify<AboutDocumentDataDescriptionItem>>;
     /**
-     * Profile field in *About*
-     *
-     * - **Field Type**: Group
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/group
-     *
-     */
-    profile: prismicT.GroupField<Simplify<AboutDocumentDataProfileItem>>;
-    /**
      * Clients field in *About*
      *
      * - **Field Type**: Group
@@ -100,82 +89,6 @@ export interface AboutDocumentDataDescriptionItem {
      *
      */
     text: prismicT.KeyTextField;
-}
-/**
- * Item in About → Profile
- *
- */
-export interface AboutDocumentDataProfileItem {
-    /**
-     * Name field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].name
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    name: prismicT.KeyTextField;
-    /**
-     * Last Name field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].last_name
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    last_name: prismicT.KeyTextField;
-    /**
-     * Role field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].role
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    role: prismicT.KeyTextField;
-    /**
-     * Image field in *About → Profile*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].image
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    image: prismicT.ImageField<never>;
-    /**
-     * Topic field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].topic
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    topic: prismicT.KeyTextField;
-    /**
-     * Item field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].item
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    item: prismicT.KeyTextField;
-    /**
-     * Sub Item field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].sub_item
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    sub_item: prismicT.KeyTextField;
 }
 /**
  * Item in About → Clients
@@ -720,6 +633,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefault, ProfileSliceProfilePrimary, ProfileSliceProfile, ProfileSliceAccomplishmentsPrimary, ProfileSliceAccomplishmentsItem, ProfileSliceAccomplishments, ProfileSliceVariation, ProfileSlice };
+        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefault, ProfileSliceProfilePrimary, ProfileSliceProfile, ProfileSliceAccomplishmentsPrimary, ProfileSliceAccomplishmentsItem, ProfileSliceAccomplishments, ProfileSliceVariation, ProfileSlice };
     }
 }
