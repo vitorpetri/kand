@@ -1,16 +1,21 @@
+import { log } from 'console'
 import styles from './styles.module.sass'
 
-export default function Clients() {
+import * as prismicH from "@prismicio/helpers"
+
+export default function Clients({ data }) {
   return <div className={styles.wrapper}>
     <h1 className={styles.title}>Clients</h1>
 
-    <div className={styles.type}>
-      <div className={styles.type__title}>Beers & Spirits</div>
-      <ul className={styles.clients}>
-        <li className={styles.client}>
-          <div className={styles.client__image}></div>
-        </li>
-      </ul>
+    <div className={styles.clients}>
+      {data.clients.map((content, index) => {
+        if (content.topic) { return (
+          <div className={styles.type__title} key={index}>{content.topic}</div>
+      )} else if (content.image.url) { return (
+          <figure key={index} className={styles.client__image}>
+            <img src={prismicH.asImageSrc(content.image, {lossless: true, q: 100}) || ''} alt={content.image.alt} />
+          </figure>
+      )}})}
     </div>
   </div>
 }

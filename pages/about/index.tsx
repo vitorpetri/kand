@@ -48,7 +48,7 @@ const About: FC<IAbout> = (data) => {
 
       <SeparatorLine />
 
-      <Clients />
+      <Clients data={data} />
 
       <SeparatorLine />
 
