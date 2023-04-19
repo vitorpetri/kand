@@ -3,32 +3,65 @@
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
     "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Worker"
+            }
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Adipisicing eu duis quis sunt exercitation esse amet."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "profile",
+    "primary": {
       "name": {
         "__TYPE__": "FieldContent",
-        "value": "policeman",
+        "value": "balance",
         "type": "Text"
       },
       "last_name": {
         "__TYPE__": "FieldContent",
-        "value": "observe",
+        "value": "jungle",
         "type": "Text"
       },
       "role": {
         "__TYPE__": "FieldContent",
-        "value": "serve",
+        "value": "stock",
         "type": "Text"
       },
       "image": {
-        "__TYPE__": "ImageContent",
         "origin": {
           "id": "main",
-          "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
-          "width": 3024,
-          "height": 3778
+          "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+          "width": 4160,
+          "height": 3120
         },
-        "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
-        "width": 3024,
-        "height": 3778,
+        "url": "https://images.unsplash.com/photo-1560457079-9a6532ccb118",
+        "width": 4160,
+        "height": 3120,
         "edit": {
           "zoom": 1,
           "crop": {
@@ -37,7 +70,27 @@
           },
           "background": "transparent"
         },
+        "credits": null,
+        "alt": null,
+        "__TYPE__": "ImageContent",
         "thumbnails": {}
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "accomplishments",
+    "primary": {
+      "topic": {
+        "__TYPE__": "FieldContent",
+        "value": "contain",
+        "type": "Text"
       }
     },
     "items": [
@@ -45,18 +98,10 @@
         "__TYPE__": "GroupItemContent",
         "value": [
           [
-            "topic",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "forgotten",
-              "type": "Text"
-            }
-          ],
-          [
             "item",
             {
               "__TYPE__": "FieldContent",
-              "value": "just",
+              "value": "usually",
               "type": "Text"
             }
           ],
@@ -64,7 +109,7 @@
             "sub_item",
             {
               "__TYPE__": "FieldContent",
-              "value": "could",
+              "value": "view",
               "type": "Text"
             }
           ]

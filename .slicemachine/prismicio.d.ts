@@ -566,6 +566,41 @@ export type AllDocumentTypes = AboutDocument | ContactDocument | HomeDocument | 
  */
 interface ProfileSliceDefaultPrimary {
     /**
+     * Title field in *Profile → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: profile.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *Profile → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: profile.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Default variation for Profile Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Profile`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProfileSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ProfileSliceDefaultPrimary>, never>;
+/**
+ * Primary content in Profile → Primary
+ *
+ */
+interface ProfileSliceProfilePrimary {
+    /**
      * Name field in *Profile → Primary*
      *
      * - **Field Type**: Text
@@ -607,20 +642,35 @@ interface ProfileSliceDefaultPrimary {
     image: prismicT.ImageField<never>;
 }
 /**
- * Item in Profile → Items
+ * Profile variation for Profile Slice
+ *
+ * - **API ID**: `profile`
+ * - **Description**: `Profile`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export interface ProfileSliceDefaultItem {
+export type ProfileSliceProfile = prismicT.SharedSliceVariation<"profile", Simplify<ProfileSliceProfilePrimary>, never>;
+/**
+ * Primary content in Profile → Primary
+ *
+ */
+interface ProfileSliceAccomplishmentsPrimary {
     /**
-     * Topic field in *Profile → Items*
+     * Topic field in *Profile → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: profile.items[].topic
+     * - **API ID Path**: profile.primary.topic
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
     topic: prismicT.KeyTextField;
+}
+/**
+ * Item in Profile → Items
+ *
+ */
+export interface ProfileSliceAccomplishmentsItem {
     /**
      * Item field in *Profile → Items*
      *
@@ -643,19 +693,19 @@ export interface ProfileSliceDefaultItem {
     sub_item: prismicT.KeyTextField;
 }
 /**
- * Default variation for Profile Slice
+ * Accomplishments variation for Profile Slice
  *
- * - **API ID**: `default`
+ * - **API ID**: `accomplishments`
  * - **Description**: `Profile`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type ProfileSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ProfileSliceDefaultPrimary>, Simplify<ProfileSliceDefaultItem>>;
+export type ProfileSliceAccomplishments = prismicT.SharedSliceVariation<"accomplishments", Simplify<ProfileSliceAccomplishmentsPrimary>, Simplify<ProfileSliceAccomplishmentsItem>>;
 /**
  * Slice variation for *Profile*
  *
  */
-type ProfileSliceVariation = ProfileSliceDefault;
+type ProfileSliceVariation = ProfileSliceDefault | ProfileSliceProfile | ProfileSliceAccomplishments;
 /**
  * Profile Shared Slice
  *
@@ -670,6 +720,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefaultItem, ProfileSliceDefault, ProfileSliceVariation, ProfileSlice };
+        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefault, ProfileSliceProfilePrimary, ProfileSliceProfile, ProfileSliceAccomplishmentsPrimary, ProfileSliceAccomplishmentsItem, ProfileSliceAccomplishments, ProfileSliceVariation, ProfileSlice };
     }
 }

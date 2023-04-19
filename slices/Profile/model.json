@@ -11,6 +11,33 @@
       "version": "sktwi1xtmkfgx8626",
       "description": "Profile",
       "primary": {
+        "title": {
+          "type": "StructuredText",
+          "config": {
+            "single": "heading1",
+            "label": "Title",
+            "placeholder": "This is where it all begins..."
+          }
+        },
+        "description": {
+          "type": "StructuredText",
+          "config": {
+            "single": "paragraph",
+            "label": "Description",
+            "placeholder": "A nice description of your feature"
+          }
+        }
+      },
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "profile",
+      "name": "Profile",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Profile",
+      "primary": {
         "name": {
           "type": "Text",
           "config": {
@@ -41,14 +68,25 @@
           }
         }
       },
-      "items": {
+      "items": {},
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "accomplishments",
+      "name": "Accomplishments",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Profile",
+      "primary": {
         "topic": {
           "type": "Text",
           "config": {
             "label": "Topic",
             "placeholder": ""
           }
-        },
+        }
+      },
+      "items": {
         "item": {
           "type": "Text",
           "config": {

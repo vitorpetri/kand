@@ -5,20 +5,27 @@ import * as prismicH from "@prismicio/helpers"
 
 export default function Profile({ data }) {
 
-    const profileData = data.profile
-    const profile = profileData[0]
+    const profile = data.slices.find((slice) => slice.variation === 'profile')
 
-    console.log(profile)
+    console.log(profile);
+
+    const accomplishments = data.slices.filter((slice) => slice.variation === 'accomplishments')
+
+    console.log(accomplishments)
+
+    // profile.items.forEach(item => {
+    //     console.log(item)
+    // })
 
   return (
     <div className={styles.wrapper}>
         <div className={styles.info}>
-        <h1 className={styles.name}>{profile.name}</h1>
-        <h1 className={styles.surname}>{profile.last_name}</h1>
-        <h2 className={styles.role}>{profile.role}</h2>
+        <h1 className={styles.name}>{profile.primary.name}</h1>
+        <h1 className={styles.surname}>{profile.primary.last_name}</h1>
+        <h2 className={styles.role}>{profile.primary.role}</h2>
         <img
             className={styles.image}
-            src={prismicH.asImageSrc(profile.image, {
+            src={prismicH.asImageSrc(profile.primary.image, {
               lossless: true,
               q: 100
             }) || ''}
@@ -26,34 +33,17 @@ export default function Profile({ data }) {
           />
         </div>
         <div className={styles.content}>
-        <ul className={styles.paragraph}>
-            <h3 className={styles.title}>{profile.topic}</h3>
-            <p className={styles.text}>{profile.item}</p>
-            <p className={styles.description}>{profile.sub_item}</p>
-            <p className={styles.text}>AFIRCA DDB</p>
-            <p className={styles.description}>2021</p>
-        </ul>
-        <ul className={styles.paragraph}>
-            <h3 className={styles.title}>Previous Experience</h3>
-            <p className={styles.text}>AFIRCA DDB</p>
-            <p className={styles.description}>2021</p>
-            <p className={styles.text}>AFIRCA DDB</p>
-            <p className={styles.description}>2021</p>
-        </ul>
-        <ul className={styles.paragraph}>
-            <h3 className={styles.title}>Previous Experience</h3>
-            <p className={styles.text}>AFIRCA DDB</p>
-            <p className={styles.description}>2021</p>
-            <p className={styles.text}>AFIRCA DDB</p>
-            <p className={styles.description}>2021</p>
-        </ul>
-        <ul className={styles.paragraph}>
-            <h3 className={styles.title}>Previous Experience</h3>
-            <p className={styles.text}>AFIRCA DDB</p>
-            <p className={styles.description}>2021</p>
-            <p className={styles.text}>AFIRCA DDB</p>
-            <p className={styles.description}>2021</p>
-        </ul>
+            {accomplishments.map((slice, index) => (
+                <ul key={index} className={styles.paragraph}>
+                    <h3 className={styles.title}>{slice.primary.topic}</h3>
+                    {slice.items.map((item) => (
+                        <div>
+                            <p className={styles.text}>{item.item}</p>
+                            <p className={styles.description}>{item.sub_item}</p>
+                        </div>
+                    ))}
+                </ul>
+            ))}
         </div>
     </div>
 )}

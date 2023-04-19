@@ -14,7 +14,10 @@
   },
   "slices": {
     "Profile": {
-      "default": {
+      "profile": {
+        "primary": {}
+      },
+      "accomplishments": {
         "primary": {}
       }
     }
