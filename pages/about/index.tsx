@@ -25,6 +25,7 @@ export interface IAbout {
 }
 
 const About: FC<IAbout> = (data) => {
+
   return <>
     <Head>
       <title>KAND | About</title>
@@ -39,11 +40,11 @@ const About: FC<IAbout> = (data) => {
 
       <SeparatorLine />
 
-      <Profile />
+      <Profile data={data} />
 
       <SeparatorLine />
 
-      <Profile />
+      <Profile data={data} />
 
       <SeparatorLine />
 
@@ -56,7 +57,7 @@ const About: FC<IAbout> = (data) => {
       <SeparatorLine />
 
       <Image className={styles.bottom__icon} src={DuoSvg} alt="World"/>
-    </div>          
+    </div>
   </>
 }
 
