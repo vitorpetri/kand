@@ -7,6 +7,8 @@ import AtomoSvg from 'public/atomo.svg'
 
 import styles from './styles.module.sass'
 
+import Crew from '@/components/Crew'
+
 import * as prismicH from "@prismicio/helpers"
 
 export default function Projects({project}) {
@@ -45,30 +47,22 @@ export default function Projects({project}) {
         )}})}
 
       <ul className={styles.numbers}>
-        <li className={styles.numbers__item}>
-          <p className={styles.numbers__title}>300 MM</p>
-          <p className={styles.numbers__description}>people reached</p>
-        </li>
-        <li className={styles.numbers__item}>
-          <p className={styles.numbers__title}>157 K</p>
-          <p className={styles.numbers__description}>bananas</p>
-        </li>
-        <li className={styles.numbers__item}>
-          <p className={styles.numbers__title}>19 MM</p>
-          <p className={styles.numbers__description}>polichinelos</p>
-        </li>
+        {/* {project.forEach(numbers => { */}
+        {project.numbers.map((number, index) => { return (
+          <li className={styles.numbers__item} key={index}>
+            <div className={styles.numbers__title}>{number.title}</div>
+            <div className={styles.numbers__description}>{number.description}</div>
+          </li>
+        )})}
       </ul>
 
       <div className={styles.banner}>
-        <div className={styles.banner__title}>This was the most awarded campaign</div>
-        <div className={styles.banner__description}>in the history of the Hungarian ad industry.</div>
+        <div className={styles.banner__title}>{project.banner_title}</div>
+        <div className={styles.banner__description}>{project.banner_description}</div>
       </div>
 
       <div className={styles.info}>
-        <div className={styles.crew}>
-          <div className={styles.crew__title}>Crew</div>
-          <button className={styles.crew__button}>+</button>
-        </div>
+        <Crew data={project} />
 
         <div className={styles.categories}>
           <div className={styles.categories__title}>Categories</div>
@@ -98,6 +92,8 @@ export async function getServerSideProps(context) {
   if (!res) return { notFound: true }
 
   const project = res.data
+
+  console.log(project.numbers[0].title)
 
   return {
     props: {
