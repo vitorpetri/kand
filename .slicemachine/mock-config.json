@@ -1,7 +1,6 @@
 {
   "_cts": {
     "about": {
-      "profile": {},
       "description": {}
     },
     "home": {},
@@ -14,7 +13,17 @@
   },
   "slices": {
     "Profile": {
-      "default": {
+      "profile": {
+        "primary": {}
+      },
+      "accomplishments": {
+        "primary": {}
+      },
+      "industryClients": {
+        "primary": {}
+      },
+      "awardCategories": {
+        "items": {},
         "primary": {}
       }
     }

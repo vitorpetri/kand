@@ -31,17 +31,6 @@ interface AboutDocumentData {
      */
     description: prismicT.GroupField<Simplify<AboutDocumentDataDescriptionItem>>;
     /**
-     * Profile field in *About*
-     *
-     * - **Field Type**: Group
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[]
-     * - **Tab**: Main
-     * - **Documentation**: https://prismic.io/docs/core-concepts/group
-     *
-     */
-    profile: prismicT.GroupField<Simplify<AboutDocumentDataProfileItem>>;
-    /**
      * Clients field in *About*
      *
      * - **Field Type**: Group
@@ -74,6 +63,50 @@ interface AboutDocumentData {
      *
      */
     slices: prismicT.SliceZone<AboutDocumentDataSlicesSlice>;
+    /**
+     * Clients - Title field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.client_title
+     * - **Tab**: Clients
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    client_title: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *About*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.slices1[]
+     * - **Tab**: Clients
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices1: prismicT.SliceZone<AboutDocumentDataSlices1Slice>;
+    /**
+     * Awards - Title field in *About*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.award_title
+     * - **Tab**: Awards
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    award_title: prismicT.KeyTextField;
+    /**
+     * Slice Zone field in *About*
+     *
+     * - **Field Type**: Slice Zone
+     * - **Placeholder**: *None*
+     * - **API ID Path**: about.slices2[]
+     * - **Tab**: Awards
+     * - **Documentation**: https://prismic.io/docs/core-concepts/slices
+     *
+     */
+    slices2: prismicT.SliceZone<AboutDocumentDataSlices2Slice>;
 }
 /**
  * Item in About → Description
@@ -100,82 +133,6 @@ export interface AboutDocumentDataDescriptionItem {
      *
      */
     text: prismicT.KeyTextField;
-}
-/**
- * Item in About → Profile
- *
- */
-export interface AboutDocumentDataProfileItem {
-    /**
-     * Name field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].name
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    name: prismicT.KeyTextField;
-    /**
-     * Last Name field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].last_name
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    last_name: prismicT.KeyTextField;
-    /**
-     * Role field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].role
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    role: prismicT.KeyTextField;
-    /**
-     * Image field in *About → Profile*
-     *
-     * - **Field Type**: Image
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].image
-     * - **Documentation**: https://prismic.io/docs/core-concepts/image
-     *
-     */
-    image: prismicT.ImageField<never>;
-    /**
-     * Topic field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].topic
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    topic: prismicT.KeyTextField;
-    /**
-     * Item field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].item
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    item: prismicT.KeyTextField;
-    /**
-     * Sub Item field in *About → Profile*
-     *
-     * - **Field Type**: Text
-     * - **Placeholder**: *None*
-     * - **API ID Path**: about.profile[].sub_item
-     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
-     *
-     */
-    sub_item: prismicT.KeyTextField;
 }
 /**
  * Item in About → Clients
@@ -244,6 +201,16 @@ export interface AboutDocumentDataAwardsItem {
  *
  */
 type AboutDocumentDataSlicesSlice = ProfileSlice;
+/**
+ * Slice for *About → Slice Zone*
+ *
+ */
+type AboutDocumentDataSlices1Slice = ProfileSlice;
+/**
+ * Slice for *About → Slice Zone*
+ *
+ */
+type AboutDocumentDataSlices2Slice = ProfileSlice;
 /**
  * About document from Prismic
  *
@@ -566,6 +533,41 @@ export type AllDocumentTypes = AboutDocument | ContactDocument | HomeDocument | 
  */
 interface ProfileSliceDefaultPrimary {
     /**
+     * Title field in *Profile → Primary*
+     *
+     * - **Field Type**: Title
+     * - **Placeholder**: This is where it all begins...
+     * - **API ID Path**: profile.primary.title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    title: prismicT.TitleField;
+    /**
+     * Description field in *Profile → Primary*
+     *
+     * - **Field Type**: Rich Text
+     * - **Placeholder**: A nice description of your feature
+     * - **API ID Path**: profile.primary.description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/rich-text-title
+     *
+     */
+    description: prismicT.RichTextField;
+}
+/**
+ * Default variation for Profile Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: `Profile`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProfileSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ProfileSliceDefaultPrimary>, never>;
+/**
+ * Primary content in Profile → Primary
+ *
+ */
+interface ProfileSliceProfilePrimary {
+    /**
      * Name field in *Profile → Primary*
      *
      * - **Field Type**: Text
@@ -607,20 +609,35 @@ interface ProfileSliceDefaultPrimary {
     image: prismicT.ImageField<never>;
 }
 /**
- * Item in Profile → Items
+ * Profile variation for Profile Slice
+ *
+ * - **API ID**: `profile`
+ * - **Description**: `Profile`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export interface ProfileSliceDefaultItem {
+export type ProfileSliceProfile = prismicT.SharedSliceVariation<"profile", Simplify<ProfileSliceProfilePrimary>, never>;
+/**
+ * Primary content in Profile → Primary
+ *
+ */
+interface ProfileSliceAccomplishmentsPrimary {
     /**
-     * Topic field in *Profile → Items*
+     * Topic field in *Profile → Primary*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: profile.items[].topic
+     * - **API ID Path**: profile.primary.topic
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
     topic: prismicT.KeyTextField;
+}
+/**
+ * Item in Profile → Items
+ *
+ */
+export interface ProfileSliceAccomplishmentsItem {
     /**
      * Item field in *Profile → Items*
      *
@@ -643,19 +660,111 @@ export interface ProfileSliceDefaultItem {
     sub_item: prismicT.KeyTextField;
 }
 /**
- * Default variation for Profile Slice
+ * Accomplishments variation for Profile Slice
  *
- * - **API ID**: `default`
+ * - **API ID**: `accomplishments`
  * - **Description**: `Profile`
  * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
  *
  */
-export type ProfileSliceDefault = prismicT.SharedSliceVariation<"default", Simplify<ProfileSliceDefaultPrimary>, Simplify<ProfileSliceDefaultItem>>;
+export type ProfileSliceAccomplishments = prismicT.SharedSliceVariation<"accomplishments", Simplify<ProfileSliceAccomplishmentsPrimary>, Simplify<ProfileSliceAccomplishmentsItem>>;
+/**
+ * Primary content in Profile → Primary
+ *
+ */
+interface ProfileSliceIndustryClientsPrimary {
+    /**
+     * Topic field in *Profile → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.primary.topic
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    topic: prismicT.KeyTextField;
+}
+/**
+ * Item in Profile → Items
+ *
+ */
+export interface ProfileSliceIndustryClientsItem {
+    /**
+     * Logo field in *Profile → Items*
+     *
+     * - **Field Type**: Link to Media
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.items[].logo
+     * - **Documentation**: https://prismic.io/docs/core-concepts/link-content-relationship
+     *
+     */
+    logo: prismicT.LinkToMediaField;
+}
+/**
+ * Industry Clients variation for Profile Slice
+ *
+ * - **API ID**: `industryClients`
+ * - **Description**: `Profile`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProfileSliceIndustryClients = prismicT.SharedSliceVariation<"industryClients", Simplify<ProfileSliceIndustryClientsPrimary>, Simplify<ProfileSliceIndustryClientsItem>>;
+/**
+ * Primary content in Profile → Primary
+ *
+ */
+interface ProfileSliceAwardCategoriesPrimary {
+    /**
+     * Award field in *Profile → Primary*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.primary.award
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    award: prismicT.KeyTextField;
+}
+/**
+ * Item in Profile → Items
+ *
+ */
+export interface ProfileSliceAwardCategoriesItem {
+    /**
+     * Title field in *Profile → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.items[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Sub Title field in *Profile → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.items[].sub_title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    sub_title: prismicT.KeyTextField;
+}
+/**
+ * Award Categories variation for Profile Slice
+ *
+ * - **API ID**: `awardCategories`
+ * - **Description**: `Profile`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/reusing-slices
+ *
+ */
+export type ProfileSliceAwardCategories = prismicT.SharedSliceVariation<"awardCategories", Simplify<ProfileSliceAwardCategoriesPrimary>, Simplify<ProfileSliceAwardCategoriesItem>>;
 /**
  * Slice variation for *Profile*
  *
  */
-type ProfileSliceVariation = ProfileSliceDefault;
+type ProfileSliceVariation = ProfileSliceDefault | ProfileSliceProfile | ProfileSliceAccomplishments | ProfileSliceIndustryClients | ProfileSliceAwardCategories;
 /**
  * Profile Shared Slice
  *
@@ -670,6 +779,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataProfileItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefaultItem, ProfileSliceDefault, ProfileSliceVariation, ProfileSlice };
+        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataClientsItem, AboutDocumentDataAwardsItem, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocumentDataSlices2Slice, AboutDocument, ContactDocumentData, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefault, ProfileSliceProfilePrimary, ProfileSliceProfile, ProfileSliceAccomplishmentsPrimary, ProfileSliceAccomplishmentsItem, ProfileSliceAccomplishments, ProfileSliceIndustryClientsPrimary, ProfileSliceIndustryClientsItem, ProfileSliceIndustryClients, ProfileSliceAwardCategoriesPrimary, ProfileSliceAwardCategoriesItem, ProfileSliceAwardCategories, ProfileSliceVariation, ProfileSlice };
     }
 }

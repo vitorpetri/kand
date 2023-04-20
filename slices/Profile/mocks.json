@@ -3,32 +3,66 @@
     "__TYPE__": "SharedSliceContent",
     "variation": "default",
     "primary": {
+      "title": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "heading1",
+            "content": {
+              "text": "Frozen"
+            }
+          }
+        ]
+      },
+      "description": {
+        "__TYPE__": "StructuredTextContent",
+        "value": [
+          {
+            "type": "paragraph",
+            "content": {
+              "text": "Magna anim ad esse in ullamco magna laboris aliquip reprehenderit non."
+            }
+          }
+        ]
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "profile",
+    "primary": {
       "name": {
         "__TYPE__": "FieldContent",
-        "value": "policeman",
+        "value": "flag",
         "type": "Text"
       },
       "last_name": {
         "__TYPE__": "FieldContent",
-        "value": "observe",
+        "value": "younger",
         "type": "Text"
       },
       "role": {
         "__TYPE__": "FieldContent",
-        "value": "serve",
+        "value": "herd",
         "type": "Text"
       },
       "image": {
         "__TYPE__": "ImageContent",
         "origin": {
           "id": "main",
-          "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
-          "width": 3024,
-          "height": 3778
+          "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+          "width": 3168,
+          "height": 4752
         },
-        "url": "https://images.unsplash.com/photo-1531771686035-25f47595c87a",
-        "width": 3024,
-        "height": 3778,
+        "url": "https://images.unsplash.com/photo-1589321578146-4c1ba445cc88",
+        "width": 3168,
+        "height": 4752,
         "edit": {
           "zoom": 1,
           "crop": {
@@ -43,20 +77,29 @@
     "items": [
       {
         "__TYPE__": "GroupItemContent",
+        "value": []
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "accomplishments",
+    "primary": {
+      "topic": {
+        "__TYPE__": "FieldContent",
+        "value": "tide",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
         "value": [
-          [
-            "topic",
-            {
-              "__TYPE__": "FieldContent",
-              "value": "forgotten",
-              "type": "Text"
-            }
-          ],
           [
             "item",
             {
               "__TYPE__": "FieldContent",
-              "value": "just",
+              "value": "ship",
               "type": "Text"
             }
           ],
@@ -64,7 +107,73 @@
             "sub_item",
             {
               "__TYPE__": "FieldContent",
-              "value": "could",
+              "value": "sale",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "industryClients",
+    "primary": {
+      "topic": {
+        "__TYPE__": "FieldContent",
+        "value": "piece",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "logo",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "id": "mock_Media_link",
+                "kind": "image/jpeg",
+                "name": "mock_name",
+                "url": "https://source.unsplash.com/daily",
+                "size": "0",
+                "__TYPE__": "FileLink"
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "awardCategories",
+    "primary": {
+      "award": {
+        "__TYPE__": "FieldContent",
+        "value": "die",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "interest",
+              "type": "Text"
+            }
+          ],
+          [
+            "sub_title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "weather",
               "type": "Text"
             }
           ]
