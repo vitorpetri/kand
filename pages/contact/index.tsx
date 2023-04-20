@@ -2,7 +2,16 @@ import Head from 'next/head'
 
 import styles from './styles.module.sass'
 
-export default function Categories() {
+import { createClient } from '../../prismicio'
+import sm from '../../sm.json'
+
+type Page = {
+  data: {
+    title: string
+  }
+}
+
+export default function Categories(data) {
   return <>
     <Head>
       <title>KAND | Categories</title>
@@ -10,9 +19,7 @@ export default function Categories() {
 
     <div className={styles.wrapper}>
       <div className={styles.text}>
-        We're always up for a chat, <br />
-        beer or to talk about any project. <br />
-        So feel free to reach out ay any time.
+        {data.paragraph}
       </div>
 
       <div className={styles.duo}>
@@ -48,4 +55,15 @@ export default function Categories() {
       <a className={styles.email} href="mailto:kaueanddaltro@gmail.com">kaueanddaltro@gmail.com</a>
     </div>
   </>
+}
+
+export async function getServerSideProps() {
+  const client = createClient({ accessToken: sm.token })
+
+  const contact = await client.getByType('contact')
+  const data = contact?.results[0]?.data
+
+  return {
+    props: { ...data },
+  }
 }

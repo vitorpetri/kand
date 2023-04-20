@@ -1,7 +1,96 @@
 {
   "paragraph": {
     "__TYPE__": "FieldContent",
-    "value": "suggest",
+    "value": "fresh",
+    "type": "Text"
+  },
+  "info_1": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "name",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "public",
+              "type": "Text"
+            }
+          ],
+          [
+            "social_1",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "master",
+              "type": "Text"
+            }
+          ],
+          [
+            "social_2",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "divide",
+              "type": "Text"
+            }
+          ],
+          [
+            "phone",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "once",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "info_2": {
+    "__TYPE__": "GroupContentType",
+    "value": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "name",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "something",
+              "type": "Text"
+            }
+          ],
+          [
+            "social_1",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "summer",
+              "type": "Text"
+            }
+          ],
+          [
+            "social_2",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "south",
+              "type": "Text"
+            }
+          ],
+          [
+            "phone",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "verb",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  "email": {
+    "__TYPE__": "FieldContent",
+    "value": "easy",
     "type": "Text"
   }
 }
