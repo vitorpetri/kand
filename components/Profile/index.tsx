@@ -6,12 +6,7 @@ import * as prismicH from "@prismicio/helpers"
 export default function Profile({ data }) {
 
     const profile = data.slices.find((slice) => slice.variation === 'profile')
-
-    console.log(profile);
-
     const accomplishments = data.slices.filter((slice) => slice.variation === 'accomplishments')
-
-    console.log(accomplishments)
 
     // profile.items.forEach(item => {
     //     console.log(item)

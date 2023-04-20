@@ -97,6 +97,46 @@
           }
         }
       }
+    },
+    "Clients": {
+      "client_title": {
+        "type": "Text",
+        "config": {
+          "label": "Clients - Title",
+          "placeholder": ""
+        }
+      },
+      "slices1": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "profile": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
+    },
+    "Awards": {
+      "award_title": {
+        "type": "Text",
+        "config": {
+          "label": "Awards - Title",
+          "placeholder": ""
+        }
+      },
+      "slices2": {
+        "type": "Slices",
+        "fieldset": "Slice Zone",
+        "config": {
+          "choices": {
+            "profile": {
+              "type": "SharedSlice"
+            }
+          }
+        }
+      }
     }
   }
 }

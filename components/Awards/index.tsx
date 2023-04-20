@@ -1,122 +1,65 @@
+import React from 'react'
 import styles from './styles.module.sass'
 
-export default function Awards() {
-  return <div className={styles.wrapper}>
-    <h1 className={styles.title}>Awards</h1>
-    
-    <div className={styles.content}>
-      <div className={styles.awards__wrapper}>
-        <div className={styles.awards__title}>Professional Awards</div>
-        <ul className={styles.awards}>
-          
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-              <li className={styles.award__item}>1x MERIT</li>
-            </ul>
-          </li>
+function addLineBreak(str) {
+    const lines = str.split('\n')
+    const modifiedLines = lines.map((line, index) => (
+      <React.Fragment key={index}>
+        {line}
+        {index < lines.length - 1 && <br />}
+      </React.Fragment>
+    ))
+    return modifiedLines
+  }
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-            </ul>
-          </li>
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-              <li className={styles.award__item}>1x MERIT</li>
-            </ul>
-          </li>
+export default function Awards({ data }) {
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-            </ul>
-          </li>
+    const awards = data.slices2.filter((slice) => slice.variation === 'awardCategories')
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-              <li className={styles.award__item}>1x MERIT</li>
-            </ul>
-          </li>
+    console.log(awards)
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-            </ul>
-          </li>
+    awards.map(slice => {
+        slice.items.map((item) => {
+            console.log(item.title, item.sub_title);
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-              <li className={styles.award__item}>1x MERIT</li>
-            </ul>
-          </li>
+        })
+    })
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-            </ul>
-          </li>
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-              <li className={styles.award__item}>1x MERIT</li>
-            </ul>
-          </li>
+    return <div className={styles.wrapper}>
+        <h1 className={styles.title}>{data.award_title}</h1>
 
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
-
-      <div className={styles.awards__wrapper}>
-        <div className={styles.awards__title}>Professional Awards</div>
-        <ul className={styles.awards}>
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-              <li className={styles.award__item}>1x MERIT</li>
-            </ul>
-          </li>
-
-          <li className={styles.award}>
-            <h3 className={styles.award__title}>ONE SHOW</h3>
-            <ul className={styles.award__list}>
-              <li className={styles.award__item}>1x BRONZE</li>
-              <li className={styles.award__item}>1x SHORTLIST</li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+        <div className={styles.content}>
+            {awards.map(slice => (
+                <div className={styles.awards__wrapper}>
+                    <div className={styles.awards__title}>{slice.primary.award}</div>
+                    <ul className={styles.awards}>
+                        {slice.items.map(item => (
+                            <li className={styles.award}>
+                                <h3 className={styles.award__title}>{item.title}</h3>
+                                <p className={styles.award__item}>{addLineBreak(item.sub_title)}</p>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            ))}
+        </div>
     </div>
-  </div>
 }
+
+/*
+<div className={styles.awards__title}>Professional Awards</div>
+        <ul className={styles.awards}>
+
+          <li className={styles.award}>
+            <h3 className={styles.award__title}>ONE SHOW</h3>
+            <ul className={styles.award__list}>
+              <li className={styles.award__item}>1x BRONZE</li>
+              <li className={styles.award__item}>1x SHORTLIST</li>
+              <li className={styles.award__item}>1x MERIT</li>
+            </ul>
+          </li>
+
+          </ul>
+*/

@@ -44,15 +44,11 @@ const About: FC<IAbout> = (data) => {
 
       <SeparatorLine />
 
-      <Profile data={data} />
-
-      <SeparatorLine />
-
       <Clients data={data} />
 
       <SeparatorLine />
 
-      <Awards />
+      <Awards data={data} />
 
       <SeparatorLine />
 

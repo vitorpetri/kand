@@ -13,3 +13,9 @@ _Profile.storyName = ''
 
 export const _Accomplishments = () => <MyComponent slice={{"variation":"accomplishments","version":"sktwi1xtmkfgx8626","items":[{"item":"usually","sub_item":"view"}],"primary":{"topic":"contain"},"id":"_Accomplishments","slice_type":"profile"}} />
 _Accomplishments.storyName = ''
+
+export const _IndustryClients = () => <MyComponent slice={{"variation":"industryClients","version":"sktwi1xtmkfgx8626","items":[{"logo":{"link_type":"Media","name":"mock","kind":"image","url":"https://source.unsplash.com/random","size":"10kB"}}],"primary":{"topic":"cabin"},"id":"_IndustryClients","slice_type":"profile"}} />
+_IndustryClients.storyName = ''
+
+export const _AwardCategories = () => <MyComponent slice={{"variation":"awardCategories","version":"sktwi1xtmkfgx8626","items":[{"title":"cave","sub_title":"screen"}],"primary":{"award":"shut"},"id":"_AwardCategories","slice_type":"profile"}} />
+_AwardCategories.storyName = ''

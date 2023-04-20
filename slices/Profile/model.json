@@ -103,6 +103,66 @@
         }
       },
       "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "industryClients",
+      "name": "Industry Clients",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Profile",
+      "primary": {
+        "topic": {
+          "type": "Text",
+          "config": {
+            "label": "Topic",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "logo": {
+          "type": "Link",
+          "config": {
+            "label": "Logo",
+            "placeholder": "",
+            "select": "media"
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
+    },
+    {
+      "id": "awardCategories",
+      "name": "Award Categories",
+      "docURL": "...",
+      "version": "sktwi1xtmkfgx8626",
+      "description": "Profile",
+      "primary": {
+        "award": {
+          "type": "Text",
+          "config": {
+            "label": "Award",
+            "placeholder": ""
+          }
+        }
+      },
+      "items": {
+        "title": {
+          "type": "Text",
+          "config": {
+            "label": "Title",
+            "placeholder": ""
+          }
+        },
+        "sub_title": {
+          "type": "Text",
+          "config": {
+            "label": "Sub Title",
+            "placeholder": ""
+          }
+        }
+      },
+      "imageUrl": "https://images.prismic.io/slice-machine/621a5ec4-0387-4bc5-9860-2dd46cbc07cd_default_ss.png?auto=compress,format"
     }
   ]
 }

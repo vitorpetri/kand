@@ -116,5 +116,71 @@
         ]
       }
     ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "industryClients",
+    "primary": {
+      "topic": {
+        "__TYPE__": "FieldContent",
+        "value": "cabin",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "logo",
+            {
+              "__TYPE__": "LinkContent",
+              "value": {
+                "id": "mock_Media_link",
+                "kind": "image/jpeg",
+                "name": "mock_name",
+                "url": "https://source.unsplash.com/daily",
+                "size": "0",
+                "__TYPE__": "FileLink"
+              }
+            }
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "__TYPE__": "SharedSliceContent",
+    "variation": "awardCategories",
+    "primary": {
+      "award": {
+        "__TYPE__": "FieldContent",
+        "value": "shut",
+        "type": "Text"
+      }
+    },
+    "items": [
+      {
+        "__TYPE__": "GroupItemContent",
+        "value": [
+          [
+            "title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "cave",
+              "type": "Text"
+            }
+          ],
+          [
+            "sub_title",
+            {
+              "__TYPE__": "FieldContent",
+              "value": "screen",
+              "type": "Text"
+            }
+          ]
+        ]
+      }
+    ]
   }
 ]
