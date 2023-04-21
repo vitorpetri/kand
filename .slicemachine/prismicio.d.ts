@@ -210,6 +210,16 @@ export interface ContactDocumentDataInfo1Item {
      */
     social_1: prismicT.KeyTextField;
     /**
+     * Social 1 Link field in *Contact → Info 1*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.info_1[].social_1_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    social_1_link: prismicT.KeyTextField;
+    /**
      * Social 2 field in *Contact → Info 1*
      *
      * - **Field Type**: Text
@@ -219,6 +229,16 @@ export interface ContactDocumentDataInfo1Item {
      *
      */
     social_2: prismicT.KeyTextField;
+    /**
+     * Social 2 Link field in *Contact → Info 1*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.info_1[].social_2_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    social_2_link: prismicT.KeyTextField;
     /**
      * Phone field in *Contact → Info 1*
      *
@@ -256,6 +276,16 @@ export interface ContactDocumentDataInfo2Item {
      */
     social_1: prismicT.KeyTextField;
     /**
+     * Social 1 Link field in *Contact → Info 2*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.info_2[].social_1_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    social_1_link: prismicT.KeyTextField;
+    /**
      * Social 2 field in *Contact → Info 2*
      *
      * - **Field Type**: Text
@@ -265,6 +295,16 @@ export interface ContactDocumentDataInfo2Item {
      *
      */
     social_2: prismicT.KeyTextField;
+    /**
+     * Social 2 Link field in *Contact → Info 2*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.info_2[].social_2_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    social_2_link: prismicT.KeyTextField;
     /**
      * Phone field in *Contact → Info 2*
      *
@@ -474,6 +514,39 @@ interface ProjectDocumentData {
      */
     crew: prismicT.GroupField<Simplify<ProjectDocumentDataCrewItem>>;
     /**
+     * Banner Title field in *Project*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.banner_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    banner_title: prismicT.KeyTextField;
+    /**
+     * Banner Description field in *Project*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.banner_description
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    banner_description: prismicT.KeyTextField;
+    /**
+     * Numbers field in *Project*
+     *
+     * - **Field Type**: Group
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.numbers[]
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/group
+     *
+     */
+    numbers: prismicT.GroupField<Simplify<ProjectDocumentDataNumbersItem>>;
+    /**
      * Content field in *Project*
      *
      * - **Field Type**: Group
@@ -510,6 +583,32 @@ export interface ProjectDocumentDataCrewItem {
      *
      */
     name: prismicT.KeyTextField;
+}
+/**
+ * Item in Project → Numbers
+ *
+ */
+export interface ProjectDocumentDataNumbersItem {
+    /**
+     * Title field in *Project → Numbers*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.numbers[].title
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    title: prismicT.KeyTextField;
+    /**
+     * Description field in *Project → Numbers*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: project.numbers[].description
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    description: prismicT.KeyTextField;
 }
 /**
  * Item in Project → Content
@@ -820,6 +919,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocumentDataSlices2Slice, AboutDocument, ContactDocumentData, ContactDocumentDataInfo1Item, ContactDocumentDataInfo2Item, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefault, ProfileSliceProfilePrimary, ProfileSliceProfile, ProfileSliceAccomplishmentsPrimary, ProfileSliceAccomplishmentsItem, ProfileSliceAccomplishments, ProfileSliceIndustryClientsPrimary, ProfileSliceIndustryClientsItem, ProfileSliceIndustryClients, ProfileSliceAwardCategoriesPrimary, ProfileSliceAwardCategoriesItem, ProfileSliceAwardCategories, ProfileSliceVariation, ProfileSlice };
+        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocumentDataSlices2Slice, AboutDocument, ContactDocumentData, ContactDocumentDataInfo1Item, ContactDocumentDataInfo2Item, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataNumbersItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefault, ProfileSliceProfilePrimary, ProfileSliceProfile, ProfileSliceAccomplishmentsPrimary, ProfileSliceAccomplishmentsItem, ProfileSliceAccomplishments, ProfileSliceIndustryClientsPrimary, ProfileSliceIndustryClientsItem, ProfileSliceIndustryClients, ProfileSliceAwardCategoriesPrimary, ProfileSliceAwardCategoriesItem, ProfileSliceAwardCategories, ProfileSliceVariation, ProfileSlice };
     }
 }
