@@ -10,10 +10,10 @@ export const repositoryName = prismic.getRepositoryName(sm.apiEndpoint)
 // Update the routes array to match your project's route structure
 /** @type {prismic.ClientConfig['routes']} **/
 const routes = [
-  {
-    type: 'about',
-    path: '/about',
-  },
+    {
+        type: 'about',
+        path: '/about',
+    },
 ]
 
 /**
@@ -23,16 +23,16 @@ const routes = [
  * @param config {prismicNext.CreateClientConfig} - Configuration for the Prismic client.
  */
 export const createClient = (config = {}) => {
-  const client = prismic.createClient(sm.apiEndpoint, {
-    routes,
-    ...config,
-  })
+    const client = prismic.createClient(sm.apiEndpoint, {
+        routes,
+        ...config,
+    })
 
-  prismicNext.enableAutoPreviews({
-    client,
-    previewData: config.previewData,
-    req: config.req,
-  })
+    prismicNext.enableAutoPreviews({
+        client,
+        previewData: config.previewData,
+        req: config.req,
+    })
 
-  return client
+    return client
 }

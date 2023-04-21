@@ -30,7 +30,7 @@
     margin-top: 3.4vh
     font-size: 14.8rem
     letter-spacing: -0.32rem
-  
+
 .filters
   display: flex
   flex-wrap: wrap
@@ -41,6 +41,13 @@
 
   @include media('<=phone')
     margin-top: 14rem
+
+.active
+  background-color: $primary
+  color: $black !important
+
+  &:before
+    background-color: $black  !important
 
 .category
   height: 4.4rem
@@ -62,7 +69,7 @@
     position: absolute
     width: 0.85rem
     height: 0.85rem
-    background: $white
+    background-color: $white
     border-radius: 999rem
     left: 2.4rem
     top: 50%
@@ -70,15 +77,15 @@
     transition: all 450ms cubic-bezier(0.77, 0, 0.175, 1)
 
   &:hover
-    background: $primary
+    background-color: $primary
     color: $black
 
     &:before
-      background: $black
+      background-color: $black
 
   @include media('<=phone')
-    background: $black
-  
+    background-color: $black
+
 .footer__label
   margin-top: 6vh
   color: #7d7d73
