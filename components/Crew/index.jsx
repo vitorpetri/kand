@@ -4,7 +4,7 @@ import GSAP from 'gsap'
 
 import Line from '@/components/Line'
 
-export default function Crew({project}) {
+export default function Crew({data}) {
   const [isActive, setIsActive] = useState(false)
 
   const toggle = () => setIsActive(!isActive)
@@ -40,31 +40,21 @@ export default function Crew({project}) {
         <h1 className={styles.crew__box__button__icon}> - </h1>
       </div>
       <div className={styles.crew__box__content}>
-        <ul className={styles.crew__box__list}>
-          {/* PRISMIC REPEATABLE */}
-          <li className={styles.crew__box__item}>
-            <h3 className={styles.crew__box__item__title}>Angency</h3>
-            {/* PRISMIC REPEATABLE */}
-            <p className={styles.crew__box__item__text}>White Rabbit Budappest</p>
-          </li>
-        </ul>
+        <div className={styles.crew__box__list}>
+        {data.crew.map((crew, index) => {
+          if (crew.title) { return (
+            <h3 key={index} onClick={() => {}} className={styles.crew__title}>
+              {crew.title}
+            </h3>
+          )} else if (crew.name) { return (
+            <p key={index} onClick={() => {}} className={styles.crew__name}>
+              {crew.name}
+            </p>
+          )}
+        })}
+        </div>
         <img className={styles.crew__box__icon} src="" alt="" />
     </div>
-
-    {/* {project.crew.map((crew, index) => {
-      if (crew.title) { return (
-      <h3 key={index} onClick={() => {}} className={styles.crew__title}>
-        {crew.title ? crew.title : ''}
-      </h3>
-    )}})}
-
-    <div className={styles.crew__text}>
-      {project.crew.map((crew, index) => {
-        if (crew.text) { return (
-        <p key={index} onClick={() => {}} className={styles.crew__paragraph}>
-          {crew.text ? crew.text : ''}
-        </p>
-      )}})} */}
     </div>
     <Line />
   </div>
