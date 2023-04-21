@@ -18,7 +18,7 @@ export default function Projects({project}) {
         <div className={styles.client_label}>Client</div>
         <div className={styles.client}>{project.client}</div>
 
-        <div className={styles.title}>{project.title}</div>
+        <div className={styles.title} dangerouslySetInnerHTML={{ __html: project.title }} />
 
         <div className={styles.agency_label}>Agency</div>
         <div className={styles.agency}>{project.agency}</div>
