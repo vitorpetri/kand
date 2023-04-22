@@ -30,7 +30,6 @@ function profileMapping(slices) {
 }
 
 export default function Profile({ data }) {
-
     // Profile with Accomplishments
     const PWA = profileMapping(data.slices)
 
@@ -60,10 +59,10 @@ export default function Profile({ data }) {
                     <ul key={index} className={styles.paragraph}>
                     <h3 className={styles.title}>{slice.primary.topic}</h3>
                     {slice.items.map((item, itemIndex) => (
-                        <div key={itemIndex}>
+                        <a href={item.link} target='blank' key={itemIndex}>
                         <p className={styles.text}>{item.item}</p>
                         <p className={styles.description}>{item.sub_item}</p>
-                        </div>
+                        </a>
                     ))}
                     </ul>
                 ))}
