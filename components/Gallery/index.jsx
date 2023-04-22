@@ -29,7 +29,7 @@ export default function Gallery({ projectsList }) {
             alt={title}
           />
           </Link>
-          <h3 className={styles.project__title}>{title}</h3>
+          <h3 className={styles.project__title} dangerouslySetInnerHTML={{ __html: title }} />
         </div>
       ))}
     </aside>
