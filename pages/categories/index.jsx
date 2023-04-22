@@ -13,27 +13,37 @@ import sm from '../../sm.json'
 
 export default function Categories({ projectsList, allTags }) {
 
-    const [activeCategories, setActiveCategories] = useState([]);
+    // const [activeCategories, setActiveCategories] = useState([]);
+
+    const [activeCategory, setActiveCategory] = useState(null);
+
+    // const toggleActive = (index) => {
+    //     if (activeCategories.includes(index)) {
+    //         // Remove the index from activeCategories if it's already there
+    //         setActiveCategories(activeCategories.filter((item) => item !== index));
+    //     } else {
+    //         // Add the index to activeCategories if it's not there
+    //         setActiveCategories([...activeCategories, index]);
+    //     }
+    // };
 
     const toggleActive = (index) => {
-        if (activeCategories.includes(index)) {
-            // Remove the index from activeCategories if it's already there
-            setActiveCategories(activeCategories.filter((item) => item !== index));
-        } else {
-            // Add the index to activeCategories if it's not there
-            setActiveCategories([...activeCategories, index]);
-        }
-    };
+        setActiveCategory(index === activeCategory ? null : index);
+      };
 
     const filteredProjects = () => {
         // If no categories are selected, show all projects
-        if (activeCategories.length === 0) {
+        // if (activeCategory.length === 0) {
+        //     return projectsList;
+        // }
+        if (activeCategory === null) {
             return projectsList;
         }
 
         // Filter projects based on the selected categories
         return projectsList.filter((project) =>
-            activeCategories.every((index) => project.tags.includes(allTags[index]))
+            // activeCategories.every((index) => project.tags.includes(allTags[index]))
+            project.tags.includes(allTags[activeCategory])
         );
     };
 
@@ -49,9 +59,17 @@ export default function Categories({ projectsList, allTags }) {
 
             <div className={styles.filters}>
                 {allTags.map((tag, index) => (
+                    // <div
+                    //     key={tag}
+                    //     className={`${styles.category} ${activeCategories.includes(index) ? styles.active : ""
+                    //         }`}
+                    //     onClick={() => toggleActive(index)}
+                    // >
+                    //     {tag}
+                    // </div>
                     <div
                         key={tag}
-                        className={`${styles.category} ${activeCategories.includes(index) ? styles.active : ""
+                        className={`${styles.category} ${activeCategory === index ? styles.active : ""
                             }`}
                         onClick={() => toggleActive(index)}
                     >
