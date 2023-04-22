@@ -789,6 +789,16 @@ export interface ProfileSliceAccomplishmentsItem {
      */
     item: prismicT.KeyTextField;
     /**
+     * Link field in *Profile → Items*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: profile.items[].link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    link: prismicT.KeyTextField;
+    /**
      * Sub Item field in *Profile → Items*
      *
      * - **Field Type**: Text
