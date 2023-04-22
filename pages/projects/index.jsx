@@ -2,6 +2,8 @@ import Head from 'next/head'
 import Link from 'next/link'
 
 import styles from './styles.module.sass'
+import GSAP from 'gsap'
+import { useRef, useEffect } from 'react'
 
 import Gallery from '@/components/Gallery/index'
 import SeparatorLine from '@/components/SeparatorLine'
@@ -11,6 +13,20 @@ import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
 export default function Home({projectsList}) {
+  const titleRef = useRef(null)
+  const galleryRef = useRef(null)
+
+  useEffect(() => {
+    const title = titleRef.current
+    const gallery = galleryRef.current
+
+    const tl = GSAP.timeline()
+
+    tl.to(title, { opacity: 0, duration: 0.9, ease: 'power2.out' }, 2)
+    tl.to(gallery, { translateY: '-29rem', duration: 0.9, ease: 'power2.out' }, 2)
+    // tl.to(title, { display: 'none', duration: 0.5 })
+  }, [])
+
   return (
     <>
       <Head>
@@ -18,10 +34,14 @@ export default function Home({projectsList}) {
       </Head>
       
       <div className={styles.wrapper}>
-        <h1 className={styles.title}>All Projects</h1>
-        <div className={styles.line}><Line /></div>
-        <SeparatorLine />
-        <Gallery projectsList={projectsList} />
+        <div className={styles.header} ref={titleRef}>
+          <h1 className={styles.title}>All Projects</h1>
+          <div className={styles.line}><Line /></div>
+          <SeparatorLine />
+        </div>
+        <div ref={galleryRef} className={styles.gallery}>
+          <Gallery projectsList={projectsList} />
+        </div>
         <SeparatorLine />
         <span className={styles.footer__label}>or choose by</span>
         <Link 

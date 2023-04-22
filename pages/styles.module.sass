@@ -5,15 +5,27 @@
   flex-direction: column
   align-items: center
   justify-content: center
-
-  @media (min-width: 480px)
-    // justify-content: flex-start
-
-  @media (max-height: 640px)
-    // justify-content: flex-start
+  overflow: hidden
+  height: calc(100vh - 2rem - 7.2rem - 2rem) //window - top - nav - bottom
 
   @include media('<=phone')
-    // height: calc(100vh - 9.6rem - 3rem - 1rem)
+    height: calc(100vh - 3rem - 9.6rem - 2rem)
+
+    @media (max-height: 800px)
+      height: unset
+      margin: 3rem 0 10rem 0
+      overflow: auto
+      
+      .buttons__wrapper
+        margin-bottom: 4vh
+
+  @media (min-aspect-ratio: 2/1)
+    height: unset
+    margin: 3rem 0 10rem 0
+    overflow: auto
+
+    .buttons__wrapper
+        margin-bottom: 4vh
 
 .title
   font-family: $title
@@ -25,19 +37,27 @@
   gap: 2.8rem
   letter-spacing: 0.2rem
   opacity: 1
+  position: relative
 
   & > div
     position: absolute
 
     &:nth-of-type(1)
       background: $primary
-      top: -74%
-      left: 67%
+      top: 16%
+      left: 22.7%
+      width: 4rem
+      height: 0.32rem
     
     &:nth-of-type(2)
       background: $primary
-      top: 108%
-      left: 67%
+      top: -27%
+      left: 44.5%
+
+    &:nth-of-type(3)
+      background: $primary
+      top: 84%
+      left: 44.5%
 
     @include media('<=phone')
       display: none
@@ -156,7 +176,7 @@
 .buttons__wrapper
   transform: translateX(-6.8rem)
   margin-top: 6.4vh
-  margin-bottom: 8.6vh
+  margin-bottom: 8.4vh
   display: flex
   gap: 4.2rem
 

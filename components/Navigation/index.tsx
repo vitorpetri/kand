@@ -52,35 +52,9 @@ export default function Navigation() {
 
   useEffect(() => {
     const tl = GSAP.timeline({ paused: true })
-    const reverseTl = GSAP.timeline({ paused: true })
+    const tlReverse = GSAP.timeline({ paused: true })
 
-    tl.set(navigationRef.current, { background: '#0B0B0B' })
-
-    if (router.pathname === '/contact') {
-      setTimeout(() => {
-        tl.to(navigationRef.current, { duration: 0, background: '#B3FC03'})
-        GSAP.to('html', { duration: 0, height: '100%' })
-        GSAP.to('body', { duration: 0, height: '100%' })
-        GSAP.to('#__next', { duration: 0, height: '100%' })
-        GSAP.to('.content', { duration: 0, height: 'calc(100% - 8rem)' })
-      }, 500)
-    } else {
-      setTimeout(() => {
-        tl.to(navigationRef.current, { duration: 0, background: '#0B0B0B'})
-        GSAP.to('html', { duration: 0, height: 'unset' })
-        GSAP.to('body', { duration: 0, height: 'unset' })
-        GSAP.to('#__next', { duration: 0, height: 'unset' })
-        GSAP.to('.content', { duration: 0, height: 'unset' })
-      }, 500)
-    }
-    tl.to(menuRef.current, { 
-      duration: 0.6, 
-      opacity: 1, 
-      scale: 1,
-      transformOrigin: '98% 2%',
-      display: 'block', 
-      ease: 'Expo.easeInOut'
-    })
+    tl.to(menuRef.current, { duration: 0.6, opacity: 1, scale: 1,transformOrigin: '98% 2%',display: 'block', ease: 'Expo.easeInOut'})
     tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
     tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
     tl.to(svgRef.current, { duration: 0, color: '#0B0B0B', ease: 'Expo.easeInOut' })
@@ -89,26 +63,25 @@ export default function Navigation() {
     tl.to(btnRef.current, { duration: 0, background: '#0B0B0B', color: '#B3FC03', ease: 'Expo.easeInOut' })
     tl.to(menuContentRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
 
-    reverseTl.to(btnRef.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
+    tlReverse.to(btnRef.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
+    tlReverse.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
+    tlReverse.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
+    tlReverse.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+    tlReverse.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
+    tlReverse.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
+    tlReverse.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
+    tlReverse.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Expo.easeInOut' })
 
     if (router.pathname === '/contact') {
-      reverseTl.to(navigationRef.current, { duration: 0, background: '#B3FC03', ease: 'Expo.easeInOut' })
-    } else {
-      reverseTl.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
-      reverseTl.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
-      reverseTl.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
-      reverseTl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-      reverseTl.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-      reverseTl.to(btnRef.current, { duration: 0, background: '#B3FC03', color:'#0B0B0B', ease: 'Expo.easeInOut' })
+      tl.to(navigationRef.current, { duration: 0, background: '#B3FC03'  })
     }
-    reverseTl.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Expo.easeInOut' })
 
     if (isActive) {
       tl.play()
     } else {
-      reverseTl.play()
+      tlReverse.play()
     }
-  }, [isActive])
+  })
 
   return <>
     <div className={styles.navigation} ref={navigationRef}>

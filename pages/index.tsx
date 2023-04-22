@@ -3,7 +3,7 @@ import MundoSvg from 'public/mundo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
 
-// import Line from '@/components/Line'
+import Line from '@/components/Line'
 import { createClient } from '../prismicio'
 import sm from '../sm.json'
 
@@ -18,11 +18,11 @@ export default function Home(data: any) {
     <div className={styles.wrapper}>
       <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.first_paragraph }} />
       <div className={styles.title}>
-        {/* <div className={styles.accent}></div> */}
+        <div className={styles.accent}></div>
         <h1 className={styles.name}>{ data.first_name }</h1>
-        {/* <Line /> */}
+        <Line />
         <Image priority className={styles.icon} src={MundoSvg} alt="World"/>
-        {/* <Line /> */}
+        <Line />
         <h1 className={styles.name}>{ data.second_name }</h1>
       </div>
       <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
