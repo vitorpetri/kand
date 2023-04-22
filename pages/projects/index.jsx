@@ -8,11 +8,14 @@ import { useRef, useEffect } from 'react'
 import Gallery from '@/components/Gallery/index'
 import SeparatorLine from '@/components/SeparatorLine'
 import Line from '@/components/Line'
+import { useRouter } from 'next/router'
 
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
 export default function Home({projectsList}) {
+  const router = useRouter()
+
   const titleRef = useRef(null)
   const galleryRef = useRef(null)
 
@@ -22,8 +25,8 @@ export default function Home({projectsList}) {
 
     const tl = GSAP.timeline()
 
-    tl.to(title, { opacity: 0, duration: 0.9, ease: 'power2.out' }, 2)
-    tl.to(gallery, { translateY: '-29rem', duration: 0.9, ease: 'power2.out' }, 2)
+    tl.to(title, { opacity: 0, duration: 0.9, ease: 'power2.out' }, 1.5)
+    tl.to(gallery, { translateY: '-29rem', marginBottom: '-39rem', duration: 0.6, ease: 'power2.out' }, 1.5)
     // tl.to(title, { display: 'none', duration: 0.5 })
   }, [])
 
