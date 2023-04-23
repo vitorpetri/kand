@@ -1,25 +1,34 @@
 @import 'styles/utils/index'
 
 .wrapper
-  display: flex
-  flex-direction: column
   padding: 6rem 19rem
-  justify-content: space-between
-  justify-items: center
-  height: calc(100vh - 2rem - 7.2rem - 2rem)
-  // height: 93%
   border-radius: 0 0 1rem 1rem
+  border-top: 1px solid black
+  // the border should be fix. before dont work as well.
   color: $black
   background: $primary
-  border-top: 1px solid black
   
+  display: flex
+  flex-direction: column
+  justify-content: space-between
+  overflow: hidden
+  height: calc(100vh - 2rem - 7.2rem - 2rem) //window - top - nav - bottom
+
   @include media('<=phone')
     transform: translatey(1rem)
     padding: 10rem 6rem
-    // height: calc(100vh - 3rem - 9.6rem - 2rem)
-    height: calc(100% - 2.8rem)
+    height: calc(100vh - 3rem - 9.6rem - 2rem)
 
-.text
+    @media (max-height: 680px)
+      height: unset
+      overflow: auto
+
+  @media (min-aspect-ratio: 3/1.4)
+    height: unset
+    padding: 3.83rem 19rem
+    overflow: auto
+
+.paragraph
   font-size: 3rem
   line-height: 3.8rem
   font-weight: bold
@@ -93,6 +102,7 @@
   font-size: 13.6rem
   font-family: $title
   width: fit-content
+  margin-top: 9rem
 
   &:after
     content: ''

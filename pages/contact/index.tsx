@@ -2,18 +2,24 @@ import Head from 'next/head'
 
 import styles from './styles.module.sass'
 
-export default function Categories() {
+import { createClient } from '../../prismicio'
+import sm from '../../sm.json'
+import { log } from 'console'
+
+type Page = {
+  data: {
+    title: string
+  }
+}
+
+export default function Contact(data) {
   return <>
     <Head>
-      <title>KAND | Categories</title>
+      <title>KAND | Contact</title>
     </Head>
 
     <div className={styles.wrapper}>
-      <div className={styles.text}>
-        We're always up for a chat, <br />
-        beer or to talk about any project. <br />
-        So feel free to reach out ay any time.
-      </div>
+      <div className={styles.paragraph} dangerouslySetInnerHTML={{__html: data.paragraph}} />
 
       <div className={styles.duo}>
         <svg className={styles.olho} viewBox="0 0 650 350" xmlns="http://www.w3.org/2000/svg">
@@ -29,23 +35,34 @@ export default function Categories() {
             strokeLinejoin="round"
           />
         </svg>
-
+        
         <div className={styles.name}>
-          <div className={styles.title}>KAUE</div>
-          <a className={styles.link}href="#">Linkedin</a>
-          <a className={styles.link}href="#">Instagram</a>
-          <span className={styles.phone}>+55 11 9 9990-9819</span>
+          <div className={styles.title}>{ data.info_1[0].name }</div>
+          <a className={styles.link} href={ data.info_1[0].social_1_link } target='blank'>{ data.info_1[0].social_1 }</a>
+          <a className={styles.link} href={ data.info_1[0].social_2_link } target='blank'>{ data.info_1[0].social_2 }</a>
+          <span className={styles.phone}>{ data.info_1[0].phone }</span>
         </div>
 
         <div className={styles.name}>
-          <div className={styles.title}>DALTRO</div>
-          <a className={styles.link}href="#">Linkedin</a>
-          <a className={styles.link}href="#">Instagram</a>
-          <span className={styles.phone}>+55 21 9 8821 1993</span>
+          <div className={styles.title}>{ data.info_2[0].name }</div>
+          <a className={styles.link} href={ data.info_2[0].social_1_link } target='blank'>{ data.info_2[0].social_1 }</a>
+          <a className={styles.link} href={ data.info_2[0].social_2_link } target='blank'>{ data.info_2[0].social_2 }</a>
+          <span className={styles.phone}>{ data.info_2[0].phone }</span>
         </div>
       </div>
 
-      <a className={styles.email} href="mailto:kaueanddaltro@gmail.com">kaueanddaltro@gmail.com</a>
+      <a className={styles.email} href="mailto:kaueanddaltro@gmail.com">{ data.email }</a>
     </div>
   </>
+}
+
+export async function getServerSideProps() {
+  const client = createClient({ accessToken: sm.token })
+
+  const contact = await client.getByType('contact')
+  const data = contact?.results[0]?.data
+
+  return {
+    props: { ...data },
+  }
 }

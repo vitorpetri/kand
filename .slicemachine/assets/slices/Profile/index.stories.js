@@ -11,7 +11,7 @@ _Default.storyName = ''
 export const _Profile = () => <MyComponent slice={{"variation":"profile","version":"sktwi1xtmkfgx8626","items":[{}],"primary":{"name":"flag","last_name":"younger","role":"herd","image":{"dimensions":{"width":3168,"height":4752},"alt":null,"copyright":null,"url":"https://images.unsplash.com/photo-1589321578146-4c1ba445cc88"}},"id":"_Profile","slice_type":"profile"}} />
 _Profile.storyName = ''
 
-export const _Accomplishments = () => <MyComponent slice={{"variation":"accomplishments","version":"sktwi1xtmkfgx8626","items":[{"item":"ship","sub_item":"sale"}],"primary":{"topic":"tide"},"id":"_Accomplishments","slice_type":"profile"}} />
+export const _Accomplishments = () => <MyComponent slice={{"variation":"accomplishments","version":"sktwi1xtmkfgx8626","items":[{"item":"ship","link":"tight","sub_item":"sale"}],"primary":{"topic":"tide"},"id":"_Accomplishments","slice_type":"profile"}} />
 _Accomplishments.storyName = ''
 
 export const _IndustryClients = () => <MyComponent slice={{"variation":"industryClients","version":"sktwi1xtmkfgx8626","items":[{"logo":{"link_type":"Media","name":"mock","kind":"image","url":"https://source.unsplash.com/random","size":"10kB"}}],"primary":{"topic":"piece"},"id":"_IndustryClients","slice_type":"profile"}} />

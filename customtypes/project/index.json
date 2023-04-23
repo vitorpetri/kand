@@ -63,6 +63,42 @@
           }
         }
       },
+      "banner_title": {
+        "type": "Text",
+        "config": {
+          "label": "Banner Title",
+          "placeholder": ""
+        }
+      },
+      "banner_description": {
+        "type": "Text",
+        "config": {
+          "label": "Banner Description",
+          "placeholder": ""
+        }
+      },
+      "numbers": {
+        "type": "Group",
+        "config": {
+          "label": "Numbers",
+          "fields": {
+            "title": {
+              "type": "Text",
+              "config": {
+                "label": "Title",
+                "placeholder": ""
+              }
+            },
+            "description": {
+              "type": "Text",
+              "config": {
+                "label": "Description",
+                "placeholder": ""
+              }
+            }
+          }
+        }
+      },
       "content": {
         "type": "Group",
         "config": {

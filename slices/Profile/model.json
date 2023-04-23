@@ -94,6 +94,13 @@
             "placeholder": ""
           }
         },
+        "link": {
+          "type": "Text",
+          "config": {
+            "label": "Link",
+            "placeholder": ""
+          }
+        },
         "sub_item": {
           "type": "Text",
           "config": {

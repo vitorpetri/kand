@@ -34,58 +34,6 @@
           }
         }
       },
-      "clients": {
-        "type": "Group",
-        "config": {
-          "label": "Clients",
-          "fields": {
-            "topic": {
-              "type": "Text",
-              "config": {
-                "label": "Topic",
-                "placeholder": ""
-              }
-            },
-            "image": {
-              "type": "Image",
-              "config": {
-                "label": "Image",
-                "constraint": {},
-                "thumbnails": []
-              }
-            }
-          }
-        }
-      },
-      "awards": {
-        "type": "Group",
-        "config": {
-          "label": "Awards",
-          "fields": {
-            "awards_type": {
-              "type": "Text",
-              "config": {
-                "label": "Awards Type",
-                "placeholder": ""
-              }
-            },
-            "title": {
-              "type": "Text",
-              "config": {
-                "label": "Title",
-                "placeholder": ""
-              }
-            },
-            "details": {
-              "type": "Text",
-              "config": {
-                "label": "Details",
-                "placeholder": ""
-              }
-            }
-          }
-        }
-      },
       "slices": {
         "type": "Slices",
         "fieldset": "Slice Zone",
