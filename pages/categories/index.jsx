@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import Head from 'next/head'
 import Link from 'next/link'
 
@@ -10,66 +11,117 @@ import Line from '@/components/Line'
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
-export default function Categories({projectsList}) {
-  // projectsList.forEach(project => {
-  //   console.log(project)
-  // })
+export default function Categories({ projectsList, allTags }) {
 
-  // take tags out of prismic and do a cateory filter
+    // const [activeCategories, setActiveCategories] = useState([]);
 
-  // const categories = projectsList.map((project) => project.tags)
-  // console.log(categories)
+    const [activeCategory, setActiveCategory] = useState(null);
+
+    // const toggleActive = (index) => {
+    //     if (activeCategories.includes(index)) {
+    //         // Remove the index from activeCategories if it's already there
+    //         setActiveCategories(activeCategories.filter((item) => item !== index));
+    //     } else {
+    //         // Add the index to activeCategories if it's not there
+    //         setActiveCategories([...activeCategories, index]);
+    //     }
+    // };
+
+    const toggleActive = (index) => {
+        setActiveCategory(index === activeCategory ? null : index);
+      };
+
+    const filteredProjects = () => {
+        // If no categories are selected, show all projects
+        // if (activeCategory.length === 0) {
+        //     return projectsList;
+        // }
+        if (activeCategory === null) {
+            return projectsList;
+        }
+
+        // Filter projects based on the selected categories
+        return projectsList.filter((project) =>
+            // activeCategories.every((index) => project.tags.includes(allTags[index]))
+            project.tags.includes(allTags[activeCategory])
+        );
+    };
 
 
-  return <>
-    <Head>
-      <title>KAND | Categories</title>
-    </Head>
+    return <>
+        <Head>
+            <title>KAND | Categories</title>
+        </Head>
 
-    <div className={styles.wrapper}>
-      <h1 className={styles.title}>Categories</h1>
-      <div className={styles.line}><Line /></div>
+        <div className={styles.wrapper}>
+            <h1 className={styles.title}>Categories</h1>
+            <div className={styles.line}><Line /></div>
 
-      <div className={styles.filters}>
-        <div className={styles.category}>Branding</div>
-        <div className={styles.category}>Best Use Of Media</div>
-        <div className={styles.category}>Design</div>
-      </div>
+            <div className={styles.filters}>
+                {allTags.map((tag, index) => (
+                    // <div
+                    //     key={tag}
+                    //     className={`${styles.category} ${activeCategories.includes(index) ? styles.active : ""
+                    //         }`}
+                    //     onClick={() => toggleActive(index)}
+                    // >
+                    //     {tag}
+                    // </div>
+                    <div
+                        key={tag}
+                        className={`${styles.category} ${activeCategory === index ? styles.active : ""
+                            }`}
+                        onClick={() => toggleActive(index)}
+                    >
+                        {tag}
+                    </div>
+                ))}
+            </div>
 
-      <SeparatorLine />
-      <Gallery projectsList={projectsList} />
-      <SeparatorLine />
-      <span className={styles.footer__label}>or see</span>
-      <Link href={'/projects'} className={styles.footer__title}>All Projects</Link>
-    </div>
-  </>
+
+            <SeparatorLine />
+            <Gallery projectsList={filteredProjects()} />
+            <SeparatorLine />
+            <span className={styles.footer__label}>or see</span>
+            <Link href={'/projects'} className={styles.footer__title}>All Projects</Link>
+        </div>
+    </>
 }
 
 export async function getServerSideProps() {
-  const client = createClient({ accessToken: sm.token })
-  const projects = await client.getAllByType('project')
+    const client = createClient({ accessToken: sm.token })
+    const projects = await client.getAllByType('project')
 
-  const projectsListTreated = projects.map((project) => {
-    if (!project.data) return null
+    // Fetch all documents with their tags
+    const allDocumentsResponse = await client.query('', { pageSize: 100 });
+
+    // Extract all tags and remove duplicates
+    const allTags = [
+        ...new Set(allDocumentsResponse.results.flatMap((doc) => doc.tags)),
+    ];
+
+    const projectsListTreated = projects.map((project) => {
+        if (!project.data) return null
+        return {
+            id: project.uid,
+            title: project.data.title,
+            content: project.data.content,
+            cover: project.data.cover,
+            tags: project.tags,
+        }
+    })
+
+    const orderReq = await client.getByType('order')
+    const order = orderReq.results[0].data.list_order.map((item) => item.project).map((item) => item.uid)
+
+    let projectsList = []
+
+    order.forEach((item) => {
+        const found = projectsListTreated.find((acc) => acc?.id === item)
+        if (found) projectsList.push(found)
+    })
+
     return {
-      id: project.uid,
-      title: project.data.title,
-      content: project.data.content,
-      cover: project.data.cover,
+        props: { projectsList, order, allTags }
     }
-  })
-
-  const orderReq = await client.getByType('order')
-  const order = orderReq.results[0].data.list_order.map((item) => item.project).map((item) => item.uid)
-
-  let projectsList = []
-
-  order.forEach((item) => {
-    const found = projectsListTreated.find((acc) => acc?.id === item)
-    if (found) projectsList.push(found)
-  })
-
-  return {
-    props: { projectsList, order }
-  }
 }
