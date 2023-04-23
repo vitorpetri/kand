@@ -13,8 +13,6 @@ import styles from './styles.module.sass'
 import Crew from '@/components/Crew'
 import * as prismicH from "@prismicio/helpers"
 
-import * as prismicH from "@prismicio/helpers"
-
 export default function Projects({ project, previousProject, nextProject }) {
     const router = useRouter();
 
@@ -148,17 +146,6 @@ export async function getServerSideProps(context) {
     // Fetch the list of the pages
     const projectList = await client.query("", { pageSize: 100 })
 
-export async function getServerSideProps(context) {
-    const { uid } = context.params
-
-    const client = createClient({ accessToken: sm.token })
-    const res = await client.getByUID('project', uid)
-
-    if (!res) return { notFound: true }
-
-    // Fetch the list of the pages
-    const projectList = await client.query("", { pageSize: 100 })
-
     // Fetch the current project index in the list
     const currentProjectIndex = projectList.results.findIndex((p) => p.uid === uid)
 
@@ -178,4 +165,3 @@ export async function getServerSideProps(context) {
         }
     }
 }
-
