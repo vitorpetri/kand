@@ -19,17 +19,17 @@ export default function Awards({ data }) {
 
     return (
         <div className={styles.wrapper}>
-            <h1 className={styles.title}>{data.award_title}</h1>
+            <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: data.award_title}} />
 
             <div className={styles.content}>
                 {awards.map(slice => (
                     <div className={styles.awards__wrapper}>
-                        <div className={styles.awards__title}>{slice.primary.award}</div>
+                        <div className={styles.awards__title} dangerouslySetInnerHTML={{ __html:slice.primary.award}} />
                         <ul className={styles.awards}>
                             {slice.items.map(item => (
                                 <li className={styles.award}>
-                                    <h3 className={styles.award__title}>{item.title}</h3>
-                                    <p className={styles.award__item}>{addLineBreak(item.sub_title)}</p>
+                                    <h3 className={styles.award__title} dangerouslySetInnerHTML={{ __html: item.title}} />
+                                    <p className={styles.award__item} dangerouslySetInnerHTML={{ __html:addLineBreak(item.sub_title)}} />
                                 </li>
                             ))}
                         </ul>

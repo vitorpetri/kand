@@ -33,7 +33,7 @@ const About: FC<IAbout> = (data) => {
 
     <div className={styles.wrapper}>
       <Image className={styles.icon} src={DuoSvg} alt="World"/>
-      <h1 className={styles.title}>{data.title}</h1>
+      <h1 className={styles.title} dangerouslySetInnerHTML={{ __html: data.title }} />
       <SeparatorLine />
 
       <Description data={data} />

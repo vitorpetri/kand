@@ -1,6 +1,7 @@
 import styles from './styles.module.sass'
 import { useState, useRef, useEffect } from 'react'
 import GSAP from 'gsap'
+import Team from '@/public/images/team.svg'
 
 import Line from '@/components/Line'
 
@@ -43,17 +44,13 @@ export default function Crew({data}) {
         <div className={styles.crew__box__list}>
         {data.crew.map((crew, index) => {
           if (crew.title) { return (
-            <h3 key={index} onClick={() => {}} className={styles.crew__title}>
-              {crew.title}
-            </h3>
+            <h3 key={index} onClick={() => {}} className={styles.crew__title} dangerouslySetInnerHTML={{ __html: crew.title}} />
           )} else if (crew.name) { return (
-            <p key={index} onClick={() => {}} className={styles.crew__name}>
-              {crew.name}
-            </p>
+            <p key={index} onClick={() => {}} className={styles.crew__name} dangerouslySetInnerHTML={{ __html:crew.name}} />
           )}
         })}
         </div>
-        <img className={styles.crew__box__icon} src="" alt="" />
+        <img className={styles.crew__box__icon} src={Team} alt="" />
     </div>
     </div>
     <Line />

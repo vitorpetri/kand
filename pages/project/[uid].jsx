@@ -35,12 +35,12 @@ export default function Projects({ project, previousProject, nextProject }) {
         <div className={styles.wrapper}>
             <div className={styles.header}>
                 <div className={styles.client_label}>Client</div>
-                <div className={styles.client}>{project.client}</div>
+                <div className={styles.client} dangerouslySetInnerHTML={{ __html: project.client}} />
 
                 <div className={styles.title} dangerouslySetInnerHTML={{ __html: project.title }} />
 
                 <div className={styles.agency_label}>Agency</div>
-                <div className={styles.agency}>{project.agency}</div>
+                <div className={styles.agency} dangerouslySetInnerHTML={{ __html: project.agency}} />
 
                 <Line />
             </div>
@@ -48,7 +48,7 @@ export default function Projects({ project, previousProject, nextProject }) {
             {project.content.map((content, index) => {
                 if (content.description) {
                     return (
-                        <p className='description' key={index}>{content.description}</p>
+                        <p className='description' key={index} dangerouslySetInnerHTML={{ __html: content.description}} />
                     )
                 } else if (content.video.embed_url) {
                     return (
@@ -77,16 +77,16 @@ export default function Projects({ project, previousProject, nextProject }) {
                 {project.numbers.map((number, index) => {
                     return (
                         <li className={styles.numbers__item} key={index}>
-                            <div className={styles.numbers__title}>{number.title}</div>
-                            <div className={styles.numbers__description}>{number.description}</div>
+                            <div className={styles.numbers__title} dangerouslySetInnerHTML={{ __html: number.title}} />
+                            <div className={styles.numbers__description} dangerouslySetInnerHTML={{ __html: number.description}} />
                         </li>
                     )
                 })}
             </ul>
 
             <div className={styles.banner}>
-                <div className={styles.banner__title}>{project.banner_title}</div>
-                <div className={styles.banner__description}>{project.banner_description}</div>
+                <div className={styles.banner__title} dangerouslySetInnerHTML={{ __html: project.banner_title}} />
+                <div className={styles.banner__description} dangerouslySetInnerHTML={{ __html: project.banner_description}} />
             </div>
 
             <div className={styles.info}>

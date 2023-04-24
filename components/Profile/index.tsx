@@ -42,9 +42,9 @@ export default function Profile({ data }) {
         {index > 0 && <SeparatorLine />}
             <div key={index} className={styles.wrapper}>
                 <div className={styles.info}>
-                <h1 className={styles.name}>{profileData.primary.name}</h1>
-                <h1 className={styles.surname}>{profileData.primary.last_name}</h1>
-                <h2 className={styles.role}>{profileData.primary.role}</h2>
+                <h1 className={styles.name} dangerouslySetInnerHTML={{ __html:profileData.primary.name}} />
+                <h1 className={styles.surname} dangerouslySetInnerHTML={{ __html:profileData.primary.last_name}} />
+                <h2 className={styles.role} dangerouslySetInnerHTML={{ __html:profileData.primary.role}} />
                 <img
                     className={styles.image}
                     src={prismicH.asImageSrc(profileData.primary.image, {
@@ -57,11 +57,11 @@ export default function Profile({ data }) {
                 <div className={styles.content}>
                 {profileData.accomplishments.map((slice, index) => (
                     <ul key={index} className={styles.paragraph}>
-                    <h3 className={styles.title}>{slice.primary.topic}</h3>
+                    <h3 className={styles.title} dangerouslySetInnerHTML={{ __html:slice.primary.topic}} />
                     {slice.items.map((item, itemIndex) => (
                         <a href={item.link} target='blank' key={itemIndex}>
-                        <p className={styles.text}>{item.item}</p>
-                        <p className={styles.description}>{item.sub_item}</p>
+                        <p className={styles.text} dangerouslySetInnerHTML={{ __html:item.item}} />
+                        <p className={styles.description} dangerouslySetInnerHTML={{ __html:item.sub_item}} />
                         </a>
                     ))}
                     </ul>
