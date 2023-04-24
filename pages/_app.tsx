@@ -40,7 +40,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <div className="border" />
         <div className="bottom" />
         <div className="grain" />
-        <Navigation />
+        <Navigation paragraph={''} />
         <main className='content'>
           <Component {...pageProps} />
         </main>

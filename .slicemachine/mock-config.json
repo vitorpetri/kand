@@ -9,7 +9,8 @@
       "content": {}
     },
     "contact": {},
-    "order": {}
+    "order": {},
+    "navigation": {}
   },
   "slices": {
     "Profile": {

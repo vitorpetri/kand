@@ -1,0 +1,22 @@
+{
+  "paragraph": {
+    "__TYPE__": "FieldContent",
+    "value": "pilot",
+    "type": "Text"
+  },
+  "projects_link_title": {
+    "__TYPE__": "FieldContent",
+    "value": "step",
+    "type": "Text"
+  },
+  "about_link_title": {
+    "__TYPE__": "FieldContent",
+    "value": "her",
+    "type": "Text"
+  },
+  "contact_link_title": {
+    "__TYPE__": "FieldContent",
+    "value": "life",
+    "type": "Text"
+  }
+}
