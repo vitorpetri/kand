@@ -37,6 +37,7 @@ export default function Contact(data) {
         </svg>
         
         <div className={styles.name}>
+          <div className={styles.accent}></div>
           <div className={styles.title}>{ data.info_1[0].name }</div>
           <a className={styles.link} href={ data.info_1[0].social_1_link } target='blank'>{ data.info_1[0].social_1 }</a>
           <a className={styles.link} href={ data.info_1[0].social_2_link } target='blank'>{ data.info_1[0].social_2 }</a>
