@@ -12,7 +12,10 @@ import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { log } from 'console'
 
-export default function Navigation() {
+import { createClient } from '../../prismicio'
+import sm from '../../sm.json'
+
+export default function Navigation(data) {
   const [isActive, setIsActive] = useState<boolean>(false)
 
   const onClick = () => setIsActive(!isActive)
@@ -29,6 +32,8 @@ export default function Navigation() {
   const router = useRouter()
 
   useEffect(() => {
+    console.log(data)
+
     const paint = GSAP.timeline()
 
     if (router.pathname === '/contact') {
@@ -122,6 +127,7 @@ export default function Navigation() {
           />
         </svg>
         <div className={styles.text__box}>
+        {/* <div className={styles.menu__text} dangerouslySetInnerHTML={{ __html: data.paragraph }} /> */}
         <div className={styles.menu__text}>WHAT DO YOU WANNA SEE NOW?</div>
         <div className={styles.line}>
           <Line />
@@ -135,4 +141,15 @@ export default function Navigation() {
       </div>
     </div>
 </>
+}
+
+export async function getServerSideProps() {
+  const client = createClient({ accessToken: sm.token })
+
+  const navigation = await client.getByType('navigation')
+  const data = navigation?.results[0]?.data
+
+  return {
+    props: { data },
+  }
 }

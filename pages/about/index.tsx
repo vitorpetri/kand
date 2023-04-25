@@ -25,7 +25,6 @@ export interface IAbout {
 }
 
 const About: FC<IAbout> = (data) => {
-
   return <>
     <Head>
       <title>KAND | About</title>
