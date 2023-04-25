@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 import Line from '@/components/Line'
@@ -29,6 +29,12 @@ export default function Projects({ project, previousProject, nextProject }) {
 
     const currentProject = projectList[currentProjectIndex]; // Get the current project from the array
 
+    const numbersDiv = useRef(null);
+
+    // if (project.numbers[0].title === null) {
+    //     numbersDiv.current.style.display = 'none';
+    // }
+            
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
@@ -70,8 +76,7 @@ export default function Projects({ project, previousProject, nextProject }) {
                 }
             })}
 
-            <ul className={styles.numbers}>
-                {/* {project.forEach(numbers => { */}
+            <ul className={styles.numbers} ref={numbersDiv} >
                 {project.numbers.map((number, index) => {
                     return (
                         <li className={styles.numbers__item} key={index}>

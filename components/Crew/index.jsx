@@ -1,6 +1,7 @@
 import styles from './styles.module.sass'
 import { useState, useRef, useEffect } from 'react'
 import GSAP from 'gsap'
+import TeamSvg from 'public/team.svg'
 
 import Line from '@/components/Line'
 
@@ -18,8 +19,8 @@ export default function Crew({data}) {
     const tl = GSAP.timeline({ paused: true })
     const tlReverse = GSAP.timeline({ paused: true })
 
-    tl.to(boxRef.current, { duration: 0.5, opacity: 1, ease: 'power2.out' }, '+=0.1')
-    tlReverse.to(boxRef.current, { duration: 0.5, opacity: 0, ease: 'power2.out' })
+    tl.to(boxRef.current, { duration: 0.5, opacity: 1, scale: 1, height: '100%', ease: 'power2.out', pointerEvents: 'auto' }, '+=0.1')
+    tlReverse.to(boxRef.current, { duration: 0.5, opacity: 0, scale: 0, height: '0', ease: 'power2.out', pointerEvents: 'none' })
 
     if (isActive) {
       tl.play()
@@ -53,7 +54,7 @@ export default function Crew({data}) {
           )}
         })}
         </div>
-        <img className={styles.crew__box__icon} src="" alt="" />
+        <img className={styles.crew__box__icon} src={TeamSvg} alt="" />
     </div>
     </div>
     <Line />
