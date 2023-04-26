@@ -1,0 +1,22 @@
+{
+  "paragraph": {
+    "__TYPE__": "FieldContent",
+    "value": "than",
+    "type": "Text"
+  },
+  "projects_link_title": {
+    "__TYPE__": "FieldContent",
+    "value": "strip",
+    "type": "Text"
+  },
+  "about_link_title": {
+    "__TYPE__": "FieldContent",
+    "value": "beside",
+    "type": "Text"
+  },
+  "contact_link_title": {
+    "__TYPE__": "FieldContent",
+    "value": "equally",
+    "type": "Text"
+  }
+}

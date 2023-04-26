@@ -127,8 +127,8 @@ export default function Navigation(data) {
           />
         </svg>
         <div className={styles.text__box}>
-        {/* <div className={styles.menu__text} dangerouslySetInnerHTML={{ __html: data.paragraph }} /> */}
-        <div className={styles.menu__text}>WHAT DO YOU WANNA SEE NOW?</div>
+        <div className={styles.menu__text} dangerouslySetInnerHTML={{ __html: data.paragraph }} />
+        {/* <div className={styles.menu__text}>WHAT DO YOU WANNA SEE NOW?</div> */}
         <div className={styles.line}>
           <Line />
         </div>

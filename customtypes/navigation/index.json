@@ -1,0 +1,38 @@
+{
+  "id": "navigation",
+  "label": "Navigation",
+  "repeatable": false,
+  "status": true,
+  "json": {
+    "Main": {
+      "paragraph": {
+        "type": "Text",
+        "config": {
+          "label": "Paragraph",
+          "placeholder": ""
+        }
+      },
+      "projects_link_title": {
+        "type": "Text",
+        "config": {
+          "label": "Projects Link Title",
+          "placeholder": ""
+        }
+      },
+      "about_link_title": {
+        "type": "Text",
+        "config": {
+          "label": "About Link Title",
+          "placeholder": ""
+        }
+      },
+      "contact_link_title": {
+        "type": "Text",
+        "config": {
+          "label": "Contact Link Title",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

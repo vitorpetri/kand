@@ -416,6 +416,63 @@ interface HomeDocumentData {
  * @typeParam Lang - Language API ID of the document.
  */
 export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<HomeDocumentData>, "home", Lang>;
+/** Content for Navigation documents */
+interface NavigationDocumentData {
+    /**
+     * Paragraph field in *Navigation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.paragraph
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    paragraph: prismicT.KeyTextField;
+    /**
+     * Projects Link Title field in *Navigation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.projects_link_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    projects_link_title: prismicT.KeyTextField;
+    /**
+     * About Link Title field in *Navigation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.about_link_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    about_link_title: prismicT.KeyTextField;
+    /**
+     * Contact Link Title field in *Navigation*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: navigation.contact_link_title
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    contact_link_title: prismicT.KeyTextField;
+}
+/**
+ * Navigation document from Prismic
+ *
+ * - **API ID**: `navigation`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/core-concepts/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NavigationDocument<Lang extends string = string> = prismicT.PrismicDocumentWithoutUID<Simplify<NavigationDocumentData>, "navigation", Lang>;
 /** Content for Order documents */
 interface OrderDocumentData {
     /**
@@ -666,7 +723,7 @@ export interface ProjectDocumentDataContentItem {
  * @typeParam Lang - Language API ID of the document.
  */
 export type ProjectDocument<Lang extends string = string> = prismicT.PrismicDocumentWithUID<Simplify<ProjectDocumentData>, "project", Lang>;
-export type AllDocumentTypes = AboutDocument | ContactDocument | HomeDocument | OrderDocument | ProjectDocument;
+export type AllDocumentTypes = AboutDocument | ContactDocument | HomeDocument | NavigationDocument | OrderDocument | ProjectDocument;
 /**
  * Primary content in Profile → Primary
  *
@@ -929,6 +986,6 @@ declare module "@prismicio/client" {
         (repositoryNameOrEndpoint: string, options?: prismic.ClientConfig): prismic.Client<AllDocumentTypes>;
     }
     namespace Content {
-        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocumentDataSlices2Slice, AboutDocument, ContactDocumentData, ContactDocumentDataInfo1Item, ContactDocumentDataInfo2Item, ContactDocument, HomeDocumentData, HomeDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataNumbersItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefault, ProfileSliceProfilePrimary, ProfileSliceProfile, ProfileSliceAccomplishmentsPrimary, ProfileSliceAccomplishmentsItem, ProfileSliceAccomplishments, ProfileSliceIndustryClientsPrimary, ProfileSliceIndustryClientsItem, ProfileSliceIndustryClients, ProfileSliceAwardCategoriesPrimary, ProfileSliceAwardCategoriesItem, ProfileSliceAwardCategories, ProfileSliceVariation, ProfileSlice };
+        export type { AboutDocumentData, AboutDocumentDataDescriptionItem, AboutDocumentDataSlicesSlice, AboutDocumentDataSlices1Slice, AboutDocumentDataSlices2Slice, AboutDocument, ContactDocumentData, ContactDocumentDataInfo1Item, ContactDocumentDataInfo2Item, ContactDocument, HomeDocumentData, HomeDocument, NavigationDocumentData, NavigationDocument, OrderDocumentData, OrderDocumentDataListOrderItem, OrderDocument, ProjectDocumentData, ProjectDocumentDataCrewItem, ProjectDocumentDataNumbersItem, ProjectDocumentDataContentItem, ProjectDocument, AllDocumentTypes, ProfileSliceDefaultPrimary, ProfileSliceDefault, ProfileSliceProfilePrimary, ProfileSliceProfile, ProfileSliceAccomplishmentsPrimary, ProfileSliceAccomplishmentsItem, ProfileSliceAccomplishments, ProfileSliceIndustryClientsPrimary, ProfileSliceIndustryClientsItem, ProfileSliceIndustryClients, ProfileSliceAwardCategoriesPrimary, ProfileSliceAwardCategoriesItem, ProfileSliceAwardCategories, ProfileSliceVariation, ProfileSlice };
     }
 }
