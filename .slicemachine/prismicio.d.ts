@@ -419,49 +419,49 @@ export type HomeDocument<Lang extends string = string> = prismicT.PrismicDocumen
 /** Content for Navigation documents */
 interface NavigationDocumentData {
     /**
-     * Paragraph field in *Navigation*
+     * Title field in *Navigation*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: navigation.paragraph
+     * - **API ID Path**: navigation.title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    paragraph: prismicT.KeyTextField;
+    title: prismicT.KeyTextField;
     /**
-     * Projects Link Title field in *Navigation*
+     * Work Title field in *Navigation*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: navigation.projects_link_title
+     * - **API ID Path**: navigation.work_title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    projects_link_title: prismicT.KeyTextField;
+    work_title: prismicT.KeyTextField;
     /**
-     * About Link Title field in *Navigation*
+     * About Title field in *Navigation*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: navigation.about_link_title
+     * - **API ID Path**: navigation.about_title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    about_link_title: prismicT.KeyTextField;
+    about_title: prismicT.KeyTextField;
     /**
-     * Contact Link Title field in *Navigation*
+     * Contact Title field in *Navigation*
      *
      * - **Field Type**: Text
      * - **Placeholder**: *None*
-     * - **API ID Path**: navigation.contact_link_title
+     * - **API ID Path**: navigation.contact_title
      * - **Tab**: Main
      * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
      *
      */
-    contact_link_title: prismicT.KeyTextField;
+    contact_title: prismicT.KeyTextField;
 }
 /**
  * Navigation document from Prismic

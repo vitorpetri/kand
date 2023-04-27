@@ -5,31 +5,31 @@
   "status": true,
   "json": {
     "Main": {
-      "paragraph": {
+      "title": {
         "type": "Text",
         "config": {
-          "label": "Paragraph",
+          "label": "Title",
           "placeholder": ""
         }
       },
-      "projects_link_title": {
+      "work_title": {
         "type": "Text",
         "config": {
-          "label": "Projects Link Title",
+          "label": "Work Title",
           "placeholder": ""
         }
       },
-      "about_link_title": {
+      "about_title": {
         "type": "Text",
         "config": {
-          "label": "About Link Title",
+          "label": "About Title",
           "placeholder": ""
         }
       },
-      "contact_link_title": {
+      "contact_title": {
         "type": "Text",
         "config": {
-          "label": "Contact Link Title",
+          "label": "Contact Title",
           "placeholder": ""
         }
       }

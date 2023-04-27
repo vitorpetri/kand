@@ -1,4 +1,4 @@
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { useRouter } from 'next/router';
 
 import Line from '@/components/Line'
@@ -29,12 +29,6 @@ export default function Projects({ project, previousProject, nextProject }) {
 
     const currentProject = projectList[currentProjectIndex]; // Get the current project from the array
 
-    const numbersDiv = useRef(null);
-
-    // if (project.numbers[0].title === null) {
-    //     numbersDiv.current.style.display = 'none';
-    // }
-            
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
@@ -76,16 +70,23 @@ export default function Projects({ project, previousProject, nextProject }) {
                 }
             })}
 
-            <ul className={styles.numbers} ref={numbersDiv} >
-                {project.numbers.map((number, index) => {
-                    return (
-                        <li className={styles.numbers__item} key={index}>
-                            <div className={styles.numbers__title}>{number.title}</div>
-                            <div className={styles.numbers__description}>{number.description}</div>
-                        </li>
-                    )
-                })}
-            </ul>
+            {project.numbers && project.numbers.length > 0 ? (
+                project.numbers
+                    .filter(number => number.title && number.description).length > 0 ? (
+                    <ul className={styles.numbers}>
+                        {project.numbers
+                            .filter(number => number.title && number.description)
+                            .map((number, index) => {
+                                return (
+                                    <li className={styles.numbers__item} key={index}>
+                                        <div className={styles.numbers__title}>{number.title}</div>
+                                        <div className={styles.numbers__description}>{number.description}</div>
+                                    </li>
+                                )
+                            })}
+                    </ul>
+                ) : null
+            ) : null}
 
             <div className={styles.banner}>
                 <div className={styles.banner__title}>{project.banner_title}</div>
@@ -159,8 +160,6 @@ export async function getServerSideProps(context) {
     const nextProject = currentProjectIndex < projectList.results.length - 1 ? projectList.results[currentProjectIndex + 1] : null
 
     const project = res.data
-
-    console.log(project.numbers[0].title)
 
     return {
         props: {

@@ -1,22 +1,22 @@
 {
-  "paragraph": {
+  "title": {
     "__TYPE__": "FieldContent",
-    "value": "than",
+    "value": "piece",
     "type": "Text"
   },
-  "projects_link_title": {
+  "work_title": {
     "__TYPE__": "FieldContent",
-    "value": "strip",
+    "value": "noon",
     "type": "Text"
   },
-  "about_link_title": {
+  "about_title": {
     "__TYPE__": "FieldContent",
-    "value": "beside",
+    "value": "way",
     "type": "Text"
   },
-  "contact_link_title": {
+  "contact_title": {
     "__TYPE__": "FieldContent",
-    "value": "equally",
+    "value": "involved",
     "type": "Text"
   }
 }

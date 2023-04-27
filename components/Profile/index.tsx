@@ -33,8 +33,6 @@ export default function Profile({ data }) {
     // Profile with Accomplishments
     const PWA = profileMapping(data.slices)
 
-    console.log(data);
-
   return (
     <>
     {PWA.map((profileData, index) => (
