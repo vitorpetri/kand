@@ -1,0 +1,9 @@
+{
+  "apiEndpoint": "https://kand.prismic.io/api/v2",
+  "token": "MC5aQnh0RlJBQUFDSUF4OW9N.Ou-_ve-_ve-_ve-_vQBl77-9Ve-_vUJV77-9bXnvv70FSO-_vS5Bf0Tvv73vv73vv707Su-_ve-_ve-_ve-_vQ",
+  "libraries": [
+    "@/slices"
+  ],
+  "_latest": "0.7.1",
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}
