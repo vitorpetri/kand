@@ -1,0 +1,7 @@
+{
+  "apiEndpoint": "https://kand.prismic.io/api/v2",
+  "repositoryName": "kand",
+  "adapter": "@slicemachine/adapter-next",
+  "libraries": ["./slices"],
+  "localSliceSimulatorURL": "http://localhost:3000/slice-simulator"
+}
