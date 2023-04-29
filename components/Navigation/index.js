@@ -1,34 +1,28 @@
 import styles from './styles.module.sass'
 
-import { useState, useRef, useEffect } from 'react'
-
-import GSAP from 'gsap'
-
-import MundoSvg from 'public/mundo.svg'
-import OlhoSvg from 'public/olho.svg'
-import Image from 'next/image'
-import Line from '../Line'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { log } from 'console'
+import { useState, useRef, useEffect } from 'react'
+import GSAP from 'gsap'
 
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
-export default function Navigation({ data }) {
+import Line from '../../components/Line'
 
-    const [isActive, setIsActive] = useState<boolean>(false)
+export default function Navigation({ data }) {
+    const [isActive, setIsActive] = useState(false)
 
     const onClick = () => setIsActive(!isActive)
     const onHomeClick = () => setIsActive(false)
 
-    const menuRef = useRef<HTMLDivElement>(null)
-    const menuDivRef = useRef<HTMLDivElement>(null)
-    const menuContentRef = useRef<HTMLDivElement>(null)
-    const navigationRef = useRef<HTMLDivElement>(null)
-    const svgRef = useRef<HTMLDivElement>(null)
-    const btnRef = useRef<HTMLButtonElement>(null)
-    const logoRef = useRef<HTMLAnchorElement>(null)
+    const menuRef = useRef(null)
+    const menuDivRef = useRef(null)
+    const menuContentRef = useRef(null)
+    const navigationRef = useRef(null)
+    const svgRef = useRef(null)
+    const btnRef = useRef(null)
+    const logoRef = useRef(null)
 
     const router = useRouter()
 

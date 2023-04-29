@@ -1,17 +1,18 @@
-import { useState } from 'react';
-import { useRouter } from 'next/router';
-
-import Line from '@/components/Line'
-import Image from 'next/image'
-import Link from 'next/link'
-import { createClient } from '../../prismicio'
-import sm from '../../sm.json'
-import AtomoSvg from 'public/atomo.svg'
-
 import styles from './styles.module.sass'
 
-import Crew from '@/components/Crew'
+import Image from 'next/image'
+import Link from 'next/link'
+import { useRouter } from 'next/router';
+import { useState } from 'react';
+
+import { createClient } from '../../prismicio'
+import sm from '../../sm.json'
 import * as prismicH from "@prismicio/helpers"
+
+import Line from '../../components/Line'
+import Crew from '../../components/Crew'
+
+import AtomoSvg from '../../public/atomo.svg'
 
 export default function Projects({ project, previousProject, nextProject }) {
     const router = useRouter();

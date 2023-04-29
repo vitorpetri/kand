@@ -1,31 +1,28 @@
-import 'styles/index.sass'
-import Lenis from 'utils/scroll'
+import '../styles/index.sass'
 
 import Head from 'next/head'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import GSAP from 'gsap'
-
-import type { AppProps } from 'next/app'
-type AppPropsWithNavigation = AppProps & { data: any }
+import { motion, AnimatePresence } from 'framer-motion'
+import Lenis from '../utils/scroll'
 
 import { PrismicProvider } from '@prismicio/react'
 import { PrismicPreview } from '@prismicio/next'
 import { repositoryName } from '../prismicio'
-
 import { createClient } from '../prismicio'
 import sm from '../sm.json'
-
-import Navigation from '@/components/Navigation'
 
 const fetchNavigationData = async () => {
     const client = createClient({ accessToken: sm.token });
     const navigation = await client.getByType('navigation');
     return navigation?.results[0]?.data;
-};
+}
 
-export default function App({ Component, pageProps, data }: AppPropsWithNavigation) {
+import Navigation from '../components/Navigation'
+
+export default function App({ Component, pageProps, data, router }) {
     const { events } = useRouter()
 
     Lenis
@@ -52,7 +49,11 @@ export default function App({ Component, pageProps, data }: AppPropsWithNavigati
                 <div className="grain" />
                 <Navigation data={data} />
                 <main className='content'>
-                    <Component {...pageProps} />
+                    <AnimatePresence>
+                        <motion.div key={router.route} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
+                            <Component {...pageProps} />
+                        </motion.div>
+                    </AnimatePresence>
                 </main>
             </PrismicPreview>
         </PrismicProvider>

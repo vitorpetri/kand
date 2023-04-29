@@ -1,4 +1,5 @@
 import React from 'react'
+
 import styles from './styles.module.sass'
 
 function addLineBreak(str) {
@@ -12,9 +13,7 @@ function addLineBreak(str) {
     return modifiedLines
 }
 
-
 export default function Awards({ data }) {
-
     const awards = data.slices2.filter((slice) => slice.variation === 'awardCategories')
 
     return (

@@ -1,9 +1,11 @@
 import styles from './styles.module.sass'
+
 import { useState, useRef, useEffect } from 'react'
 import GSAP from 'gsap'
-import TeamSvg from 'public/team.svg'
 
-import Line from '@/components/Line'
+import Line from '../../components/Line'
+
+import TeamSvg from '../../public/team.svg'
 
 export default function Crew({data}) {
   const [isActive, setIsActive] = useState(false)

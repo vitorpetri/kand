@@ -1,8 +1,8 @@
 import Lenis from '@studio-freight/lenis'
 
-let LenisManager: Lenis | null = null
+let LenisManager = null
 
-function rAF(time: number) {
+function rAF(time) {
   LenisManager?.raf(time)
 
   requestAnimationFrame(rAF)

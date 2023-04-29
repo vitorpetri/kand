@@ -1,18 +1,17 @@
-import { useState } from 'react'
-import Head from 'next/head'
-import Link from 'next/link'
-
 import styles from './styles.module.sass'
 
-import Gallery from '@/components/Gallery'
-import SeparatorLine from '@/components/SeparatorLine'
-import Line from '@/components/Line'
+import Head from 'next/head'
+import Link from 'next/link'
+import { useState } from 'react'
 
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
-export default function Categories({ projectsList, allTags }) {
+import Gallery from '../../components/Gallery'
+import SeparatorLine from '../../components/SeparatorLine'
+import Line from '../../components/Line'
 
+export default function Categories({ projectsList, allTags }) {
     // const [activeCategories, setActiveCategories] = useState([]);
 
     const [activeCategory, setActiveCategory] = useState(null);
@@ -48,44 +47,46 @@ export default function Categories({ projectsList, allTags }) {
     };
 
 
-    return <>
-        <Head>
-            <title>KAND | Categories</title>
-        </Head>
+    return (
+        <>
+            <Head>
+                <title>KAND | Categories</title>
+            </Head>
 
-        <div className={styles.wrapper}>
-            <h1 className={styles.title}>Categories</h1>
-            <div className={styles.line}><Line /></div>
+            <div className={styles.wrapper}>
+                <h1 className={styles.title}>Categories</h1>
+                <div className={styles.line}><Line /></div>
 
-            <div className={styles.filters}>
-                {allTags.map((tag, index) => (
-                    // <div
-                    //     key={tag}
-                    //     className={`${styles.category} ${activeCategories.includes(index) ? styles.active : ""
-                    //         }`}
-                    //     onClick={() => toggleActive(index)}
-                    // >
-                    //     {tag}
-                    // </div>
-                    <div
-                        key={tag}
-                        className={`${styles.category} ${activeCategory === index ? styles.active : ""
-                            }`}
-                        onClick={() => toggleActive(index)}
-                    >
-                        {tag}
-                    </div>
-                ))}
+                <div className={styles.filters}>
+                    {allTags.map((tag, index) => (
+                        // <div
+                        //     key={tag}
+                        //     className={`${styles.category} ${activeCategories.includes(index) ? styles.active : ""
+                        //         }`}
+                        //     onClick={() => toggleActive(index)}
+                        // >
+                        //     {tag}
+                        // </div>
+                        <div
+                            key={tag}
+                            className={`${styles.category} ${activeCategory === index ? styles.active : ""
+                                }`}
+                            onClick={() => toggleActive(index)}
+                        >
+                            {tag}
+                        </div>
+                    ))}
+                </div>
+
+
+                <SeparatorLine />
+                <Gallery projectsList={filteredProjects()} />
+                <SeparatorLine />
+                <span className={styles.footer__label}>or see</span>
+                <Link href={'/projects'} className={styles.footer__title}>All Projects</Link>
             </div>
-
-
-            <SeparatorLine />
-            <Gallery projectsList={filteredProjects()} />
-            <SeparatorLine />
-            <span className={styles.footer__label}>or see</span>
-            <Link href={'/projects'} className={styles.footer__title}>All Projects</Link>
-        </div>
-    </>
+        </>
+    )
 }
 
 export async function getServerSideProps() {
@@ -108,6 +109,9 @@ export async function getServerSideProps() {
             content: project.data.content,
             cover: project.data.cover,
             tags: project.tags,
+            cover: project.data.cover,
+            client: project.data.client,
+            agency: project.data.agency,
         }
     })
 

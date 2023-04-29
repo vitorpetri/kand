@@ -1,15 +1,16 @@
 import Head from 'next/head'
-import MundoSvg from 'public/mundo.svg'
+import MundoSvg from '../public/mundo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
-import Line from '@/components/Line'
+import Line from '../components/Line'
 import { createClient } from '../prismicio'
 import sm from '../sm.json'
 
 import styles from './styles.module.sass'
 
-export default function Home(data: any) {
+export default function Home(data) {
   return <>
     <Head>
       <title>KAUE & DALTRO</title>
@@ -21,7 +22,14 @@ export default function Home(data: any) {
         <div className={styles.accent}></div>
         <h1 className={styles.name}>{ data.first_name }</h1>
         <Line />
-        <Image priority className={styles.icon} src={MundoSvg} alt="World"/>
+        {/* <motion.div className={styles.icon__wrapper} 
+          initial={{ scale: 1.5 }} 
+          animate={{ scale: 1 }} 
+          exit={{ scale: 1.5 }} 
+          transition={{ duration: 2.5 }}
+        > */}
+          <Image priority className={styles.icon} src={MundoSvg} alt="World"/>
+        {/* </motion.div> */}
         <Line />
         <h1 className={styles.name}>{ data.second_name }</h1>
       </div>

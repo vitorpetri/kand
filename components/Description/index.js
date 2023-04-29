@@ -1,6 +1,6 @@
 import styles from './styles.module.sass'
 
-import Line from '@/components/Line'
+import Line from '../../components/Line'
 
 export default function Profile({data}) {
   return <div className={styles.description}>
