@@ -1,8 +1,8 @@
 import styles from './styles.module.sass'
 
-import * as prismicH from "@prismicio/helpers"
+import * as prismicH from '@prismicio/helpers'
 
-import SeparatorLine from "../SeparatorLine"
+import SeparatorLine from '../SeparatorLine'
 
 //map profile and accomplishments
 function profileMapping(slices) {

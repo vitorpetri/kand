@@ -1,6 +1,6 @@
 import styles from './styles.module.sass'
 
-import * as prismicH from "@prismicio/helpers"
+import * as prismicH from '@prismicio/helpers'
 
 export default function Clients({ data }) {
     const client = data.slices1.filter((slice) => slice.variation === 'industryClients')

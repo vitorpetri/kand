@@ -7,6 +7,8 @@ import Link from 'next/link'
 import GSAP from 'gsap'
 import { motion, AnimatePresence } from 'framer-motion'
 import Lenis from '../utils/scroll'
+// import barba from '@barba/core'
+// import barbaCss from '@barba/css'
 
 import { PrismicProvider } from '@prismicio/react'
 import { PrismicPreview } from '@prismicio/next'
@@ -15,14 +17,17 @@ import { createClient } from '../prismicio'
 import sm from '../sm.json'
 
 const fetchNavigationData = async () => {
-    const client = createClient({ accessToken: sm.token });
-    const navigation = await client.getByType('navigation');
-    return navigation?.results[0]?.data;
+    const client = createClient({ accessToken: sm.token })
+    const navigation = await client.getByType('navigation')
+    return navigation?.results[0]?.data
 }
 
 import Navigation from '../components/Navigation'
 
 export default function App({ Component, pageProps, data, router }) {
+    // barba.use(barbaCss)
+    // barba.init()
+    
     const { events } = useRouter()
 
     Lenis

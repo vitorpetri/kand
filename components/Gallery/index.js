@@ -5,7 +5,7 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 
-import * as prismicH from "@prismicio/helpers"
+import * as prismicH from '@prismicio/helpers'
 
 export default function Gallery({ projectsList }) {
   const { prefetch } = useRouter()

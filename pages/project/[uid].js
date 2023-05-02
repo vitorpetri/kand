@@ -7,7 +7,7 @@ import { useState } from 'react';
 
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
-import * as prismicH from "@prismicio/helpers"
+import * as prismicH from '@prismicio/helpers'
 
 import Line from '../../components/Line'
 import Crew from '../../components/Crew'
@@ -55,7 +55,7 @@ export default function Projects({ project, previousProject, nextProject }) {
                             <iframe
                                 src={content.video.embed_url}
                                 className='frame'
-                                allow="autoplay; fullscreen; picture-in-picture"
+                                allow='autoplay; fullscreen; picture-in-picture'
                             >
                             </iframe>
                         </div>
@@ -108,9 +108,10 @@ export default function Projects({ project, previousProject, nextProject }) {
             </div>
 
             <div className={styles.footer}>
-                <Link className={styles.footer__button} href={`/project/${previousProject.uid}`} passHref>
+                {/* <Link className={styles.footer__button} href={`/project/${previousProject.uid}`} passHref> */}
+                <Link className={styles.footer__button} href={`/project/${nextProject.uid}`} passHref>
                     <span
-                        role="button"
+                        role='button'
                         tabIndex={0}
                         onClick={() => router.push(`/project/${previousProject.uid}`)}
                         onKeyDown={(e) => {
