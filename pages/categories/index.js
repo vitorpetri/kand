@@ -2,7 +2,9 @@ import styles from './styles.module.sass'
 
 import Head from 'next/head'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useRouter } from 'next/router'
+import { useRef, useEffect, useState } from 'react'
+import GSAP from 'gsap'
 
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
@@ -11,6 +13,21 @@ import Gallery from '../../components/Gallery'
 import SeparatorLine from '../../components/SeparatorLine'
 
 export default function Categories({ projectsList, allTags, selectedTagIndex }) {
+    const router = useRouter()
+
+    const titleRef = useRef(null)
+    const galleryRef = useRef(null)
+
+    useEffect(() => {
+        const title = titleRef.current
+        const gallery = galleryRef.current
+
+        const tl = GSAP.timeline()
+
+        tl.to(title, { opacity: 0, duration: 0.3, ease: 'power2.out' }, 2)
+        tl.to(gallery, { translateY: '-20rem', marginBottom: '-20rem', duration: 0.8, ease: 'power2.out' }, 2)
+    }, [])
+
     // const [activeCategories, setActiveCategories] = useState([]);
 
     const [activeCategory, setActiveCategory] = useState(selectedTagIndex);
@@ -52,32 +69,37 @@ export default function Categories({ projectsList, allTags, selectedTagIndex }) 
             </Head>
 
             <div className={styles.wrapper}>
-                <h1 className={styles.title}>Categories</h1>
-                <div className={styles.line} />
-
-                <div className={styles.filters}>
-                    {allTags.map((tag, index) => (
-                        // <div
-                        //     key={tag}
-                        //     className={`${styles.category} ${activeCategories.includes(index) ? styles.active : ""
-                        //         }`}
-                        //     onClick={() => toggleActive(index)}
-                        // >
-                        //     {tag}
-                        // </div>
-                        <div
-                            key={tag}
-                            className={`${styles.category} ${activeCategory === index ? styles.active : ""
-                                }`}
-                            onClick={() => toggleActive(index)}
-                        >
-                            {tag}
-                        </div>
-                    ))}
+                <div className={styles.header} ref={titleRef}>
+                    <h1 className={styles.title}>Categories</h1>
+                    <div className={styles.line} />
                 </div>
 
-                <SeparatorLine />
-                <Gallery projectsList={filteredProjects()} />
+                <div ref={galleryRef} className={styles.gallery}>
+                    <div className={styles.filters}>
+                        {allTags.map((tag, index) => (
+                            // <div
+                            //     key={tag}
+                            //     className={`${styles.category} ${activeCategories.includes(index) ? styles.active : ""
+                            //         }`}
+                            //     onClick={() => toggleActive(index)}
+                            // >
+                            //     {tag}
+                            // </div>
+                            <div
+                                key={tag}
+                                className={`${styles.category} ${activeCategory === index ? styles.active : ""
+                                    }`}
+                                onClick={() => toggleActive(index)}
+                            >
+                                {tag}
+                            </div>
+                        ))}
+                    </div>
+
+                    <SeparatorLine />
+                    <Gallery projectsList={filteredProjects()} />
+                </div>
+
                 <SeparatorLine />
                 <span className={styles.footer__label}>or see</span>
                 <Link href={'/projects'} className={styles.footer__title}>All Projects</Link>
