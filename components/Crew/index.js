@@ -3,8 +3,6 @@ import styles from './styles.module.sass'
 import { useState, useRef, useEffect } from 'react'
 import GSAP from 'gsap'
 
-import Line from '../../components/Line'
-
 import TeamSvg from '../../public/team.svg'
 
 export default function Crew({data}) {
@@ -59,6 +57,6 @@ export default function Crew({data}) {
         <img className={styles.crew__box__icon} src={TeamSvg} alt="" />
     </div>
     </div>
-    <Line />
+    <div className={styles.line} />
   </div>
 }

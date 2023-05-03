@@ -1,7 +1,5 @@
 import styles from './styles.module.sass'
 
-import Line from '../../components/Line'
-
 export default function Profile({data}) {
   return <div className={styles.description}>
     {data.description.map((description, index) => {
@@ -19,6 +17,6 @@ export default function Profile({data}) {
         </p>
       )}})}
     </div>
-    <Line />
+    <div className={styles.line} />
   </div>
 }

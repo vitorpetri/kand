@@ -11,7 +11,6 @@ import sm from '../../sm.json'
 
 import Gallery from '../../components/Gallery/index'
 import SeparatorLine from '../../components/SeparatorLine'
-import Line from '../../components/Line'
 
 export default function Home({projectsList}) {
   const router = useRouter()
@@ -26,8 +25,7 @@ export default function Home({projectsList}) {
     const tl = GSAP.timeline()
 
     tl.to(title, { opacity: 0, duration: 0.9, ease: 'power2.out' }, 2)
-    tl.to(gallery, { translateY: '-27rem', marginBottom: '-33rem', duration: 0.6, ease: 'power2.out' }, 2)
-    // tl.to(title, { display: 'none', duration: 0.5 })
+    tl.to(gallery, { translateY: '-31rem', marginBottom: '-33rem', duration: 0.8, ease: 'power2.out' }, 2)
   }, [])
 
   return (
@@ -39,7 +37,7 @@ export default function Home({projectsList}) {
       <div className={styles.wrapper}>
         <div className={styles.header} ref={titleRef}>
           <h1 className={styles.title}>All Projects</h1>
-          <div className={styles.line}><Line /></div>
+          <div className={styles.line} />
           <SeparatorLine />
         </div>
         <div ref={galleryRef} className={styles.gallery}>

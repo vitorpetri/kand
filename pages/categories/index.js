@@ -9,7 +9,6 @@ import sm from '../../sm.json'
 
 import Gallery from '../../components/Gallery'
 import SeparatorLine from '../../components/SeparatorLine'
-import Line from '../../components/Line'
 
 export default function Categories({ projectsList, allTags, selectedTagIndex }) {
     // const [activeCategories, setActiveCategories] = useState([]);
@@ -46,7 +45,6 @@ export default function Categories({ projectsList, allTags, selectedTagIndex }) 
         );
     };
 
-
     return (
         <>
             <Head>
@@ -55,7 +53,7 @@ export default function Categories({ projectsList, allTags, selectedTagIndex }) 
 
             <div className={styles.wrapper}>
                 <h1 className={styles.title}>Categories</h1>
-                <div className={styles.line}><Line /></div>
+                <div className={styles.line} />
 
                 <div className={styles.filters}>
                     {allTags.map((tag, index) => (
@@ -77,7 +75,6 @@ export default function Categories({ projectsList, allTags, selectedTagIndex }) 
                         </div>
                     ))}
                 </div>
-
 
                 <SeparatorLine />
                 <Gallery projectsList={filteredProjects()} />

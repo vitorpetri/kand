@@ -8,8 +8,6 @@ import GSAP from 'gsap'
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
-import Line from '../../components/Line'
-
 export default function Navigation({ data }) {
     const [isActive, setIsActive] = useState(false)
 
@@ -121,9 +119,7 @@ export default function Navigation({ data }) {
                 </svg>
                 <div className={styles.text__box}>
                     <div className={styles.menu__text}>{data.title}</div>
-                    <div className={styles.line}>
-                        <Line />
-                    </div>
+                    <div className={styles.line} />
                 </div>
                 <ul className={styles.menu__list}>
                     <li className={styles.menu__item} onClick={onClick}><Link href={'/projects'}>{data.work_title}</Link></li>

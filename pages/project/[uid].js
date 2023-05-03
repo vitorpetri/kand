@@ -9,7 +9,6 @@ import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 import * as prismicH from '@prismicio/helpers'
 
-import Line from '../../components/Line'
 import Crew from '../../components/Crew'
 
 import AtomoSvg from '../../public/atomo.svg'
@@ -41,7 +40,7 @@ export default function Projects({ project, previousProject, nextProject }) {
                 <div className={styles.agency_label}>Agency</div>
                 <div className={styles.agency}>{project.agency}</div>
 
-                <Line />
+                <div className={styles.line} />
             </div>
 
             {project.content.map((content, index) => {

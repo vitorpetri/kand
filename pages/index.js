@@ -2,9 +2,7 @@ import Head from 'next/head'
 import MundoSvg from '../public/mundo.svg'
 import Image from 'next/image'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 
-import Line from '../components/Line'
 import { createClient } from '../prismicio'
 import sm from '../sm.json'
 
@@ -21,7 +19,7 @@ export default function Home(data) {
       <div className={styles.title}>
         <div className={styles.accent}></div>
         <h1 className={styles.name}>{ data.first_name }</h1>
-        <Line />
+        <div className={styles.line} />
         {/* <motion.div className={styles.icon__wrapper} 
           initial={{ scale: 1.5 }} 
           animate={{ scale: 1 }} 
@@ -30,7 +28,7 @@ export default function Home(data) {
         > */}
           <Image priority className={styles.icon} src={MundoSvg} alt="World"/>
         {/* </motion.div> */}
-        <Line />
+        <div className={styles.line} />
         <h1 className={styles.name}>{ data.second_name }</h1>
       </div>
       <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
