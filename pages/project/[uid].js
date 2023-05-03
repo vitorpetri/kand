@@ -100,9 +100,13 @@ export default function Projects({ project, previousProject, nextProject }) {
                 <div className={styles.categories}>
                     <div className={styles.categories__title}>Categories</div>
                     <ul className={styles.categories__list}>
-                        <li className={styles.categories__item}>Branding</li>
-                        <li className={styles.categories__item}>Best Use Of Media</li>
-                        <li className={styles.categories__item}>Design</li>
+                        {project.tags.map((tag) => (
+                            <li key={tag} className={styles.categories__item}>
+                                <Link href={`/categories?tag=${encodeURIComponent(tag)}`}>
+                                    {tag}
+                                </Link>
+                            </li>
+                        ))}
                     </ul>
                 </div>
             </div>
@@ -161,7 +165,11 @@ export async function getServerSideProps(context) {
     const previousProject = currentProjectIndex > 0 ? projectList.results[currentProjectIndex - 1] : null
     const nextProject = currentProjectIndex < projectList.results.length - 1 ? projectList.results[currentProjectIndex + 1] : null
 
-    const project = res.data
+    const project = {
+        ...res.data,
+        uid: res.uid,
+        tags: res.tags,
+    }
 
     return {
         props: {

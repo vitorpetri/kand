@@ -11,10 +11,10 @@ import Gallery from '../../components/Gallery'
 import SeparatorLine from '../../components/SeparatorLine'
 import Line from '../../components/Line'
 
-export default function Categories({ projectsList, allTags }) {
+export default function Categories({ projectsList, allTags, selectedTagIndex }) {
     // const [activeCategories, setActiveCategories] = useState([]);
 
-    const [activeCategory, setActiveCategory] = useState(null);
+    const [activeCategory, setActiveCategory] = useState(selectedTagIndex);
 
     // const toggleActive = (index) => {
     //     if (activeCategories.includes(index)) {
@@ -28,7 +28,7 @@ export default function Categories({ projectsList, allTags }) {
 
     const toggleActive = (index) => {
         setActiveCategory(index === activeCategory ? null : index);
-      };
+    };
 
     const filteredProjects = () => {
         // If no categories are selected, show all projects
@@ -89,7 +89,7 @@ export default function Categories({ projectsList, allTags }) {
     )
 }
 
-export async function getServerSideProps() {
+export async function getServerSideProps(context) {
     const client = createClient({ accessToken: sm.token })
     const projects = await client.getAllByType('project')
 
@@ -100,6 +100,9 @@ export async function getServerSideProps() {
     const allTags = [
         ...new Set(allDocumentsResponse.results.flatMap((doc) => doc.tags)),
     ];
+
+    const selectedTagName = context.query.tag;
+    const selectedTagIndex = selectedTagName ? allTags.indexOf(selectedTagName) : null;
 
     const projectsListTreated = projects.map((project) => {
         if (!project.data) return null
@@ -126,6 +129,6 @@ export async function getServerSideProps() {
     })
 
     return {
-        props: { projectsList, order, allTags }
+        props: { projectsList, order, allTags, selectedTagIndex }
     }
 }
