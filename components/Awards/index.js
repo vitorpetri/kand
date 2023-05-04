@@ -3,15 +3,15 @@ import React from 'react'
 import styles from './styles.module.sass'
 
 function addLineBreak(str) {
-    const input = str || '';
-    const lines = input.split('\n');
+    const input = str || ''
+    const lines = input.split('\n')
     const modifiedLines = lines.map((line, index) => (
         <React.Fragment key={index}>
             {line}
             {index < lines.length - 1 && <br />}
         </React.Fragment>
-    ));
-    return modifiedLines;
+    ))
+    return modifiedLines
 }
 
 export default function Awards({ data }) {

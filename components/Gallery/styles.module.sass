@@ -31,9 +31,30 @@
     height: 100%
     object-fit: cover
 
+  &:hover + .project__title
+    opacity: 0
+    transform: translateX(4rem)
+
   @include media('<=phone')
     width: 94rem
     height: 57rem
+
+.project__title
+  margin-top: 3.2rem
+  font-size: 2.2rem
+  color: $gray
+  letter-spacing: 0.2rem
+  padding-left: 1rem
+  transition: 250ms ease-in-out
+
+  br
+    display: none
+
+  @include media('<=phone')
+    margin-top: 4rem
+    font-size: 2.8rem
+    padding-left: 0
+    letter-spacing: 0
 
 .animateProject
   animation: animateProject 0.7s ease-in-out
@@ -106,20 +127,3 @@
   text-align: center
   color: $primary
   border-radius: 50%
-
-
-.project__title
-  margin-top: 3.2rem
-  font-size: 2.2rem
-  color: $gray
-  letter-spacing: 0.2rem
-  padding-left: 1rem
-
-  br
-    display: none
-
-  @include media('<=phone')
-    margin-top: 4rem
-    font-size: 2.8rem
-    padding-left: 0
-    letter-spacing: 0
