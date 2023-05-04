@@ -5,7 +5,6 @@ import { useRouter } from 'next/router'
 import { useEffect } from 'react'
 import Link from 'next/link'
 import GSAP from 'gsap'
-import { motion, AnimatePresence } from 'framer-motion'
 import Lenis from '../utils/scroll'
 
 import { PrismicProvider } from '@prismicio/react'
@@ -49,11 +48,9 @@ export default function App({ Component, pageProps, data, router }) {
                 <div className="grain" />
                 <Navigation data={data} />
                 <main className='content'>
-                    <AnimatePresence>
-                        <motion.div key={router.route} initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.6 }}>
-                            <Component {...pageProps} />
-                        </motion.div>
-                    </AnimatePresence>
+                    <div key={router.route}>
+                        <Component {...pageProps} />
+                    </div>
                 </main>
             </PrismicPreview>
         </PrismicProvider>

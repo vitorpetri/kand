@@ -20,14 +20,7 @@ export default function Home(data) {
         <div className={styles.accent}></div>
         <h1 className={styles.name}>{ data.first_name }</h1>
         <div className={styles.line} />
-        {/* <motion.div className={styles.icon__wrapper} 
-          initial={{ scale: 1.5 }} 
-          animate={{ scale: 1 }} 
-          exit={{ scale: 1.5 }} 
-          transition={{ duration: 2.5 }}
-        > */}
           <Image priority className={styles.icon} src={MundoSvg} alt="World"/>
-        {/* </motion.div> */}
         <div className={styles.line} />
         <h1 className={styles.name}>{ data.second_name }</h1>
       </div>
