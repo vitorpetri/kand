@@ -14,7 +14,7 @@ export default function Home(data) {
       <title>KAUE & DALTRO</title>
     </Head>
 
-    <div className={styles.wrapper}  data-barba='container'>
+    <div className={styles.wrapper}  >
       <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.first_paragraph }} />
       <div className={styles.title}>
         <div className={styles.accent}></div>
