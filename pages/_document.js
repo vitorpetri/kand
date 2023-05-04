@@ -7,7 +7,7 @@ export default class MyDocument extends Document {
     return (
       <Html>
         <Head />
-        <body data-barba="wrapper">
+        <body>
           <Main />
           <NextScript />
         </body>
