@@ -14,14 +14,15 @@ export default function Clients({ data }) {
                     return (
                         <div className={styles.client} key={index}>
                             <div className={styles.type__title}>{slice.primary.topic}</div>
-                            <div className={styles.client__image}>
                                 {slice.items.map((item, index) => (
-                                    <img src={prismicH.asImageSrc(item.logo, { lossless: true, q: 100 }) || ''} alt={item.logo.alt} key={index} />
+                                    <div className={styles.client__image}>
+                                        <img src={prismicH.asImageSrc(item.logo, { lossless: true, q: 100 }) || ''} alt={item.logo.alt} key={index} />
+                                    </div>
                                 ))}
                             </div>
-                        </div>
-                    )
-                })}
+                        )
+                    })
+                }
             </div>
 
         </div>

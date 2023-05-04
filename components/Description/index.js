@@ -16,7 +16,7 @@ export default function Profile({data}) {
           {description.text ? description.text : ''}
         </p>
       )}})}
+      <div className={styles.line} />
     </div>
-    <div className={styles.line} />
   </div>
 }
