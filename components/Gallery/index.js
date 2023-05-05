@@ -46,6 +46,7 @@ export default function Gallery({ projectsList }) {
                             <h3 className={styles.project__hover__title} dangerouslySetInnerHTML={{ __html: title }} />
                             <p className={styles.project__hover__agency__label}>Agency</p>
                             <p className={styles.project__hover__agency} dangerouslySetInnerHTML={{ __html: agency }} />
+                            <div className={styles.project__hover__line} />
                             <div className={styles.project__hover__plus__wrapper}>
                                 <span className={styles.project__hover__plus}>+</span>
                             </div>
