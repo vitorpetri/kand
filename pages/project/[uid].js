@@ -111,8 +111,7 @@ export default function Projects({ project, previousProject, nextProject }) {
             </div>
 
             <div className={styles.footer}>
-                {/* <Link className={styles.footer__button} href={`/project/${previousProject.uid}`} passHref> */}
-                <Link className={styles.footer__button} href={`/project/${nextProject.uid}`} passHref>
+                <Link className={styles.footer__button} href={`/project/${previousProject.uid}`} passHref>
                     <span
                         role='button'
                         tabIndex={0}
@@ -154,15 +153,17 @@ export async function getServerSideProps(context) {
 
     if (!res) return { notFound: true }
 
-    // Fetch the list of the pages
-    const projectList = await client.query("", { pageSize: 100 })
+    // Fetch the Projects List
+    const projects = await client.getSingle('order')
+
+    const projectList = projects.data.list_order.map(item => item.project)
 
     // Fetch the current project index in the list
-    const currentProjectIndex = projectList.results.findIndex((p) => p.uid === uid)
+    const currentProjectIndex = projectList.findIndex((p) => p.uid === uid)
 
-    // Retrieve the previous and next projects
-    const previousProject = currentProjectIndex > 0 ? projectList.results[currentProjectIndex - 1] : null
-    const nextProject = currentProjectIndex < projectList.results.length - 1 ? projectList.results[currentProjectIndex + 1] : null
+    // Retrieve the previous and next projects with looping
+    const previousProject = currentProjectIndex > 0 ? projectList[currentProjectIndex - 1] : projectList[projectList.length - 1];
+    const nextProject = currentProjectIndex < projectList.length - 1 ? projectList[currentProjectIndex + 1] : projectList[0];
 
     const project = {
         ...res.data,
