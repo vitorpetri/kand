@@ -50,13 +50,13 @@ export default function Projects({ project, previousProject, nextProject }) {
                     )
                 } else if (content.video.embed_url) {
                     return (
-                        <div key={index} className='video'>
+                        <div key={index} className='video' scroll='true' overflow-scroll='true' >
                             <iframe
                                 src={content.video.embed_url}
                                 className='frame'
+                                dat-tap-disabled='true'
                                 allow='autoplay; fullscreen; picture-in-picture'
-                            >
-                            </iframe>
+                            />
                         </div>
                     )
                 } else if (content.image) {

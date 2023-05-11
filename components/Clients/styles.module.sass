@@ -3,9 +3,10 @@
 .wrapper
   display: flex
   flex-direction: column
-  flex-wrap: wrap
+  // flex-wrap: wrap
   width: 100%
   padding: 9rem 0 9rem 22rem
+  height: 150rem
   // max-height: 320rem
   // height: 200rem
 
@@ -25,6 +26,7 @@
   color: $primary
   text-transform: capitalize
   margin: 2.4rem 0
+  width: 32rem
 
 .clients
   display: flex
@@ -32,17 +34,104 @@
   justify-content: space-between
   gap: 2rem 4rem
   width: 32rem
-  // max-height: 42rem
-
-.client__image
-  width: 12rem
-  height: 6rem
   position: relative
 
+  & > div
+    position: absolute
+
+  & > div:nth-of-type(1) // Beers & Spirits
+    height: calc(10rem + 8rem * 5)
+    top: 0
+    left: 0
+  
+  & > div:nth-of-type(2) // Ariline & Travel
+    height: calc(10rem + 8rem * 2)
+    top: calc(10rem * (5 + 0))
+    left: 0
+
+  & > div:nth-of-type(3) // Food
+    height: calc(10rem + 8rem * 4)
+    top: calc(10rem * (5 + 2))
+    left: 0
+
+  & > div:nth-of-type(4) // TV Channel
+    height: calc(10rem + 8rem * 1)
+    top: calc(10rem * (5 + 2 + 4))
+
+  & > div:nth-of-type(5) // Car & Trucks
+    height: calc(10rem + 8rem * 3)
+    top: 0
+    left: 50rem
+
+  & > div:nth-of-type(6) // NGO
+    height: calc(10rem + 8rem * 1)
+    top: calc(10rem * (3 + 0))
+    left: 50%
+
+  & > div:nth-of-type(7) // Bank & Insurance
+    height: calc(10rem + 8rem * 2)
+    top: calc(10rem * (3 + 1))
+    left: 50%
+
+
+.client__image
+  min-width: 12rem
+  height: 6rem
+  position: absolute
+
+  &:nth-of-type(2)
+    top: 8rem
+    left: 0
+
+  &:nth-of-type(3)
+    top: 8rem
+    left: 20rem
+  
+  &:nth-of-type(4)
+    top: 16rem
+    left: 0
+
+  &:nth-of-type(5)
+    top: 16rem
+    left: 20rem
+
+  &:nth-of-type(6)
+    top: 24rem
+    left: 0rem
+
+  &:nth-of-type(7)
+    top: 24rem
+    left: 20rem
+
+  &:nth-of-type(8)
+    top: 32rem
+    left: 0rem
+
+  &:nth-of-type(9)
+    top: 32rem
+    left: 20rem
+
+  &:nth-of-type(10)
+    top: 40rem
+    left: 0rem
+
+  &:nth-of-type(11)
+    top: 40rem
+    left: 20rem
+
+  &:nth-of-type(12)
+    top: 48rem
+    left: 0rem
+
+  &:nth-of-type(13)
+    top: 48rem
+    left: 20rem
+
   img
+    filter: grayscale(100%)
     position: absolute
     top: 0
     left: 0
     width: 100%
     height: 100%
-    object-fit: cover
+    object-fit: contain
