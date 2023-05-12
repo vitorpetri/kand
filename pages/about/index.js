@@ -54,7 +54,7 @@ export default function About(data) {
             Code by
             <a href='https://twitter.com/whizzbbig' target='blank'>Ojas</a>
             <strong>&</strong>
-            <a href='vitorpetri.com' target='blank'>Vitor</a>
+            <a href='https://vitorpetri.com' target='blank'>Vitor</a>
           </p>
         </div>
       </div>
