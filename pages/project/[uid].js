@@ -16,19 +16,6 @@ import AtomoSvg from '../../public/atomo.svg'
 export default function Projects({ project, previousProject, nextProject }) {
     const router = useRouter();
 
-    const [currentProjectIndex, setCurrentProjectIndex] = useState(0); // Initialize the current project index to 0
-    const projectList = [previousProject, project, nextProject]; // Create an array of projects
-
-    const handlePreviousProject = () => {
-        setCurrentProjectIndex((currentProjectIndex - 1 + projectList.length) % projectList.length); // Calculate the previous project index
-    };
-
-    const handleNextProject = () => {
-        setCurrentProjectIndex((currentProjectIndex + 1) % projectList.length); // Calculate the next project index
-    };
-
-    const currentProject = projectList[currentProjectIndex]; // Get the current project from the array
-
     return (
         <div className={styles.wrapper}>
             <div className={styles.header}>
@@ -147,36 +134,58 @@ export default function Projects({ project, previousProject, nextProject }) {
 }
 
 export async function getServerSideProps(context) {
-    const { uid } = context.params
+    const { uid } = context.params;
 
-    const client = createClient({ accessToken: sm.token })
-    const res = await client.getByUID('project', uid)
+    const client = createClient({ accessToken: sm.token });
+    const res = await client.getByUID("project", uid);
 
-    if (!res) return { notFound: true }
+    if (!res) return { notFound: true };
 
     // Fetch the Projects List
-    const projects = await client.getSingle('order')
+    const projects = await client.getSingle("order");
 
-    const projectList = projects.data.list_order.map(item => item.project)
+    const projectListIds = projects.data.list_order
+        .map((item) => item.project.uid)
+        .filter((projectId) => projectId); // Filter out undefined or null values
+
+    // Fetch all project details
+    const allProjects = await Promise.all(
+        projectListIds.map((projectId) => client.getByUID("project", projectId))
+    );
 
     // Fetch the current project index in the list
-    const currentProjectIndex = projectList.findIndex((p) => p.uid === uid)
+    const currentProjectIndex = allProjects.findIndex((p) => p.uid === uid);
 
     // Retrieve the previous and next projects with looping
-    const previousProject = currentProjectIndex > 0 ? projectList[currentProjectIndex - 1] : projectList[projectList.length - 1];
-    const nextProject = currentProjectIndex < projectList.length - 1 ? projectList[currentProjectIndex + 1] : projectList[0];
+    const previousProjectIndex =
+        currentProjectIndex > 0 ? currentProjectIndex - 1 : allProjects.length - 1;
+    const nextProjectIndex =
+        currentProjectIndex < allProjects.length - 1
+            ? currentProjectIndex + 1
+            : 0;
+
+    const previousProject = allProjects[previousProjectIndex];
+    const nextProject = allProjects[nextProjectIndex];
 
     const project = {
         ...res.data,
         uid: res.uid,
         tags: res.tags,
-    }
+    };
 
     return {
         props: {
             project,
-            previousProject,
-            nextProject
-        }
-    }
+            previousProject: {
+                ...previousProject.data,
+                uid: previousProject.uid,
+                tags: previousProject.tags,
+            },
+            nextProject: {
+                ...nextProject.data,
+                uid: nextProject.uid,
+                tags: nextProject.tags,
+            },
+        },
+    };
 }
