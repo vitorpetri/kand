@@ -42,7 +42,21 @@ export default function About(data) {
 
         <SeparatorLine />
 
-        <Image className={styles.bottom__icon} src={DuoSvg} alt="World"/>
+        <div className={styles.footer}>
+          <p className={styles.bottom__design}>
+            Design by 
+            <strong>US</strong>
+          </p>
+
+          <Image className={styles.bottom__icon} src={DuoSvg} alt="World"/>
+
+          <p className={styles.bottom__code}>
+            Code by
+            <a href='https://twitter.com/whizzbbig' target='blank'>Ojas</a>
+            <strong>&</strong>
+            <a href='vitorpetri.com' target='blank'>Vitor</a>
+          </p>
+        </div>
       </div>
     </>
   )
