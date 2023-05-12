@@ -40,6 +40,9 @@
   height: 0
   transform: scale(1) translateX(-9.4rem) !important
 
+  @include media('<=phone')
+    transform: scale(1.14) translateX(-7rem) translateY(6rem) !important
+
 .crew__box__button
   display: flex
   align-items: center
@@ -76,6 +79,7 @@
   position: absolute
   top: 30rem
   right: 14rem
+  display: none
 
   @include media('<=phone')
     display: none

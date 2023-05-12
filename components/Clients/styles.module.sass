@@ -6,12 +6,13 @@
   // flex-wrap: wrap
   width: 100%
   padding: 9rem 0 9rem 22rem
-  height: 150rem
+  height: 190rem
   // max-height: 320rem
   // height: 200rem
 
   @media (max-width: 1024px)
     padding-left: 14rem
+    height: 258rem
 
 .title
   font-size: 15rem
@@ -41,38 +42,81 @@
 
   & > div:nth-of-type(1) // Beers & Spirits
     height: calc(10rem + 8rem * 5)
-    top: 0
+    top: 4rem
     left: 0
   
   & > div:nth-of-type(2) // Ariline & Travel
     height: calc(10rem + 8rem * 2)
-    top: calc(10rem * (5 + 0))
+    top: calc(9.1rem * (6 + 0))
     left: 0
 
   & > div:nth-of-type(3) // Food
     height: calc(10rem + 8rem * 4)
-    top: calc(10rem * (5 + 2))
+    top: calc(9.1rem * (6 + 2) + 15rem)
     left: 0
 
   & > div:nth-of-type(4) // TV Channel
     height: calc(10rem + 8rem * 1)
-    top: calc(10rem * (5 + 2 + 4))
+    top: calc(9.1rem * (5 + 2 + 4) + 39rem)
 
   & > div:nth-of-type(5) // Car & Trucks
     height: calc(10rem + 8rem * 3)
-    top: 0
-    left: 50rem
+    top: 4rem
+    left: 73.2rem
+
+    @include media('<=phone')
+      left: 46rem
 
   & > div:nth-of-type(6) // NGO
     height: calc(10rem + 8rem * 1)
-    top: calc(10rem * (3 + 0))
-    left: 50%
+    top: calc(9.1rem * (3 + 0) + 27rem)
+    left: 73.2rem
+
+    @include media('<=phone')
+      left: 46rem
 
   & > div:nth-of-type(7) // Bank & Insurance
     height: calc(10rem + 8rem * 2)
-    top: calc(10rem * (3 + 1))
-    left: 50%
+    top: calc(9.1rem * (3 + 1) + 27rem + 25rem)
+    left: 73.2rem
 
+    @include media('<=phone')
+      left: 46rem
+
+  & > div:nth-of-type(8) // Gas Station
+    height: calc(10rem + 8rem * 1)
+    top: calc(9.1rem * (3 + 1 + 2) + 27rem + 25rem + 32rem)
+    left: 73.2rem
+
+    @include media('<=phone')
+      left: 46rem
+
+  & > div:nth-of-type(9) // Beauty & Selfcare
+    height: calc(10rem + 8rem * 2)
+    top: 4rem
+    left: 121rem
+
+    @include media('<=phone')
+      left: 0
+      top: calc(9.1rem * (5 + 2 + 4) + 39rem + 32rem)
+
+  & > div:nth-of-type(10) // Communications
+    height: calc(10rem + 8rem * 1)
+    top: calc(9.1rem * (3 + 1 + 2))
+    left: 121rem
+
+    @include media('<=phone')
+      left: 46rem
+      top: calc(9.1rem * (5 + 2 + 4) + 39rem + 32rem)
+
+  & > div:nth-of-type(11) // Tech & Startups
+    height: calc(10rem + 8rem * 2)
+    top: calc(9.1rem * (3 + 1 + 2 + 1 + 2.7))
+    left: 121rem
+
+    @include media('<=phone')
+      left: 0
+      top: calc(9.1rem * (5 + 2 + 4) + 39rem + 68rem)
 
 .client__image
   min-width: 12rem
