@@ -76,6 +76,11 @@
   height: 24rem
   width: 86%
 
+  @include media('<=phone')
+    flex-wrap: wrap
+    text-align: center
+    justify-content: center
+
 .numbers__item
   display: flex
   flex-direction: column
