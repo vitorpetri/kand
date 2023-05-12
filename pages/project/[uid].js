@@ -53,6 +53,7 @@ export default function Projects({ project, previousProject, nextProject }) {
                         <div key={index} className='video' scroll='true' overflow-scroll='true' >
                             <iframe
                                 src={content.video.embed_url}
+                                // className={`image-${content.size} frame`}
                                 className='frame'
                                 dat-tap-disabled='true'
                                 allow='autoplay; fullscreen; picture-in-picture'
