@@ -50,7 +50,7 @@ export default function Projects({ project, previousProject, nextProject }) {
                     )
                 } else if (content.video.embed_url) {
                     return (
-                        <div key={index} className='video' scroll='true' overflow-scroll='true' >
+                        <div key={index} className={`image-${content.size} video`} scroll='true' overflow-scroll='true' >
                             <iframe
                                 src={content.video.embed_url}
                                 // className={`image-${content.size} frame`}

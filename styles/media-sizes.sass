@@ -12,8 +12,13 @@
 
 .frame, iframe
   width: 100%
-  height: 101rem
+  height: 100%
   border-radius: 1rem
+
+  &:has(iframe)
+    width: 100%
+    height: 100%
+    border-radius: 1rem
 
   @include media('<=phone')
     height: 56rem
@@ -74,7 +79,7 @@
 
 .image-3-m_small_s, .image-3-ms_small, .image-4-s_small_m, .image-4-small_sm
   width: 47.8%
-  height: 49.4rem
+  height: 49.4rem !important
 
   @include media('<=phone')
     height: 26.8rem
