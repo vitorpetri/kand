@@ -147,7 +147,9 @@ export async function getServerSideProps(context) {
         if (found) projectsList.push(found)
     })
 
+    const filteredOrder = order.filter((item) => item !== undefined)
+
     return {
-        props: { projectsList, order, allTags, selectedTagIndex }
+        props: { projectsList, order: filteredOrder, allTags, selectedTagIndex }
     }
 }
