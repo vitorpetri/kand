@@ -58,6 +58,13 @@
                 "label": "Phone",
                 "placeholder": ""
               }
+            },
+            "phone_link": {
+              "type": "Text",
+              "config": {
+                "label": "Phone Link",
+                "placeholder": ""
+              }
             }
           }
         }
@@ -106,6 +113,13 @@
               "type": "Text",
               "config": {
                 "label": "Phone",
+                "placeholder": ""
+              }
+            },
+            "phone_link": {
+              "type": "Text",
+              "config": {
+                "label": "Phone Link",
                 "placeholder": ""
               }
             }

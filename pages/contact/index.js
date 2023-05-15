@@ -35,14 +35,14 @@ export default function Contact(data) {
             <div className={styles.title}>{ data.info_1[0].name }</div>
             <a className={styles.link} href={ data.info_1[0].social_1_link } target='blank'>{ data.info_1[0].social_1 }</a>
             <a className={styles.link} href={ data.info_1[0].social_2_link } target='blank'>{ data.info_1[0].social_2 }</a>
-            <span className={styles.phone}>{ data.info_1[0].phone }</span>
+            <a className={styles.phone} href={ data.info_1[0].phone_link } target='blank'>{ data.info_1[0].phone }</a>
           </div>
 
           <div className={styles.name}>
             <div className={styles.title}>{ data.info_2[0].name }</div>
             <a className={styles.link} href={ data.info_2[0].social_1_link } target='blank'>{ data.info_2[0].social_1 }</a>
             <a className={styles.link} href={ data.info_2[0].social_2_link } target='blank'>{ data.info_2[0].social_2 }</a>
-            <span className={styles.phone}>{ data.info_2[0].phone }</span>
+            <a className={styles.phone} href={ data.info_2[0].phone_link } target='blank'>{ data.info_2[0].phone }</a>
           </div>
         </div>
 

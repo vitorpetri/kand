@@ -249,6 +249,16 @@ export interface ContactDocumentDataInfo1Item {
      *
      */
     phone: prismicT.KeyTextField;
+    /**
+     * Phone Link field in *Contact → Info 1*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.info_1[].phone_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    phone_link: prismicT.KeyTextField;
 }
 /**
  * Item in Contact → Info 2
@@ -315,6 +325,16 @@ export interface ContactDocumentDataInfo2Item {
      *
      */
     phone: prismicT.KeyTextField;
+    /**
+     * Phone Link field in *Contact → Info 2*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: contact.info_2[].phone_link
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    phone_link: prismicT.KeyTextField;
 }
 /**
  * Contact document from Prismic
