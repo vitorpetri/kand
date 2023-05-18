@@ -52,12 +52,9 @@
   object-fit: cover
 
 .content
-  // display: grid
-  // grid-template-columns: repeat(2, 1fr)
   width: 50%
-  display: flex
-  flex-direction: column
-  flex-wrap: wrap
+  column-count: 2
+  column-gap: 10rem
 
 
   @include media('<=phone')
@@ -65,7 +62,8 @@
     margin-top: 10rem
 
 .paragraph
-  width: 50%
+  width: 100%
+  break-inside: avoid
 
   &:not(:last-of-type)
     margin-bottom: 8rem
@@ -106,4 +104,3 @@
   margin-top: 1.2rem
   line-height: 2.3rem
   color: $gray
-  
