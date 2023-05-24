@@ -31,7 +31,7 @@ export default function Home(data) {
         So tell us:
       </p>
       <p className={styles.paragraph}>
-        what do you wanna see today?
+        { data.question }
       </p>
       <div className={styles.buttons__wrapper}>
         <Link href={"/projects"} className={styles.button}>

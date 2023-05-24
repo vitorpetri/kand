@@ -404,6 +404,17 @@ interface HomeDocumentData {
      */
     third_paragraph: prismicT.KeyTextField;
     /**
+     * Question field in *Home*
+     *
+     * - **Field Type**: Text
+     * - **Placeholder**: *None*
+     * - **API ID Path**: home.question
+     * - **Tab**: Main
+     * - **Documentation**: https://prismic.io/docs/core-concepts/key-text
+     *
+     */
+    question: prismicT.KeyTextField;
+    /**
      * First Button field in *Home*
      *
      * - **Field Type**: Text

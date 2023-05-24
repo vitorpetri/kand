@@ -40,6 +40,13 @@
           "placeholder": ""
         }
       },
+      "question": {
+        "type": "Text",
+        "config": {
+          "label": "Question",
+          "placeholder": ""
+        }
+      },
       "first_button": {
         "type": "Text",
         "config": {
