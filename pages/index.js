@@ -25,11 +25,7 @@ export default function Home(data) {
         <h1 className={styles.name}>{ data.second_name }</h1>
       </div>
       <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
-      <p className={styles.paragraph__mobile}>
-        with almost a decade of experience, <br/> 
-        we've done a little bit of everything. <br/> 
-        So tell us:
-      </p>
+      <p className={styles.paragraph__mobile} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
       <p className={styles.paragraph}>
         { data.question }
       </p>
