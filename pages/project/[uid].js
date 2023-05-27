@@ -3,7 +3,9 @@ import styles from './styles.module.sass'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import GSAP from 'gsap';
+import Rive from 'rive-react'
 
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
@@ -11,14 +13,77 @@ import * as prismicH from '@prismicio/helpers'
 
 import Crew from '../../components/Crew'
 
-import AtomoSvg from '../../public/atomo.svg'
+const KandRive = '/kand.riv'
+
 
 export default function Projects({ project, previousProject, nextProject }) {
     const router = useRouter();
+    const riveRef = useRef(null);
+    const afterRiveDiv = useRef(null);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const [hideElements, setHideElements] = useState(false);
+
+    useEffect(() => {
+        const handleRouteChange = () => {
+            setIsLoading(false);
+        };
+
+        router.events.on('routeChangeComplete', handleRouteChange);
+
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChange);
+        };
+    }, [router.events]);
+
+    useEffect(() => {
+        const tl = GSAP.timeline({
+            paused: true,
+            onComplete: () => {
+                if (isLoading) {
+                    router.push(`/project/${nextProject.uid}`);
+                } else {
+                    router.push(`/project/${previousProject.uid}`);
+                }
+            }
+        });
+
+        if (isLoading) {
+            tl.to(riveRef.current, {
+                duration: .6,
+                height: '100rem',
+                width: '100rem',
+                translateY: "-65%",
+                position: 'absolute',
+                zIndex: 999,
+                onStart: () => setHideElements(true),
+                onComplete: () => setHideElements(false)
+            })
+                .to(afterRiveDiv.current, {
+                    duration: 2,
+                    height: '100vh',
+                    transform: "translateY(-110%)",
+                    ease: "power2.inOut",
+                    zIndex: 9999,
+                }).play();
+        } else {
+            GSAP.killTweensOf(riveRef.current);
+            GSAP.set(riveRef.current, { clearProps: "all" });
+            GSAP.set(afterRiveDiv.current, { clearProps: "all" });
+            GSAP.set('.content', { clearProps: "opacity" });
+        }
+
+        return () => {
+            GSAP.killTweensOf(riveRef.current);
+            GSAP.set(riveRef.current, { clearProps: "all" });
+            tl.kill();
+        };
+    }, [isLoading]);
+
 
     return (
         <div className={styles.wrapper}>
-            <div className={styles.header}>
+            <div className={`${styles.header} ${hideElements ? styles.hide : ''}`}>
                 <div className={styles.client_label}>Client</div>
                 <div className={styles.client}>{project.client}</div>
 
@@ -33,11 +98,11 @@ export default function Projects({ project, previousProject, nextProject }) {
             {project.content.map((content, index) => {
                 if (content.description) {
                     return (
-                        <p className='description' key={index}>{content.description}</p>
+                        <p className={`description ${hideElements ? styles.hide : ''}`} key={index}>{content.description}</p>
                     )
                 } else if (content.video.embed_url) {
                     return (
-                        <div key={index} className={`media-${content.size} video`} scroll='true' overflow-scroll='true' >
+                        <div key={index} className={`image-${content.size} video ${hideElements ? styles.hide : ''}`} scroll='true' overflow-scroll='true' >
                             <iframe
                                 src={content.video.embed_url}
                                 className='frame'
@@ -49,7 +114,7 @@ export default function Projects({ project, previousProject, nextProject }) {
                     )
                 } else if (content.image) {
                     return (
-                        <div key={index} className={`media-${content.size} images`}>
+                        <div key={index} className={`image-${content.size} images ${hideElements ? styles.hide : ''}`}>
                             <img
                                 src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''}
                                 alt={content.image.alt} />
@@ -61,7 +126,7 @@ export default function Projects({ project, previousProject, nextProject }) {
             {project.numbers && project.numbers.length > 0 ? (
                 project.numbers
                     .filter(number => number.title && number.description).length > 0 ? (
-                    <ul className={styles.numbers}>
+                    <ul className={`${styles.numbers} ${hideElements ? styles.hide : ''}`}>
                         {project.numbers
                             .filter(number => number.title && number.description)
                             .map((number, index) => {
@@ -76,12 +141,12 @@ export default function Projects({ project, previousProject, nextProject }) {
                 ) : null
             ) : null}
 
-            <div className={styles.banner}>
+            <div className={`${styles.banner} ${hideElements ? styles.hide : ''}`}>
                 <div className={styles.banner__title}>{project.banner_title}</div>
                 <div className={styles.banner__description}>{project.banner_description}</div>
             </div>
 
-            <div className={styles.info}>
+            <div className={`${styles.info} ${hideElements ? styles.hide : ''}`}>
                 <Crew data={project} />
 
                 <div className={styles.categories}>
@@ -98,32 +163,47 @@ export default function Projects({ project, previousProject, nextProject }) {
                 </div>
             </div>
 
-            <div className={styles.footer}>
-                <Link className={styles.footer__button} href={`/project/${previousProject.uid}`} passHref>
+            <div className={`${styles.footer} ${hideElements ? styles.footer__hide : ''}`}>
+                <Link className={`${styles.footer__button} ${hideElements ? styles.hide : ''}`} href={`/project/${previousProject.uid}`} passHref>
                     <span
                         role='button'
                         tabIndex={0}
-                        onClick={() => router.push(`/project/${previousProject.uid}`)}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setIsLoading(true);
+                        }}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                                router.push(`/project/${previousProject.uid}`);
+                                e.preventDefault();
+                                setIsLoading(true);
                             }
                         }}
                     >
                         Previous
                     </span>
                 </Link>
-                <Image className={styles.footer__icon} src={AtomoSvg} alt="Atom" />
-                <Link className={styles.footer__button} href={`/project/${nextProject.uid}`} passHref>
+
+
+                <div ref={riveRef} className={styles.footer__icon}>
+                    <Rive src={KandRive} artboard='Rive Atomo' />
+                </div>
+
+                <div ref={afterRiveDiv} className={styles.iconAfter}></div>
+
+                <Link className={`${styles.footer__button} ${hideElements ? styles.hide : ''}`} href={`/project/${nextProject.uid}`} passHref>
                     <span
                         role="button"
                         tabIndex={0}
-                        onClick={() => router.push(`/project/${nextProject.uid}`)}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            setIsLoading(true);
+                        }}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                                router.push(`/project/${nextProject.uid}`);
+                                e.preventDefault();
+                                setIsLoading(true);
                             }
-                        }}
+                        }}c
                     >
                         Next
                     </span>
@@ -134,58 +214,39 @@ export default function Projects({ project, previousProject, nextProject }) {
 }
 
 export async function getServerSideProps(context) {
-    const { uid } = context.params;
+    const { uid } = context.params
 
-    const client = createClient({ accessToken: sm.token });
-    const res = await client.getByUID("project", uid);
+    const client = createClient({ accessToken: sm.token })
+    const res = await client.getByUID('project', uid)
 
-    if (!res) return { notFound: true };
+    if (!res) return { notFound: true }
 
     // Fetch the Projects List
-    const projects = await client.getSingle("order");
+    const projects = await client.getSingle('order')
 
-    const projectListIds = projects.data.list_order
-        .map((item) => item.project.uid)
-        .filter((projectId) => projectId); // Filter out undefined or null values
-
-    // Fetch all project details
-    const allProjects = await Promise.all(
-        projectListIds.map((projectId) => client.getByUID("project", projectId))
-    );
+    const projectList = projects.data.list_order.map(item => item.project)
 
     // Fetch the current project index in the list
-    const currentProjectIndex = allProjects.findIndex((p) => p.uid === uid);
+    const currentProjectIndex = projectList.findIndex((p) => p.uid === uid)
 
     // Retrieve the previous and next projects with looping
-    const previousProjectIndex =
-        currentProjectIndex > 0 ? currentProjectIndex - 1 : allProjects.length - 1;
-    const nextProjectIndex =
-        currentProjectIndex < allProjects.length - 1
-            ? currentProjectIndex + 1
-            : 0;
-
-    const previousProject = allProjects[previousProjectIndex];
-    const nextProject = allProjects[nextProjectIndex];
+    const previousProject = currentProjectIndex > 0 ? projectList[currentProjectIndex - 1] : projectList[projectList.length - 1];
+    const nextProject = currentProjectIndex < projectList.length - 1 ? projectList[currentProjectIndex + 1] : projectList[0];
 
     const project = {
         ...res.data,
         uid: res.uid,
         tags: res.tags,
-    };
+    }
+
+    console.log('Next project:', nextProject);
+    console.log('Previous project:', previousProject);
 
     return {
         props: {
             project,
-            previousProject: {
-                ...previousProject.data,
-                uid: previousProject.uid,
-                tags: previousProject.tags,
-            },
-            nextProject: {
-                ...nextProject.data,
-                uid: nextProject.uid,
-                tags: nextProject.tags,
-            },
-        },
-    };
+            previousProject,
+            nextProject
+        }
+    }
 }

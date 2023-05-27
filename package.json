@@ -23,6 +23,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-intersection-observer": "^9.4.3",
+    "rive-react": "^3.0.48",
     "sass": "^1.58.0"
   },
   "devDependencies": {
