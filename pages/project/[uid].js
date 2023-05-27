@@ -19,71 +19,10 @@ const KandRive = '/kand.riv'
 export default function Projects({ project, previousProject, nextProject }) {
     const router = useRouter();
     const riveRef = useRef(null);
-    const afterRiveDiv = useRef(null);
-    const [isLoading, setIsLoading] = useState(false);
-
-    const [hideElements, setHideElements] = useState(false);
-
-    useEffect(() => {
-        const handleRouteChange = () => {
-            setIsLoading(false);
-        };
-
-        router.events.on('routeChangeComplete', handleRouteChange);
-
-        return () => {
-            router.events.off('routeChangeComplete', handleRouteChange);
-        };
-    }, [router.events]);
-
-    useEffect(() => {
-        const tl = GSAP.timeline({
-            paused: true,
-            onComplete: () => {
-                if (isLoading) {
-                    router.push(`/project/${nextProject.uid}`);
-                } else {
-                    router.push(`/project/${previousProject.uid}`);
-                }
-            }
-        });
-
-        if (isLoading) {
-            tl.to(riveRef.current, {
-                duration: .6,
-                height: '100rem',
-                width: '100rem',
-                translateY: "-65%",
-                position: 'absolute',
-                zIndex: 999,
-                onStart: () => setHideElements(true),
-                onComplete: () => setHideElements(false)
-            })
-                .to(afterRiveDiv.current, {
-                    duration: 2,
-                    height: '100vh',
-                    transform: "translateY(-110%)",
-                    ease: "power2.inOut",
-                    zIndex: 9999,
-                }).play();
-        } else {
-            GSAP.killTweensOf(riveRef.current);
-            GSAP.set(riveRef.current, { clearProps: "all" });
-            GSAP.set(afterRiveDiv.current, { clearProps: "all" });
-            GSAP.set('.content', { clearProps: "opacity" });
-        }
-
-        return () => {
-            GSAP.killTweensOf(riveRef.current);
-            GSAP.set(riveRef.current, { clearProps: "all" });
-            tl.kill();
-        };
-    }, [isLoading]);
-
 
     return (
         <div className={styles.wrapper}>
-            <div className={`${styles.header} ${hideElements ? styles.hide : ''}`}>
+            <div className={styles.header}>
                 <div className={styles.client_label}>Client</div>
                 <div className={styles.client}>{project.client}</div>
 
@@ -98,23 +37,23 @@ export default function Projects({ project, previousProject, nextProject }) {
             {project.content.map((content, index) => {
                 if (content.description) {
                     return (
-                        <p className={`description ${hideElements ? styles.hide : ''}`} key={index}>{content.description}</p>
+                        <p className='description' key={index}>{content.description}</p>
                     )
                 } else if (content.video.embed_url) {
                     return (
-                        <div key={index} className={`image-${content.size} video ${hideElements ? styles.hide : ''}`} scroll='true' overflow-scroll='true' >
+                        <div key={index} className={`image-${content.size} video`} scroll='true' overflow-scroll='true' >
                             <iframe
                                 src={content.video.embed_url}
+                                // className={`image-${content.size} frame`}
                                 className='frame'
                                 dat-tap-disabled='true'
                                 allow='autoplay; fullscreen; picture-in-picture'
-                                // height='101rem'
                             />
                         </div>
                     )
                 } else if (content.image) {
                     return (
-                        <div key={index} className={`image-${content.size} images ${hideElements ? styles.hide : ''}`}>
+                        <div key={index} className={`image-${content.size} images`}>
                             <img
                                 src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''}
                                 alt={content.image.alt} />
@@ -126,7 +65,7 @@ export default function Projects({ project, previousProject, nextProject }) {
             {project.numbers && project.numbers.length > 0 ? (
                 project.numbers
                     .filter(number => number.title && number.description).length > 0 ? (
-                    <ul className={`${styles.numbers} ${hideElements ? styles.hide : ''}`}>
+                    <ul className={styles.numbers}>
                         {project.numbers
                             .filter(number => number.title && number.description)
                             .map((number, index) => {
@@ -141,12 +80,12 @@ export default function Projects({ project, previousProject, nextProject }) {
                 ) : null
             ) : null}
 
-            <div className={`${styles.banner} ${hideElements ? styles.hide : ''}`}>
+            <div className={styles.banner}>
                 <div className={styles.banner__title}>{project.banner_title}</div>
                 <div className={styles.banner__description}>{project.banner_description}</div>
             </div>
 
-            <div className={`${styles.info} ${hideElements ? styles.hide : ''}`}>
+            <div className={styles.info}>
                 <Crew data={project} />
 
                 <div className={styles.categories}>
@@ -163,19 +102,15 @@ export default function Projects({ project, previousProject, nextProject }) {
                 </div>
             </div>
 
-            <div className={`${styles.footer} ${hideElements ? styles.footer__hide : ''}`}>
-                <Link className={`${styles.footer__button} ${hideElements ? styles.hide : ''}`} href={`/project/${previousProject.uid}`} passHref>
+            <div className={styles.footer}>
+                <Link className={styles.footer__button} href={`/project/${previousProject.uid}`} passHref>
                     <span
                         role='button'
                         tabIndex={0}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setIsLoading(true);
-                        }}
+                        onClick={() => router.push(`/project/${previousProject.uid}`)}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                                e.preventDefault();
-                                setIsLoading(true);
+                                router.push(`/project/${previousProject.uid}`);
                             }
                         }}
                     >
@@ -188,22 +123,16 @@ export default function Projects({ project, previousProject, nextProject }) {
                     <Rive src={KandRive} artboard='Rive Atomo' />
                 </div>
 
-                <div ref={afterRiveDiv} className={styles.iconAfter}></div>
-
-                <Link className={`${styles.footer__button} ${hideElements ? styles.hide : ''}`} href={`/project/${nextProject.uid}`} passHref>
+                <Link className={styles.footer__button} href={`/project/${nextProject.uid}`} passHref>
                     <span
                         role="button"
                         tabIndex={0}
-                        onClick={(e) => {
-                            e.preventDefault();
-                            setIsLoading(true);
-                        }}
+                        onClick={() => router.push(`/project/${nextProject.uid}`)}
                         onKeyDown={(e) => {
                             if (e.key === "Enter") {
-                                e.preventDefault();
-                                setIsLoading(true);
+                                router.push(`/project/${nextProject.uid}`);
                             }
-                        }}c
+                        }}
                     >
                         Next
                     </span>
