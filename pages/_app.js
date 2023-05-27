@@ -6,7 +6,6 @@ import { useEffect } from 'react'
 import Link from 'next/link'
 import GSAP from 'gsap'
 import Lenis from '../utils/scroll'
-import Transition from '../components/Transition'
 
 import { PrismicProvider } from '@prismicio/react'
 import { PrismicPreview } from '@prismicio/next'
