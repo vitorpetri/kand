@@ -23,7 +23,7 @@ const fetchNavigationData = async () => {
     return navigation?.results[0]?.data
 }
 
-// import Navigation from '../components/Navigation'
+import Navigation from '../components/Navigation'
 
 export default function App({ Component, pageProps, data, router }) {
     useTransitionFix()

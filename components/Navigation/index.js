@@ -9,6 +9,8 @@ import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
 export default function Navigation({ data }) {
+    console.log(data);
+
     const [isActive, setIsActive] = useState(false)
 
     const onClick = () => setIsActive(!isActive)
@@ -142,19 +144,21 @@ export async function getStaticProps() {
 
     console.log(data);
 
-
     return {
         props: { ...data },
     };
 }
 
 export async function getServerSideProps() {
-  const client = createClient({ accessToken: sm.token })
+    const client = createClient({ accessToken: sm.token })
 
-  const navigation = await client.getByType('navigation')
-  const data = navigation?.results[0]?.data
 
-  return {
-    props: { data },
-  }
+    const navigation = await client.getByType('navigation')
+    const data = navigation?.results[0]?.data
+
+    console.log(data);
+
+    return {
+        props: { data },
+    }
 }

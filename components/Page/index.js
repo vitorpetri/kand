@@ -1,51 +1,64 @@
+import styles from './styles.module.scss'
+
 import classNames from 'classnames';
 import Head from 'next/head';
 import React, { forwardRef } from 'react';
+import PropTypes from 'prop-types';
 
-import Footer from 'components/Footer';
-import Navigation from 'components/Navigation';
+// import Navigation from '../Navigation';
 
-import styles from './Page.module.scss';
 
-const Page = React.forwardRef(
-    (
-        { children, className, metadata, shared },
-        ref
-    ) => {
-        const {
-            cookies: { content: cookies },
-            footer: { content: footer },
-            navigation: { content: navigation },
-        } = shared;
+const Page = forwardRef(({
+    children,
+    className,
+    metadata = {},
+    shared = {},
+}, ref) => {
+    // const navigation = shared?.navigation?.content ?? {};
+    const {
+        title = '',
+        description = '',
+        keywords = '',
+        image = ''
+    } = metadata;
 
-        return (
-            <>
-                <Head>
-                    <title>{metadata.title}</title>
+    return (
+        <>
+            <Head>
+                <title>{title}</title>
 
-                    <meta name="description" content={metadata.description} />
-                    <meta name="keywords" content={metadata.keywords} />
+                <meta name="description" content={description} />
+                <meta name="keywords" content={keywords} />
 
-                    <meta property="og:title" content={metadata.title} />
-                    <meta property="og:description" content={metadata.description} />
-                    <meta property="og:image" content={metadata.image} />
+                <meta property="og:title" content={title} />
+                <meta property="og:description" content={description} />
+                <meta property="og:image" content={image} />
 
-                    <meta name="twitter:card" content="summary_large_image" />
-                    <meta name="twitter:title" content={metadata.title} />
-                    <meta name="twitter:description" content={metadata.description} />
-                    <meta name="twitter:image" content={metadata.image} />
-                </Head>
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content={title} />
+                <meta name="twitter:description" content={description} />
+                <meta name="twitter:image" content={image} />
+            </Head>
 
-                <div className={classNames(styles.element, className)} ref={ref}>
-                    <Navigation {...navigation} />
+            <div className={classNames(styles.element, className)} ref={ref}>
+                {/* <Navigation {...navigation} /> */}
 
-                    <div className={styles.content}>{children}</div>
-
-                    <Footer {...footer} />
+                <div className={styles.content}>
+                    {children}
                 </div>
-            </>
-        );
-    }
-);
+            </div>
+        </>
+    )
+})
+
+Page.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ]).isRequired,
+    className: PropTypes.string,
+    metadata: PropTypes.object,
+    shared: PropTypes.object,
+};
 
 export default Page;
