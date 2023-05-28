@@ -9,14 +9,16 @@ import GSAP from 'gsap'
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
+import Page from '../../components/Page'
 import Gallery from '../../components/Gallery'
 import SeparatorLine from '../../components/SeparatorLine'
 
-export default function Categories({ projectsList, allTags, selectedTagIndex }) {
+export default function Categories({ projectsList, allTags, selectedTagIndex, navigation }) {
     const router = useRouter()
 
     const titleRef = useRef(null)
     const galleryRef = useRef(null)
+    const elementRef = useRef(null)
 
     useEffect(() => {
         const title = titleRef.current
@@ -63,7 +65,11 @@ export default function Categories({ projectsList, allTags, selectedTagIndex }) 
     };
 
     return (
-        <>
+        <Page
+            className={"Page"}
+            ref={elementRef}
+            navigation={navigation}
+        >
             <Head>
                 <title>KAND | Categories</title>
             </Head>
@@ -104,7 +110,7 @@ export default function Categories({ projectsList, allTags, selectedTagIndex }) 
                 <span className={styles.footer__label}>or see</span>
                 <Link href={'/projects'} className={styles.footer__title}>All Projects</Link>
             </div>
-        </>
+        </Page>
     )
 }
 
@@ -149,7 +155,11 @@ export async function getServerSideProps(context) {
 
     const filteredOrder = order.filter((item) => item !== undefined)
 
+    // Fetch Navigation
+    const navigation = await client.getByType('navigation')
+    const navigationData = navigation?.results[0]?.data
+
     return {
-        props: { projectsList, order: filteredOrder, allTags, selectedTagIndex }
+        props: { projectsList, order: filteredOrder, allTags, selectedTagIndex, navigation: navigationData }
     }
 }

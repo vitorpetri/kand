@@ -11,14 +11,14 @@ import Page from '../components/Page'
 
 import styles from './styles.module.sass'
 
-export default function Home(data, shared) {
+export default function Home({ data, navigation }) {
     const elementRef = useRef(null)
 
     return (
         <Page
             className={"Page"}
             ref={elementRef}
-            shared={shared}
+            navigation={navigation}
         >
             <Head>
                 <title>KAUE & DALTRO</title>
@@ -58,7 +58,10 @@ export async function getServerSideProps() {
     const home = await client.getByType('home')
     const data = home?.results[0]?.data
 
+    const navigation = await client.getByType('navigation')
+    const navigationData = navigation?.results[0]?.data
+
     return {
-        props: { ...data },
+        props: { data: data, navigation: navigationData },
     }
 }

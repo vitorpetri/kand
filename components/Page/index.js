@@ -12,9 +12,12 @@ const Page = forwardRef(({
     children,
     className,
     metadata = {},
-    shared = {},
+    navigation,
 }, ref) => {
-    const navigation = shared?.navigation?.content ?? {};
+
+    console.log(navigation);
+
+
     const {
         title = '',
         description = '',
@@ -63,7 +66,7 @@ Page.propTypes = {
     ]).isRequired,
     className: PropTypes.string,
     metadata: PropTypes.object,
-    shared: PropTypes.object,
+    navigation: PropTypes.object,
 };
 
 export default Page;

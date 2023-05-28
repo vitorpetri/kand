@@ -5,9 +5,6 @@ import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
 import GSAP from 'gsap'
 
-import { createClient } from '../../prismicio'
-import sm from '../../sm.json'
-
 export default function Navigation({ navigationData }) {
     const [isActive, setIsActive] = useState(false)
 

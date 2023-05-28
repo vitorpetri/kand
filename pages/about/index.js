@@ -17,7 +17,7 @@ import Awards from '../../components/Awards'
 
 import DuoSvg from '../../public/duo.svg'
 
-export default function About(data, shared) {
+export default function About({ data, navigation }) {
 
     const elementRef = useRef(null)
 
@@ -26,7 +26,8 @@ export default function About(data, shared) {
         <Page
             className={"Page"}
             ref={elementRef}
-            shared={shared}
+            shared={navigation}
+            navigation={navigation}
         >
             <Head>
                 <title>KAND | About</title>
@@ -80,14 +81,13 @@ export async function getServerSideProps() {
     const navigation = await client.getByType('navigation')
     const navigationData = navigation?.results[0]?.data
 
-
     const about = await client.getByType('about')
     const data = about?.results[0]?.data
 
     return {
         props: {
-            navigation: navigationData,
-            data
+            data: data,
+            navigation: navigationData
         },
     }
 }

@@ -9,14 +9,16 @@ import GSAP from 'gsap'
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
+import Page from '../../components/Page'
 import Gallery from '../../components/Gallery/index'
 import SeparatorLine from '../../components/SeparatorLine'
 
-export default function Home({ projectsList }) {
+export default function Home({ projectsList, navigation }) {
     const router = useRouter()
 
     const titleRef = useRef(null)
     const galleryRef = useRef(null)
+    const elementRef = useRef(null)
 
     useEffect(() => {
         const title = titleRef.current
@@ -29,7 +31,11 @@ export default function Home({ projectsList }) {
     }, [])
 
     return (
-        <>
+        <Page
+            className={"Page"}
+            ref={elementRef}
+            navigation={navigation}
+        >
             <Head>
                 <title>KAND | All projects </title>
             </Head>
@@ -50,7 +56,7 @@ export default function Home({ projectsList }) {
                     className={styles.footer__title}
                 >Categories</Link>
             </div>
-        </>
+        </Page>
     )
 }
 
@@ -82,7 +88,11 @@ export async function getServerSideProps() {
 
     const filteredOrder = order.filter((item) => item !== undefined)
 
+    // FETCH NAVIGATION
+    const navigation = await client.getByType('navigation')
+    const navigationData = navigation?.results[0]?.data
+
     return {
-        props: { projectsList, order: filteredOrder }
+        props: { projectsList, order: filteredOrder, navigation: navigationData }
     }
 }
