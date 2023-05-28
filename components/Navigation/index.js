@@ -8,9 +8,7 @@ import GSAP from 'gsap'
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 
-export default function Navigation({ data }) {
-    console.log(data);
-
+export default function Navigation({ navigationData }) {
     const [isActive, setIsActive] = useState(false)
 
     const onClick = () => setIsActive(!isActive)
@@ -47,7 +45,7 @@ export default function Navigation({ data }) {
                     paint.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#0B0B0B', ease: 'Expo.easeInOut' })
                 }, 500)
             }
-        }   
+        }
     })
 
     useEffect(() => {
@@ -125,46 +123,16 @@ export default function Navigation({ data }) {
                         />
                     </svg>
                     <div className={styles.text__box}>
-                        <div className={styles.menu__text}>{data.title}</div>
+                        <div className={styles.menu__text}>{navigationData.title}</div>
                         <div className={styles.line} />
                     </div>
                     <ul className={styles.menu__list}>
-                        <li className={styles.menu__item} onClick={onClick}><Link href={'/projects'}>{data.work_title}</Link></li>
-                        <li className={styles.menu__item} onClick={onClick}><Link href={'/about'}>{data.about_title}</Link></li>
-                        <li className={styles.menu__item} onClick={onClick}><Link href={'/contact'}>{data.contact_title}</Link></li>
+                        <li className={styles.menu__item} onClick={onClick}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
+                        <li className={styles.menu__item} onClick={onClick}><Link href={'/about'}>{navigationData.about_title}</Link></li>
+                        <li className={styles.menu__item} onClick={onClick}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
                     </ul>
                 </div>
             </div>
         </>
     )
-}
-
-export async function getStaticProps() {
-    const client = createClient({ accessToken: sm.token });
-
-    const navigation = await client.getByType('navigation')
-    console.log('Navigation results:', navigation.results);
-
-    const data = navigation?.results[0]?.data
-    console.log('Data:', data);
-
-    console.log(data);
-
-    return {
-        props: { ...data },
-    };
-}
-
-export async function getServerSideProps() {
-    const client = createClient({ accessToken: sm.token })
-
-
-    const navigation = await client.getByType('navigation')
-    const data = navigation?.results[0]?.data
-
-    console.log(data);
-
-    return {
-        props: { data },
-    }
 }

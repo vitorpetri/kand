@@ -1,11 +1,11 @@
-import styles from './styles.module.scss'
+import styles from './Page.module.scss'
 
 import classNames from 'classnames';
 import Head from 'next/head';
 import React, { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 
-// import Navigation from '../Navigation';
+import Navigation from '../Navigation';
 
 
 const Page = forwardRef(({
@@ -14,7 +14,7 @@ const Page = forwardRef(({
     metadata = {},
     shared = {},
 }, ref) => {
-    // const navigation = shared?.navigation?.content ?? {};
+    const navigation = shared?.navigation?.content ?? {};
     const {
         title = '',
         description = '',
@@ -40,8 +40,13 @@ const Page = forwardRef(({
                 <meta name="twitter:image" content={image} />
             </Head>
 
+
             <div className={classNames(styles.element, className)} ref={ref}>
-                {/* <Navigation {...navigation} /> */}
+                <div className="top" />
+                <div className="border" />
+                <div className="bottom" />
+                <div className="grain" />
+                <Navigation navigationData={navigation} />
 
                 <div className={styles.content}>
                     {children}

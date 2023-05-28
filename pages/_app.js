@@ -74,12 +74,7 @@ export default function App({ Component, pageProps, data, router }) {
                         <meta name="viewport" content="width=device-width, initial-scale=1" />
                         <link rel="icon" href="/mundo.svg" />
                     </Head>
-                    <div className="top" />
-                    <div className="border" />
-                    <div className="bottom" />
-                    <div className="grain" />
-                    <Navigation data={data} />
-                    <Component {...pageProps} />
+                    <Component {...pageProps} shared={data} />
                 </TransitionLayout>
             </PrismicPreview>
         </PrismicProvider>

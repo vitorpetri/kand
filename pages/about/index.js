@@ -24,7 +24,7 @@ export default function About(data, shared) {
 
     return (
         <Page
-            className={styles.element}
+            className={"Page"}
             ref={elementRef}
             shared={shared}
         >
@@ -76,10 +76,18 @@ export default function About(data, shared) {
 export async function getServerSideProps() {
     const client = createClient({ accessToken: sm.token })
 
+    // Fetch the navigation data separately
+    const navigation = await client.getByType('navigation')
+    const navigationData = navigation?.results[0]?.data
+
+
     const about = await client.getByType('about')
     const data = about?.results[0]?.data
 
     return {
-        props: { ...data },
+        props: {
+            navigation: navigationData,
+            data
+        },
     }
 }
