@@ -41,7 +41,7 @@ export default function Projects({ project, previousProject, nextProject }) {
                     )
                 } else if (content.video.embed_url) {
                     return (
-                        <div key={index} className={`image-${content.size} video`} scroll='true' overflow-scroll='true' >
+                        <div key={index} className={`media-${content.size} video`} scroll='true' overflow-scroll='true' >
                             <iframe
                                 src={content.video.embed_url}
                                 // className={`image-${content.size} frame`}
@@ -53,7 +53,7 @@ export default function Projects({ project, previousProject, nextProject }) {
                     )
                 } else if (content.image) {
                     return (
-                        <div key={index} className={`image-${content.size} images`}>
+                        <div key={index} className={`media-${content.size} images`}>
                             <img
                                 src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''}
                                 alt={content.image.alt} />
