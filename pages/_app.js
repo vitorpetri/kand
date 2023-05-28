@@ -78,6 +78,7 @@ export default function App({ Component, pageProps, data, router }) {
                     <div className="border" />
                     <div className="bottom" />
                     <div className="grain" />
+                    <Navigation data={data} />
                     <Component {...pageProps} />
                 </TransitionLayout>
             </PrismicPreview>
