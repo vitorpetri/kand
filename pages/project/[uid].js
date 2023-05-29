@@ -1,6 +1,7 @@
 import styles from './styles.module.sass'
 
 import Image from 'next/image'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { useState, useEffect, useRef } from 'react';
@@ -28,6 +29,9 @@ export default function Projects({ project, previousProject, nextProject, naviga
             ref={elementRef}
             navigation={navigationData}
         >
+            <Head>
+                <title>KAND | {project.title.replace(/<br\s*\/?>/gi, '')}</title>
+            </Head>
             <div className={styles.wrapper}>
                 <div className={styles.header}>
                     <div className={styles.client_label}>Client</div>
