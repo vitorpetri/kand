@@ -1,11 +1,15 @@
 import { useRouter } from 'next/router'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import { cloneElement, useRef } from 'react'
 
 import { getBoundingClientRect } from '../../utils/dom'
 import Lenis from '../../utils/scroll'
 
 const TransitionLayout = ({ children }) => {
     const router = useRouter()
+    const childRef = useRef(null)
+    const { query: { id }, asPath } = router
+    const key = id || asPath
 
     const onEnter = () => {
         console.log("onEnter Called", key);
@@ -33,8 +37,13 @@ const TransitionLayout = ({ children }) => {
         }
     }
 
-    const { query: { id }, asPath } = router
-    const key = id || asPath
+    const onExit = () => {
+        if (childRef.current && childRef.current.onPageExit) {
+            childRef.current.onPageExit();
+        }
+    };
+
+    const childrenWithRef = cloneElement(children, { ref: childRef });
 
     return (
         <SwitchTransition>
@@ -43,11 +52,12 @@ const TransitionLayout = ({ children }) => {
                 key={key}
                 onEnter={onEnter}
                 onEntered={onEntered}
+                onExit={onExit}
                 timeout={400}
             >
                 <>
                     {children}
-
+                    {childrenWithRef}
                     <style jsx global>
                         {`
               .page-enter {

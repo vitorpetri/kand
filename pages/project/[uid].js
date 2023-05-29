@@ -1,10 +1,9 @@
 import styles from './styles.module.sass'
 
-import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import { useState, useEffect, useRef } from 'react';
+import { useImperativeHandle, useRef } from 'react';
 import GSAP from 'gsap';
 import Rive from 'rive-react'
 
@@ -18,10 +17,16 @@ import Crew from '../../components/Crew'
 const KandRive = '/kand.riv'
 
 
-export default function Projects({ project, previousProject, nextProject, navigationData }) {
+export default function Projects({ project, previousProject, nextProject, navigationData }, ref) {
     const router = useRouter();
     const riveRef = useRef(null);
     const elementRef = useRef(null)
+
+    useImperativeHandle(ref, () => ({
+        onPageExit: () => {
+            GSAP.to(riveRef.current, { width: '100rem', height: '100rem', duration: 1.5 });
+        },
+    }));
 
     return (
         <Page
