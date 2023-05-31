@@ -1,12 +1,11 @@
 import styles from './styles.module.sass'
 
-import Image from 'next/image'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
-import { useState, useEffect, useRef } from 'react';
-import GSAP from 'gsap';
+import { useRef, useEffect, useState } from 'react';
 import Rive from 'rive-react'
+
 
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
@@ -17,17 +16,29 @@ import Crew from '../../components/Crew'
 
 const KandRive = '/kand.riv'
 
-
-export default function Projects({ project, previousProject, nextProject, navigationData }) {
+export default function Projects({ project, previousProject, nextProject, navigationData }, ref) {
     const router = useRouter();
     const riveRef = useRef(null);
     const elementRef = useRef(null)
+    const [showAnimation, setShowAnimation] = useState(false);
+    const [nextUrl, setNextUrl] = useState(null);
+
+
+    useEffect(() => {
+        console.log(`showAnimation is now: ${showAnimation}`);
+    }, [showAnimation]);
+
+    const handleNavigation = (url) => {
+        setShowAnimation(true);
+        setNextUrl(url);
+    }
 
     return (
         <Page
             className={"Page"}
             ref={elementRef}
             navigation={navigationData}
+            showAnimation={showAnimation}
         >
             <Head>
                 <title>KAND | {project.title.replace(/<br\s*\/?>/gi, '')}</title>
@@ -118,7 +129,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                         <span
                             role='button'
                             tabIndex={0}
-                            onClick={() => router.push(`/project/${previousProject.uid}`)}
+                            onClick={() => handleNavigation(`/project/${previousProject.uid}`)}
                             onKeyDown={(e) => {
                                 if (e.key === "Enter") {
                                     router.push(`/project/${previousProject.uid}`);
@@ -138,7 +149,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                         <span
                             role="button"
                             tabIndex={0}
-                            onClick={() => router.push(`/project/${nextProject.uid}`)}
+                            onClick={() => handleNavigation(`/project/${nextProject.uid}`)}
                             onKeyDown={(e) => {
                                 if (e.key === "Enter") {
                                     router.push(`/project/${nextProject.uid}`);

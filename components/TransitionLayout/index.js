@@ -1,11 +1,14 @@
 import { useRouter } from 'next/router'
 import { CSSTransition, SwitchTransition } from 'react-transition-group'
+import { useRef } from 'react'
 
 import { getBoundingClientRect } from '../../utils/dom'
 import Lenis from '../../utils/scroll'
 
-const TransitionLayout = ({ children }) => {
+const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
     const router = useRouter()
+    const { query: { id }, asPath } = router
+    const key = id || asPath
 
     const onEnter = () => {
         console.log("onEnter Called", key);
@@ -33,8 +36,13 @@ const TransitionLayout = ({ children }) => {
         }
     }
 
-    const { query: { id }, asPath } = router
-    const key = id || asPath
+    const onExited = () => {
+        console.log("onExited Called", key);
+        if (nextUrl) {
+            router.push(nextUrl);
+            setNextUrl(null);
+        }
+    }
 
     return (
         <SwitchTransition>
@@ -43,31 +51,32 @@ const TransitionLayout = ({ children }) => {
                 key={key}
                 onEnter={onEnter}
                 onEntered={onEntered}
-                timeout={400}
+                timeout={300}
+                onExited={onExited}
             >
                 <>
                     {children}
 
                     <style jsx global>
                         {`
-              .page-enter {
-                opacity: 0;
-              }
+                .page-enter {
+                    opacity: 0;
+                }
 
-              .page-enter-active {
-                opacity: 1;
-                transition: opacity 400ms;
-              }
+                .page-enter-active {
+                    opacity: 1;
+                    transition: opacity 400ms;
+                }
 
-              .page-exit {
-                opacity: 1;
-              }
+                .page-exit {
+                    opacity: 1;
+                }
 
-              .page-exit-active {
-                opacity: 0;
-                transition: opacity 400ms;
-              }
-            `}
+                .page-exit-active {
+                    opacity: 0;
+                    transition: opacity 400ms;
+                }
+                `}
                     </style>
                 </>
             </CSSTransition>

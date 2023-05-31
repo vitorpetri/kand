@@ -1,11 +1,15 @@
-import styles from './Page.module.scss'
+import styles from './Page.module.sass'
 
 import classNames from 'classnames';
 import Head from 'next/head';
-import React, { forwardRef } from 'react';
+import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
+import { useRouter } from 'next/router';
+
 
 import Navigation from '../Navigation';
+import RiveAnimation from '../RiveAnimation';
+
 
 
 const Page = forwardRef(({
@@ -13,10 +17,11 @@ const Page = forwardRef(({
     className,
     metadata = {},
     navigation,
+    showAnimation
 }, ref) => {
+    const router = useRouter();
 
-    console.log(navigation);
-
+    console.log(showAnimation);
 
     const {
         title = '',
@@ -45,6 +50,14 @@ const Page = forwardRef(({
 
 
             <div className={classNames(styles.element, className)} ref={ref}>
+                {router.pathname.startsWith('/project/') && (
+                    <div className={`${styles.rive_container} ${showAnimation ? styles.show : ''}`}>
+                        <RiveAnimation
+                            className={`${styles.footer__icon} ${showAnimation ? styles.show : ''}`}
+                            artboard='Rive Atomo'
+                        />
+                    </div>
+                )}
                 <div className="top" />
                 <div className="border" />
                 <div className="bottom" />
