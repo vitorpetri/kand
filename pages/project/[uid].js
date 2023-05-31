@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useRef, useEffect, useState } from 'react';
 import Rive from 'rive-react'
 
-
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 import * as prismicH from '@prismicio/helpers'
@@ -188,10 +187,7 @@ export async function getServerSideProps(context) {
         tags: res.tags,
     }
 
-    // console.log('Next project:', nextProject);
-    // console.log('Previous project:', previousProject);
-
-    // FETCH NAVIGATION
+    // Fetch navigation
     const navigation = await client.getByType('navigation')
     const navigationData = navigation?.results[0]?.data
 
