@@ -27,7 +27,7 @@ export default function Home({ projectsList, navigation }) {
         const tl = GSAP.timeline()
 
         tl.to(title, { opacity: 0, duration: 0.3, ease: 'power2.out' }, 2)
-        tl.to(gallery, { translateY: '-31rem', marginBottom: '-31rem', duration: 0.8, ease: 'power2.out' }, 2)
+        tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 0.8, ease: 'power2.out' }, 2)
     }, [])
 
     return (

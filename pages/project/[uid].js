@@ -23,7 +23,6 @@ export default function Projects({ project, previousProject, nextProject, naviga
     const [showAnimation, setShowAnimation] = useState(false);
     const [nextUrl, setNextUrl] = useState(null);
 
-
     useEffect(() => {
         console.log(`showAnimation is now: ${showAnimation}`);
     }, [showAnimation]);
@@ -66,9 +65,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                             <div key={index} className={`media-${content.size} video`} scroll='true' overflow-scroll='true' >
                                 <iframe
                                     src={content.video.embed_url}
-                                    // className={`image-${content.size} frame`}
                                     className='frame'
-                                    dat-tap-disabled='true'
                                     allow='autoplay; fullscreen; picture-in-picture'
                                 />
                             </div>

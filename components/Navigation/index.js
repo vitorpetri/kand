@@ -18,6 +18,7 @@ export default function Navigation({ navigationData }) {
     const svgRef = useRef(null)
     const btnRef = useRef(null)
     const logoRef = useRef(null)
+    const btnPlus = useRef(null)
 
     const router = useRouter()
 
@@ -27,19 +28,19 @@ export default function Navigation({ navigationData }) {
 
             if (router.pathname === '/contact') {
                 setTimeout(() => {
-                    paint.to(logoRef.current, { duration: 0, borderRight: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
-                    paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
-                    paint.to(svgRef.current, { duration: 0, color: '#0B0B0B', ease: 'Expo.easeInOut' })
+                    paint.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Expo.easeInOut' })
+                    paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Expo.easeInOut' })
+                    paint.to(svgRef.current, { duration: 0, color: '#101010', ease: 'Expo.easeInOut' })
                     paint.to(navigationRef.current, { duration: 0, background: '#B3FC03', ease: 'Expo.easeInOut' })
-                    paint.to(btnRef.current, { duration: 0, background: '#0B0B0B', color: '#B3FC03', ease: 'Expo.easeInOut' })
+                    paint.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Expo.easeInOut' })
                 }, 500)
             } else {
                 setTimeout(() => {
                     paint.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
                     paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
                     paint.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
-                    paint.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
-                    paint.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#0B0B0B', ease: 'Expo.easeInOut' })
+                    paint.to(navigationRef.current, { duration: 0, background: '#101010', ease: 'Expo.easeInOut' })
+                    paint.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#101010', ease: 'Expo.easeInOut' })
                 }, 500)
             }
         }
@@ -51,21 +52,21 @@ export default function Navigation({ navigationData }) {
             const tlReverse = GSAP.timeline({ paused: true })
 
             tl.to(menuRef.current, { duration: 0.6, opacity: 1, scale: 1, transformOrigin: '98% 2%', display: 'block', ease: 'Expo.easeInOut' })
-            tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
-            tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #0B0B0B', ease: 'Expo.easeInOut' })
-            tl.to(svgRef.current, { duration: 0, color: '#0B0B0B', ease: 'Expo.easeInOut' })
+            tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Expo.easeInOut' })
+            tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Expo.easeInOut' })
+            tl.to(svgRef.current, { duration: 0, color: '#101010', ease: 'Expo.easeInOut' })
             tl.to(navigationRef.current, { duration: 0, background: '#B3FC03', ease: 'Expo.easeInOut' })
-            tl.to(btnRef.current, { duration: 0, innerHTML: '-', ease: 'Expo.easeInOut' })
-            tl.to(btnRef.current, { duration: 0, background: '#0B0B0B', color: '#B3FC03', ease: 'Expo.easeInOut' })
+            tl.to(btnPlus.current, { duration: 0, innerHTML: '-', ease: 'Expo.easeInOut' })
+            tl.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Expo.easeInOut' })
             tl.to(menuContentRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
 
-            tlReverse.to(btnRef.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
+            tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
             tlReverse.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
             tlReverse.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
             tlReverse.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-            tlReverse.to(navigationRef.current, { duration: 0, background: '#0B0B0B', ease: 'Expo.easeInOut' })
+            tlReverse.to(navigationRef.current, { duration: 0, background: '#101010', ease: 'Expo.easeInOut' })
             tlReverse.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
-            tlReverse.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#0B0B0B', ease: 'Expo.easeInOut' })
+            tlReverse.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#101010', ease: 'Expo.easeInOut' })
             tlReverse.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Expo.easeInOut' })
 
             if (router.pathname === '/contact') {
@@ -101,7 +102,7 @@ export default function Navigation({ navigationData }) {
                         </svg>
                     </div>
                 </Link>
-                <div className={styles.menu} ref={menuDivRef} onClick={onClick}><button className={styles.icon} ref={btnRef}>+</button></div>
+                <div className={styles.menu} ref={menuDivRef} onClick={onClick}><button className={styles.icon} ref={btnRef}><div className={styles.plus} ref={btnPlus}>+</div></button></div>
             </div>
 
             <div className={styles.menu__wrapper} ref={menuRef}>

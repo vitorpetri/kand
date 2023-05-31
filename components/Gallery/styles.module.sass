@@ -89,6 +89,8 @@
   align-items: center
   text-align: center
 
+  z-index: 1000
+
   &:hover
     opacity: 1
     scale: 1
@@ -100,11 +102,17 @@
   margin-top: 1.8rem
   font-family: $title
 
+  @include media('<=phone')
+    font-size: 3.2rem
+
 .project__hover__client, .project__hover__agency
   font-size: 1.6rem
   font-weight: bold
   letter-spacing: 0.1rem
   color: $black
+
+  @include media('<=phone')
+    font-size: 3.2rem
 
 .project__hover__agency, .project__hover__agency__label, .project__hover__line
   transform: translateY(-1.2rem)
@@ -119,6 +127,9 @@
   letter-spacing: -0.18rem
   padding-left: 1rem
   font-family: $title
+
+  @include media('<=phone')
+    font-size: 13rem
 
 .project__hover__line
   width: 1rem

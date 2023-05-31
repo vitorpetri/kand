@@ -60,7 +60,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                     <style jsx global>
                         {`
                 .page-enter {
-                    opacity: 0;
+                    opacity: 1;
                 }
 
                 .page-enter-active {
@@ -73,7 +73,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                 }
 
                 .page-exit-active {
-                    opacity: 0;
+                    opacity: 1;
                     transition: opacity 400ms;
                 }
                 `}

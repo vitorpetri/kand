@@ -6,11 +6,8 @@ import { forwardRef } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 
-
 import Navigation from '../Navigation';
 import RiveAnimation from '../RiveAnimation';
-
-
 
 const Page = forwardRef(({
     children,
@@ -59,8 +56,10 @@ const Page = forwardRef(({
                     </div>
                 )}
                 <div className="top" />
-                <div className="border" />
                 <div className="bottom" />
+                <div className="left" />
+                <div className="right" />
+                <div className="border" />
                 <div className="grain" />
                 <Navigation navigationData={navigation} />
 

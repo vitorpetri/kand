@@ -6,11 +6,12 @@
   top: $top
   left: 50%
   border-radius: 1rem 1rem 0 0
-  background: #0b0b0b
+  background: $blackwg
   display: flex
   align-items: center
   justify-content: space-between
-  z-index: 3
+  // z-index: 3
+  z-index: 1001
 
   &:after
     content: ''
@@ -21,7 +22,7 @@
     background: none
     border-bottom: 1px solid rgba(239, 239, 210, 0.3)
     border-radius: 1rem 1rem 0 0
-    z-index: 0
+    // z-index: 0
     pointer-events: none
 
   @include media('<=phone')
@@ -34,7 +35,7 @@
   border-right: 1px solid rgba(239, 239, 210, 0.3)
   cursor: pointer
   height: 100%
-  z-index: 1
+  // z-index: 1
 
   @include media('<=phone')
     padding: 0 11.2rem 0 3.2rem
@@ -70,6 +71,7 @@
   justify-content: center
   cursor: pointer
   position: relative
+  z-index: 9999
 
   .icon
     border-radius: 50%
@@ -88,6 +90,9 @@
     display: flex
     align-items: center
     justify-content: center
+
+    div
+      transform: translate(0rem, -0.07756rem)
 
     @include media('<=phone')
       width: 2.4rem
@@ -119,7 +124,7 @@
   border-radius: 0 0 1rem 1rem
   padding-top: 7%
   display: block
-  z-index: 3
+  z-index: 9999
 
   &:after
     content: ''
@@ -198,7 +203,8 @@
 .menu__list
   display: flex
   flex-direction: column
-  gap: 7.2rem
+  gap: 4.4rem
+  transform: translateY(-1rem)
 
   @include media('<=phone')
     position: absolute
@@ -208,7 +214,7 @@
     z-index: 4
 
 .menu__item
-  font-size: 14rem
+  font-size: 12rem
   font-family: $title
   text-transform: uppercase
   width: fit-content
