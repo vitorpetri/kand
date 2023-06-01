@@ -38,20 +38,6 @@
   opacity: 0
   visibility: hidden
 
-  &:before
-    content: ""
-    position: absolute
-    bottom: -200rem
-    width: 100%
-    background: yellow
-    transform: scaleY(1.5)
-    height: 100%
-    border-bottom-left-radius: 30px
-    border-bottom-right-radius: 30px
-    transition: all 1s cubic-bezier(1.000, 0.030, 0.440, 1.000)
-    transition-delay: 1.5s
-    z-index: 1
-
   &:after
     content: ""
     animation: footerGrain 6s steps(10) infinite
@@ -69,9 +55,6 @@
   &.show
     visibility: visible
     opacity: 1
-
-    &:before
-      bottom: 180rem
 
     .footer__icon
       width: 50%
