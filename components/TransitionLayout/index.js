@@ -44,6 +44,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
     }
 
     const classNames = asPath.startsWith("/project/") ? "project-page" : "page";
+    const timeOut = asPath.startsWith("/project/") ? 670 : 400;
 
     return (
         <SwitchTransition>
@@ -52,7 +53,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                 key={key}
                 onEnter={onEnter}
                 onEntered={onEntered}
-                timeout={300}
+                timeout={timeOut}
                 onExited={onExited}
             >
                 <>
@@ -98,13 +99,12 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                         height: 100%;
                         border-bottom-left-radius: 30px;
                         border-bottom-right-radius: 30px;
-                        transition: all 1s cubic-bezier(1.000, 0.030, 0.440, 1.000);
+                        transition: all 950ms cubic-bezier(1.000, 0.030, 0.440, 1.000);
                         z-index: 9999;
                     }
 
                     .project-page-exit-active:after {
                         bottom: 200rem;
-                        transition: all 400ms
                     }
                     `}
                     </style>
