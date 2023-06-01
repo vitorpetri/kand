@@ -6,6 +6,7 @@ import { useRouter } from 'next/router';
 import { useRef, useEffect, useState } from 'react';
 import Rive from 'rive-react'
 
+
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 import * as prismicH from '@prismicio/helpers'
@@ -21,6 +22,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
     const elementRef = useRef(null)
     const [showAnimation, setShowAnimation] = useState(false);
     const [nextUrl, setNextUrl] = useState(null);
+
 
     useEffect(() => {
         console.log(`showAnimation is now: ${showAnimation}`);
@@ -64,7 +66,9 @@ export default function Projects({ project, previousProject, nextProject, naviga
                             <div key={index} className={`media-${content.size} video`} scroll='true' overflow-scroll='true' >
                                 <iframe
                                     src={content.video.embed_url}
+                                    // className={`image-${content.size} frame`}
                                     className='frame'
+                                    dat-tap-disabled='true'
                                     allow='autoplay; fullscreen; picture-in-picture'
                                 />
                             </div>
@@ -187,7 +191,10 @@ export async function getServerSideProps(context) {
         tags: res.tags,
     }
 
-    // Fetch navigation
+    // console.log('Next project:', nextProject);
+    // console.log('Previous project:', previousProject);
+
+    // FETCH NAVIGATION
     const navigation = await client.getByType('navigation')
     const navigationData = navigation?.results[0]?.data
 

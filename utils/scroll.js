@@ -8,6 +8,23 @@ function rAF(time) {
   requestAnimationFrame(rAF)
 }
 
+const togglePointerEvents = (disable) => {
+    console.log(`togglePointerEvents called with disable = ${disable}`);
+    const elements = document.querySelectorAll('video, iframe');
+
+    elements.forEach(element => {
+        if (disable) {
+            element.classList.add('disabled');
+            console.log(`Added 'disabled' class to element: `, element);
+        } else {
+            element.classList.remove('disabled');
+            console.log(`Removed 'disabled' class to element: `, element);
+
+        }
+    });
+};
+
+
 if (typeof window !== 'undefined') {
   LenisManager = new Lenis({
     direction: 'vertical',
@@ -19,7 +36,20 @@ if (typeof window !== 'undefined') {
     touchMultiplier: 2
   })
 
-  requestAnimationFrame(rAF)
+    let isScrolling;
+
+    LenisManager.on('scroll', () => {
+        console.log("Scroll event triggered");
+        window.clearTimeout(isScrolling);
+
+        isScrolling = setTimeout(() => {
+            togglePointerEvents(false);
+        }, 66);
+
+        togglePointerEvents(true);
+    });
+
+    requestAnimationFrame(rAF)
 }
 
 export default LenisManager
