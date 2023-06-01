@@ -16,7 +16,7 @@ import Crew from '../../components/Crew'
 
 const KandRive = '/kand.riv'
 
-export default function Projects({ project, previousProject, nextProject, navigationData }, ref) {
+export default function Projects({ project, previousProject, nextProject, navigationData, currentProjectIndex, projectListLength }) {
     const router = useRouter();
     const riveRef = useRef(null);
     const elementRef = useRef(null)
@@ -125,7 +125,10 @@ export default function Projects({ project, previousProject, nextProject, naviga
                 </div>
 
                 <div className={styles.footer}>
-                    <Link className={styles.footer__button} href={`/project/${previousProject.uid}`} passHref>
+                    <Link
+                        className={`${styles.footer__button} ${currentProjectIndex === 0 ? 'hidden disabled' : ''}`}
+                        href={`/project/${previousProject.uid}`}
+                        passHref>
                         <span
                             role='button'
                             tabIndex={0}
@@ -145,7 +148,10 @@ export default function Projects({ project, previousProject, nextProject, naviga
                         <Rive src={KandRive} artboard='Rive Atomo' />
                     </div>
 
-                    <Link className={styles.footer__button} href={`/project/${nextProject.uid}`} passHref>
+                    <Link
+                        className={`${styles.footer__button} ${currentProjectIndex === projectListLength - 1 ? 'hidden disabled' : ''}`}
+                        href={`/project/${nextProject.uid}`}
+                        passHref>
                         <span
                             role="button"
                             tabIndex={0}
@@ -204,6 +210,8 @@ export async function getServerSideProps(context) {
             previousProject,
             nextProject,
             navigationData,
+            currentProjectIndex,
+            projectListLength: projectList.length,
         }
     }
 }

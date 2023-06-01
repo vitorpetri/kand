@@ -15,10 +15,12 @@ import SeparatorLine from '../../components/SeparatorLine'
 
 export default function Categories({ projectsList, allTags, selectedTagIndex, navigation }) {
     const router = useRouter()
-
     const titleRef = useRef(null)
     const galleryRef = useRef(null)
     const elementRef = useRef(null)
+
+    const [activeCategory, setActiveCategory] = useState(selectedTagIndex);
+    const [showProjects, setShowProjects] = useState(false);
 
     useEffect(() => {
         const title = titleRef.current
@@ -30,36 +32,26 @@ export default function Categories({ projectsList, allTags, selectedTagIndex, na
         tl.to(gallery, { translateY: '-20rem', marginBottom: '-20rem', duration: 0.8, ease: 'power2.out' }, 2)
     }, [])
 
-    // const [activeCategories, setActiveCategories] = useState([]);
-
-    const [activeCategory, setActiveCategory] = useState(selectedTagIndex);
-
-    // const toggleActive = (index) => {
-    //     if (activeCategories.includes(index)) {
-    //         // Remove the index from activeCategories if it's already there
-    //         setActiveCategories(activeCategories.filter((item) => item !== index));
-    //     } else {
-    //         // Add the index to activeCategories if it's not there
-    //         setActiveCategories([...activeCategories, index]);
-    //     }
-    // };
-
     const toggleActive = (index) => {
+        if (activeCategory === index) {
+            setShowProjects(false);
+        } else {
+            setShowProjects(true);
+        }
+
         setActiveCategory(index === activeCategory ? null : index);
     };
 
     const filteredProjects = () => {
-        // If no categories are selected, show all projects
-        // if (activeCategory.length === 0) {
-        //     return projectsList;
-        // }
+        if (!showProjects) {
+            return [];
+        }
+
         if (activeCategory === null) {
             return projectsList;
         }
 
-        // Filter projects based on the selected categories
         return projectsList.filter((project) =>
-            // activeCategories.every((index) => project.tags.includes(allTags[index]))
             project.tags.includes(allTags[activeCategory])
         );
     };
