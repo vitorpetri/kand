@@ -6,7 +6,6 @@ import { useRouter } from 'next/router';
 import { useRef, useEffect, useState } from 'react';
 import Rive from 'rive-react'
 
-
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
 import * as prismicH from '@prismicio/helpers'
@@ -22,7 +21,6 @@ export default function Projects({ project, previousProject, nextProject, naviga
     const elementRef = useRef(null)
     const [showAnimation, setShowAnimation] = useState(false);
     const [nextUrl, setNextUrl] = useState(null);
-
 
     useEffect(() => {
         console.log(`showAnimation is now: ${showAnimation}`);
@@ -142,7 +140,6 @@ export default function Projects({ project, previousProject, nextProject, naviga
                             Previous
                         </span>
                     </Link>
-
 
                     <div ref={riveRef} className={styles.footer__icon}>
                         <Rive src={KandRive} artboard='Rive Atomo' />
