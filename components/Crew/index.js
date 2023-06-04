@@ -32,13 +32,13 @@ export default function Crew({data}) {
   return <div className={styles.crew}>
     <div className={styles.crew__button} onClick={toggle}>
       <div className={styles.crew__button__title}>Crew</div>
-      <button className={styles.crew__button__icon}>+</button>
+      <button className={styles.crew__button__icon}><div>+</div></button>
     </div>
 
     <div className={styles.crew__box} ref={boxRef}>
       <div className={styles.crew__box__button} onClick={toggle}>
         <h1 className={styles.crew__box__button__title}>Crew</h1>
-        <h1 className={styles.crew__box__button__icon}> - </h1>
+        <h1 className={styles.crew__box__button__icon}><div> - </div></h1>
       </div>
       <div className={styles.crew__box__content}>
         <div className={styles.crew__box__list}>

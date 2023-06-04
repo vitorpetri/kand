@@ -48,7 +48,7 @@ export default function Gallery({ projectsList }) {
                             <p className={styles.project__hover__agency} dangerouslySetInnerHTML={{ __html: agency }} />
                             <div className={styles.project__hover__line} />
                             <div className={styles.project__hover__plus__wrapper}>
-                                <span className={styles.project__hover__plus}>+</span>
+                                <span className={styles.project__hover__plus}><div>+</div></span>
                             </div>
                         </div>
                     </Link>
