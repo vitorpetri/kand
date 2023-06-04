@@ -139,7 +139,8 @@
                   "3-ms_small",
                   "4-small_sm",
                   "4-s_small_m",
-                  "4-ss_medium"
+                  "4-ss_medium",
+                  "media-divider-fix"
                 ]
               }
             }

@@ -57,7 +57,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                 {project.content.map((content, index) => {
                     if (content.description) {
                         return (
-                            <p className='description' key={index} dangerouslySetInnerHTML={{ __html: content.description }} />
+                            <p className={`${content.size} description`} key={index} dangerouslySetInnerHTML={{ __html: content.description }} />
                         )
                     } else if (content.video.embed_url) {
                         return (
@@ -78,7 +78,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                                     alt={content.image.alt} />
                             </figure>
                         )
-                    }
+                    } 
                 })}
 
                 {project.numbers && project.numbers.length > 0 ? (
