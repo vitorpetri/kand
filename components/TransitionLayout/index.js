@@ -94,7 +94,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                         bottom: -200rem;
                         left: 0;
                         width: 100%;
-                        background: yellow;
+                        background: #B3FC03;
                         transform: scaleY(1.5);
                         height: 100%;
                         border-bottom-left-radius: 30px;
