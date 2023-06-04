@@ -57,14 +57,13 @@ export default function Projects({ project, previousProject, nextProject, naviga
                 {project.content.map((content, index) => {
                     if (content.description) {
                         return (
-                            <p className='description' key={index}>{content.description}</p>
+                            <p className='description' key={index} dangerouslySetInnerHTML={{ __html: content.description }} />
                         )
                     } else if (content.video.embed_url) {
                         return (
                             <div key={index} className={`media-${content.size} video`} scroll='true' overflow-scroll='true' >
                                 <iframe
                                     src={content.video.embed_url}
-                                    // className={`image-${content.size} frame`}
                                     className='frame'
                                     dat-tap-disabled='true'
                                     allow='autoplay; fullscreen; picture-in-picture'
@@ -73,11 +72,11 @@ export default function Projects({ project, previousProject, nextProject, naviga
                         )
                     } else if (content.image) {
                         return (
-                            <div key={index} className={`media-${content.size} images`}>
+                            <figure key={index} className={`media-${content.size} image`}>
                                 <img
                                     src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''}
                                     alt={content.image.alt} />
-                            </div>
+                            </figure>
                         )
                     }
                 })}
