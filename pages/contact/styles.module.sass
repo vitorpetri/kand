@@ -4,7 +4,6 @@
   padding: 6rem 19rem
   border-radius: 0 0 1rem 1rem
   border-top: 1px solid black
-  // the border should be fix. before dont work as well.
   color: $black
   background: $primary
   
@@ -17,7 +16,7 @@
   @include media('<=phone')
     transform: translatey(1rem)
     padding: 10rem 6rem
-    height: calc(100vh - 3rem - 9.6rem - 2rem)
+    height: calc(100vh - 3rem - 9.6rem - 2rem) !important
 
     @media (max-height: 680px)
       height: unset

@@ -21,7 +21,6 @@ export default function About({ data, navigation }) {
 
     const elementRef = useRef(null)
 
-
     return (
         <Page
             className={"Page"}
