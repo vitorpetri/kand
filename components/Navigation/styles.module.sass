@@ -54,10 +54,10 @@
     width: 100%
 
   @include media('<=phone')
-    width: 8rem
+    width: 9.2rem
 
     svg
-      transform: translate(0rem, -1rem)
+      transform: translate(-0.4rem, -1.3rem)
 
 .menu
   height: 100%
@@ -92,12 +92,12 @@
       transform: translate(0rem, -0.07756rem)
 
     @include media('<=phone')
-      width: 3.2rem
-      height: 3.2rem
-      font-size: 2.8rem
+      width: 4rem
+      height: 4rem
+      font-size: 3.2rem
 
       div
-        transform: translate(0rem, -0.287928rem)
+        transform: translate(0rem, -0.187928rem)
 
   @include media('<=phone')
     padding: 0 11.2rem 0 3.2rem
@@ -142,8 +142,6 @@
     top: calc(3rem + 9.6rem)
     height: calc(100% - 3rem - 9.6rem - 2rem)
 
-.menu__close
-
 .menu__content
   display: flex
   align-items: center
@@ -178,6 +176,9 @@
   color: $black
   width: 32rem
   margin-right: 20rem
+
+  @media (max-height: 620px)
+    display: none
 
   @include media('<=phone')
     position: absolute

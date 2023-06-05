@@ -28,7 +28,7 @@ export default function Awards({ data }) {
                         <ul className={styles.awards}>
                             {slice.items.map(item => (
                                 <li className={styles.award}>
-                                    <h3 className={styles.award__title}>{item.title}</h3>
+                                    <h3 className={styles.award__title} dangerouslySetInnerHTML={{ __html: item.title }} />
                                     <p className={styles.award__item}>{addLineBreak(item.sub_title)}</p>
                                 </li>
                             ))}
