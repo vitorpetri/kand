@@ -11,18 +11,25 @@
   iframe, img
     transform: translateY(-1.5rem)
 
+@keyframes fix
+  0%
+    width: unset
+  50%
+    width: 0%
+  100%
+    width: 100%
+
 .frame
-  width: 100%
+  width: inherit
   height: 100%
   border-radius: 1rem
+  animation-name: fix
+  animation-duration: 1000ms
 
   &:has(iframe)
     width: 100%
     height: 100%
     border-radius: 1rem
-
-iframe
-  width: 100%
 
 .description
   width: 50%

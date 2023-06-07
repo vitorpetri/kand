@@ -2,8 +2,9 @@ import styles from './styles.module.sass'
 
 import Head from 'next/head'
 import Link from 'next/link'
-import { useRouter } from 'next/router';
-import { useRef, useEffect, useState } from 'react';
+import { useRouter } from 'next/router'
+import { useRef, useEffect, useState } from 'react'
+import GSAP from 'gsap'
 import Rive from 'rive-react'
 
 import { createClient } from '../../prismicio'
@@ -16,19 +17,32 @@ import Crew from '../../components/Crew'
 const KandRive = '/kand.riv'
 
 export default function Projects({ project, previousProject, nextProject, navigationData, currentProjectIndex, projectListLength }) {
-    const router = useRouter();
-    const riveRef = useRef(null);
+    const router = useRouter()
+    const riveRef = useRef(null)
     const elementRef = useRef(null)
-    const [showAnimation, setShowAnimation] = useState(false);
-    const [nextUrl, setNextUrl] = useState(null);
+    const [showAnimation, setShowAnimation] = useState(false)
+    const [nextUrl, setNextUrl] = useState(null)
+
+    const frameRef = useRef(null)
 
     useEffect(() => {
-        console.log(`showAnimation is now: ${showAnimation}`);
-    }, [showAnimation]);
+        // if (typeof window !== 'undefined') {
+        //     const tl = GSAP.timeline()
+
+        //     setTimeout(() => {
+        //         tl.to(frameRef.current, { width: '0%', duration: 0 })
+        //         tl.to(frameRef.current, { width: 'inherit', duration: 0 })
+        //     }, 1000)
+        // }
+    }, [])
+
+    useEffect(() => {
+        console.log(`showAnimation is now: ${showAnimation}`)
+    }, [showAnimation])
 
     const handleNavigation = (url) => {
-        setShowAnimation(true);
-        setNextUrl(url);
+        setShowAnimation(true)
+        setNextUrl(url)
     }
 
     return (
@@ -64,6 +78,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                             <div key={index} className={`media-${content.size} video`} scroll='true' overflow-scroll='true' >
                                 <iframe
                                     src={content.video.embed_url}
+                                    ref={frameRef}
                                     className='frame'
                                     dat-tap-disabled='true'
                                     allow='autoplay; fullscreen; picture-in-picture'
