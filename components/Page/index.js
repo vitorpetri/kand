@@ -47,14 +47,14 @@ const Page = forwardRef(({
 
 
             <div className={classNames(styles.element, className)} ref={ref}>
-                {router.pathname.startsWith('/project/') && (
+                {/* {router.pathname.startsWith('/project/') && (
                     <div className={`${styles.rive_container} rive-container ${showAnimation ? styles.show : ''}`}>
                         <RiveAnimation
                             className={`${styles.footer__icon} ${showAnimation ? styles.show : ''}`}
                             artboard='Rive Atomo'
                         />
                     </div>
-                )}
+                )} */}
                 <div className="top" />
                 <div className="border" />
                 <div className="bottom" />
