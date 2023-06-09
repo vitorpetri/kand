@@ -59,7 +59,7 @@
   & > div:nth-of-type(5) // Car & Trucks
     height: calc(10rem + 8rem * 3)
     top: 4rem
-    left: 73.2rem
+    left: 71.4rem
 
     @include media('<=phone')
       left: 46rem
@@ -67,7 +67,7 @@
   & > div:nth-of-type(6) // NGO
     height: calc(10rem + 8rem * 1)
     top: calc(9.1rem * (3 + 0) + 27rem)
-    left: 73.2rem
+    left: 71.4rem
 
     @include media('<=phone')
       left: 46rem
@@ -75,7 +75,7 @@
   & > div:nth-of-type(7) // Bank & Insurance
     height: calc(10rem + 8rem * 2)
     top: calc(9.1rem * (3 + 1) + 27rem + 25rem)
-    left: 73.2rem
+    left: 71.4rem
 
     @include media('<=phone')
       left: 46rem
@@ -83,7 +83,7 @@
   & > div:nth-of-type(8) // Gas Station
     height: calc(10rem + 8rem * 1)
     top: calc(9.1rem * (3 + 1 + 2) + 27rem + 25rem + 32rem)
-    left: 73.2rem
+    left: 71.4rem
 
     @include media('<=phone')
       left: 46rem
@@ -91,7 +91,7 @@
   & > div:nth-of-type(9) // Beauty & Selfcare
     height: calc(10rem + 8rem * 2)
     top: 4rem
-    left: 121rem
+    left: 123.4rem
 
     @include media('<=phone')
       left: 0
@@ -100,7 +100,7 @@
   & > div:nth-of-type(10) // Communications
     height: calc(10rem + 8rem * 1)
     top: calc(9.1rem * (3 + 1 + 2))
-    left: 121rem
+    left: 123.4rem
 
     @include media('<=phone')
       left: 46rem
@@ -109,7 +109,7 @@
   & > div:nth-of-type(11) // Tech & Startups
     height: calc(10rem + 8rem * 2)
     top: calc(9.1rem * (3 + 1 + 2 + 1 + 2.7))
-    left: 121rem
+    left: 123.4rem
 
     @include media('<=phone')
       left: 0
@@ -119,6 +119,9 @@
   min-width: 12rem
   height: 6rem
   position: absolute
+  display: flex
+  align-items: center
+  justify-content: center
 
   &:nth-of-type(2)
     top: 8rem
@@ -176,3 +179,6 @@
     width: 100%
     height: 100%
     object-fit: contain
+    display: flex
+    align-items: center
+    justify-content: center
