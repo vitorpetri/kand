@@ -2,7 +2,7 @@ import styles from './Page.module.sass'
 
 import classNames from 'classnames';
 import Head from 'next/head';
-import { forwardRef } from 'react';
+import { forwardRef, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 
@@ -26,6 +26,14 @@ const Page = forwardRef(({
         keywords = '',
         image = ''
     } = metadata;
+
+    useEffect(() => {
+        if (showAnimation) {
+            document.body.classList.add('show');
+        } else {
+            document.body.classList.remove('show');
+        }
+    }, [showAnimation]);
 
     return (
         <>
