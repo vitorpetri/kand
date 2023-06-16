@@ -49,12 +49,13 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
     return (
         <SwitchTransition>
             <CSSTransition
-                classNames='page'
+                // classNames='page'
+                classNames={classNames}
                 key={key}
                 onEnter={onEnter}
                 onEntered={onEntered}
                 onExited={onExited}
-                timeout={400}
+                timeout={timeOut}
             >
                 <>
                     {children}
@@ -62,7 +63,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                     <style jsx global>
                         {`
                     .page-enter {
-                        opacity: 1;
+                        opacity: 0;
                     }
 
                     .page-enter-active {
@@ -75,37 +76,37 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                     }
 
                     .page-exit-active {
+                        opacity: 0;
+                        transition: opacity 400ms;
+                    }
+
+                    .project-page-enter {
+                        opacity: 0;
+                    }
+
+                    .project-page-enter-active {
                         opacity: 1;
                         transition: opacity 400ms;
                     }
 
-                    // .project-page-enter {
-                    //     opacity: 0;
-                    // }
+                    .project-page-exit:after {
+                        content: "";
+                        position: absolute;
+                        bottom: -200rem;
+                        left: 0;
+                        width: 100%;
+                        background: #B3FC03;
+                        transform: scaleY(1.5);
+                        height: 100%;
+                        border-bottom-left-radius: 30px;
+                        border-bottom-right-radius: 30px;
+                        transition: all 950ms cubic-bezier(1.000, 0.030, 0.440, 1.000);
+                        z-index: 9999;
+                    }
 
-                    // .project-page-enter-active {
-                    //     opacity: 1;
-                    //     transition: opacity 400ms;
-                    // }
-
-                    // .project-page-exit:after {
-                    //     content: "";
-                    //     position: absolute;
-                    //     bottom: -200rem;
-                    //     left: 0;
-                    //     width: 100%;
-                    //     background: #B3FC03;
-                    //     transform: scaleY(1.5);
-                    //     height: 100%;
-                    //     border-bottom-left-radius: 30px;
-                    //     border-bottom-right-radius: 30px;
-                    //     transition: all 950ms cubic-bezier(1.000, 0.030, 0.440, 1.000);
-                    //     z-index: 9999;
-                    // }
-
-                    // .project-page-exit-active:after {
-                    //     bottom: 200rem;
-                    // }
+                    .project-page-exit-active:after {
+                        bottom: 200rem;
+                    }
                     `}
                     </style>
                 </>

@@ -3,6 +3,7 @@ import MundoSvg from '../public/mundo.svg'
 import { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import Rive from 'rive-react'
 
 import { createClient } from '../prismicio'
 import sm from '../sm.json'
@@ -11,8 +12,11 @@ import Page from '../components/Page'
 
 import styles from './styles.module.sass'
 
+const KandRive = '/kand.riv'
+
 export default function Home({ data, navigation }) {
     const elementRef = useRef(null)
+    const riveRef = useRef(null)
 
     return (
         <Page
@@ -29,9 +33,13 @@ export default function Home({ data, navigation }) {
                 <div className={styles.title}>
                     <div className={styles.accent}></div>
                     <h1 className={styles.name}>{data.first_name}</h1>
-                    <div className={styles.line} />
-                    <Image priority className={styles.icon} src={MundoSvg} alt="World" />
-                    <div className={styles.line} />
+
+                    <div ref={riveRef} className={styles.icon}>
+                        <div className={styles.line} />
+                        <Rive src={KandRive} artboard='Rive Mundo' />
+                        <div className={styles.line} />
+                    </div>
+
                     <h1 className={styles.name}>{data.second_name}</h1>
                 </div>
                 <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
