@@ -1,5 +1,5 @@
 import styles from './styles.module.sass'
-import { useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -18,8 +18,13 @@ import Awards from '../../components/Awards'
 import DuoSvg from '../../public/duo.svg'
 
 export default function About({ data, navigation }) {
-
+    const [showAnimation, setShowAnimation] = useState(false)
     const elementRef = useRef(null)
+
+    useEffect(() => {
+        console.log(`showAnimation is now: ${showAnimation}`);
+        setShowAnimation(true);
+    }, []);
 
     return (
         <Page
@@ -27,6 +32,7 @@ export default function About({ data, navigation }) {
             ref={elementRef}
             shared={navigation}
             navigation={navigation}
+            showAnimation={showAnimation}
         >
             <Head>
                 <title>KAND | About</title>

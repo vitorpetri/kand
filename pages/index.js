@@ -20,13 +20,14 @@ export default function Home({ data, navigation }) {
     const riveRef = useRef(null)
 
     useEffect(() => {
-        const tl = GSAP.timeline();
+        const tl = GSAP.timeline({ paused: true });
 
         const riveElement = riveRef.current;
         const lines = riveElement.querySelectorAll(`.${styles.line}`);
         const firstName = document.querySelector(`.${styles.firstName}`);
         const secondName = document.querySelector(`.${styles.secondName}`);
         const otherElements = document.querySelectorAll(`.${styles.paragraph}, .${styles.buttons__wrapper}`);
+        const links = document.querySelectorAll(`.${styles.button}`);
 
         // Create a label for riveElement animation start
         tl.addLabel("shrinkRive", "+=1.2");
@@ -43,6 +44,7 @@ export default function Home({ data, navigation }) {
         tl.to(lines, {
             width: "1.8rem",
             duration: 0.5,
+            autoAlpha: 1,
         }, "shrinkRive-=0.4");
 
         tl.to(lines[0], {
@@ -75,6 +77,22 @@ export default function Home({ data, navigation }) {
             duration: 0.5,
             stagger: 0.2, // 0.2 second delay between each element animation
         }, "shrinkRive+=1");
+
+        tl.play();
+
+        // Reverse the animation when leaving the page
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = e.target.getAttribute('href');
+
+                tl.eventCallback("onReverseComplete", () => {
+                    window.location.href = target;
+                });
+
+                tl.reverse();
+            });
+        });
 
     }, []);
 

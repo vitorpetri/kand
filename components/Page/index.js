@@ -2,7 +2,7 @@ import styles from './Page.module.sass'
 
 import classNames from 'classnames';
 import Head from 'next/head';
-import { forwardRef, useEffect } from 'react';
+import { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { useRouter } from 'next/router';
 
@@ -17,6 +17,22 @@ const Page = forwardRef(({
     showAnimation
 }, ref) => {
     const router = useRouter();
+    const [animationClass, setAnimationClass] = useState('');
+
+    useEffect(() => {
+        if (showAnimation) {
+            setAnimationClass(styles.showMe); // Set class to show
+
+            // Hide after 1.5 seconds
+            const timeout = setTimeout(() => {
+                setAnimationClass(styles.hide); // Set class to hide (fading out)
+                // Dispatch an event here to notify that the animation is complete
+                document.dispatchEvent(new CustomEvent('animationComplete'));
+            }, 1000);
+
+            return () => clearTimeout(timeout);
+        }
+    }, [showAnimation]);
 
     console.log(showAnimation);
 
@@ -63,11 +79,11 @@ const Page = forwardRef(({
                         />
                     </div>
                 )}
-                {router.pathname.startsWith('/about/') && (
-                    <div className={`${styles.rive_container} rive-container ${showAnimation ? styles.show : ''}`}>
+                {router.pathname.startsWith('/about') && (
+                    <div className={`${styles.rive_container} rive-container ${animationClass}`}>
                         <RiveAnimation
-                            className={`${styles.footer__icon} ${showAnimation ? styles.show : ''}`}
-                            artboard='Rive Olho'
+                            className={`${styles.about__rive} ${animationClass}`}
+                            artboard='Rive Duo'
                         />
                     </div>
                 )}

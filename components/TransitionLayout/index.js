@@ -43,8 +43,16 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
         }
     }
 
-    const classNames = asPath.startsWith("/project/") ? "project-page" : "page";
-    const timeOut = asPath.startsWith("/project/") ? 670 : 400;
+    let classNames = "page";
+    let timeOut = 400;
+
+    if (asPath.startsWith("/project/")) {
+        classNames = "project-page";
+        timeOut = 670;
+    } else if (asPath.startsWith("/about")) {
+        classNames = "about-page";
+        timeOut = 1000;
+    }
 
     return (
         <SwitchTransition>
@@ -107,6 +115,36 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                     .project-page-exit-active:after {
                         bottom: 200rem;
                     }
+
+                    .about-page-enter:after {
+                        content: "";
+                        position: absolute;
+                        bottom: -200rem;
+                        left: 0;
+                        width: 100%;
+                        background: #B3FC03;
+                        transform: scaleY(1.5);
+                        height: 100%;
+                        border-bottom-left-radius: 30px;
+                        border-bottom-right-radius: 30px;
+                        transition: all 950ms cubic-bezier(1.000, 0.030, 0.440, 1.000);
+                        transition-delay: 300ms;
+                        z-index: 9999;
+                    }
+
+                    .about-page-enter-active:after {
+                        bottom: 200rem;
+                    }
+
+                    .about-page-exit {
+                        opacity: 1;
+                    }
+
+                    .about-page-exit-active {
+                        opacity: 0;
+                        transition: opacity 400ms;
+                    }
+
                     `}
                     </style>
                 </>
