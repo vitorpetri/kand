@@ -105,7 +105,7 @@
   &:hover .icon
     width: 101%
     height: 104%
-    border-radius: 0 1rem 0 0 
+    border-radius: 0 1rem 0 0
 
 .active
   color: $black
@@ -175,6 +175,7 @@
 .olho
   color: $black
   width: 32rem
+  height: 32rem
   margin-right: 20rem
 
   @media (max-height: 620px)
@@ -191,7 +192,15 @@
   @media (min-width: 620px)
     top: 10%
     right: 10%
-  
+
+.olho_rive
+  width: 32rem
+  height: 32rem
+  position: absolute
+  top: 50%
+  left: 15%
+  transform: translate(-50%, -50%)
+
 .line
   width: 2rem
   height: 0.3rem
@@ -232,6 +241,6 @@
   &:hover
     &:after
       width: 100%
-  
+
   @include media('<=phone')
     font-size: 18rem

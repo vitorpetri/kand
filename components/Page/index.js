@@ -63,6 +63,14 @@ const Page = forwardRef(({
                         />
                     </div>
                 )}
+                {router.pathname.startsWith('/about/') && (
+                    <div className={`${styles.rive_container} rive-container ${showAnimation ? styles.show : ''}`}>
+                        <RiveAnimation
+                            className={`${styles.footer__icon} ${showAnimation ? styles.show : ''}`}
+                            artboard='Rive Olho'
+                        />
+                    </div>
+                )}
                 <div className="top" />
                 <div className="border" />
                 <div className="bottom" />

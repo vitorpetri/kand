@@ -1,9 +1,10 @@
 import Head from 'next/head'
 import MundoSvg from '../public/mundo.svg'
-import { useRef } from 'react'
+import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import Rive from 'rive-react'
+import GSAP from 'gsap'
 
 import { createClient } from '../prismicio'
 import sm from '../sm.json'
@@ -18,6 +19,65 @@ export default function Home({ data, navigation }) {
     const elementRef = useRef(null)
     const riveRef = useRef(null)
 
+    useEffect(() => {
+        const tl = GSAP.timeline();
+
+        const riveElement = riveRef.current;
+        const lines = riveElement.querySelectorAll(`.${styles.line}`);
+        const firstName = document.querySelector(`.${styles.firstName}`);
+        const secondName = document.querySelector(`.${styles.secondName}`);
+        const otherElements = document.querySelectorAll(`.${styles.paragraph}, .${styles.buttons__wrapper}`);
+
+        // Create a label for riveElement animation start
+        tl.addLabel("shrinkRive", "+=1.2");
+
+        // Animate riveElement
+        tl.fromTo(riveElement, {
+            scale: 1.8,
+        }, {
+            scale: 1,
+            duration: 0.5,
+            ease: "power2.out",
+        }, "shrinkRive");
+
+        tl.to(lines, {
+            width: "1.8rem",
+            duration: 0.5,
+        }, "shrinkRive-=0.4");
+
+        tl.to(lines[0], {
+            left: "48%",
+            duration: 0.5,
+            ease: "power2.out",
+        }, "shrinkRive-=0.2");
+
+        tl.to(lines[1], {
+            right: "47.6%",
+            duration: 0.5,
+            ease: "power2.out",
+        }, "shrinkRive-=0.2");
+
+        tl.fromTo([firstName, secondName], {
+            opacity: 0,
+            autoAlpha: 0,
+        }, {
+            opacity: 1,
+            translateX: '0',
+            duration: 1.8,
+            autoAlpha: 1,
+            ease: "Expo.easeInOut",
+        }, "shrinkRive-=0.9");
+
+        tl.fromTo(otherElements, {
+            autoAlpha: 0,
+        }, {
+            autoAlpha: 1,
+            duration: 0.5,
+            stagger: 0.2, // 0.2 second delay between each element animation
+        }, "shrinkRive+=1");
+
+    }, []);
+
     return (
         <Page
             className={"Page"}
@@ -31,16 +91,18 @@ export default function Home({ data, navigation }) {
             <div className={styles.wrapper}  >
                 <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.first_paragraph }} />
                 <div className={styles.title}>
-                    <div className={styles.accent}></div>
-                    <h1 className={styles.name}>{data.first_name}</h1>
+                    <div className={styles.firstName}>
+                        <div className={styles.accent}></div>
+                        <h1 className={styles.name}>{data.first_name}</h1>
+                    </div>
 
                     <div ref={riveRef} className={styles.icon}>
                         <div className={styles.line} />
-                        <Rive src={KandRive} artboard='Rive Mundo' />
+                        <Rive className={styles.rive} src={KandRive} artboard='Rive Mundo' />
                         <div className={styles.line} />
                     </div>
 
-                    <h1 className={styles.name}>{data.second_name}</h1>
+                    <h1 className={styles.secondName}>{data.second_name}</h1>
                 </div>
                 <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
                 <p className={styles.paragraph__mobile} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
