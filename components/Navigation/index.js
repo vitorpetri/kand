@@ -68,8 +68,8 @@ export default function Navigation({ navigationData }) {
             tl.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Expo.easeInOut' })
             // tl.to(menuContentRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
           
-            tl.to(riveRef.current, { duration: 0.6, opacity: 1, scale: 0.2, x: '-128rem', y: '3.2rem', ease: 'Expo.easeInOut' })
-            tl.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 0.5, x: '8rem', y: '15rem',  ease: 'Expo.easeInOut' })
+            tl.to(riveRef.current, { duration: 0.6, scale: 0.2, x: '-128rem', y: '3.2rem', ease: 'Expo.easeInOut', delay: '1000ms' })
+            tl.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 0.5, x: '8rem', y: '15rem',  ease: 'Expo.easeInOut', delay: '1000ms'  })
             tl.to(menuTextRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
             tl.to(menuListRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
             
@@ -77,7 +77,7 @@ export default function Navigation({ navigationData }) {
 
             tlReverse.to(menuTextRef.current, { duration: 0.4, opacity: 0, ease: 'Expo.easeInOut' })
             tlReverse.to(menuListRef.current, { duration: 0.4, opacity: 0, ease: 'Expo.easeInOut' })
-            tlReverse.to(riveRef.current, { duration: 0.6, opacity: 0, scale: 1, x: '0rem', ease: 'Expo.easeInOut' })
+            tlReverse.to(riveRef.current, { duration: 0.6, scale: 1, x: '0rem', ease: 'Expo.easeInOut' })
             tlReverse.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 1, x: '0rem', y: '0rem', ease: 'Expo.easeInOut' })
             tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
             
