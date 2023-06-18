@@ -156,6 +156,9 @@
     gap: 10%
     height: 100%
 
+.text__box
+  margin-left: 48rem
+
 .menu__text
   width: 20rem
   font-weight: bold
@@ -172,34 +175,57 @@
     margin-right: 0
     z-index: 3
 
+$olho-w: 200rem
+$olho-w-m: 138rem
+
 .olho
   color: $black
-  width: 32rem
-  height: 32rem
+  width: $olho-w
   margin-right: 20rem
+  position: absolute
+  bottom: 20%
+  left: 36%
 
   @media (max-height: 620px)
     display: none
 
   @include media('<=phone')
-    position: absolute
-    top: 28%
-    right: 13%
-    width: 38rem
-    margin-right: 0
-    z-index: 3
+    display: none
 
   @media (min-width: 620px)
     top: 10%
     right: 10%
 
 .olho_rive
-  width: 32rem
-  height: 32rem
+  width: $olho-w
+  height: $olho-w
   position: absolute
   top: 50%
   left: 15%
   transform: translate(-50%, -50%)
+
+.olho_mobile
+  color: $black
+  width: $olho-w-m
+  position: absolute
+  top: 2%
+  right: 13%
+  width: 38rem
+  margin-right: 0
+  z-index: 3
+
+  @include media('>=phone')
+    display: none
+
+  @media (min-width: 620px)
+    top: 10%
+    right: 10%
+
+.olho_rive_mobile
+  width: $olho-w-m
+  height: $olho-w-m
+  position: absolute
+  transform: translateX(-50%)
 
 .line
   width: 2rem
@@ -215,6 +241,7 @@
   flex-direction: column
   gap: 4.4rem
   transform: translateY(-1rem)
+  
 
   @include media('<=phone')
     position: absolute
@@ -228,6 +255,7 @@
   font-family: $title
   text-transform: uppercase
   width: fit-content
+  
 
   &:after
     content: ''

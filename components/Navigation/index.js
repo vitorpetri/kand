@@ -15,9 +15,13 @@ export default function Navigation({ navigationData }) {
     const onHomeClick = () => setIsActive(false)
 
     const riveRef = useRef(null)
+    const riveRefMobile = useRef(null)
     const menuRef = useRef(null)
     const menuDivRef = useRef(null)
     const menuContentRef = useRef(null)
+    const menuTextRef = useRef(null)
+    const menuListRef = useRef(null)
+    // const menuItemRef = useRef(null)
     const navigationRef = useRef(null)
     const svgRef = useRef(null)
     const btnRef = useRef(null)
@@ -62,10 +66,23 @@ export default function Navigation({ navigationData }) {
             tl.to(navigationRef.current, { duration: 0, background: '#B3FC03', ease: 'Expo.easeInOut' })
             tl.to(btnPlus.current, { duration: 0, innerHTML: '-', ease: 'Expo.easeInOut' })
             tl.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Expo.easeInOut' })
-            tl.to(menuContentRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
+            // tl.to(menuContentRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
+          
+            tl.to(riveRef.current, { duration: 0.6, opacity: 1, scale: 0.2, x: '-128rem', y: '3.2rem', ease: 'Expo.easeInOut' })
+            tl.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 0.5, x: '8rem', y: '15rem',  ease: 'Expo.easeInOut' })
+            tl.to(menuTextRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
+            tl.to(menuListRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
+            
+            // tl.to(menuItemRef.current, { duration: 0.4, opacity: 1, ease: 'Expo.easeInOut' })
 
+            tlReverse.to(menuTextRef.current, { duration: 0.4, opacity: 0, ease: 'Expo.easeInOut' })
+            tlReverse.to(menuListRef.current, { duration: 0.4, opacity: 0, ease: 'Expo.easeInOut' })
+            tlReverse.to(riveRef.current, { duration: 0.6, opacity: 0, scale: 1, x: '0rem', ease: 'Expo.easeInOut' })
+            tlReverse.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 1, x: '0rem', y: '0rem', ease: 'Expo.easeInOut' })
             tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Expo.easeInOut' })
-            tlReverse.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
+            
+            // tlReverse.to(menuContentRef.current, { duration: 0.3, opacity: 0, ease: 'Expo.easeInOut' })
+            
             tlReverse.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Expo.easeInOut' })
             tlReverse.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Expo.easeInOut' })
             tlReverse.to(navigationRef.current, { duration: 0, background: '#101010', ease: 'Expo.easeInOut' })
@@ -114,14 +131,21 @@ export default function Navigation({ navigationData }) {
                     <div ref={riveRef} className={styles.olho}>
                         <Rive src={KandRive} className={styles.olho_rive} artboard='Rive Olho' />
                     </div>
-                    <div className={styles.text__box}>
+                    <div ref={riveRefMobile} className={styles.olho_mobile}>
+                        <Rive src={KandRive} className={styles.olho_rive_mobile} artboard='Rive Olho' />
+                    </div>
+                    <div className={styles.text__box} ref={menuTextRef}>
                         <div className={styles.menu__text}>{navigationData.title}</div>
                         <div className={styles.line} />
                     </div>
-                    <ul className={styles.menu__list}>
+                    <ul className={styles.menu__list} ref={menuListRef}>
                         <li className={styles.menu__item} onClick={onClick}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
                         <li className={styles.menu__item} onClick={onClick}><Link href={'/about'}>{navigationData.about_title}</Link></li>
                         <li className={styles.menu__item} onClick={onClick}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
+                        
+                        {/* <li className={styles.menu__item} onClick={onClick} ref={menuItemRef}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
+                        <li className={styles.menu__item} onClick={onClick} ref={menuItemRef}><Link href={'/about'}>{navigationData.about_title}</Link></li>
+                        <li className={styles.menu__item} onClick={onClick} ref={menuItemRef}><Link href={'/contact'}>{navigationData.contact_title}</Link></li> */}
                     </ul>
                 </div>
             </div>
