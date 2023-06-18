@@ -44,7 +44,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
     }
 
     const classNames = asPath.startsWith("/project/") ? "project-page" : "page";
-    const timeOut = asPath.startsWith("/project/") ? 670 : 400;
+    const timeOut = asPath.startsWith("/project/") ? 850 : 400;
 
     return (
         <SwitchTransition>
