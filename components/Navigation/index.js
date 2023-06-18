@@ -20,6 +20,9 @@ export default function Navigation({ navigationData }) {
     const menuDivRef = useRef(null)
     const menuTextRef = useRef(null)
     const menuListRef = useRef(null)
+    const menuItem1Ref = useRef(null)
+    const menuItem2Ref = useRef(null)
+    const menuItem3Ref = useRef(null)
     const navigationRef = useRef(null)
     const svgRef = useRef(null)
     const btnRef = useRef(null)
@@ -132,9 +135,9 @@ export default function Navigation({ navigationData }) {
                         <div className={styles.line} />
                     </div>
                     <ul className={styles.menu__list} ref={menuListRef}>
-                        <li className={styles.menu__item} onClick={onClick}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
-                        <li className={styles.menu__item} onClick={onClick}><Link href={'/about'}>{navigationData.about_title}</Link></li>
-                        <li className={styles.menu__item} onClick={onClick}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
+                        <li className={styles.menu__item} onClick={onClick} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
+                        <li className={styles.menu__item} onClick={onClick} ref={menuItem2Ref}><Link href={'/about'}>{navigationData.about_title}</Link></li>
+                        <li className={styles.menu__item} onClick={onClick} ref={menuItem3Ref}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
                     </ul>
                 </div>
             </div>
