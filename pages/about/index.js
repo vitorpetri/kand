@@ -55,13 +55,13 @@ export default function About({ data, navigation }) {
             position: 'absolute',
         }, {
             backgroundColor: "unset",
-            duration: .5,
+            duration: 3.2,
             ease: "power2.out",
         }, "shrinkRive+=0.5")
 
         tl.to(coverOuter, {
             bottom: "200rem",
-            duration: .8,
+            duration: 1.6,
         }, "shrinkRive-=0.2")
 
         tl.play();
