@@ -17,24 +17,6 @@ const Page = forwardRef(({
     showAnimation
 }, ref) => {
     const router = useRouter();
-    const [animationClass, setAnimationClass] = useState('');
-
-    useEffect(() => {
-        if (showAnimation) {
-            setAnimationClass(styles.showMe); // Set class to show
-
-            // Hide after 1.5 seconds
-            const timeout = setTimeout(() => {
-                setAnimationClass(styles.hide); // Set class to hide (fading out)
-                // Dispatch an event here to notify that the animation is complete
-                document.dispatchEvent(new CustomEvent('animationComplete'));
-            }, 1000);
-
-            return () => clearTimeout(timeout);
-        }
-    }, [showAnimation]);
-
-    console.log(showAnimation);
 
     const {
         title = '',
@@ -76,14 +58,6 @@ const Page = forwardRef(({
                         <RiveAnimation
                             className={`${styles.footer__icon} ${showAnimation ? styles.show : ''}`}
                             artboard='Rive Atomo'
-                        />
-                    </div>
-                )}
-                {router.pathname.startsWith('/about') && (
-                    <div className={`${styles.rive_container} rive-container ${animationClass}`}>
-                        <RiveAnimation
-                            className={`${styles.about__rive} ${animationClass}`}
-                            artboard='Rive Duo'
                         />
                     </div>
                 )}

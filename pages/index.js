@@ -23,23 +23,41 @@ export default function Home({ data, navigation }) {
         const tl = GSAP.timeline({ paused: true });
 
         const riveElement = riveRef.current;
+        const cover = document.querySelector(`.${styles.cover}`);
         const lines = riveElement.querySelectorAll(`.${styles.line}`);
         const firstName = document.querySelector(`.${styles.firstName}`);
         const secondName = document.querySelector(`.${styles.secondName}`);
         const otherElements = document.querySelectorAll(`.${styles.paragraph}, .${styles.buttons__wrapper}`);
         const links = document.querySelectorAll(`.${styles.button}`);
+        const PageElement = document.querySelector('.Page')
 
-        // Create a label for riveElement animation start
         tl.addLabel("shrinkRive", "+=1.2");
 
-        // Animate riveElement
         tl.fromTo(riveElement, {
             scale: 1.8,
+            backgroundColor: 'black',
         }, {
             scale: 1,
             duration: 0.5,
+            backgroundColor: "unset",
             ease: "power2.out",
         }, "shrinkRive");
+
+        tl.fromTo(cover, {
+            backgroundColor: "black",
+        }, {
+            backgroundColor: "unset",
+            duration: .5,
+            ease: "power2.out",
+        }, "shrinkRive+=0.5")
+
+        tl.fromTo(PageElement, {
+            backgroundColor: 'black',
+        }, {
+            backgroundColor: 'unset',
+            duration: 3, // increased duration for slower animation
+            ease: "power2.inOut" // smoother easing function
+        }, "shrinkRive+=0.5");
 
         tl.to(lines, {
             width: "1.8rem",
@@ -68,6 +86,7 @@ export default function Home({ data, navigation }) {
             duration: 1.8,
             autoAlpha: 1,
             ease: "Expo.easeInOut",
+            visibility: 'visible',
         }, "shrinkRive-=0.9");
 
         tl.fromTo(otherElements, {
@@ -117,6 +136,7 @@ export default function Home({ data, navigation }) {
                     <div ref={riveRef} className={styles.icon}>
                         <div className={styles.line} />
                         <Rive className={styles.rive} src={KandRive} artboard='Rive Mundo' />
+                        <div className={styles.cover} />
                         <div className={styles.line} />
                     </div>
 
