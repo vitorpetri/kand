@@ -61,7 +61,7 @@ export default function About({ data, navigation }) {
 
         tl.to(coverOuter, {
             bottom: "200rem",
-            duration: 1.6,
+            duration: 0.9,
         }, "shrinkRive-=0.2")
 
         tl.play();
