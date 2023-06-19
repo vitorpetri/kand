@@ -34,7 +34,7 @@ export default function Contact({ data, navigation }) {
             
             tl.to(riveRef.current, { duration: 0.8, scale: 1, x: '0rem', ease: 'Expo.easeInOut' })
             tl.to(name1Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Expo.easeInOut' })
-            tl.to(name2Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Expo.easeInOut' }, "<")
+            tl.to(name2Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Expo.easeInOut' }, '<')
             tl.to(paragraphRef.current, { duration: 0.7, opacity: 1, ease: 'Expo.easeInOut' })
             tl.to(emailRef.current, { duration: 0.7, opacity: 1, ease: 'Expo.easeInOut' })
         }
