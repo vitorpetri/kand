@@ -32,15 +32,36 @@
   line-height: 3.8rem
   font-weight: bold
 
+// .olho
+//   width: 30rem
+//   position: absolute
+//   top: 24%
+//   left: 45%
+//   transform: translate(-50%, -50%)
+
+//   @include media('<=phone')
+//     display: none
+
+$olho-w: 70rem
+
 .olho
-  width: 30rem
+  color: $black
+  width: $olho-w
   position: absolute
-  top: 24%
-  left: 45%
-  transform: translate(-50%, -50%)
+  top: 10%
+  bottom: 20%
+  left: 40%
 
   @include media('<=phone')
     display: none
+
+.olho_rive
+  width: $olho-w
+  height: $olho-w
+  position: absolute
+  top: 50%
+  left: 15%
+  transform: translate(-50%, -50%)
 
 .duo
   margin-top: 10rem

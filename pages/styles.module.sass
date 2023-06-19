@@ -1,5 +1,5 @@
 @import 'styles/utils/index'
-  
+
 .wrapper
   display: flex
   flex-direction: column
@@ -8,12 +8,12 @@
   overflow: hidden
   scale: 0.91
   height: calc(100vh - 2rem - 7.2rem - 2rem) //window - top - nav - bottom
-  
+
   @media (max-height: 800px)
     scale: 0.9
 
     @include media('<=phone')
-      scale: 1
+      scale: 1f
 
   @include media('<=phone')
     height: calc(100vh - 3rem - 9.6rem - 2rem)
@@ -22,7 +22,7 @@
       height: unset
       margin: 3rem 0 10rem 0
       overflow: auto
-      
+
       .buttons__wrapper
         margin-bottom: 4vh
 
@@ -35,10 +35,10 @@
       margin-bottom: 4vh
 
 .accent
-  background: $primary
+  background-color: $primary
   position: absolute
-  top: 16%
-  left: 22.7%
+  top: -5%
+  right: 8%
   width: 4rem
   height: 0.32rem
 
@@ -49,19 +49,20 @@
     height: 0.42rem
 
 .line
-  width: 1.8rem
+  width: 0
+  opacity: 0
   height: 0.3rem
   background: $primary
-  margin-top: 3.2rem
   position: absolute
-  
-  &:nth-of-type(2)
-    top: -28%
-    left: 44.4%
+  z-index: 1
 
-  &:nth-of-type(3)
-    top: 85%
-    left: 44.4%
+  &:nth-of-type(1)
+    top: 0
+    left: 0
+
+  &:nth-of-type(4)
+    bottom: 0
+    right: 0
 
   @include media('<=phone')
     display: none
@@ -78,12 +79,6 @@
   position: relative
   letter-spacing: -0.3rem
 
-  .name:first-of-type 
-    transform: translateX(-1.2rem)
-
-    @include media('<=phone')
-      transform: translateX(0)
-
   @include media('<=phone')
     position: static
     flex-direction: column
@@ -96,13 +91,33 @@
     h1:nth-child(3)
       margin-top: 1.8vh
 
+.firstName
+  transform: translateX(40rem)
+  opacity: 0
+  z-index: -1
+
+.secondName
+  transform: translateX(-50rem)
+  opacity: 0
+  z-index: -1
+
 .icon__wrapper
   position: static !important
 
 .icon
   width: 40rem
-  height: fit-content
-  transform: translate(1rem, -2.2rem)
+  height: 25rem
+  transform: translateY(-1rem)
+  display: flex
+  align-items: center
+
+  @include media('<=phone')
+    transform: translate(14rem, 2rem) scale(2) !important
+
+.rive
+  width: 40rem
+  height: 40rem
+  position: absolute
 
   @include media('<=phone')
     position: static
@@ -111,6 +126,12 @@
     transform: translate(0)
     width: 50rem
     margin-bottom: 2%
+
+.cover
+  background-color: black
+  width: 32rem
+  height: 100%
+  margin: 0 auto
 
 .paragraph
   transform: translateX(-6.8rem)
@@ -121,7 +142,7 @@
   line-height: 1.6
   font-size: 2rem
   width: 60rem
-  opacity: 0.6 
+  opacity: 0.6
   text-align: center
 
   &:nth-of-type(1)
@@ -131,7 +152,7 @@
     @include media('<=phone')
       margin-top: 8rem
       width: 80%
-  
+
   &:nth-of-type(2)
     margin: 5.2vh 0 2.8vh
     color: $gray
@@ -163,7 +184,7 @@
   line-height: 1.6
   font-size: 2.6rem
   color: $gray
-  opacity: 0.6 
+  opacity: 0.6
   text-align: center
 
   @include media('>=phone')
