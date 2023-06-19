@@ -61,6 +61,7 @@ export default function About({ data, navigation }) {
 
         tl.to(coverOuter, {
             bottom: "200rem",
+            visibility: "visible",
             duration: 0.9,
         }, "shrinkRive-=0.2")
 
