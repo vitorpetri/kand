@@ -45,24 +45,26 @@ export default function About({ data, navigation }) {
             left: '48%',
             width: '8rem',
             height: '12rem',
-            duration: 0.5,
+            duration: 0.6,
             backgroundColor: "unset",
-            ease: "power2.out",
+            ease: "power3.out",
         }, "shrinkRive");
 
         tl.fromTo(cover, {
-            backgroundColor: "black",
+            // backgroundColor: "black",
             position: 'absolute',
+            opacity: 1
         }, {
-            backgroundColor: "unset",
-            duration: 3.2,
+            // backgroundColor: "unset",
+            opacity: 0,
+            duration: 1.2,
             ease: "power2.out",
-        }, "shrinkRive+=0.5")
+        }, "shrinkRive+=0.25")
 
         tl.to(coverOuter, {
             bottom: "200rem",
             visibility: "visible",
-            duration: 0.9,
+            duration: 1,
         }, "shrinkRive-=0.2")
 
         tl.play();

@@ -59,7 +59,6 @@ export default function Navigation({ navigationData }) {
                     }
                 }
             };
-
             setTimeout(executePaint, 500);
         }
     });
@@ -82,6 +81,7 @@ export default function Navigation({ navigationData }) {
             const tl = GSAP.timeline({ paused: true });
             const tlReverse = GSAP.timeline({ paused: true });
 
+            tl.set(riveRef.current, { opacity: '1' })
             tl.to(menuRef.current, { duration: 0.6, opacity: 1, scale: 1, transformOrigin: '98% 2%', display: 'block', ease: 'Power4.easeInOut' })
             tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Power4.easeInOut' })
             tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Power4.easeInOut' })
@@ -102,6 +102,7 @@ export default function Navigation({ navigationData }) {
             tlReverse.to(menuItem1Ref.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuTextRef.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<0.1')
             tlReverse.to(riveRef.current, { duration: 0.8, scale: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<')
+            tlReverse.to(riveRef.current, { duration: 0.8, opacity: '0' , ease: 'Power4.easeInOut' })
             tlReverse.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 1, x: '0rem', y: '0rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Power4.easeInOut' }, '<')
 

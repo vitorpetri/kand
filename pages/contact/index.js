@@ -21,6 +21,12 @@ export default function Contact({ data, navigation }) {
     const name1Ref = useRef(null)
     const name2Ref = useRef(null)
     const emailRef = useRef(null)
+    const social11Ref = useRef(null)
+    const social12Ref = useRef(null)
+    const social13Ref = useRef(null)
+    const social21Ref = useRef(null)
+    const social22Ref = useRef(null)
+    const social23Ref = useRef(null)
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
@@ -75,16 +81,16 @@ export default function Contact({ data, navigation }) {
                     <div className={styles.name} ref={name1Ref}>
                         <div className={styles.accent}></div>
                         <div className={styles.title}>{data.info_1[0].name}</div>
-                        <a className={styles.link} href={data.info_1[0].social_1_link} target='blank'>{data.info_1[0].social_1}</a>
-                        <a className={styles.link} href={data.info_1[0].social_2_link} target='blank'>{data.info_1[0].social_2}</a>
-                        <a className={styles.phone} href={data.info_1[0].phone_link} target='blank'>{data.info_1[0].phone}</a>
+                        <a ref={social11Ref} className={styles.link} href={data.info_1[0].social_1_link} target='blank'>{data.info_1[0].social_1}</a>
+                        <a ref={social12Ref} className={styles.link} href={data.info_1[0].social_2_link} target='blank'>{data.info_1[0].social_2}</a>
+                        <a ref={social13Ref} className={styles.phone} href={data.info_1[0].phone_link} target='blank'>{data.info_1[0].phone}</a>
                     </div>
 
                     <div className={styles.name} ref={name2Ref}>
                         <div className={styles.title}>{data.info_2[0].name}</div>
-                        <a className={styles.link} href={data.info_2[0].social_1_link} target='blank'>{data.info_2[0].social_1}</a>
-                        <a className={styles.link} href={data.info_2[0].social_2_link} target='blank'>{data.info_2[0].social_2}</a>
-                        <a className={styles.phone} href={data.info_2[0].phone_link} target='blank'>{data.info_2[0].phone}</a>
+                        <a ref={social21Ref} className={styles.link} href={data.info_2[0].social_1_link} target='blank'>{data.info_2[0].social_1}</a>
+                        <a ref={social22Ref} className={styles.link} href={data.info_2[0].social_2_link} target='blank'>{data.info_2[0].social_2}</a>
+                        <a ref={social23Ref} className={styles.phone} href={data.info_2[0].phone_link} target='blank'>{data.info_2[0].phone}</a>
                     </div>
                 </div>
 
