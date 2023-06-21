@@ -115,7 +115,7 @@ export default function About({ data, navigation }) {
 
                     <p className={styles.bottom__code}>
                         Code by
-                        <a href='https://twitter.com/whizzbbig' target='blank'>Ojas</a>
+                        <a href='https://read.cv/whizzbbig' target='blank'>Ojas</a>
                         <strong>&</strong>
                         <a href='https://vitorpetri.com' target='blank'>Vitor</a>
                     </p>
