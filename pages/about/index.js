@@ -31,7 +31,6 @@ export default function About({ data, navigation }) {
         const riveElement = document.querySelector(`.${styles.rive}`)
         const cover = document.querySelector(`.${styles.cover}`);
         const coverOuter = document.querySelector(`.${styles.cover_outer}`)
-        const links = document.querySelectorAll(`.${styles.button}`);
 
         tl.addLabel("shrinkRive", "+=1.2");
 
@@ -68,21 +67,6 @@ export default function About({ data, navigation }) {
         }, "shrinkRive-=0.2")
 
         tl.play();
-
-        // Reverse the animation when leaving the page
-        links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const target = e.target.getAttribute('href');
-
-                tl.eventCallback("onReverseComplete", () => {
-                    window.location.href = target;
-                });
-
-                tl.reverse();
-            });
-        });
-
     }, []);
 
     return (

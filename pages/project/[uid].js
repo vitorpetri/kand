@@ -4,8 +4,10 @@ import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
 import { useRef, useEffect, useState } from 'react'
-import GSAP from 'gsap'
 import Rive from 'rive-react'
+import Image from 'next/image';
+import GSAP from 'gsap'
+import Lenis from '../../utils/scroll'
 
 import { createClient } from '../../prismicio'
 import sm from '../../sm.json'
@@ -22,18 +24,17 @@ export default function Projects({ project, previousProject, nextProject, naviga
     const elementRef = useRef(null)
     const [showAnimation, setShowAnimation] = useState(false)
     const [nextUrl, setNextUrl] = useState(null)
+    const descriptionRefs = useRef([]);
+    const imageRefs = useRef([]);
+    const videoRefs = useRef([]);
 
     const frameRef = useRef(null)
 
     useEffect(() => {
-        // if (typeof window !== 'undefined') {
-        //     const tl = GSAP.timeline()
-
-        //     setTimeout(() => {
-        //         tl.to(frameRef.current, { width: '0%', duration: 0 })
-        //         tl.to(frameRef.current, { width: 'inherit', duration: 0 })
-        //     }, 1000)
-        // }
+        const forceRepaint = () => {
+            document.body.offsetHeight;
+        };
+        forceRepaint();
     }, [])
 
     useEffect(() => {
@@ -44,6 +45,68 @@ export default function Projects({ project, previousProject, nextProject, naviga
         setShowAnimation(true)
         setNextUrl(url)
     }
+
+    const addDescriptionRef = (el) => {
+        if (el && !descriptionRefs.current.includes(el)) {
+            descriptionRefs.current.push(el);
+        }
+    };
+
+    const addImageRef = (el) => {
+        if (el && !imageRefs.current.includes(el)) {
+            imageRefs.current.push(el);
+        }
+    };
+
+    const addVideoRef = (el) => {
+        if (el && !videoRefs.current.includes(el)) {
+            videoRefs.current.push(el);
+        }
+    };
+
+    useEffect(() => {
+        const onScroll = ({ scroll }) => {
+            descriptionRefs.current.forEach((element) => {
+                const position = element.getBoundingClientRect().top;
+                if (position <= window.innerHeight && position >= 0) {
+                    GSAP.to(element, {
+                        autoAlpha: 1,
+                        duration: 2,
+                        ease: 'power2',
+                        stagger: 0.15
+                    });
+                }
+            });
+
+            imageRefs.current.forEach((element) => {
+                const position = element.getBoundingClientRect().top;
+                if (position <= window.innerHeight && position >= 0) {
+                    GSAP.to(element, {
+                        autoAlpha: 1,
+                        duration: 2,
+                        ease: 'power2'
+                    });
+                }
+            });
+
+            videoRefs.current.forEach((element) => {
+                const position = element.getBoundingClientRect().top;
+                if (position <= window.innerHeight && position >= 0) {
+                    GSAP.to(element, {
+                        autoAlpha: 1,
+                        duration: 2,
+                        ease: 'power2'
+                    });
+                }
+            });
+        };
+
+        Lenis.on('scroll', onScroll);
+
+        return () => {
+            Lenis.off('scroll', onScroll);
+        };
+    }, []);
 
     return (
         <Page
@@ -71,11 +134,11 @@ export default function Projects({ project, previousProject, nextProject, naviga
                 {project.content.map((content, index) => {
                     if (content.description) {
                         return (
-                            <p className={`${content.size} description`} key={index} dangerouslySetInnerHTML={{ __html: content.description }} />
+                            <p ref={addDescriptionRef} className={`${content.size} ${styles.description} description`} key={index} dangerouslySetInnerHTML={{ __html: content.description }} />
                         )
                     } else if (content.video.embed_url) {
                         return (
-                            <div key={index} className={`media-${content.size} video`} scroll='true' overflow-scroll='true' >
+                            <div ref={addVideoRef} key={index} className={`media-${content.size} ${styles.video} video`} scroll='true' overflow-scroll='true' >
                                 <iframe
                                     src={content.video.embed_url}
                                     ref={frameRef}
@@ -86,20 +149,25 @@ export default function Projects({ project, previousProject, nextProject, naviga
                             </div>
                         )
                     } else if (content.image) {
+                        const { width, height } = content.image;
                         return (
-                            <figure key={index} className={`media-${content.size} image`}>
-                                <img
+                            <figure ref={addImageRef} key={index} className={`media-${content.size} ${styles.image} image`}>
+                                <Image
                                     src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''}
-                                    alt={content.image.alt} />
+                                    alt="Project Images"
+                                    width={width}
+                                    height={height}
+                                    loading="lazy"
+                                />
                             </figure>
                         )
-                    } 
+                    }
                 })}
 
                 {project.numbers && project.numbers.length > 0 ? (
                     project.numbers
                         .filter(number => number.title && number.description).length > 0 ? (
-                        <ul className={styles.numbers}>
+                        <ul ref={addDescriptionRef} className={styles.numbers}>
                             {project.numbers
                                 .filter(number => number.title && number.description)
                                 .map((number, index) => {
@@ -124,7 +192,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
 
                     <div className={styles.categories}>
                         <div className={styles.categories__title}>Categories</div>
-                        <ul className={styles.categories__list}>
+                        <ul ref={addDescriptionRef} className={styles.categories__list}>
                             {project.tags.map((tag) => (
                                 <li key={tag} className={styles.categories__item}>
                                     <Link href={`/categories?tag=${encodeURIComponent(tag)}`}>
@@ -207,6 +275,16 @@ export async function getServerSideProps(context) {
         uid: res.uid,
         tags: res.tags,
     }
+
+    project.content.forEach((content, index) => {
+        if (content.image) {
+            const dimensions = content.image.dimensions;
+            if (dimensions) {
+                content.image.width = dimensions.width;
+                content.image.height = dimensions.height;
+            }
+        }
+    });
 
     // console.log('Next project:', nextProject);
     // console.log('Previous project:', previousProject);

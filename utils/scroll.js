@@ -9,16 +9,13 @@ function rAF(time) {
 }
 
 const togglePointerEvents = (disable) => {
-    console.log(`togglePointerEvents called with disable = ${disable}`);
     const elements = document.querySelectorAll('video, iframe');
 
     elements.forEach(element => {
         if (disable) {
             element.classList.add('disabled');
-            console.log('Added disabled class');
         } else {
             element.classList.remove('disabled');
-            console.log('Removed disabled class');
 
         }
     });
@@ -40,7 +37,6 @@ if (typeof window !== 'undefined') {
     let isScrolling;
 
     LenisManager.on('scroll', () => {
-        console.log("Scroll event triggered");
         window.clearTimeout(isScrolling);
 
         isScrolling = setTimeout(() => {
