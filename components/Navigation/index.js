@@ -54,36 +54,36 @@ export default function Navigation({ navigationData }) {
 
     const router = useRouter()
 
-    useEffect(() => {
-        if (typeof window !== 'undefined') {
-            const paint = GSAP.timeline();
+    // useEffect(() => {
+    //     if (typeof window !== 'undefined') {
+    //         const paint = GSAP.timeline();
 
-            const executePaint = () => {
-                if (
-                    logoRef.current &&
-                    menuDivRef.current &&
-                    svgRef.current &&
-                    navigationRef.current &&
-                    btnRef.current
-                ) {
-                    if (router.pathname === '/contact') {
-                        paint.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Power4.easeInOut' });
-                        paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Power4.easeInOut' });
-                        paint.to(svgRef.current, { duration: 0, color: '#101010', ease: 'Power4.easeInOut' });
-                        paint.to(navigationRef.current, { duration: 0, background: '#B3FC03', ease: 'Power4.easeInOut' });
-                        paint.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Power4.easeInOut' });
-                    } else {
-                        paint.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Power4.easeInOut' });
-                        paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Power4.easeInOut' });
-                        paint.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Power4.easeInOut' });
-                        paint.to(navigationRef.current, { duration: 0, background: '#101010', ease: 'Power4.easeInOut' });
-                        paint.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#101010', ease: 'Power4.easeInOut' });
-                    }
-                }
-            };
-            setTimeout(executePaint, 500);
-        }
-    });
+    //         const executePaint = () => {
+    //             if (
+    //                 logoRef.current &&
+    //                 menuDivRef.current &&
+    //                 svgRef.current &&
+    //                 navigationRef.current &&
+    //                 btnRef.current
+    //             ) {
+    //                 if (router.pathname === '/contact') {
+    //                     paint.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Power4.easeInOut' });
+    //                     paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Power4.easeInOut' });
+    //                     paint.to(svgRef.current, { duration: 0, color: '#101010', ease: 'Power4.easeInOut' });
+    //                     paint.to(navigationRef.current, { duration: 0, background: '#B3FC03', ease: 'Power4.easeInOut' });
+    //                     paint.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Power4.easeInOut' });
+    //                 } else {
+    //                     paint.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Power4.easeInOut' });
+    //                     paint.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Power4.easeInOut' });
+    //                     paint.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Power4.easeInOut' });
+    //                     paint.to(navigationRef.current, { duration: 0, background: '#101010', ease: 'Power4.easeInOut' });
+    //                     paint.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#101010', ease: 'Power4.easeInOut' });
+    //                 }
+    //             }
+    //         };
+    //         setTimeout(executePaint, 500);
+    //     }
+    // });
 
     useEffect(() => {
         if (typeof window !== 'undefined' &&
@@ -112,9 +112,9 @@ export default function Navigation({ navigationData }) {
             tl.to(btnPlus.current, { duration: 0, innerHTML: '-', ease: 'Power4.easeInOut' })
             tl.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Power4.easeInOut' })
 
-            tl.to(riveRef.current, { duration: 1.2, scale: 0.2, x: '-128rem', y: '3.2rem', ease: 'Power4.easeInOut', delay: '1000ms' })
+            tl.to(riveRef.current, { duration: 1.2, scale: 0.2, x: '-113rem', y: '8.2rem', ease: 'Power4.easeInOut', delay: '1000ms' })
             tl.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 0.5, x: '8rem', y: '15rem', ease: 'Power4.easeInOut' }, '<')
-            tl.to(menuTextRef.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<0.2')
+            tl.to(menuTextRef.current, { duration: 0.8, opacity: 1, ease: 'Power4.easeInOut' }, '<0.2')
             tl.to(menuItem1Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<0.2')
             tl.to(menuItem2Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<0.2')
             tl.to(menuItem3Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<0.2')
@@ -122,7 +122,7 @@ export default function Navigation({ navigationData }) {
             tlReverse.to(menuItem3Ref.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuItem2Ref.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuItem1Ref.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
-            tlReverse.to(menuTextRef.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<0.1')
+            tlReverse.to(menuTextRef.current, { duration: 0.6, opacity: 0, ease: 'Power4.easeInOut' }, '<0.1')
             tlReverse.to(riveRef.current, { duration: 0.8, scale: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(riveRef.current, { duration: 0.8, opacity: '0' , ease: 'Power4.easeInOut' })
             tlReverse.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 1, x: '0rem', y: '0rem', ease: 'Power4.easeInOut' }, '<')

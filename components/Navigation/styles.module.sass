@@ -49,6 +49,10 @@
   align-items: center
   justify-content: center
 
+  @include media('<=phone')
+    width: 11.8rem
+    transform: translateX(-1rem)
+
 .logo__visible
   display: block
 
@@ -183,7 +187,7 @@
     margin-right: 0
     z-index: 3
 
-$olho-w: 200rem
+$olho-w: 180rem
 $olho-w-m: 138rem
 
 .olho
@@ -191,7 +195,7 @@ $olho-w-m: 138rem
   width: $olho-w
   margin-right: 20rem
   position: absolute
-  bottom: 20%
+  bottom: 38%
   left: 36%
 
   @media (max-height: 620px)
