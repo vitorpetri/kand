@@ -111,7 +111,7 @@ export default function About({ data, navigation }) {
                         <strong>US</strong>
                     </p>
 
-                    <Image className={styles.bottom__icon} src={DuoSvg} alt="World" />
+                    <Rive className={styles.bottom__icon} src={KandRive} artboard='Rive Duo' />
 
                     <p className={styles.bottom__code}>
                         Code by
