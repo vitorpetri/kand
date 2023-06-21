@@ -27,6 +27,11 @@
   line-height: 3.8rem
   font-weight: bold
 
+  @include media('<=phone')
+    font-size: 5.4rem
+    line-height: 9.2rem
+    // font-weight: normal  
+
 // .olho
 //   width: 30rem
 //   position: absolute
@@ -91,8 +96,8 @@ $olho-w: 70rem
 
   @include  media('<=phone')
     top: -1.2rem
-    left: 45rem
-    width: 9rem
+    left: 46rem
+    width: 6.4rem
     height: 0.64rem
 
 .title
@@ -119,6 +124,10 @@ $olho-w: 70rem
   &:hover
     &:after
       width: 0%
+
+  @include  media('<=phone')
+    font-weight: bold
+    line-height: 7rem
 
 .phone
   &:after
