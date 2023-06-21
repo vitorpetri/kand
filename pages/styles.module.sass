@@ -21,7 +21,6 @@
     @media (max-height: 800px)
       height: unset
       margin: 3rem 0 10rem 0
-      overflow: auto
 
       .buttons__wrapper
         margin-bottom: 4vh
@@ -29,7 +28,6 @@
   @media (min-aspect-ratio: 3/1.4)
     height: unset
     margin: 3rem 0 10rem 0
-    overflow: auto
 
     .buttons__wrapper
       margin-bottom: 4vh
@@ -90,6 +88,7 @@
 
     h1:nth-child(3)
       margin-top: 1.8vh
+      margin-left: 4rem
 
 .firstName
   transform: translateX(40rem)
@@ -110,22 +109,12 @@
   transform: translateY(-1rem)
   display: flex
   align-items: center
-
-  @include media('<=phone')
-    transform: translate(14rem, 2rem) scale(2) !important
+  justify-content: center
 
 .rive
   width: 40rem
   height: 40rem
   position: absolute
-
-  @include media('<=phone')
-    position: static
-    top: unset
-    left: unset
-    transform: translate(0)
-    width: 50rem
-    margin-bottom: 2%
 
 .cover
   background-color: black
@@ -158,9 +147,9 @@
     color: $gray
 
     @include media('<=phone')
-      display: none
+      width: 90%
 
-  &:nth-of-type(4)
+  &:nth-of-type(3)
     color: $primary
     opacity: 1
     margin-top: 3.4vh
@@ -173,22 +162,6 @@
   @include media('<=phone')
     font-size: 2.6rem
     transform: translateX(0)
-
-.paragraph__mobile
-  margin: 3.4vh 0 2vh
-  width: 90%
-  text-transform: uppercase
-  font-family: $text
-  font-weight: medium
-  letter-spacing: 0.1rem
-  line-height: 1.6
-  font-size: 2.6rem
-  color: $gray
-  opacity: 0.6
-  text-align: center
-
-  @include media('>=phone')
-    display: none
 
 .label
   position: absolute

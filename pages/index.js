@@ -55,8 +55,8 @@ export default function Home({ data, navigation }) {
             backgroundColor: 'black',
         }, {
             backgroundColor: 'unset',
-            duration: 3, // increased duration for slower animation
-            ease: "power2.inOut" // smoother easing function
+            duration: 3,
+            ease: "power2.inOut"
         }, "shrinkRive+=0.5");
 
         tl.to(lines, {
@@ -143,7 +143,6 @@ export default function Home({ data, navigation }) {
                     <h1 className={styles.secondName}>{data.second_name}</h1>
                 </div>
                 <p className={styles.paragraph} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
-                <p className={styles.paragraph__mobile} dangerouslySetInnerHTML={{ __html: data.second_paragraph }} />
                 <p className={styles.paragraph}>
                     {data.question}
                 </p>
