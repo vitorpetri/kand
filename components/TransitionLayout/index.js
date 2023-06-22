@@ -36,7 +36,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
     }
 
     const classNames = asPath.startsWith("/project/") ? "project-page" : "page";
-    const timeOut = asPath.startsWith("/project/") ? 1500 : 400;
+    const timeOut = asPath.startsWith("/project/") ? 2000 : 400;
 
     return (
         <SwitchTransition>
@@ -76,7 +76,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
 
                     .project-page-enter-active {
                         opacity: 1;
-                        transition: opacity 1500ms;
+                        transition: opacity 2000ms;
                     }
 
                     .project-page-exit {
@@ -85,7 +85,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
 
                     .project-page-exit-active {
                         opacity: 1;
-                        transition: opacity 1500ms cubic-bezier(0.32, 0, 0.67, 0);
+                        transition: opacity 2000ms cubic-bezier(0.32, 0, 0.67, 0);
                     }
                     `}
                     </style>

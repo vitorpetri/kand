@@ -44,7 +44,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
             width: '50rem',
             height: '50rem',
         } : {
-            top: '30rem',
+            top: '20rem',
             left: '60rem',
             width: '70rem',
             height: '70rem',
@@ -71,7 +71,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
 
         tl.current.to(cover, {
             autoAlpha: 1,
-        }, "shrinkRive-=0.4")
+        }, "shrinkRive-=0.6")
 
         tl.current.to(riveElement, {
             ...tlOptions,
@@ -87,7 +87,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
 
         tl.current.to(riveElement, {
             opacity: 0,
-        }, "shrinkRive+=1.2")
+        }, "shrinkRive+=2")
     }, []);
 
     const addDescriptionRef = (el) => {
