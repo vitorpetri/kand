@@ -21,14 +21,21 @@ const KandRive = '/kand.riv'
 export default function Projects({ project, previousProject, nextProject, navigationData, currentProjectIndex, projectListLength }) {
     const router = useRouter()
     const riveRef = useRef(null)
+    const tl = useRef(null);
     const elementRef = useRef(null)
-    const [showAnimation, setShowAnimation] = useState(false)
     const [nextUrl, setNextUrl] = useState(null)
     const descriptionRefs = useRef([]);
     const imageRefs = useRef([]);
     const videoRefs = useRef([]);
 
     const frameRef = useRef(null)
+
+    const handleNavigation = (url) => {
+        setNextUrl(url);
+        if (tl.current) {
+            tl.current.restart();
+        }
+    };
 
     useEffect(() => {
         const forceRepaint = () => {
@@ -38,13 +45,57 @@ export default function Projects({ project, previousProject, nextProject, naviga
     }, [])
 
     useEffect(() => {
-        console.log(`showAnimation is now: ${showAnimation}`)
-    }, [showAnimation])
+        tl.current = GSAP.timeline({
+            paused: true,
+            onComplete: () => {
+                if (nextUrl) {
+                    router.push(nextUrl);
+                }
+            }
+        });
 
-    const handleNavigation = (url) => {
-        setShowAnimation(true)
-        setNextUrl(url)
-    }
+        const riveElement = document.querySelector(`.${styles.rive}`);
+        const cover = document.querySelector(`.${styles.cover}`);
+        const coverOuter = document.querySelector(`.${styles.cover_outer}`);
+
+        tl.current.addLabel("shrinkRive", "+=1.2");
+
+        tl.current.to(riveElement, {
+            autoAlpha: 1,
+        }, "shrinkRive-=0.2")
+
+        tl.current.to(cover, {
+            autoAlpha: 1,
+        }, "shrinkRive-=0.2")
+
+        tl.current.to(riveElement, {
+            top: '30rem',
+            left: '60rem',
+            width: '70rem',
+            height: '70rem',
+            duration: 0.6,
+            ease: "power3.out",
+        }, "shrinkRive");
+
+        tl.current.to(cover, {
+            visibility: 'visible',
+            duration: 1.2,
+            ease: "power2.out",
+        }, "shrinkRive-=0.5");
+
+        tl.current.to(riveElement, {
+            autoAlpha: 0,
+        }, "shrinkRive+=.55")
+
+        // tl.current.to(riveElement, {
+        //     top: '0',
+        //     left: '0',
+        //     width: '20rem',
+        //     height: '20rem',
+        //     duration: 0.6,
+        //     ease: "power3.out",
+        // }, "shrinkRive+=.7");
+    }, []);
 
     const addDescriptionRef = (el) => {
         if (el && !descriptionRefs.current.includes(el)) {
@@ -65,55 +116,65 @@ export default function Projects({ project, previousProject, nextProject, naviga
     };
 
     useEffect(() => {
-        const onScroll = ({ scroll }) => {
-            descriptionRefs.current.forEach((element) => {
-                const position = element.getBoundingClientRect().top;
-                if (position <= window.innerHeight && position >= 0) {
-                    GSAP.to(element, {
-                        autoAlpha: 1,
-                        duration: 2,
-                        ease: 'power2',
-                        stagger: 0.15
-                    });
-                }
-            });
+        GSAP.set(descriptionRefs.current, { autoAlpha: 0, y: 100 });
+        GSAP.set(imageRefs.current, { autoAlpha: 0 });
+        GSAP.set(videoRefs.current, { autoAlpha: 0 });
+    }, []);
 
-            imageRefs.current.forEach((element) => {
-                const position = element.getBoundingClientRect().top;
-                if (position <= window.innerHeight && position >= 0) {
-                    GSAP.to(element, {
-                        autoAlpha: 1,
-                        duration: 2,
-                        ease: 'power2'
-                    });
-                }
-            });
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Check if the target is one of the elements in descriptionRefs
+                        if (descriptionRefs.current.includes(entry.target)) {
+                            // Animate the element using GSAP
+                            GSAP.to(entry.target, {
+                                autoAlpha: 1,
+                                duration: 2,
+                                y: 0,
+                                ease: 'power2',
+                            });
+                        } else {
+                            // Only fade in for other elements
+                            GSAP.to(entry.target, {
+                                autoAlpha: 1,
+                                duration: 2,
+                                ease: 'power2',
+                            });
+                        }
 
-            videoRefs.current.forEach((element) => {
-                const position = element.getBoundingClientRect().top;
-                if (position <= window.innerHeight && position >= 0) {
-                    GSAP.to(element, {
-                        autoAlpha: 1,
-                        duration: 2,
-                        ease: 'power2'
-                    });
-                }
-            });
-        };
+                        // Optionally unobserve the target after animating
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1, // Adjust this value to start animation earlier or later
+            }
+        );
 
-        Lenis.on('scroll', onScroll);
+        // Observing elements in descriptionRefs, imageRefs, and videoRefs
+        descriptionRefs.current.forEach((element) => observer.observe(element));
+        imageRefs.current.forEach((element) => observer.observe(element));
+        videoRefs.current.forEach((element) => observer.observe(element));
 
         return () => {
-            Lenis.off('scroll', onScroll);
+            // Cleanup - stop observing all targets
+            descriptionRefs.current.forEach((element) => observer.unobserve(element));
+            imageRefs.current.forEach((element) => observer.unobserve(element));
+            videoRefs.current.forEach((element) => observer.unobserve(element));
         };
     }, []);
+
 
     return (
         <Page
             className={"Page"}
             ref={elementRef}
             navigation={navigationData}
-            showAnimation={showAnimation}
         >
             <Head>
                 <title>KAND | {project.title.replace(/<br\s*\/?>/gi, '')}</title>
@@ -152,13 +213,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                         const { width, height } = content.image;
                         return (
                             <figure ref={addImageRef} key={index} className={`media-${content.size} ${styles.image} image`}>
-                                <Image
-                                    src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''}
-                                    alt="Project Images"
-                                    width={width}
-                                    height={height}
-                                    loading="lazy"
-                                />
+                                <img src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''} />
                             </figure>
                         )
                     }
@@ -226,6 +281,9 @@ export default function Projects({ project, previousProject, nextProject, naviga
                     <div ref={riveRef} className={styles.footer__icon}>
                         <Rive src={KandRive} artboard='Rive Atomo' />
                     </div>
+
+                    <div className={styles.cover}></div>
+                    <Rive className={styles.rive} src={KandRive} artboard='Rive Atomo' />
 
                     <Link
                         className={`${styles.footer__button} ${currentProjectIndex === projectListLength - 1 ? 'hidden disabled' : ''}`}

@@ -50,11 +50,9 @@ export default function About({ data, navigation }) {
         }, "shrinkRive");
 
         tl.fromTo(cover, {
-            // backgroundColor: "black",
             position: 'absolute',
             opacity: 1
         }, {
-            // backgroundColor: "unset",
             opacity: 0,
             duration: 1.2,
             ease: "power2.out",
