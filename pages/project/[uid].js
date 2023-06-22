@@ -125,7 +125,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
     };
 
     useEffect(() => {
-        GSAP.set(descriptionRefs.current, { autoAlpha: 0, y: 100 });
+        GSAP.set(descriptionRefs.current, { autoAlpha: 0, y: 30 });
         GSAP.set(imageRefs.current, { autoAlpha: 0 });
         GSAP.set(videoRefs.current, { autoAlpha: 0 });
     }, []);
@@ -140,7 +140,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                             // Animate the element using GSAP
                             GSAP.to(entry.target, {
                                 autoAlpha: 1,
-                                duration: 2,
+                                duration: 1,
                                 y: 0,
                                 ease: 'power2',
                             });
@@ -148,7 +148,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                             // Only fade in for other elements
                             GSAP.to(entry.target, {
                                 autoAlpha: 1,
-                                duration: 2,
+                                duration: 1.5,
                                 ease: 'power2',
                             });
                         }
