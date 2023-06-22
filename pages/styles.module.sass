@@ -194,12 +194,12 @@
   gap: 4.2rem
 
   @include media('<=phone')
-    position: sticky
+    transform: translateX(0)
+    width: 100%
     flex-direction: column
-    left: 50%
-    transform: translateX(-50%)
     gap: 9rem
     margin-top: 6vh
+    align-items: center
 
 .button
   height: 4.4rem
@@ -239,3 +239,4 @@
     background: $black
     border: 0.1rem solid rgba(255, 255, 255, 0.6)
     scale: 200%
+    width: 85px
