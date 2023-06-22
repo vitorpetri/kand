@@ -215,6 +215,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
                                     className='frame'
                                     dat-tap-disabled='true'
                                     allow='autoplay; fullscreen; picture-in-picture'
+                                    loading='lazy'
                                 />
                             </div>
                         )
@@ -222,7 +223,13 @@ export default function Projects({ project, previousProject, nextProject, naviga
                         const { width, height } = content.image;
                         return (
                             <figure ref={addImageRef} key={index} className={`media-${content.size} ${styles.image} image`}>
-                                <img src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''} />
+                                <Image
+                                    src={prismicH.asImageSrc(content.image, { lossless: true, q: 100 }) || ''}
+                                    alt="Project Images"
+                                    width={width}
+                                    height={height}
+                                    loading="lazy"
+                                />
                             </figure>
                         )
                     }
