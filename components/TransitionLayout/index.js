@@ -78,15 +78,6 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                         opacity: 1;
                         transition: opacity 2000ms;
                     }
-
-                    .project-page-exit {
-                        opacity: 1;
-                    }
-
-                    .project-page-exit-active {
-                        opacity: 1;
-                        transition: opacity 2000ms cubic-bezier(0.32, 0, 0.67, 0);
-                    }
                     `}
                     </style>
                 </>
