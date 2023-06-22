@@ -56,7 +56,8 @@ export default function Projects({ project, previousProject, nextProject, naviga
                 if (nextUrl) {
                     router.push(nextUrl);
                 }
-            }
+            },
+            delay: 2,
         });
 
         const riveElement = document.querySelector(`.${styles.rive}`);
