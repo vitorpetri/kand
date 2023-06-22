@@ -38,13 +38,6 @@ export default function Projects({ project, previousProject, nextProject, naviga
     };
 
     useEffect(() => {
-        const forceRepaint = () => {
-            document.body.offsetHeight;
-        };
-        forceRepaint();
-    }, [])
-
-    useEffect(() => {
         const tlOptions = window.innerWidth <= 920 ? {
             top: '85rem',
             left: '30rem',
@@ -93,17 +86,8 @@ export default function Projects({ project, previousProject, nextProject, naviga
         }, "shrinkRive-=0.5");
 
         tl.current.to(riveElement, {
-            visibility: 'hidden'
-        }, "shrinkRive+=.6")
-
-        // tl.current.to(riveElement, {
-        //     top: '0',
-        //     left: '0',
-        //     width: '20rem',
-        //     height: '20rem',
-        //     duration: 0.6,
-        //     ease: "power3.out",
-        // }, "shrinkRive+=.7");
+            opacity: 0,
+        }, "shrinkRive+=1.2")
     }, []);
 
     const addDescriptionRef = (el) => {

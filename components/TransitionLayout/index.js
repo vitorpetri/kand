@@ -36,7 +36,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
     }
 
     const classNames = asPath.startsWith("/project/") ? "project-page" : "page";
-    const timeOut = asPath.startsWith("/project/") ? 600 : 400;
+    const timeOut = asPath.startsWith("/project/") ? 1500 : 400;
 
     return (
         <SwitchTransition>
@@ -53,7 +53,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                     <style jsx global>
                         {`
                     .page-enter {
-                        opacity: 1;
+                        opacity: 0;
                     }
 
                     .page-enter-active {
@@ -66,35 +66,26 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                     }
 
                     .page-exit-active {
-                        opacity: 1;
+                        opacity: 0;
                         transition: opacity 400ms;
                     }
 
                     .project-page-enter {
-                        opacity: 1;
+                        opacity: 0;
                     }
 
                     .project-page-enter-active {
                         opacity: 1;
-                        transition: opacity 400ms;
+                        transition: opacity 1500ms;
                     }
 
-                    .project-page-exit:after {
-                        content: "";
-                        position: absolute;
-                        bottom: -200rem;
-                        left: 0;
-                        width: 100%;
-                        background: #B3FC03;
-                        height: 100vh;
-                        border-bottom-left-radius: 30px;
-                        border-bottom-right-radius: 30px;
-                        transition: all 950ms;
-                        z-index: 9999;
+                    .project-page-exit {
+                        opacity: 1;
                     }
 
-                    .project-page-exit-active:after {
-                        bottom: 200rem;
+                    .project-page-exit-active {
+                        opacity: 1;
+                        transition: opacity 1500ms cubic-bezier(0.32, 0, 0.67, 0);
                     }
                     `}
                     </style>
