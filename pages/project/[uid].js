@@ -45,6 +45,18 @@ export default function Projects({ project, previousProject, nextProject, naviga
     }, [])
 
     useEffect(() => {
+        const tlOptions = window.innerWidth <= 920 ? {
+            top: '85rem',
+            left: '30rem',
+            width: '50rem',
+            height: '50rem',
+        } : {
+            top: '30rem',
+            left: '60rem',
+            width: '70rem',
+            height: '70rem',
+        };
+
         tl.current = GSAP.timeline({
             paused: true,
             onComplete: () => {
@@ -66,13 +78,10 @@ export default function Projects({ project, previousProject, nextProject, naviga
 
         tl.current.to(cover, {
             autoAlpha: 1,
-        }, "shrinkRive-=0.2")
+        }, "shrinkRive-=0.4")
 
         tl.current.to(riveElement, {
-            top: '30rem',
-            left: '60rem',
-            width: '70rem',
-            height: '70rem',
+            ...tlOptions,
             duration: 0.6,
             ease: "power3.out",
         }, "shrinkRive");
@@ -84,8 +93,8 @@ export default function Projects({ project, previousProject, nextProject, naviga
         }, "shrinkRive-=0.5");
 
         tl.current.to(riveElement, {
-            autoAlpha: 0,
-        }, "shrinkRive+=.55")
+            visibility: 'hidden'
+        }, "shrinkRive+=.6")
 
         // tl.current.to(riveElement, {
         //     top: '0',

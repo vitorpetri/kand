@@ -36,7 +36,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
     }
 
     const classNames = asPath.startsWith("/project/") ? "project-page" : "page";
-    const timeOut = asPath.startsWith("/project/") ? 650 : 400;
+    const timeOut = asPath.startsWith("/project/") ? 600 : 400;
 
     return (
         <SwitchTransition>
@@ -86,8 +86,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                         left: 0;
                         width: 100%;
                         background: #B3FC03;
-                        transform: scaleY(1.5);
-                        height: 100%;
+                        height: 100vh;
                         border-bottom-left-radius: 30px;
                         border-bottom-right-radius: 30px;
                         transition: all 950ms;
