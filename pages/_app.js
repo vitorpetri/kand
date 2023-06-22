@@ -27,6 +27,13 @@ export default function App({ Component, pageProps, data, router }) {
     useTransitionFix()
     const { events } = useRouter()
 
+    useEffect(() => {
+        const forceRepaint = () => {
+            document.body.offsetHeight;
+        };
+        forceRepaint();
+    }, [])
+
     const onHashChange = (route) => {
         const [_, hash] = route.split('#')
 
