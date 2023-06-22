@@ -1,9 +1,10 @@
 import styles from './styles.module.sass'
 import { useRouter } from 'next/router'
+import Image from 'next/image'
 import Link from 'next/link'
 import { useLayoutEffect, useRef } from 'react'
 import * as prismicH from "@prismicio/helpers"
-import { gsap } from 'gsap'
+import GSAP from 'gsap'
 
 
 export default function Gallery({ projectsList }) {
@@ -16,8 +17,8 @@ export default function Gallery({ projectsList }) {
         })
 
         if (containerRef.current) {
-            gsap.set(containerRef.current.children, { opacity: 0, y: 20 });
-            const tl = gsap.timeline();
+            GSAP.set(containerRef.current.children, { opacity: 0, y: 20 });
+            const tl = GSAP.timeline();
             tl.to(containerRef.current.children, {
                 opacity: 1,
                 y: 0,
@@ -32,13 +33,13 @@ export default function Gallery({ projectsList }) {
             {projectsList.map(({ id, title, cover, client, agency }, index) => (
                 <div className={styles.project__wrapper} key={index}>
                     <Link href={`/project/${id}`} className={styles.project}>
-                        <img
+                        <Image
                             className={styles.project__image}
-                            src={prismicH.asImageSrc(cover, {
-                                lossless: true,
-                                q: 100
-                            }) || ''}
-                            alt={title}
+                            src={prismicH.asImageSrc(cover, { lossless: true, q: 100 }) || ''}
+                            alt="Project Images"
+                            width={2400}
+                            height={1350}
+                            loading="lazy"
                         />
                         <div className={styles.project__hover}>
                             <p className={styles.project__hover__client__label}>Client</p>
