@@ -3,7 +3,7 @@ import styles from './styles.module.sass'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useRef, useEffect } from 'react'
+import { useRef, useCallback } from 'react'
 import GSAP from 'gsap'
 
 import { createClient } from '../../prismicio'
@@ -20,15 +20,29 @@ export default function Home({ projectsList, navigation }) {
     const galleryRef = useRef(null)
     const elementRef = useRef(null)
 
-    useEffect(() => {
-        const title = titleRef.current
-        const gallery = galleryRef.current
+    const handleMouseEnter = useCallback(() => {
+        const title = titleRef.current;
+        const gallery = galleryRef.current;
 
-        const tl = GSAP.timeline()
+        const tl = GSAP.timeline({ paused: true });
 
-        tl.to(title, { opacity: 0, duration: 0.3, ease: 'power2.out' }, 2)
-        tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 0.8, ease: 'power2.out' }, 2)
-    }, [])
+        tl.to(title, { opacity: 0, duration: 0.3, ease: 'power3.easeOut' });
+        tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 0.4, ease: 'power3.easeOut' });
+
+        tl.play();
+    }, []);
+
+    const handleMouseLeave = useCallback(() => {
+        const title = titleRef.current;
+        const gallery = galleryRef.current;
+
+        const tl = GSAP.timeline({ paused: true });
+
+        tl.to(title, { opacity: 1, duration: 0.3, ease: 'power2.out' });
+        tl.to(gallery, { translateY: '0', marginBottom: '0', duration: 0.8, ease: 'power2.out' });
+
+        tl.play();
+    }, []);
 
     return (
         <Page
@@ -47,7 +61,7 @@ export default function Home({ projectsList, navigation }) {
                     <SeparatorLine />
                 </div>
                 <div ref={galleryRef} className={styles.gallery}>
-                    <Gallery projectsList={projectsList} />
+                    <Gallery projectsList={projectsList} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
                 </div>
                 <SeparatorLine />
                 <span className={styles.footer__label}>or choose by</span>

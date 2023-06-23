@@ -2,12 +2,12 @@ import styles from './styles.module.sass'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useLayoutEffect, useRef } from 'react'
+import { useLayoutEffect, useRef, useEffect } from 'react'
 import * as prismicH from "@prismicio/helpers"
 import GSAP from 'gsap'
 
 
-export default function Gallery({ projectsList }) {
+export default function Gallery({ projectsList, onMouseEnter, onMouseLeave }) {
     const { prefetch } = useRouter()
     const containerRef = useRef(null)
 
@@ -25,6 +25,9 @@ export default function Gallery({ projectsList }) {
                 duration: 0.3,
                 stagger: 0.1,
             });
+
+            containerRef.current.addEventListener('mouseenter', onMouseEnter);
+            containerRef.current.addEventListener('mouseleave', onMouseLeave);
         }
     }, [projectsList])
 
