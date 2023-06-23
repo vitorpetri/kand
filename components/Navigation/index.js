@@ -9,36 +9,48 @@ import Rive from 'rive-react'
 const KandRive = '/kand.riv'
 
 export default function Navigation({ navigationData }) {
+    const [logoColor, setLogoColor] = useState('original')
+
+    // const [isAnimating, setIsAnimating] = useState<boolean>(false)
+
+    // const onClick = () => {
+    //     if (isAnimating) return;
+      
+    //     GSAP.timeline({
+    //       onStart: () => setIsAnimating(true),
+    //       onComplete: () => setIsAnimating(false)
+    // })}}
+       
     const [isActive, setIsActive] = useState(false)
-    const [logoColor, setLogoColor] = useState('original');
 
     const onClick = () => {
-        setIsActive(!isActive);
+        setIsActive(!isActive)
         // Toggle logo color
-        setLogoColor(logoColor === 'original' ? 'black' : 'original');
-    };
+        setLogoColor(logoColor === 'original' ? 'black' : 'original')
+    }
+
     const onHomeClick = () => setIsActive(false)
 
-    console.log(isActive)
 
     useEffect(() => {
         function handleRiveLoad(event) {
-            setRiveLogoInstance(event);
+            setRiveLogoInstance(event)
         }
 
-        const riveElement = document.querySelector(`.${styles.logo}`);
+        const riveElement = document.querySelector(`.${styles.logo}`)
         if (riveElement) {
-            riveElement.addEventListener("load", handleRiveLoad);
+            riveElement.addEventListener("load", handleRiveLoad)
         }
 
         return () => {
             if (riveElement) {
-                riveElement.removeEventListener("load", handleRiveLoad);
+                riveElement.removeEventListener("load", handleRiveLoad)
             }
         };
     }, []);
 
     const riveRef = useRef(null)
+    const riveAboutRef = useRef(null)
     const riveRefMobile = useRef(null)
     const menuRef = useRef(null)
     const menuDivRef = useRef(null)
@@ -136,16 +148,17 @@ export default function Navigation({ navigationData }) {
             tlReverse.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Power4.easeInOut' })
 
             if (router.pathname === '/contact') {
-                tl.to(navigationRef.current, { duration: 0, background: '#B3FC03' })
+                GSAP.set(navigationRef.current, { duration: 0, background: '#B3FC03 !important' })
             }
 
             if (isActive) {
-                tl.play();
+                tl.play()
             } else {
-                tlReverse.play();
+                tlReverse.play()
             }
         }
     }, [isActive, router.pathname])
+    // }, [isAnimating, router.pathname])
 
     return (
         <>
@@ -171,6 +184,9 @@ export default function Navigation({ navigationData }) {
                     <div ref={riveRef} className={styles.olho}>
                         <Rive src={KandRive} className={styles.olho_rive} artboard='Rive Olho' />
                     </div>
+                    {/* <div ref={riveAboutRef} className={styles.duo}>
+                        <Rive src={KandRive} className={styles.olho_rive} artboard='Rive Duo' />
+                    </div> */}
                     <div ref={riveRefMobile} className={styles.olho_mobile}>
                         <Rive src={KandRive} className={styles.olho_rive_mobile} artboard='Rive Olho' />
                     </div>
