@@ -43,7 +43,7 @@ export default function Projects({ project, previousProject, nextProject, naviga
             left: '30rem',
             width: '50rem',
             height: '50rem',
-        } : window.innerWidth <= 1145 ? {
+        } : window.innerWidth <= 1445 ? {
             top: '40rem',
             left: '60rem',
             width: '70rem',
