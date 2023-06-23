@@ -185,7 +185,7 @@ export default function Navigation({ navigationData }) {
                         <Rive src={KandRive} className={styles.olho_rive} artboard='Rive Olho' />
                     </div>
                     {/* <div ref={riveAboutRef} className={styles.duo}>
-                        <Rive src={KandRive} className={styles.olho_rive} artboard='Rive Duo' />
+                        <Rive src={KandRive} className={styles.duo_rive} artboard='Rive Duo' />
                     </div> */}
                     <div ref={riveRefMobile} className={styles.olho_mobile}>
                         <Rive src={KandRive} className={styles.olho_rive_mobile} artboard='Rive Olho' />
