@@ -43,13 +43,17 @@ export default function Projects({ project, previousProject, nextProject, naviga
             left: '30rem',
             width: '50rem',
             height: '50rem',
+        } : window.innerWidth <= 1145 ? {
+            top: '40rem',
+            left: '60rem',
+            width: '70rem',
+            height: '70rem',
         } : {
             top: '20rem',
             left: '60rem',
             width: '70rem',
             height: '70rem',
         };
-
         tl.current = GSAP.timeline({
             paused: true,
             onComplete: () => {
