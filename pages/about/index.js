@@ -25,6 +25,82 @@ export default function About({ data, navigation }) {
     const elementRef = useRef(null)
     const riveRef = useRef(null)
 
+    const descriptionRefs = useRef([]);
+    const imageRefs = useRef([]);
+    const videoRefs = useRef([]);
+
+    const addDescriptionRef = (el) => {
+        if (el && !descriptionRefs.current.includes(el)) {
+            descriptionRefs.current.push(el);
+        }
+    };
+
+    const addImageRef = (el) => {
+        if (el && !imageRefs.current.includes(el)) {
+            imageRefs.current.push(el);
+        }
+    };
+
+    const addVideoRef = (el) => {
+        if (el && !videoRefs.current.includes(el)) {
+            videoRefs.current.push(el);
+        }
+    };
+
+    useEffect(() => {
+        GSAP.set(descriptionRefs.current, { autoAlpha: 0, y: 30 });
+        GSAP.set(imageRefs.current, { autoAlpha: 0 });
+        GSAP.set(videoRefs.current, { autoAlpha: 0 });
+    }, []);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            (entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        // Check if the target is one of the elements in descriptionRefs
+                        if (descriptionRefs.current.includes(entry.target)) {
+                            // Animate the element using GSAP
+                            GSAP.to(entry.target, {
+                                autoAlpha: 1,
+                                duration: 1,
+                                y: 0,
+                                ease: 'power2',
+                            });
+                        } else {
+                            // Only fade in for other elements
+                            GSAP.to(entry.target, {
+                                autoAlpha: 1,
+                                duration: 1.5,
+                                ease: 'power2',
+                            });
+                        }
+
+                        // Optionally unobserve the target after animating
+                        observer.unobserve(entry.target);
+                    }
+                });
+            },
+            {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1, // Adjust this value to start animation earlier or later
+            }
+        );
+
+        // Observing elements in descriptionRefs, imageRefs, and videoRefs
+        descriptionRefs.current.forEach((element) => observer.observe(element));
+        imageRefs.current.forEach((element) => observer.observe(element));
+        videoRefs.current.forEach((element) => observer.observe(element));
+
+        return () => {
+            // Cleanup - stop observing all targets
+            descriptionRefs.current.forEach((element) => observer.unobserve(element));
+            imageRefs.current.forEach((element) => observer.unobserve(element));
+            videoRefs.current.forEach((element) => observer.unobserve(element));
+        };
+    }, []);
+
     useEffect(() => {
         const tl = GSAP.timeline({ paused: true });
 

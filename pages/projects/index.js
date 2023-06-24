@@ -26,8 +26,8 @@ export default function Home({ projectsList, navigation }) {
 
         const tl = GSAP.timeline({ paused: true });
 
-        tl.to(title, { opacity: 0, duration: 0.3, ease: 'power3.easeOut' });
-        tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 0.4, ease: 'power3.easeOut' });
+        tl.to(title, { autoAlpha: 0, duration: 0.6, ease: 'power3.easeOut' });
+        tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 0.6, ease: 'power3.easeOut' });
 
         tl.play();
     }, []);
@@ -38,8 +38,8 @@ export default function Home({ projectsList, navigation }) {
 
         const tl = GSAP.timeline({ paused: true });
 
-        tl.to(title, { opacity: 1, duration: 0.3, ease: 'power2.out' });
-        tl.to(gallery, { translateY: '0', marginBottom: '0', duration: 0.8, ease: 'power2.out' });
+        tl.to(gallery, { translateY: '0', marginBottom: '0', duration: 0.3, ease: 'power2.out' });
+        tl.to(title, { autoAlpha: 1, duration: 1.6, ease: 'power2.out', delay: '0.3' });
 
         tl.play();
     }, []);
