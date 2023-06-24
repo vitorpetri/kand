@@ -5,6 +5,7 @@ import { useRouter } from 'next/router'
 import { useState, useRef, useEffect } from 'react'
 import GSAP from 'gsap'
 import Rive from 'rive-react'
+import Lenis from '../../utils/scroll'
 
 const KandRive = '/kand.riv'
 
@@ -14,12 +15,30 @@ export default function Navigation({ navigationData }) {
     const [isActive, setIsActive] = useState(false)
     const [isAnimating, setIsAnimating] = useState(false)
 
+    const toggleScroll = (disable) => {
+        if (disable) {
+            document.body.style.overflow = 'hidden';
+            if (Lenis) {
+                Lenis.setScroll(0);
+            }
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+
     const onClick = () => {
-        // TOGLE SCROLL 
+        // TOGLE SCROLL
 
         if (isAnimating) return;
 
         setIsActive(!isActive)
+
+        if (!isActive) {
+            toggleScroll(true);
+        } else {
+            toggleScroll(false);
+        }
 
         setLogoColor(logoColor === 'original' ? 'black' : 'original')
     }
@@ -111,11 +130,11 @@ export default function Navigation({ navigationData }) {
         ) {
             const tl = GSAP.timeline({ paused: true, onStart: () => setIsAnimating(true), onComplete: () => setIsAnimating(false) });
             const tlReverse = GSAP.timeline({ paused: true, onStart: () => setIsAnimating(true), onComplete: () => setIsAnimating(false) });
-            
+
             tl.set(riveRef.current, { opacity: '1' })
             tl.to(navigationRef.current, { duration: 0, scale: 1, transformOrigin: '98% 2%', background: '#B3FC03', ease: 'Power4.easeInOut' })
             tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Power4.easeInOut' }, '<')
-            tl.to(menuRef.current, { duration: 0.6, opacity: 1, scale: 1, transformOrigin: '98% 2%', display: 'block', ease: 'Power4.easeInOut'} , '<')
+            tl.to(menuRef.current, { duration: 0.6, opacity: 1, scale: 1, transformOrigin: '98% 2%', display: 'block', ease: 'Power4.easeInOut' }, '<')
             tl.to(svgRef.current, { duration: 0, color: '#101010', ease: 'Power4.easeInOut' }, '<')
             tl.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Power4.easeInOut' }, '<')
             tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Power4.easeInOut' })
@@ -138,7 +157,7 @@ export default function Navigation({ navigationData }) {
             tlReverse.to(menuItem1Ref.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuTextRef.current, { duration: 0.6, opacity: 0, ease: 'Power4.easeInOut' }, '<0.1')
             tlReverse.to(riveRef.current, { duration: 0.8, scale: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<')
-            tlReverse.to(riveRef.current, { duration: 0.8, opacity: '0' , ease: 'Power4.easeInOut' })
+            tlReverse.to(riveRef.current, { duration: 0.8, opacity: '0', ease: 'Power4.easeInOut' })
             tlReverse.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 1, x: '0rem', y: '0rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Power4.easeInOut' }, '<')
 
@@ -148,8 +167,10 @@ export default function Navigation({ navigationData }) {
 
             if (isActive) {
                 tl.play()
+                toggleScroll(true)
             } else {
                 tlReverse.play()
+                toggleScroll(false)
             }
         }
     }, [isActive, router.pathname])

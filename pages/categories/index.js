@@ -32,6 +32,12 @@ export default function Categories({ projectsList, allTags, selectedTagIndex, na
         tl.to(gallery, { translateY: '-20rem', marginBottom: '-20rem', duration: 0.8, ease: 'power2.out' }, 2)
     }, [])
 
+    useEffect(() => {
+        if (selectedTagIndex !== null) {
+            setShowProjects(true);
+        }
+    }, [selectedTagIndex]);
+
     const toggleActive = (index) => {
         if (activeCategory === index) {
             setShowProjects(false);

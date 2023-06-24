@@ -34,8 +34,21 @@ export default function Projects({ project, previousProject, nextProject, naviga
         if (tl.current) {
             tl.current.restart();
         }
+        document.body.style.overflow = 'hidden';
         setNextUrl(url);
     };
+
+    useEffect(() => {
+        const handleRouteChangeComplete = () => {
+            document.body.style.overflow = '';
+        };
+
+        router.events.on('routeChangeComplete', handleRouteChangeComplete);
+
+        return () => {
+            router.events.off('routeChangeComplete', handleRouteChangeComplete);
+        };
+    }, [router.events]);
 
     useEffect(() => {
         const tlOptions = window.innerWidth <= 920 ? {

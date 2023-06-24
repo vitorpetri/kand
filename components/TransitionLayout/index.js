@@ -12,6 +12,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
     const onEnter = () => {
         console.log("onEnter Called", key);
 
+        document.body.style.overflow = 'hidden';
         if (Lenis) {
             Lenis.setScroll(0)
         }
@@ -31,6 +32,7 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                 if (Lenis) {
                     Lenis.scrollTo(top)
                 }
+                document.body.style.overflow = '';
             }
         }
     }
