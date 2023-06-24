@@ -148,7 +148,6 @@ export default function Navigation({ navigationData }) {
 
             tlReverse.to(navigationRef.current, { duration: 0, scale: 1, transformOrigin: '98% 2%', background: '#101010', ease: 'Power4.easeInOut' })
             tlReverse.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Power4.easeInOut' }, '<')
-            tlReverse.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#101010', ease: 'Power4.easeInOut' })
@@ -159,6 +158,7 @@ export default function Navigation({ navigationData }) {
             tlReverse.to(riveRef.current, { duration: 0.8, scale: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(riveRef.current, { duration: 0.8, opacity: '0', ease: 'Power4.easeInOut' })
             tlReverse.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 1, x: '0rem', y: '0rem', ease: 'Power4.easeInOut' }, '<')
+            tlReverse.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Power4.easeInOut' })
             tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Power4.easeInOut' }, '<')
 
             if (router.pathname === '/contact') {

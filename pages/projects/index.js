@@ -28,8 +28,8 @@ export default function Home({ projectsList, navigation }) {
 
         const tl = GSAP.timeline({ paused: true, onStart: () => setIsAnimating(true), onComplete: () => setIsAnimating(false) });
 
-        tl.to(title, { autoAlpha: 0, duration: 0.6, ease: 'power3.easeOut' });
-        tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 1, ease: 'power3.easeOut' });
+        tl.to(title, { autoAlpha: 0, duration: 0.9, ease: 'power3.easeOut' });
+        tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 0.9, ease: 'power3.easeOut' }, '<0.1');
 
         tl.play();
     }, []);
@@ -40,8 +40,8 @@ export default function Home({ projectsList, navigation }) {
 
         const tl = GSAP.timeline({ paused: true, onStart: () => setIsAnimating(true), onComplete: () => setIsAnimating(false) });
 
-        tl.to(gallery, { translateY: '0', marginBottom: '0', duration: 0.3, ease: 'power2.out' });
-        tl.to(title, { autoAlpha: 1, duration: .6, ease: 'power2.out', delay: '0.3' });
+        tl.to(gallery, { translateY: '0', marginBottom: '0', duration: 0.7, ease: 'power2.out' });
+        tl.to(title, { autoAlpha: 1, duration: 0.7, ease: 'power2.out' }, '<0.1');
 
         tl.play();
     }, []);

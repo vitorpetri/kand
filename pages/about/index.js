@@ -26,8 +26,6 @@ export default function About({ data, navigation }) {
     const riveRef = useRef(null)
 
     const descriptionRefs = useRef([]);
-    const imageRefs = useRef([]);
-    const videoRefs = useRef([]);
 
     const addDescriptionRef = (el) => {
         if (el && !descriptionRefs.current.includes(el)) {
@@ -35,22 +33,8 @@ export default function About({ data, navigation }) {
         }
     };
 
-    const addImageRef = (el) => {
-        if (el && !imageRefs.current.includes(el)) {
-            imageRefs.current.push(el);
-        }
-    };
-
-    const addVideoRef = (el) => {
-        if (el && !videoRefs.current.includes(el)) {
-            videoRefs.current.push(el);
-        }
-    };
-
     useEffect(() => {
         GSAP.set(descriptionRefs.current, { autoAlpha: 0, y: 30 });
-        GSAP.set(imageRefs.current, { autoAlpha: 0 });
-        GSAP.set(videoRefs.current, { autoAlpha: 0 });
     }, []);
 
     useEffect(() => {
@@ -90,14 +74,10 @@ export default function About({ data, navigation }) {
 
         // Observing elements in descriptionRefs, imageRefs, and videoRefs
         descriptionRefs.current.forEach((element) => observer.observe(element));
-        imageRefs.current.forEach((element) => observer.observe(element));
-        videoRefs.current.forEach((element) => observer.observe(element));
 
         return () => {
             // Cleanup - stop observing all targets
             descriptionRefs.current.forEach((element) => observer.unobserve(element));
-            imageRefs.current.forEach((element) => observer.unobserve(element));
-            videoRefs.current.forEach((element) => observer.unobserve(element));
         };
     }, []);
 
@@ -163,7 +143,7 @@ export default function About({ data, navigation }) {
                 <h1 className={styles.title}>{data.title}</h1>
                 <SeparatorLine />
 
-                <Description data={data} />
+                <Description data={data} ref={descriptionRefs} />
 
                 <SeparatorLine />
 
