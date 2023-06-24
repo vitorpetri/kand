@@ -3,7 +3,7 @@ import styles from './styles.module.sass'
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useRef, useCallback } from 'react'
+import { useRef, useCallback, useState } from 'react'
 import GSAP from 'gsap'
 
 import { createClient } from '../../prismicio'
@@ -20,11 +20,13 @@ export default function Home({ projectsList, navigation }) {
     const galleryRef = useRef(null)
     const elementRef = useRef(null)
 
+    const [isAnimating, setIsAnimating] = useState(false);
+
     const handleMouseEnter = useCallback(() => {
         const title = titleRef.current;
         const gallery = galleryRef.current;
 
-        const tl = GSAP.timeline({ paused: true });
+        const tl = GSAP.timeline({ paused: true, onStart: () => setIsAnimating(true), onComplete: () => setIsAnimating(false) });
 
         tl.to(title, { autoAlpha: 0, duration: 0.6, ease: 'power3.easeOut' });
         tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 1, ease: 'power3.easeOut' });
@@ -36,13 +38,15 @@ export default function Home({ projectsList, navigation }) {
         const title = titleRef.current;
         const gallery = galleryRef.current;
 
-        const tl = GSAP.timeline({ paused: true });
+        const tl = GSAP.timeline({ paused: true, onStart: () => setIsAnimating(true), onComplete: () => setIsAnimating(false) });
 
         tl.to(gallery, { translateY: '0', marginBottom: '0', duration: 0.3, ease: 'power2.out' });
         tl.to(title, { autoAlpha: 1, duration: .6, ease: 'power2.out', delay: '0.3' });
 
         tl.play();
     }, []);
+
+    const conditionalStyle = isAnimating ? { pointerEvents: 'none' } : { pointerEvents: 'auto' };
 
     return (
         <Page
@@ -55,7 +59,7 @@ export default function Home({ projectsList, navigation }) {
             </Head>
 
             <div className={styles.wrapper}>
-                <div className={styles.header} ref={titleRef}>
+                <div className={styles.header} style={conditionalStyle} ref={titleRef}>
                     <h1 className={styles.title}>All Projects</h1>
                     <div className={styles.line} />
                     <SeparatorLine />
