@@ -28,6 +28,13 @@ export default function Projects({ project, previousProject, nextProject, curren
     const imageRefs = useRef([]);
     const videoRefs = useRef([]);
 
+    useEffect(() => {
+        const forceRepaint = () => {
+            document.body.offsetHeight;
+        };
+        forceRepaint();
+    }, [])
+
     const frameRef = useRef(null)
 
     const handleNavigation = (url) => {

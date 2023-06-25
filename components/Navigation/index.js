@@ -28,8 +28,6 @@ export default function Navigation({ navigationData }) {
 
 
     const onClick = () => {
-        // TOGLE SCROLL
-
         if (isAnimating) return;
 
         setIsActive(!isActive)
@@ -173,6 +171,7 @@ export default function Navigation({ navigationData }) {
                 toggleScroll(false)
             }
         }
+
     }, [isActive, router.pathname])
 
     return (
