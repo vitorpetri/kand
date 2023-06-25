@@ -18,7 +18,7 @@ import Crew from '../../components/Crew'
 
 const KandRive = '/kand.riv'
 
-export default function Projects({ project, previousProject, nextProject, navigationData, currentProjectIndex, projectListLength }) {
+export default function Projects({ project, previousProject, nextProject, currentProjectIndex, projectListLength }) {
     const router = useRouter()
     const riveRef = useRef(null)
     const tl = useRef(null);
@@ -188,7 +188,6 @@ export default function Projects({ project, previousProject, nextProject, naviga
         <Page
             className={"Page"}
             ref={elementRef}
-            navigation={navigationData}
         >
             <Head>
                 <title>KAND | {project.title.replace(/<br\s*\/?>/gi, '')}</title>
@@ -368,16 +367,11 @@ export async function getServerSideProps(context) {
     // console.log('Next project:', nextProject);
     // console.log('Previous project:', previousProject);
 
-    // FETCH NAVIGATION
-    const navigation = await client.getByType('navigation')
-    const navigationData = navigation?.results[0]?.data
-
     return {
         props: {
             project,
             previousProject,
             nextProject,
-            navigationData,
             currentProjectIndex,
             projectListLength: projectList.length,
         }

@@ -17,6 +17,8 @@ import { repositoryName } from '../prismicio'
 import { createClient } from '../prismicio'
 import sm from '../sm.json'
 
+import Navigation from '../components/Navigation'
+
 const fetchNavigationData = async () => {
     const client = createClient({ accessToken: sm.token })
     const navigation = await client.getByType('navigation')
@@ -72,13 +74,18 @@ export default function App({ Component, pageProps, data, router }) {
     return (
         <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
             <PrismicPreview repositoryName={repositoryName}>
+                <Head>
+                    <title>KAUE & DALTRO</title>
+                    <meta name="description" content="Design Duo" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <link rel="icon" href="/mundo.svg" />
+                </Head>
+                <div className="top" />
+                <div className="border" />
+                <div className="bottom" />
+                <div className="grain" />
+                <Navigation navigationData={data} />
                 <TransitionLayout>
-                    <Head>
-                        <title>KAUE & DALTRO</title>
-                        <meta name="description" content="Design Duo" />
-                        <meta name="viewport" content="width=device-width, initial-scale=1" />
-                        <link rel="icon" href="/mundo.svg" />
-                    </Head>
                     <Component {...pageProps} shared={data} />
                 </TransitionLayout>
             </PrismicPreview>

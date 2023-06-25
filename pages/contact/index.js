@@ -14,7 +14,7 @@ import GSAP from 'gsap'
 
 const KandRive = '/kand.riv'
 
-export default function Contact({ data, navigation }) {
+export default function Contact({ data }) {
     const elementRef = useRef(null)
     const riveRef = useRef(null)
     const paragraphRef = useRef(null)
@@ -32,12 +32,12 @@ export default function Contact({ data, navigation }) {
         if (typeof window !== 'undefined') {
             const tl = GSAP.timeline()
 
-            tl.set(riveRef.current, {scale: 2.8, x: '50rem'})
-            tl.set(name1Ref.current, {opacity: 0, x: '10rem'})
-            tl.set(name2Ref.current, {opacity: 0, x: '-10rem'})
-            tl.set(paragraphRef.current, {opacity: 0})
-            tl.set(emailRef.current, {opacity: 0})
-            
+            tl.set(riveRef.current, { scale: 2.8, x: '50rem' })
+            tl.set(name1Ref.current, { opacity: 0, x: '10rem' })
+            tl.set(name2Ref.current, { opacity: 0, x: '-10rem' })
+            tl.set(paragraphRef.current, { opacity: 0 })
+            tl.set(emailRef.current, { opacity: 0 })
+
             tl.to(riveRef.current, { duration: 0.8, scale: 1, x: '0rem', ease: 'Expo.easeInOut' })
             tl.to(name1Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Expo.easeInOut' })
             tl.to(name2Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Expo.easeInOut' }, '<')
@@ -45,12 +45,11 @@ export default function Contact({ data, navigation }) {
             tl.to(emailRef.current, { duration: 0.7, opacity: 1, ease: 'Expo.easeInOut' })
         }
     })
-    
+
     return (
         <Page
             className={"Page"}
             ref={elementRef}
-            navigation={navigation}
         >
             <Head>
                 <title>KAND | Contact</title>
@@ -106,11 +105,7 @@ export async function getServerSideProps() {
     const contact = await client.getByType('contact')
     const data = contact?.results[0]?.data
 
-    // FETCH NAVIGATION
-    const navigation = await client.getByType('navigation')
-    const navigationData = navigation?.results[0]?.data
-
     return {
-        props: { data: data, navigation: navigationData },
+        props: { data: data },
     }
 }

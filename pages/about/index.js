@@ -21,17 +21,11 @@ import Awards from '../../components/Awards'
 
 import DuoSvg from '../../public/duo.svg'
 
-export default function About({ data, navigation }) {
+export default function About({ data }) {
     const elementRef = useRef(null)
     const riveRef = useRef(null)
-
     const descriptionRefs = useRef([]);
 
-    const addDescriptionRef = (el) => {
-        if (el && !descriptionRefs.current.includes(el)) {
-            descriptionRefs.current.push(el);
-        }
-    };
 
     useEffect(() => {
         GSAP.set(descriptionRefs.current, { autoAlpha: 0, y: 30 });
@@ -127,8 +121,6 @@ export default function About({ data, navigation }) {
         <Page
             className={"Page"}
             ref={elementRef}
-            shared={navigation}
-            navigation={navigation}
         >
             <Head>
                 <title>KAND | About</title>
@@ -182,17 +174,12 @@ export default function About({ data, navigation }) {
 export async function getServerSideProps() {
     const client = createClient({ accessToken: sm.token })
 
-    // Fetch the navigation data separately
-    const navigation = await client.getByType('navigation')
-    const navigationData = navigation?.results[0]?.data
-
     const about = await client.getByType('about')
     const data = about?.results[0]?.data
 
     return {
         props: {
             data: data,
-            navigation: navigationData
         },
     }
 }

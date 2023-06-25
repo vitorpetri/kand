@@ -15,7 +15,7 @@ import styles from './styles.module.sass'
 
 const KandRive = '/kand.riv'
 
-export default function Home({ data, navigation }) {
+export default function Home({ data }) {
     const elementRef = useRef(null)
     const riveRef = useRef(null)
 
@@ -119,7 +119,6 @@ export default function Home({ data, navigation }) {
         <Page
             className={"Page"}
             ref={elementRef}
-            navigation={navigation}
         >
             <Head>
                 <title>KAUE & DALTRO</title>
@@ -165,10 +164,7 @@ export async function getServerSideProps() {
     const home = await client.getByType('home')
     const data = home?.results[0]?.data
 
-    const navigation = await client.getByType('navigation')
-    const navigationData = navigation?.results[0]?.data
-
     return {
-        props: { data: data, navigation: navigationData },
+        props: { data: data },
     }
 }

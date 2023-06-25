@@ -12,7 +12,6 @@ const Page = forwardRef(({
     children,
     className,
     metadata = {},
-    navigation,
 }, ref) => {
 
     const {
@@ -42,12 +41,6 @@ const Page = forwardRef(({
 
 
             <div className={classNames(styles.element, className)} ref={ref}>
-                <div className="top" />
-                <div className="border" />
-                <div className="bottom" />
-                <div className="grain" />
-                <Navigation navigationData={navigation} />
-
                 <div className={styles.content}>
                     {children}
                 </div>

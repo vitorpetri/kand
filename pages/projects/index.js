@@ -13,7 +13,7 @@ import Page from '../../components/Page'
 import Gallery from '../../components/Gallery/index'
 import SeparatorLine from '../../components/SeparatorLine'
 
-export default function Home({ projectsList, navigation }) {
+export default function Home({ projectsList }) {
     const router = useRouter()
 
     const titleRef = useRef(null)
@@ -52,7 +52,6 @@ export default function Home({ projectsList, navigation }) {
         <Page
             className={"Page"}
             ref={elementRef}
-            navigation={navigation}
         >
             <Head>
                 <title>KAND | All projects </title>
@@ -106,11 +105,7 @@ export async function getServerSideProps() {
 
     const filteredOrder = order.filter((item) => item !== undefined)
 
-    // FETCH NAVIGATION
-    const navigation = await client.getByType('navigation')
-    const navigationData = navigation?.results[0]?.data
-
     return {
-        props: { projectsList, order: filteredOrder, navigation: navigationData }
+        props: { projectsList, order: filteredOrder }
     }
 }
