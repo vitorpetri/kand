@@ -177,7 +177,7 @@ export default function Navigation({ navigationData }) {
     return (
         <>
             <div className={`${styles.navigation} ${logoColor === 'black' ? styles.border__c : ''}`} ref={navigationRef}>
-                <Link className={styles.logo__wrapper} ref={logoRef} onClick={onHomeClick} href={'/'}>
+                <Link className={`${styles.logo__wrapper} ${isAnimating ? styles.disable : ''}`} ref={logoRef} onClick={onHomeClick} href={'/'}>
                     <div className={styles.logo} ref={svgRef}>
                         <Rive
                             src={KandRive}
@@ -213,9 +213,9 @@ export default function Navigation({ navigationData }) {
                         <div className={styles.line} />
                     </div>
                     <ul className={styles.menu__list}>
-                        <li className={styles.menu__item} onClick={onClick} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
-                        <li className={styles.menu__item} onClick={onClick} ref={menuItem2Ref}><Link href={'/about'}>{navigationData.about_title}</Link></li>
-                        <li className={styles.menu__item} onClick={onClick} ref={menuItem3Ref}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
+                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClick} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
+                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClick} ref={menuItem2Ref}><Link href={'/about'}>{navigationData.about_title}</Link></li>
+                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClick} ref={menuItem3Ref}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
                     </ul>
                 </div>
             </div>
