@@ -52,7 +52,12 @@ export default function Navigation({ navigationData }) {
 
     const delayedNavigate = useCallback((route) => {
         const tl = GSAP.timeline();
-        tl.to({}, { duration: 1.8, onComplete: () => router.push(route) });
+        tl.to({}, { duration: 1.9, onComplete: () => router.push(route) });
+    }, [router]);
+
+    const delayedAboutNavigate = useCallback((route) => {
+        const tl = GSAP.timeline();
+        tl.to({}, { duration: 2.32, onComplete: () => router.push(route) });
     }, [router]);
 
     // useEffect(() => {
@@ -260,7 +265,7 @@ export default function Navigation({ navigationData }) {
                     <ul className={styles.menu__list}>
                         <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClickAtom} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
                         <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={() => { onClickDuo(); delayedNavigate('/about') }} ref={menuItem2Ref}><a>{navigationData.about_title}</a></li>
-                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={() => { onClick(); delayedNavigate('/contact') }} ref={menuItem3Ref}><a>{navigationData.contact_title}</a></li>
+                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={() => { onClick(); delayedAboutNavigate('/contact') }} ref={menuItem3Ref}><a>{navigationData.contact_title}</a></li>
                     </ul>
                 </div>
             </div>

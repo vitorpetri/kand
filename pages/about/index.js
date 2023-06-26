@@ -22,95 +22,104 @@ export default function About({ data }) {
     const riveRef = useRef(null)
     const descriptionRefs = useRef([]);
 
-
     useEffect(() => {
         GSAP.set(descriptionRefs.current, { autoAlpha: 0, y: 30 });
     }, []);
 
     useEffect(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                entries.forEach((entry) => {
-                    if (entry.isIntersecting) {
-                        // Check if the target is one of the elements in descriptionRefs
-                        if (descriptionRefs.current.includes(entry.target)) {
-                            // Animate the element using GSAP
-                            GSAP.to(entry.target, {
-                                autoAlpha: 1,
-                                duration: 1,
-                                y: 0,
-                                ease: 'power2',
-                            });
-                        } else {
-                            // Only fade in for other elements
-                            GSAP.to(entry.target, {
-                                autoAlpha: 1,
-                                duration: 1.5,
-                                ease: 'power2',
-                            });
+        if (typeof window !== 'undefined' &&
+            descriptionRefs.current
+        ) {
+            const observer = new IntersectionObserver(
+                (entries) => {
+                    entries.forEach((entry) => {
+                        if (entry.isIntersecting) {
+                            // Check if the target is one of the elements in descriptionRefs
+                            if (descriptionRefs.current.includes(entry.target)) {
+                                // Animate the element using GSAP
+                                GSAP.to(entry.target, {
+                                    autoAlpha: 1,
+                                    duration: 1,
+                                    y: 0,
+                                    ease: 'power2',
+                                });
+                            } else {
+                                // Only fade in for other elements
+                                GSAP.to(entry.target, {
+                                    autoAlpha: 1,
+                                    duration: 1.5,
+                                    ease: 'power2',
+                                });
+                            }
+
+                            // Optionally unobserve the target after animating
+                            observer.unobserve(entry.target);
                         }
+                    });
+                },
+                {
+                    root: null,
+                    rootMargin: '0px',
+                    threshold: 0.1, // Adjust this value to start animation earlier or later
+                }
+            );
 
-                        // Optionally unobserve the target after animating
-                        observer.unobserve(entry.target);
-                    }
-                });
-            },
-            {
-                root: null,
-                rootMargin: '0px',
-                threshold: 0.1, // Adjust this value to start animation earlier or later
-            }
-        );
+            // Observing elements in descriptionRefs, imageRefs, and videoRefs
+            descriptionRefs.current.forEach((element) => observer.observe(element));
 
-        // Observing elements in descriptionRefs, imageRefs, and videoRefs
-        descriptionRefs.current.forEach((element) => observer.observe(element));
-
-        return () => {
-            // Cleanup - stop observing all targets
-            descriptionRefs.current.forEach((element) => observer.unobserve(element));
-        };
+            return () => {
+                // Cleanup - stop observing all targets
+                descriptionRefs.current.forEach((element) => observer.unobserve(element));
+            };
+        }
     }, []);
 
     useEffect(() => {
-        const tl = GSAP.timeline({ paused: true });
-
         const riveElement = document.querySelector(`.${styles.rive}`)
         const cover = document.querySelector(`.${styles.cover}`);
         const coverOuter = document.querySelector(`.${styles.cover_outer}`)
 
-        tl.addLabel("shrinkRive", "+=1.2");
+        if (typeof window !== 'undefined' &&
+            riveElement &&
+            cover &&
+            coverOuter
+        ) {
+            const tl = GSAP.timeline({ paused: true });
 
-        tl.fromTo(riveElement, {
-            top: '15%',
-            left: '25%',
-            width: '100rem',
-            height: '100rem',
-        }, {
-            top: '10%',
-            left: '48%',
-            width: '8rem',
-            height: '12rem',
-            duration: 0.6,
-            backgroundColor: "unset",
-            ease: "power3.out",
-        }, "shrinkRive");
+            tl.addLabel("shrinkRive", "+=1.2");
 
-        tl.fromTo(cover, {
-            position: 'absolute',
-            opacity: 1
-        }, {
-            opacity: 0,
-            duration: 1.2,
-            ease: "power2.out",
-        }, "shrinkRive+=0.25")
+            tl.fromTo(riveElement, {
+                top: '15%',
+                left: '25%',
+                width: '100rem',
+                height: '100rem',
+            }, {
+                top: '10%',
+                left: '48%',
+                width: '8rem',
+                height: '12rem',
+                duration: 0.6,
+                backgroundColor: "unset",
+                ease: "power3.out",
+            }, "shrinkRive");
 
-        tl.to(coverOuter, {
-            bottom: "200rem",
-            visibility: "visible",
-            duration: 1,
-        }, "shrinkRive-=0.2")
+            tl.fromTo(cover, {
+                position: 'absolute',
+                opacity: 1
+            }, {
+                opacity: 0,
+                duration: 1.2,
+                ease: "power2.out",
+            }, "shrinkRive+=0.25")
 
-        tl.play();
+            tl.to(coverOuter, {
+                bottom: "200rem",
+                visibility: "visible",
+                duration: 1,
+            }, "shrinkRive-=0.2")
+
+            tl.play();
+        }
     }, []);
 
     return (
