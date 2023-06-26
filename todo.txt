@@ -1,0 +1,2 @@
+- Fix two glitches / Transitions rework | https://imgur.com/a/zgPIOZY
+- Title project hover transition

@@ -3,7 +3,7 @@ import MundoSvg from '../public/mundo.svg'
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation';
+import { useRouter } from 'next/navigation'
 import Rive from 'rive-react'
 import GSAP from 'gsap'
 
@@ -19,30 +19,30 @@ const KandRive = '/kand.riv'
 export default function Home({ data }) {
     const elementRef = useRef(null)
     const riveRef = useRef(null)
-    const { push } = useRouter();
+    const { push } = useRouter()
 
     const createTimeline = (onComplete) => {
-        if (typeof window === 'undefined') return null;
+        if (typeof window === 'undefined') return null
 
         const tl = GSAP.timeline({
             onReverseComplete: onComplete,
             onComplete: onComplete,
             paused: true
-        });
+        })
 
-        const riveElement = riveRef.current;
+        const riveElement = riveRef.current
 
-        if (!riveElement) return;
+        if (!riveElement) return
 
-        const cover = document.querySelector(`.${styles.cover}`);
-        const lines = riveElement.querySelectorAll(`.${styles.line}`);
-        const firstName = document.querySelector(`.${styles.firstName}`);
-        const secondName = document.querySelector(`.${styles.secondName}`);
-        const otherElements = document.querySelectorAll(`.${styles.paragraph}, .${styles.buttons__wrapper}`);
-        const links = document.querySelectorAll(`.${styles.button}`);
+        const cover = document.querySelector(`.${styles.cover}`)
+        const lines = riveElement.querySelectorAll(`.${styles.line}`)
+        const firstName = document.querySelector(`.${styles.firstName}`)
+        const secondName = document.querySelector(`.${styles.secondName}`)
+        const otherElements = document.querySelectorAll(`.${styles.paragraph}, .${styles.buttons__wrapper}`)
+        const links = document.querySelectorAll(`.${styles.button}`)
         const PageElement = document.querySelector('.Page')
 
-        tl.addLabel("shrinkRive", "+=1.2");
+        tl.addLabel("shrinkRive", "+=1.2")
 
         tl.fromTo(riveElement, {
             scale: 1.8,
@@ -52,7 +52,7 @@ export default function Home({ data }) {
             duration: 0.5,
             backgroundColor: "unset",
             ease: "power2.out",
-        }, "shrinkRive");
+        }, "shrinkRive")
 
         tl.fromTo(cover, {
             backgroundColor: "black",
@@ -68,25 +68,25 @@ export default function Home({ data }) {
             backgroundColor: 'unset',
             duration: 3,
             ease: "power2.inOut"
-        }, "shrinkRive+=0.5");
+        }, "shrinkRive+=0.5")
 
         tl.to(lines, {
             width: "1.8rem",
             duration: 0.5,
             autoAlpha: 1,
-        }, "shrinkRive-=0.4");
+        }, "shrinkRive-=0.4")
 
         tl.to(lines[0], {
             left: "48%",
             duration: 0.5,
             ease: "power2.out",
-        }, "shrinkRive-=0.2");
+        }, "shrinkRive-=0.2")
 
         tl.to(lines[1], {
             right: "47.6%",
             duration: 0.5,
             ease: "power2.out",
-        }, "shrinkRive-=0.2");
+        }, "shrinkRive-=0.2")
 
         tl.fromTo([firstName, secondName], {
             opacity: 0,
@@ -98,7 +98,7 @@ export default function Home({ data }) {
             autoAlpha: 1,
             ease: "Expo.easeInOut",
             visibility: 'visible',
-        }, "shrinkRive-=0.9");
+        }, "shrinkRive-=0.9")
 
         tl.fromTo(otherElements, {
             autoAlpha: 0,
@@ -106,38 +106,38 @@ export default function Home({ data }) {
             autoAlpha: 1,
             duration: 0.5,
             stagger: 0.2, // 0.2 second delay between each element animation
-        }, "shrinkRive+=1");
+        }, "shrinkRive+=1")
 
-        return tl;
-    };
+        return tl
+    }
 
     const onLinkClick = (link) => {
         const tl = createTimeline(() => {
             push(link)
-        });
+        })
 
-        tl.reverse(tl.duration());
-    };
+        tl.reverse(tl.duration())
+    }
 
     useEffect(() => {
-        const tl = createTimeline();
+        const tl = createTimeline()
 
-        tl.play();
+        tl.play()
 
         // Reverse the animation when leaving the page
         // links.forEach(link => {
         //     link.addEventListener('click', (e) => {
-        //         e.preventDefault();
-        //         const target = e.target.getAttribute('href');
+        //         e.preventDefault()
+        //         const target = e.target.getAttribute('href')
 
         //         tl.eventCallback("onReverseComplete", () => {
-        //             window.location.href = target;
-        //         });
+        //             window.location.href = target
+        //         })
 
-        //         tl.reverse();
-        //     });
-        // });
-    }, []);
+        //         tl.reverse()
+        //     })
+        // })
+    }, [])
 
     return (
         <Page

@@ -72,24 +72,24 @@ export default function App({ Component, pageProps, data, router }) {
     useResize(onResize)
 
     return (
-        <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
-            <PrismicPreview repositoryName={repositoryName}>
-                <Head>
-                    <title>KAUE & DALTRO</title>
-                    <meta name="description" content="Design Duo" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1" />
-                    <link rel="icon" href="/mundo.svg" />
-                </Head>
-                <div className="top" />
-                <div className="border" />
-                <div className="bottom" />
-                <div className="grain" />
-                <Navigation navigationData={data} />
-                <TransitionLayout>
-                    <Component {...pageProps} shared={data} />
-                </TransitionLayout>
-            </PrismicPreview>
-        </PrismicProvider>
+        <TransitionLayout>
+            <PrismicProvider internalLinkComponent={(props) => <Link {...props} />}>
+                <PrismicPreview repositoryName={repositoryName}>
+                    <Head>
+                        <title>KAUE & DALTRO</title>
+                        <meta name="description" content="Design Duo" />
+                        <meta name="viewport" content="width=device-width, initial-scale=1" />
+                        <link rel="icon" href="/mundo.svg" />
+                    </Head>
+                    <div className="top" />
+                    <div className="border" />
+                    <div className="bottom" />
+                    <div className="grain" />
+                    <Navigation navigationData={data} />
+                        <Component {...pageProps} shared={data} />
+                </PrismicPreview>
+            </PrismicProvider>
+        </TransitionLayout>
     )
 }
 
