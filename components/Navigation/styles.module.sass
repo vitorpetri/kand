@@ -216,6 +216,9 @@ $olho-w-m: 138rem
   left: 15%
   transform: translate(-50%, -50%)
 
+  @include media('<=phone')
+    display: none
+
 .olho_mobile
   color: $black
   width: $olho-w-m
