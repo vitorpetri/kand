@@ -79,15 +79,6 @@ const TransitionLayout = ({ children, nextUrl, setNextUrl }) => {
                         transition: opacity 1600ms;
                     }
 
-                    .project-page-exit {
-                        opacity: 1;
-                    }
-
-                    .project-page-exit-active {
-                        opacity: 0;
-                        transition: opacity 1600ms;
-                    }
-
                     `}
                     </style>
                 </>

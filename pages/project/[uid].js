@@ -99,7 +99,7 @@ export default function Projects({ project, previousProject, nextProject, curren
 
         tl.current.to(cover, {
             autoAlpha: 1,
-        }, "shrinkRive-=0.6")
+        }, "shrinkRive-=1")
 
         tl.current.to(riveElement, {
             ...tlOptions,
