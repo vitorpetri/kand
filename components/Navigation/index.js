@@ -134,9 +134,9 @@ export default function Navigation({ navigationData }) {
             //     setLogoColor(logoColor === 'original' ? 'black' : 'original')
             // }
 
-            tl.set(riveRef.current, { opacity: '1' })
-            tl.set(riveDuoRef.current, { opacity: '0' }, '<')
-            tl.set(riveAtomoRef.current, { opacity: '0' }, '<')
+            tl.set(riveRef.current, { opacity: '1', display: 'flex' })
+            tl.set(riveDuoRef.current, { opacity: '0', display: 'none' }, '<')
+            tl.set(riveAtomoRef.current, { opacity: '0', display: 'none' }, '<')
             tl.to(navigationRef.current, { duration: 0.8, scale: 1, transformOrigin: '98% 2%', background: '#B3FC03', ease: 'Power4.easeInOut' }, '<')
             tl.to(btnPlus.current, { duration: 0, innerHTML: '-', ease: 'Power4.easeInOut' }, '<')
             tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Power4.easeInOut' }, '<')
@@ -189,11 +189,15 @@ export default function Navigation({ navigationData }) {
 
     const atomRide = () => {
         GSAP.set(riveRef.current, { duration: 0, opacity: 0 })
+        GSAP.set(riveRef.current, { display: 'none' })
+        GSAP.set(riveAtomoRef.current, { duration: 0, display: 'flex' }, '<')
         GSAP.set(riveAtomoRef.current, { duration: 0, opacity: '1' }, '<')
     }
 
     const duoRide = () => {
         GSAP.set(riveRef.current, { duration: 0, opacity: 0 })
+        GSAP.set(riveRef.current, { display: 'none' })
+        GSAP.set(riveDuoRef.current, { duration: 0, display: 'flex' }, '<')
         GSAP.set(riveDuoRef.current, { duration: 0, opacity: '1' }, '<')
     }
 
