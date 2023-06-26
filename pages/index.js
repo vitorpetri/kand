@@ -3,7 +3,6 @@ import MundoSvg from '../public/mundo.svg'
 import { useEffect, useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useRouter } from 'next/navigation';
 import Rive from 'rive-react'
 import GSAP from 'gsap'
 
@@ -19,21 +18,11 @@ const KandRive = '/kand.riv'
 export default function Home({ data }) {
     const elementRef = useRef(null)
     const riveRef = useRef(null)
-    const { push } = useRouter();
 
-    const createTimeline = (onComplete) => {
-        if (typeof window === 'undefined') return null;
-
-        const tl = GSAP.timeline({
-            onReverseComplete: onComplete,
-            onComplete: onComplete,
-            paused: true
-        });
+    useEffect(() => {
+        const tl = GSAP.timeline({ paused: true });
 
         const riveElement = riveRef.current;
-
-        if (!riveElement) return;
-
         const cover = document.querySelector(`.${styles.cover}`);
         const lines = riveElement.querySelectorAll(`.${styles.line}`);
         const firstName = document.querySelector(`.${styles.firstName}`);
@@ -108,35 +97,22 @@ export default function Home({ data }) {
             stagger: 0.2, // 0.2 second delay between each element animation
         }, "shrinkRive+=1");
 
-        return tl;
-    };
-
-    const onLinkClick = (link) => {
-        const tl = createTimeline(() => {
-            push(link)
-        });
-
-        tl.reverse(tl.duration());
-    };
-
-    useEffect(() => {
-        const tl = createTimeline();
-
         tl.play();
 
         // Reverse the animation when leaving the page
-        // links.forEach(link => {
-        //     link.addEventListener('click', (e) => {
-        //         e.preventDefault();
-        //         const target = e.target.getAttribute('href');
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = e.target.getAttribute('href');
 
-        //         tl.eventCallback("onReverseComplete", () => {
-        //             window.location.href = target;
-        //         });
+                tl.eventCallback("onReverseComplete", () => {
+                    window.location.href = target;
+                });
 
-        //         tl.reverse();
-        //     });
-        // });
+                tl.reverse();
+            });
+        });
+
     }, []);
 
     return (
@@ -170,12 +146,12 @@ export default function Home({ data }) {
                     {data.question}
                 </p>
                 <div className={styles.buttons__wrapper}>
-                    <button onClick={() => onLinkClick("/projects")} className={styles.button}>
+                    <Link href={"/projects"} className={styles.button}>
                         {data.first_button}
-                    </button>
-                    <button onClick={() => onLinkClick("/categories")} className={styles.button}>
+                    </Link>
+                    <Link href={"/categories"} className={styles.button}>
                         {data.second_button}
-                    </button>
+                    </Link>
                 </div>
             </div>
         </Page>

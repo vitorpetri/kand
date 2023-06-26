@@ -15,33 +15,6 @@ export default function Navigation({ navigationData }) {
     const [isActive, setIsActive] = useState(false)
     const [isAnimating, setIsAnimating] = useState(false)
 
-    const toggleScroll = (disable) => {
-        if (disable) {
-            document.body.style.overflow = 'hidden';
-            if (Lenis) {
-                Lenis.setScroll(0);
-            }
-        } else {
-            document.body.style.overflow = '';
-        }
-    }
-
-    const onClick = () => {
-        if (isAnimating) return;
-
-        setIsActive(!isActive)
-
-        if (!isActive) {
-            toggleScroll(true);
-        } else {
-            toggleScroll(false);
-        }
-
-        setLogoColor(logoColor === 'original' ? 'black' : 'original')
-    }
-
-    const onHomeClick = () => setIsActive(false)
-
     useEffect(() => {
         function handleRiveLoad(event) {
             setRiveLogoInstance(event)
@@ -79,7 +52,7 @@ export default function Navigation({ navigationData }) {
 
     const delayedNavigate = useCallback((route) => {
         const tl = GSAP.timeline();
-        tl.to({}, { duration: 2, onComplete: () => router.push(route) });
+        tl.to({}, { duration: 1.8, onComplete: () => router.push(route) });
     }, [router]);
 
     // useEffect(() => {
@@ -206,6 +179,33 @@ export default function Navigation({ navigationData }) {
         GSAP.set(riveDuoRef.current, { opacity: '1' }, '<')
     }
 
+    const toggleScroll = (disable) => {
+        if (disable) {
+            document.body.style.overflow = 'hidden';
+            if (Lenis) {
+                Lenis.setScroll(0);
+            }
+        } else {
+            document.body.style.overflow = '';
+        }
+    }
+
+    const onClick = () => {
+        if (isAnimating) return;
+
+        setIsActive(!isActive)
+
+        if (!isActive) {
+            toggleScroll(true);
+        } else {
+            toggleScroll(false);
+        }
+
+        setLogoColor(logoColor === 'original' ? 'black' : 'original')
+    }
+
+    const onHomeClick = () => setIsActive(false)
+
     const onClickAtom = () => {
         onClick()
         atomRide()
@@ -260,7 +260,7 @@ export default function Navigation({ navigationData }) {
                     <ul className={styles.menu__list}>
                         <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClickAtom} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
                         <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={() => { onClickDuo(); delayedNavigate('/about') }} ref={menuItem2Ref}><a>{navigationData.about_title}</a></li>
-                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClick} ref={menuItem3Ref}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
+                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={() => { onClick(); delayedNavigate('/contact') }} ref={menuItem3Ref}><a>{navigationData.contact_title}</a></li>
                     </ul>
                 </div>
             </div>
