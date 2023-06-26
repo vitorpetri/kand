@@ -26,7 +26,6 @@ export default function Navigation({ navigationData }) {
         }
     }
 
-
     const onClick = () => {
         if (isAnimating) return;
 
@@ -61,7 +60,8 @@ export default function Navigation({ navigationData }) {
     }, []);
 
     const riveRef = useRef(null)
-    const riveAboutRef = useRef(null)
+    const riveAtomoRef = useRef(null)
+    const riveDuoRef = useRef(null)
     const riveRefMobile = useRef(null)
     const menuRef = useRef(null)
     const menuDivRef = useRef(null)
@@ -129,35 +129,48 @@ export default function Navigation({ navigationData }) {
             const tl = GSAP.timeline({ paused: true, onStart: () => setIsAnimating(true), onComplete: () => setIsAnimating(false) });
             const tlReverse = GSAP.timeline({ paused: true, onStart: () => setIsAnimating(true), onComplete: () => setIsAnimating(false) });
 
+            // const animationCompleted = () => {
+            //     setIsAnimating(false)
+            //     setLogoColor(logoColor === 'original' ? 'black' : 'original')
+            // }
+
             tl.set(riveRef.current, { opacity: '1' })
-            tl.to(navigationRef.current, { duration: 0, scale: 1, transformOrigin: '98% 2%', background: '#B3FC03', ease: 'Power4.easeInOut' })
+            tl.set(riveDuoRef.current, { opacity: '0' }, '<')
+            tl.set(riveAtomoRef.current, { opacity: '0' }, '<')
+            tl.to(navigationRef.current, { duration: 0.8, scale: 1, transformOrigin: '98% 2%', background: '#B3FC03', ease: 'Power4.easeInOut' }, '<')
+            tl.to(btnPlus.current, { duration: 0, innerHTML: '-', ease: 'Power4.easeInOut' }, '<')
             tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Power4.easeInOut' }, '<')
             tl.to(menuRef.current, { duration: 0.6, opacity: 1, scale: 1, transformOrigin: '98% 2%', display: 'block', ease: 'Power4.easeInOut' }, '<')
             tl.to(svgRef.current, { duration: 0, color: '#101010', ease: 'Power4.easeInOut' }, '<')
             tl.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Power4.easeInOut' }, '<')
-            tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Power4.easeInOut' })
+            tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Power4.easeInOut' }, '<')
             tl.to(riveRef.current, { duration: 1.2, scale: 0.2, x: '-113rem', y: '8.2rem', ease: 'Power4.easeInOut', delay: '1000ms' })
+            tl.to(riveAtomoRef.current, { duration: 1.2, scale: 0.2, x: '-113rem', y: '8.2rem', ease: 'Power4.easeInOut', delay: '1000ms' }, '<')
+            tl.to(riveDuoRef.current, { duration: 1.2, scale: 0.2, x: '-113rem', y: '8.2rem', ease: 'Power4.easeInOut', delay: '1000ms' }, '<')
             tl.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 0.5, x: '8rem', y: '15rem', ease: 'Power4.easeInOut' }, '<')
-            tl.to(menuTextRef.current, { duration: 0.8, opacity: 1, ease: 'Power4.easeInOut' }, '<0.2')
+            tl.to(menuTextRef.current, { duration: 1.4, opacity: 1, ease: 'Power4.easeInOut' }, '<0.6')
             tl.to(menuItem1Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<0.2')
             tl.to(menuItem2Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<0.2')
             tl.to(menuItem3Ref.current, { duration: 0.8, opacity: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<0.2')
-            tl.to(btnPlus.current, { duration: 0, innerHTML: '-', ease: 'Power4.easeInOut' })
 
-            tlReverse.to(navigationRef.current, { duration: 0, scale: 1, transformOrigin: '98% 2%', background: '#101010', ease: 'Power4.easeInOut' })
+            tlReverse.to(navigationRef.current, { duration: 0.6, scale: 1, transformOrigin: '98% 2%', background: '#101010', ease: 'Power4.easeInOut' })
             tlReverse.to(logoRef.current, { duration: 0, borderRight: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(svgRef.current, { duration: 0, color: '#B3FC03', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid rgba(239, 239, 210, 0.3)', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(btnRef.current, { duration: 0, background: '#B3FC03', color: '#101010', ease: 'Power4.easeInOut' })
-            tlReverse.to(menuItem3Ref.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
-            tlReverse.to(menuItem2Ref.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
-            tlReverse.to(menuItem1Ref.current, { duration: 0.6, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
-            tlReverse.to(menuTextRef.current, { duration: 0.6, opacity: 0, ease: 'Power4.easeInOut' }, '<0.1')
+            tlReverse.to(menuItem3Ref.current, { duration: 0.8, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<0.8')
+            tlReverse.to(menuItem2Ref.current, { duration: 0.8, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
+            tlReverse.to(menuItem1Ref.current, { duration: 0.8, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
+            tlReverse.to(menuTextRef.current, { duration: 0.8, opacity: 0, ease: 'Power4.easeInOut' }, '<0.3')
             tlReverse.to(riveRef.current, { duration: 0.8, scale: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(riveRef.current, { duration: 0.8, opacity: '0', ease: 'Power4.easeInOut' })
+            tlReverse.to(riveAtomoRef.current, { duration: 0.8, scale: 0.4, x: '-36rem', ease: 'Power4.easeInOut' }, '<')
+            tlReverse.to(riveAtomoRef.current, { duration: 0.8, opacity: '0', ease: 'Power4.easeInOut', delay: 0.3 }, '<')
+            tlReverse.to(riveDuoRef.current, { duration: 0.8, scale: 0.6, x: '-24rem', y: "20rem", ease: 'Power4.easeInOut' }, '<')
+            tlReverse.to(riveDuoRef.current, { duration: 0.8, opacity: '0', ease: 'Power4.easeInOut', delay: 0.3 }, '<')
             tlReverse.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 1, x: '0rem', y: '0rem', ease: 'Power4.easeInOut' }, '<')
-            tlReverse.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Power4.easeInOut' })
             tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Power4.easeInOut' }, '<')
+            tlReverse.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Power4.easeInOut', delay: 0.3 }, '<')
 
             if (router.pathname === '/contact') {
                 GSAP.set(navigationRef.current, { duration: 0, background: '#B3FC03 !important' })
@@ -173,6 +186,26 @@ export default function Navigation({ navigationData }) {
         }
 
     }, [isActive, router.pathname])
+
+    const atomRide = () => {
+        GSAP.set(riveRef.current, { duration: 0, opacity: 0 })
+        GSAP.set(riveAtomoRef.current, { duration: 0, opacity: '1' }, '<')
+    }
+
+    const duoRide = () => {
+        GSAP.set(riveRef.current, { duration: 0, opacity: 0 })
+        GSAP.set(riveDuoRef.current, { duration: 0, opacity: '1' }, '<')
+    }
+
+    const onClickAtom = () => {
+        onClick()
+        atomRide()
+    }
+
+    const onClickDuo = () => {
+        onClick()
+        duoRide()
+    }
 
     return (
         <>
@@ -202,9 +235,12 @@ export default function Navigation({ navigationData }) {
                     <div ref={riveRef} className={styles.olho}>
                         <Rive src={KandRive} className={styles.olho_rive} artboard='Rive Olho' />
                     </div>
-                    {/* <div ref={riveAboutRef} className={styles.duo}>
-                        <Rive src={KandRive} className={styles.duo_rive} artboard='Rive Duo' />
-                    </div> */}
+                    <div ref={riveDuoRef} className={styles.duo}>
+                        <Rive src={KandRive} className={styles.duo_rive} artboard='Rive DuoBlack' />
+                    </div>
+                    <div ref={riveAtomoRef} className={styles.atomo}>
+                        <Rive src={KandRive} className={styles.atomo_rive} artboard='Rive AtomoBlack' />
+                    </div>
                     <div ref={riveRefMobile} className={styles.olho_mobile}>
                         <Rive src={KandRive} className={styles.olho_rive_mobile} artboard='Rive Olho' />
                     </div>
@@ -213,8 +249,8 @@ export default function Navigation({ navigationData }) {
                         <div className={styles.line} />
                     </div>
                     <ul className={styles.menu__list}>
-                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClick} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
-                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClick} ref={menuItem2Ref}><Link href={'/about'}>{navigationData.about_title}</Link></li>
+                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClickAtom} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
+                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClickDuo} ref={menuItem2Ref}><Link href={'/about'}>{navigationData.about_title}</Link></li>
                         <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClick} ref={menuItem3Ref}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
                     </ul>
                 </div>

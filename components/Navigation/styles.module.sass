@@ -190,7 +190,7 @@
 $olho-w: 180rem
 $olho-w-m: 138rem
 
-.olho
+.olho, .duo, .atomo
   color: $black
   width: $olho-w
   margin-right: 20rem
@@ -208,7 +208,7 @@ $olho-w-m: 138rem
     top: 10%
     right: 10%
 
-.olho_rive
+.olho_rive, .duo_rive, .atomo_rive
   width: $olho-w
   height: $olho-w
   position: absolute
@@ -239,9 +239,31 @@ $olho-w-m: 138rem
   position: absolute
   transform: translateX(-50%)
 
-// .duo
-//   color: #000000
-//   background: #000000
+.olho
+  color: $black
+  width: $olho-w
+  margin-right: 20rem
+  position: absolute
+  bottom: 38%
+  left: 36%
+
+  @media (max-height: 620px)
+    display: none
+
+  @include media('<=phone')
+    display: none
+
+  @media (min-width: 620px)
+    top: 10%
+    right: 10%
+
+.olho_rive
+  width: $olho-w
+  height: $olho-w
+  position: absolute
+  top: 50%
+  left: 15%
+  transform: translate(-50%, -50%)
 
 .line
   width: 2rem
