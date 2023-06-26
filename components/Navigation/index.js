@@ -52,12 +52,12 @@ export default function Navigation({ navigationData }) {
 
     const delayedNavigate = useCallback((route) => {
         const tl = GSAP.timeline();
-        tl.to({}, { duration: 1.9, onComplete: () => router.push(route) });
+        tl.to({}, { duration: 1.8, onComplete: () => router.push(route) });
     }, [router]);
 
     const delayedAboutNavigate = useCallback((route) => {
         const tl = GSAP.timeline();
-        tl.to({}, { duration: 2.32, onComplete: () => router.push(route) });
+        tl.to({}, { duration: 2.25, onComplete: () => router.push(route) });
     }, [router]);
 
     // useEffect(() => {
