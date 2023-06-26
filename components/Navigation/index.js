@@ -138,12 +138,12 @@ export default function Navigation({ navigationData }) {
             tl.set(riveDuoRef.current, { opacity: '0', display: 'none' }, '<')
             tl.set(riveAtomoRef.current, { opacity: '0', display: 'none' }, '<')
             tl.to(navigationRef.current, { duration: 0.8, scale: 1, transformOrigin: '98% 2%', background: '#B3FC03', ease: 'Power4.easeInOut' }, '<')
-            tl.to(btnPlus.current, { duration: 0, innerHTML: '-', ease: 'Power4.easeInOut' }, '<')
             tl.to(logoRef.current, { duration: 0, borderRight: '1px solid #101010', ease: 'Power4.easeInOut' }, '<')
             tl.to(menuRef.current, { duration: 0.6, opacity: 1, scale: 1, transformOrigin: '98% 2%', display: 'block', ease: 'Power4.easeInOut' }, '<')
             tl.to(svgRef.current, { duration: 0, color: '#101010', ease: 'Power4.easeInOut' }, '<')
             tl.to(btnRef.current, { duration: 0, background: '#101010', color: '#B3FC03', ease: 'Power4.easeInOut' }, '<')
             tl.to(menuDivRef.current, { duration: 0, borderLeft: '1px solid #101010', ease: 'Power4.easeInOut' }, '<')
+            tl.to(btnPlus.current, { duration: 0, innerHTML: '-', ease: 'Power4.easeInOut' }, '<')
             tl.to(riveRef.current, { duration: 1.2, scale: 0.2, x: '-113rem', y: '8.2rem', ease: 'Power4.easeInOut', delay: '1000ms' })
             tl.to(riveAtomoRef.current, { duration: 1.2, scale: 0.2, x: '-113rem', y: '8.2rem', ease: 'Power4.easeInOut', delay: '1000ms' }, '<')
             tl.to(riveDuoRef.current, { duration: 1.2, scale: 0.2, x: '-113rem', y: '8.2rem', ease: 'Power4.easeInOut', delay: '1000ms' }, '<')
@@ -162,6 +162,7 @@ export default function Navigation({ navigationData }) {
             tlReverse.to(menuItem2Ref.current, { duration: 0.8, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuItem1Ref.current, { duration: 0.8, opacity: 0, x: '-3rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuTextRef.current, { duration: 0.8, opacity: 0, ease: 'Power4.easeInOut' }, '<0.3')
+            tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(riveRef.current, { duration: 0.8, scale: 1, x: '0rem', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(riveRef.current, { duration: 0.8, opacity: '0', ease: 'Power4.easeInOut' })
             tlReverse.to(riveAtomoRef.current, { duration: 0.8, scale: 0.4, x: '-36rem', ease: 'Power4.easeInOut' }, '<')
@@ -169,7 +170,6 @@ export default function Navigation({ navigationData }) {
             tlReverse.to(riveDuoRef.current, { duration: 0.8, scale: 0.6, x: '-24rem', y: "20rem", ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(riveDuoRef.current, { duration: 0.8, opacity: '0', ease: 'Power4.easeInOut', delay: 0.3 }, '<')
             tlReverse.to(riveRefMobile.current, { duration: 0.6, opacity: 1, scale: 1, x: '0rem', y: '0rem', ease: 'Power4.easeInOut' }, '<')
-            tlReverse.to(btnPlus.current, { duration: 0, innerHTML: '+', ease: 'Power4.easeInOut' }, '<')
             tlReverse.to(menuRef.current, { duration: 0.7, opacity: 0, scale: 0, display: 'none', ease: 'Power4.easeInOut', delay: 0.3 }, '<')
 
             if (router.pathname === '/contact') {
@@ -188,17 +188,17 @@ export default function Navigation({ navigationData }) {
     }, [isActive, router.pathname])
 
     const atomRide = () => {
-        GSAP.set(riveRef.current, { duration: 0, opacity: 0 })
+        GSAP.set(riveRef.current, { opacity: 0 })
         GSAP.set(riveRef.current, { display: 'none' })
-        GSAP.set(riveAtomoRef.current, { duration: 0, display: 'flex' }, '<')
-        GSAP.set(riveAtomoRef.current, { duration: 0, opacity: '1' }, '<')
+        GSAP.set(riveAtomoRef.current, { display: 'flex' }, '<')
+        GSAP.set(riveAtomoRef.current, { opacity: '1' }, '<')
     }
 
     const duoRide = () => {
-        GSAP.set(riveRef.current, { duration: 0, opacity: 0 })
+        GSAP.set(riveRef.current, { opacity: 0 })
         GSAP.set(riveRef.current, { display: 'none' })
-        GSAP.set(riveDuoRef.current, { duration: 0, display: 'flex' }, '<')
-        GSAP.set(riveDuoRef.current, { duration: 0, opacity: '1' }, '<')
+        GSAP.set(riveDuoRef.current, { display: 'flex' }, '<')
+        GSAP.set(riveDuoRef.current, { opacity: '1' }, '<')
     }
 
     const onClickAtom = () => {
