@@ -2,7 +2,7 @@ import styles from './styles.module.sass'
 
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef, useEffect, useCallback } from 'react'
 import GSAP from 'gsap'
 import Rive from 'rive-react'
 import Lenis from '../../utils/scroll'
@@ -76,6 +76,11 @@ export default function Navigation({ navigationData }) {
     const btnPlus = useRef(null)
 
     const router = useRouter()
+
+    const delayedNavigate = useCallback((route) => {
+        const tl = GSAP.timeline();
+        tl.to({}, { duration: 2, onComplete: () => router.push(route) });
+    }, [router]);
 
     // useEffect(() => {
     //     if (typeof window !== 'undefined') {
@@ -254,7 +259,7 @@ export default function Navigation({ navigationData }) {
                     </div>
                     <ul className={styles.menu__list}>
                         <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClickAtom} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
-                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClickDuo} ref={menuItem2Ref}><Link href={'/about'}>{navigationData.about_title}</Link></li>
+                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={() => { onClickDuo(); delayedNavigate('/about') }} ref={menuItem2Ref}><a>{navigationData.about_title}</a></li>
                         <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClick} ref={menuItem3Ref}><Link href={'/contact'}>{navigationData.contact_title}</Link></li>
                     </ul>
                 </div>

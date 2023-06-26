@@ -2,11 +2,9 @@ import styles from './styles.module.sass'
 import { useEffect, useRef, useState } from 'react'
 import Head from 'next/head'
 import Rive from 'rive-react'
-import Image from 'next/image'
 import GSAP from 'gsap'
 
 import Page from '../../components/Page'
-import Render from '../../components/Render'
 
 const KandRive = '/kand.riv'
 
@@ -18,8 +16,6 @@ import Description from '../../components/Description'
 import Profile from '../../components/Profile'
 import Clients from '../../components/Clients'
 import Awards from '../../components/Awards'
-
-import DuoSvg from '../../public/duo.svg'
 
 export default function About({ data }) {
     const elementRef = useRef(null)
