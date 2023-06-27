@@ -87,7 +87,7 @@ export default function Projects({ project, previousProject, nextProject, curren
         const cover = document.querySelector(`.${styles.cover}`);
         const header = document.querySelector(`.${styles.header}`);
 
-        tl.current.addLabel("shrinkRive", "+=1.2");
+        tl.current.addLabel("shrinkRive", "+=2");
 
         tl.current.to(riveElement, {
             autoAlpha: 1,
