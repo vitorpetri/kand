@@ -119,7 +119,7 @@ export default function About({ data }) {
             }, "shrinkRive-=0.2")
 
             tl.to(coverOuter, {
-                visibility: "visible",
+                visibility: "hiden",
             }, "shrinkRive+=1.2")
 
             tl.play();
