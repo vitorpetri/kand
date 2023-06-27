@@ -118,6 +118,10 @@ export default function About({ data }) {
                 duration: 1,
             }, "shrinkRive-=0.2")
 
+            tl.to(coverOuter, {
+                visibility: "visible",
+            }, "shrinkRive+=1.2")
+
             tl.play();
         }
     }, []);
