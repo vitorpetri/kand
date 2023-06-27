@@ -23,6 +23,8 @@ export default function Home({ projectsList }) {
     const [isAnimating, setIsAnimating] = useState(false);
 
     const handleMouseEnter = useCallback(() => {
+        if (isAnimating) return;
+
         const title = titleRef.current;
         const gallery = galleryRef.current;
 
@@ -32,9 +34,11 @@ export default function Home({ projectsList }) {
         tl.to(gallery, { translateY: '-28rem', marginBottom: '-28rem', duration: 0.9, ease: 'power3.easeOut' }, '<0.1');
 
         tl.play();
-    }, []);
+    }, [isAnimating]);
 
     const handleMouseLeave = useCallback(() => {
+        if (isAnimating) return;
+
         const title = titleRef.current;
         const gallery = galleryRef.current;
 
@@ -44,7 +48,7 @@ export default function Home({ projectsList }) {
         tl.to(title, { autoAlpha: 1, duration: 0.7, ease: 'power2.out' }, '<0.1');
 
         tl.play();
-    }, []);
+    }, [isAnimating]);
 
     const conditionalStyle = isAnimating ? { pointerEvents: 'none' } : { pointerEvents: 'auto' };
 
@@ -63,15 +67,14 @@ export default function Home({ projectsList }) {
                     <div className={styles.line} />
                     <SeparatorLine />
                 </div>
-                <div ref={galleryRef} className={styles.gallery}>
-                    <Gallery projectsList={projectsList} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} />
+                <div ref={galleryRef} className={styles.gallery} onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave} >
+                    <Gallery projectsList={projectsList} />
+                    <span className={styles.footer__label}>or choose by</span>
+                    <Link
+                        href={'/categories'}
+                        className={styles.footer__title}
+                    >Categories</Link>
                 </div>
-                <SeparatorLine />
-                <span className={styles.footer__label}>or choose by</span>
-                <Link
-                    href={'/categories'}
-                    className={styles.footer__title}
-                >Categories</Link>
             </div>
         </Page>
     )
