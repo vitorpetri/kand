@@ -99,13 +99,20 @@ export default function Projects({ project, previousProject, nextProject, curren
 
         tl.current.to(cover, {
             autoAlpha: 1,
-        }, "shrinkRive-=1") 
+        }, "shrinkRive-=1")
 
         tl.current.to(riveElement, {
             ...tlOptions,
             duration: 0.6,
             ease: "power3.out",
         }, "shrinkRive");
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                handleNavigation(link.getAttribute('href'));
+            });
+        });
 
         tl.current.to(cover, {
             visibility: 'visible',
@@ -116,6 +123,12 @@ export default function Projects({ project, previousProject, nextProject, curren
         tl.current.to(riveElement, {
             opacity: 0,
         }, "shrinkRive+=2")
+
+        return () => {
+            navLinks.forEach(link => {
+                link.removeEventListener('click', handleNavigation);
+            });
+        };
     }, []);
 
     const addDescriptionRef = (el) => {

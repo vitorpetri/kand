@@ -224,7 +224,7 @@ export default function Navigation({ navigationData }) {
     return (
         <>
             <div className={`${styles.navigation} ${logoColor === 'black' ? styles.border__c : ''}`} ref={navigationRef}>
-                <Link className={`${styles.logo__wrapper} ${isAnimating ? styles.disable : ''}`} ref={logoRef} onClick={onHomeClick} href={'/'}>
+                <Link className={`${styles.logo__wrapper} nav-link ${isAnimating ? styles.disable : ''}`} ref={logoRef} onClick={onHomeClick} href={'/'}>
                     <div className={styles.logo} ref={svgRef}>
                         <Rive
                             src={KandRive}
@@ -263,9 +263,9 @@ export default function Navigation({ navigationData }) {
                         <div className={styles.line} />
                     </div>
                     <ul className={styles.menu__list}>
-                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={onClickAtom} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
-                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={() => { onClickDuo(); delayedNavigate('/about') }} ref={menuItem2Ref}><a>{navigationData.about_title}</a></li>
-                        <li className={`${styles.menu__item} ${isAnimating ? styles.disable : ''}`} onClick={() => { onClick(); delayedAboutNavigate('/contact') }} ref={menuItem3Ref}><a>{navigationData.contact_title}</a></li>
+                        <li className={`${styles.menu__item} nav-link ${isAnimating ? styles.disable : ''}`} onClick={onClickAtom} ref={menuItem1Ref}><Link href={'/projects'}>{navigationData.work_title}</Link></li>
+                        <li className={`${styles.menu__item} nav-link ${isAnimating ? styles.disable : ''}`} onClick={() => { onClickDuo(); delayedNavigate('/about') }} ref={menuItem2Ref}><a>{navigationData.about_title}</a></li>
+                        <li className={`${styles.menu__item} nav-link ${isAnimating ? styles.disable : ''}`} onClick={() => { onClick(); delayedAboutNavigate('/contact') }} ref={menuItem3Ref}><a>{navigationData.contact_title}</a></li>
                     </ul>
                 </div>
             </div>
