@@ -41,7 +41,7 @@ const Page = forwardRef(({
 
 
             <div className={classNames(styles.element, className)} ref={ref}>
-                <div className={styles.content}>
+                <div className={`{styles.content} content`}>
                     {children}
                 </div>
             </div>

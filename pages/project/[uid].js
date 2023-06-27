@@ -45,6 +45,14 @@ export default function Projects({ project, previousProject, nextProject, curren
         setNextUrl(url);
     };
 
+    const handleImmediateNavigation = (url) => {
+        const pageContent = document.querySelector('.content')
+        pageContent.classList.add('fade-out');
+        setTimeout(() => {
+            router.push(url);
+        }, 300);
+    };
+
     useEffect(() => {
         const handleRouteChangeComplete = () => {
             document.body.style.overflow = '';
@@ -109,10 +117,12 @@ export default function Projects({ project, previousProject, nextProject, curren
 
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                handleNavigation(link.getAttribute('href'));
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                handleImmediateNavigation(link.getAttribute('href'));
             });
         });
+
 
         tl.current.to(cover, {
             visibility: 'visible',
@@ -130,7 +140,7 @@ export default function Projects({ project, previousProject, nextProject, curren
 
         return () => {
             navLinks.forEach(link => {
-                link.removeEventListener('click', handleNavigation);
+                link.removeEventListener('click', handleImmediateNavigation);
             });
         };
     }, []);
