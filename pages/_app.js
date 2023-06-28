@@ -78,6 +78,7 @@ export default function App({ Component, pageProps, data, router }) {
                     <title>KAUE & DALTRO</title>
                     <meta name="description" content="Design Duo" />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
+                    <meta name="google-site-verification" content="ZIuWyRpmj_AHeM33o1BpwaiFah1VF8L0sK7XQRLv2fc" />
                     <link rel="icon" href="/mundo.svg" />
                 </Head>
                 <div className="top" />
