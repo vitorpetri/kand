@@ -15,7 +15,7 @@ const Page = forwardRef(({
 }, ref) => {
 
     const {
-        title = '',
+        title = 'KAUE & DALTRO',
         description = 'Click and check out the projects of the creative duo Kaue Barbosa and Tiago Daltro in their portfolio.',
         keywords = '',
         image = ''
