@@ -16,7 +16,7 @@ const Page = forwardRef(({
 
     const {
         title = '',
-        description = '',
+        description = 'Click and check out the projects of the creative duo Kaue Barbosa and Tiago Daltro in their portfolio.',
         keywords = '',
         image = ''
     } = metadata;
