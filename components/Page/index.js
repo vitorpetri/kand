@@ -37,6 +37,22 @@ const Page = forwardRef(({
                 <meta name="twitter:title" content={title} />
                 <meta name="twitter:description" content={description} />
                 <meta name="twitter:image" content={image} />
+
+                <script type="application/ld+json">
+                    {JSON.stringify({
+                        "@context": "https://schema.org",
+                        "@type": "WebPage",
+                        "name": title,
+                        "description": description,
+                        "mainEntity": [{
+                            "@type": "Person",
+                            "name": "Kaue Barbosa"
+                        }, {
+                            "@type": "Person",
+                            "name": "Tiago Daltro"
+                        }]
+                    })}
+                </script>
             </Head>
 
 
