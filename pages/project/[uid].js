@@ -48,9 +48,11 @@ export default function Projects({ project, previousProject, nextProject, curren
     const handleImmediateNavigation = (url) => {
         const pageContent = document.querySelector('.content')
         pageContent.classList.add('fade-out');
-        setTimeout(() => {
-            router.push(url);
-        }, 300);
+        if (url) {
+            setTimeout(() => {
+                router.push(url);
+            }, 300);
+        }
     };
 
     useEffect(() => {
@@ -266,7 +268,8 @@ export default function Projects({ project, previousProject, nextProject, curren
                                     alt="Project Images"
                                     width={width}
                                     height={height}
-                                    loading="lazy"
+                                    quality={75}
+                                    priority={true}
                                 />
                             </figure>
                         )
