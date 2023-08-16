@@ -77,6 +77,7 @@ export default function App({ Component, pageProps, data, router }) {
                 <Head>
                     <title>KAUÊ & DALTRO</title>
                     <meta name="author" content="KAUÊ & DALTRO" />
+                    <meta name="application-name" content="KAUÊ & DALTRO" />
                     <meta name="description" content="We are a creative duo working together since that year people thought nobody would ever work together again. Click to check out our projects." />
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <meta name="google-site-verification" content="ZIuWyRpmj_AHeM33o1BpwaiFah1VF8L0sK7XQRLv2fc" />

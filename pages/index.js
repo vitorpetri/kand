@@ -121,7 +121,7 @@ export default function Home({ data }) {
             ref={elementRef}
         >
             <Head>
-                <title>KAUE & DALTRO</title>
+                <title>KAUÊ & DALTRO</title>
             </Head>
 
             <div className={styles.wrapper}  >
